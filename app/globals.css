@@ -1,26 +1,76 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f7f6fd;
+  --foreground: #0f0d1f;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-jakarta);
+  --font-display: var(--font-jakarta);
+
+  /* Brand palette: indigo → violet, sampled from the reference design */
+  --color-brand-50: #f3f2fe;
+  --color-brand-100: #e8e6fd;
+  --color-brand-200: #d4d0fb;
+  --color-brand-300: #b3acf6;
+  --color-brand-400: #8b7ff0;
+  --color-brand-500: #6457e6;
+  --color-brand-600: #4f3fd9;
+  --color-brand-700: #4331be;
+  --color-brand-800: #372a98;
+  --color-brand-900: #2c2573;
+
+  --color-violet-brand: #6d28d9;
+  --color-ink: #0f0d1f;
+  --color-muted: #6b6886;
+  --color-lavender: #efedfc;
+  --color-night: #1c1a33;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--color-brand-200);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-float {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-slow 7s ease-in-out 1.5s infinite;
 }

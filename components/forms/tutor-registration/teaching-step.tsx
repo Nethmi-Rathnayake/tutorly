@@ -1,0 +1,178 @@
+"use client";
+
+import { BookOpen, ChevronDown, GraduationCap, Layers, Library, School, X } from "lucide-react";
+import { Controller, useFormContext, useWatch } from "react-hook-form";
+import { Field, FieldError, PillToggle, SectionTitle, TextInput } from "@/components/forms/fields";
+import { SubjectCombobox } from "@/components/forms/subject-combobox";
+import { curricula, educationLevels, subjectCategories } from "@/lib/constants/taxonomy";
+import { experienceOptions, qualificationOptions } from "@/lib/constants/tutor-registration";
+import { cn } from "@/lib/utils/cn";
+import { OTHER_SUBJECT } from "@/lib/validations/common";
+import type { TutorRegistrationValues } from "@/lib/validations/tutor-registration";
+
+const selectClass =
+  "h-12 w-full cursor-pointer appearance-none rounded-xl bg-lavender pl-4 pr-10 text-sm text-ink outline-none ring-1 transition focus:bg-white focus:ring-2 focus:ring-brand-300";
+
+export function TeachingStep() {
+  const {
+    register,
+    control,
+    formState: { errors },
+  } = useFormContext<TutorRegistrationValues>();
+  const subjects = useWatch({ control, name: "subjects" }) ?? [];
+
+  return (
+    <div className="space-y-9">
+      <section aria-labelledby="subjects-title">
+        <SectionTitle id="subjects-title" icon={BookOpen} aside={`${subjects.length} / 8`}>
+          Subjects You Teach
+        </SectionTitle>
+        <Controller
+          control={control}
+          name="subjects"
+          render={({ field }) => (
+            <>
+              <SubjectCombobox
+                id="subjects"
+                value=""
+                invalid={!!errors.subjects}
+                onBlur={field.onBlur}
+                onChange={(s) => {
+                  if (s && !field.value.includes(s) && field.value.length < 8) field.onChange([...field.value, s]);
+                }}
+              />
+              {field.value.length > 0 && (
+                <ul className="mt-3 flex flex-wrap gap-2" aria-label="Selected subjects">
+                  {field.value.map((s) => {
+                    const category = subjectCategories.find((c) => c.subjects.includes(s));
+                    return (
+                      <li key={s}>
+                        <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-100/80 py-1 pl-3 pr-1 text-xs font-medium text-brand-800">
+                          {s}
+                          {category && <span className="text-[10px] text-brand-600/80">· {category.name}</span>}
+                          <button
+                            type="button"
+                            onClick={() => field.onChange(field.value.filter((x) => x !== s))}
+                            aria-label={`Remove ${s}`}
+                            className="grid size-6 place-items-center rounded-full hover:bg-white"
+                          >
+                            <X aria-hidden className="size-3.5" />
+                          </button>
+                        </span>
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
+            </>
+          )}
+        />
+        <FieldError id="subjects-error" message={errors.subjects?.message} />
+        {subjects.includes(OTHER_SUBJECT) && (
+          <Field id="customSubject" label="Please specify the other subject" required error={errors.customSubject?.message} className="mt-4">
+            <TextInput id="customSubject" placeholder="e.g. Latin, Music Theory" invalid={!!errors.customSubject} {...register("customSubject")} />
+          </Field>
+        )}
+      </section>
+
+      <fieldset>
+        <legend className="w-full">
+          <SectionTitle icon={Layers} aside="Select all that apply">
+            Education Levels
+          </SectionTitle>
+        </legend>
+        <div className="flex flex-wrap gap-2">
+          {educationLevels.map((l) => (
+            <PillToggle key={l.id} value={l.id} label={l.name} {...register("levels")} />
+          ))}
+        </div>
+        <FieldError message={errors.levels?.message} />
+      </fieldset>
+
+      <fieldset>
+        <legend className="w-full">
+          <SectionTitle icon={Library} aside="Select all that apply">
+            Curricula & Exam Boards
+          </SectionTitle>
+        </legend>
+        <div className="flex flex-wrap gap-2">
+          {curricula.map((c) => (
+            <PillToggle key={c.id} value={c.id} label={c.detail ? `${c.name} (${c.detail})` : c.name} tone="violet" {...register("curricula")} />
+          ))}
+        </div>
+        <FieldError message={errors.curricula?.message} />
+      </fieldset>
+
+      <section aria-labelledby="credentials-title">
+        <SectionTitle id="credentials-title" icon={GraduationCap}>
+          Experience & Qualifications
+        </SectionTitle>
+        <div className="grid gap-5 sm:grid-cols-2">
+          <Field id="experience" label="Teaching Experience" required error={errors.experience?.message}>
+            <div className="relative">
+              <select
+                id="experience"
+                defaultValue=""
+                aria-invalid={!!errors.experience || undefined}
+                aria-describedby={errors.experience ? "experience-error" : undefined}
+                className={cn(selectClass, errors.experience ? "ring-rose-300" : "ring-transparent")}
+                {...register("experience")}
+              >
+                <option value="" disabled>
+                  Select experience
+                </option>
+                {experienceOptions.map((o) => (
+                  <option key={o.value} value={o.value}>
+                    {o.label}
+                  </option>
+                ))}
+              </select>
+              <ChevronDown aria-hidden className="pointer-events-none absolute right-4 top-1/2 size-4 -translate-y-1/2 text-muted" />
+            </div>
+          </Field>
+          <Field id="qualification" label="Highest Qualification Earned" required error={errors.qualification?.message}>
+            <div className="relative">
+              <select
+                id="qualification"
+                defaultValue=""
+                aria-invalid={!!errors.qualification || undefined}
+                aria-describedby={errors.qualification ? "qualification-error" : undefined}
+                className={cn(selectClass, errors.qualification ? "ring-rose-300" : "ring-transparent")}
+                {...register("qualification")}
+              >
+                <option value="" disabled>
+                  Select qualification
+                </option>
+                {qualificationOptions.map((o) => (
+                  <option key={o.value} value={o.value}>
+                    {o.label}
+                  </option>
+                ))}
+              </select>
+              <ChevronDown aria-hidden className="pointer-events-none absolute right-4 top-1/2 size-4 -translate-y-1/2 text-muted" />
+            </div>
+          </Field>
+          <Field id="institution" label="Primary University / Alma Mater" required error={errors.institution?.message} className="sm:col-span-2">
+            <TextInput id="institution" icon={School} placeholder="e.g. University of Cambridge" invalid={!!errors.institution} {...register("institution")} />
+          </Field>
+          <Field
+            id="additionalQualifications"
+            label="Other Qualifications & Certifications"
+            hint="Optional"
+            error={errors.additionalQualifications?.message}
+            className="sm:col-span-2"
+          >
+            <textarea
+              id="additionalQualifications"
+              rows={3}
+              maxLength={400}
+              placeholder="e.g. PGCE, IB examiner, Cambridge International moderator, published research…"
+              className="w-full resize-y rounded-xl bg-lavender p-4 text-sm leading-relaxed text-ink outline-none ring-1 ring-transparent transition placeholder:text-muted/70 focus:bg-white focus:ring-2 focus:ring-brand-300"
+              {...register("additionalQualifications")}
+            />
+          </Field>
+        </div>
+      </section>
+    </div>
+  );
+}
