@@ -1,25 +1,30 @@
+"use client";
+
 import Image from "next/image";
 import { ListChecks, Mail, MessageSquare, ShieldCheck } from "lucide-react";
-import { placementLead, privatePlacementNote, tutorLifecycle } from "@/lib/constants/tutor-registration";
+import { placementLead, privatePlacementNote as note, tutorLifecycle } from "@/lib/constants/tutor-registration";
 import { siteConfig } from "@/lib/constants/site";
+import { useT } from "@/lib/i18n/client";
 import { cn } from "@/lib/utils/cn";
 
 export function RegistrationSidebar() {
-  const p = placementLead;
+  const t = useT();
+  const p = t.deep(placementLead);
+  const privatePlacementNote = t.deep(note);
   const phoneDigits = siteConfig.contact.phone.replace(/\D/g, "");
 
   return (
-    <aside aria-label="Registration support" className="space-y-5">
+    <aside aria-label={t("Registration support")} className="space-y-5">
       <section className="rounded-3xl bg-white p-6 ring-1 ring-brand-100/80">
         <div className="flex items-center justify-between">
-          <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-brand-600">Assigned Placement Lead</p>
+          <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-brand-600">{t("Assigned Placement Lead")}</p>
           <span className="size-2 rounded-full bg-emerald-500">
-            <span className="sr-only">Available</span>
+            <span className="sr-only">{t("Available")}</span>
           </span>
         </div>
         <div className="mt-4 flex items-center gap-3">
           <div className="relative size-14 shrink-0 overflow-hidden rounded-2xl bg-brand-50">
-            <Image src={p.image} alt={`Portrait of ${p.name}`} fill sizes="56px" className="object-cover" />
+            <Image src={p.image} alt={t("Portrait of {name}", { name: p.name })} fill sizes="56px" className="object-cover" />
           </div>
           <div>
             <p className="text-base font-bold text-ink">{p.name}</p>
@@ -34,7 +39,7 @@ export function RegistrationSidebar() {
             className="flex h-11 items-center justify-center gap-2 rounded-xl bg-lavender text-xs font-semibold text-ink ring-1 ring-brand-100 transition-colors hover:bg-brand-100"
           >
             <Mail aria-hidden className="size-4" />
-            Direct Email Liaison
+            {t("Direct Email Liaison")}
           </a>
           <a
             href={`https://wa.me/${phoneDigits}`}
@@ -43,7 +48,7 @@ export function RegistrationSidebar() {
             className="flex h-11 items-center justify-center gap-2 rounded-xl bg-violet-50 text-xs font-semibold text-violet-brand ring-1 ring-violet-100 transition-colors hover:bg-violet-100"
           >
             <MessageSquare aria-hidden className="size-4" />
-            WhatsApp Placement Desk
+            {t("WhatsApp Placement Desk")}
           </a>
         </div>
       </section>
@@ -51,11 +56,11 @@ export function RegistrationSidebar() {
       <section aria-labelledby="tutor-lifecycle" className="rounded-3xl bg-white p-6 ring-1 ring-brand-100/80">
         <h2 id="tutor-lifecycle" className="flex items-center gap-2 text-base font-bold text-ink">
           <ListChecks aria-hidden className="size-5 text-brand-600" />
-          The 4-Stage Placement Lifecycle
+          {t("The 4-Stage Placement Lifecycle")}
         </h2>
         <ol className="relative mt-5 space-y-4">
-          <span aria-hidden className="absolute bottom-2 left-3 top-2 w-px bg-brand-100" />
-          {tutorLifecycle.map((stage, i) => (
+          <span aria-hidden className="absolute bottom-2 start-3 top-2 w-px bg-brand-100" />
+          {t.deep(tutorLifecycle).map((stage, i) => (
             <li key={stage.title} className="relative flex gap-3">
               <span
                 className={cn(

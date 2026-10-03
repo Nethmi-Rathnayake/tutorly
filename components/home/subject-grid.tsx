@@ -1,9 +1,10 @@
-import Link from "next/link";
+import { Link } from "@/components/ui/link";
 import { ArrowRight, Calculator, FlaskConical, GraduationCap, Landmark, Languages, Monitor } from "lucide-react";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { subjectCards } from "@/lib/constants/home";
 import { requestHref } from "@/lib/constants/site";
+import { getT } from "@/lib/i18n/server";
 
 const icons = {
   maths: Calculator,
@@ -14,18 +15,19 @@ const icons = {
   university: GraduationCap,
 } as const;
 
-export function SubjectGrid() {
+export async function SubjectGrid() {
+  const t = await getT();
   return (
     <section aria-labelledby="subjects-heading" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <SectionHeading
         id="subjects-heading"
-        eyebrow="Curated Disciplines"
-        title="Find Tutors by Subject"
-        action={{ label: "Browse All 60+ Sub-Topics", href: "/subjects" }}
+        eyebrow={t("Curated Disciplines")}
+        title={t("Find Tutors by Subject")}
+        action={{ label: t("Browse All 60+ Sub-Topics"), href: "/subjects" }}
       />
 
       <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {subjectCards.map((subject, i) => {
+        {t.deep(subjectCards).map((subject, i) => {
           const Icon = icons[subject.id as keyof typeof icons] ?? GraduationCap;
           return (
             <Reveal key={subject.id} delay={(i % 3) * 0.08}>
@@ -41,7 +43,7 @@ export function SubjectGrid() {
                 <h3 className="mt-6 text-lg font-bold text-ink">{subject.title}</h3>
                 <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">{subject.description}</p>
                 <div className="mt-7 flex items-center justify-between gap-3">
-                  <ul className="flex flex-wrap gap-2" aria-label="Popular topics">
+                  <ul className="flex flex-wrap gap-2" aria-label={t("Popular topics")}>
                     {subject.tags.map((tag) => (
                       <li key={tag} className="rounded-lg bg-lavender px-2.5 py-1 text-[11px] font-medium text-muted">
                         {tag}
@@ -52,9 +54,9 @@ export function SubjectGrid() {
                     href={requestHref}
                     className="inline-flex shrink-0 items-center gap-1 text-xs font-semibold text-brand-700 hover:text-brand-900"
                   >
-                    Request a Tutor
-                    <span className="sr-only"> for {subject.title}</span>
-                    <ArrowRight aria-hidden className="size-3.5 transition-transform group-hover:translate-x-0.5" />
+                    {t("Request a Tutor")}
+                    <span className="sr-only"> {t("for {subject}", { subject: subject.title })}</span>
+                    <ArrowRight aria-hidden className="rtl:-scale-x-100 size-3.5 transition-transform group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5" />
                   </Link>
                 </div>
               </article>

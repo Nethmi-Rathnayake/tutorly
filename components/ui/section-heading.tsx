@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "@/components/ui/link";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils/cn";
 import { Eyebrow } from "./eyebrow";
@@ -37,7 +37,7 @@ export function SectionHeading({ id, eyebrow, title, description, align = "left"
           )}
         >
           {action.label}
-          <ArrowRight aria-hidden className="size-4 transition-transform group-hover:translate-x-0.5" />
+          <ArrowRight aria-hidden className="rtl:-scale-x-100 size-4 transition-transform group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5" />
         </Link>
       )}
     </div>

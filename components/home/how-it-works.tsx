@@ -4,23 +4,25 @@ import { Reveal } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { siteConfig } from "@/lib/constants/site";
 import { howItWorksSteps } from "@/lib/constants/home";
+import { getT } from "@/lib/i18n/server";
 
 const icons = [ClipboardList, Users, UserCheck, Rocket];
 
-export function HowItWorks() {
+export async function HowItWorks() {
+  const t = await getT();
   return (
     <section aria-labelledby="how-heading" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div className="rounded-[2rem] bg-linear-to-b from-lavender to-brand-50/60 px-6 py-14 ring-1 ring-brand-100 sm:px-10 lg:px-14 lg:py-16">
         <SectionHeading
           id="how-heading"
           align="center"
-          eyebrow="Efficient Selection Experience"
-          title={`How ${siteConfig.name} Works`}
-          description="Four simple steps from first requirement to personalized academic breakthrough."
+          eyebrow={t("Efficient Selection Experience")}
+          title={t("How {name} Works", { name: siteConfig.name })}
+          description={t("Four simple steps from first requirement to personalized academic breakthrough.")}
         />
 
         <ol className="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
-          {howItWorksSteps.map((step, i) => {
+          {t.deep(howItWorksSteps).map((step, i) => {
             const Icon = icons[i];
             return (
               <li key={step.step}>
@@ -41,7 +43,7 @@ export function HowItWorks() {
 
         <div className="mt-14 flex justify-center">
           <ButtonLink href="/how-it-works" arrow>
-            Read the Complete Parent Guide
+            {t("Read the Complete Parent Guide")}
           </ButtonLink>
         </div>
       </div>

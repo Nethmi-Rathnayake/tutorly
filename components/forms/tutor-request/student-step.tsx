@@ -5,6 +5,7 @@ import { useFormContext, useWatch } from "react-hook-form";
 import { ChoiceCard, Field, FieldError, PillToggle, TextInput } from "@/components/forms/fields";
 import { educationLevels } from "@/lib/constants/taxonomy";
 import { GRADE_SCALE_MAX, learningStyleOptions } from "@/lib/constants/tutor-request";
+import { useT } from "@/lib/i18n/client";
 import type { TutorRequestValues } from "@/lib/validations/tutor-request";
 
 const styleIcons = {
@@ -32,6 +33,7 @@ function suggestedHours(delta: number) {
 }
 
 export function StudentStep() {
+  const t = useT();
   const {
     register,
     setValue,
@@ -48,21 +50,23 @@ export function StudentStep() {
   const today = new Date().toISOString().slice(0, 10);
 
   const pct = (v: number) => ((v - 1) / (GRADE_SCALE_MAX - 1)) * 100;
+  // Range inputs fill from the right in right-to-left layouts.
+  const fillDirection = t.locale === "ar" ? "left" : "right";
 
   return (
     <div className="space-y-7">
       <Field
         id="studentName"
-        label="Student Full Legal Name"
+        label={t("Student Full Legal Name")}
         required
-        hint="Confidential intake only"
+        hint={t("Confidential intake only")}
         error={errors.studentName?.message}
       >
-        <TextInput id="studentName" icon={IdCard} placeholder="e.g. Alexander Vance" invalid={!!errors.studentName} {...register("studentName")} />
+        <TextInput id="studentName" icon={IdCard} placeholder={t("e.g. Alexander Vance")} invalid={!!errors.studentName} {...register("studentName")} />
       </Field>
 
       <div className="grid gap-5 sm:grid-cols-2">
-        <Field id="age" label="Student Age" required error={errors.age?.message}>
+        <Field id="age" label={t("Student Age")} required error={errors.age?.message}>
           <TextInput
             id="age"
             type="number"
@@ -70,35 +74,35 @@ export function StudentStep() {
             min={3}
             max={99}
             icon={Cake}
-            placeholder="e.g. 16"
+            placeholder={t("e.g. 16")}
             invalid={!!errors.age}
             {...register("age", { valueAsNumber: true })}
           />
         </Field>
-        <Field id="dateOfBirth" label="Date of Birth" hint="Optional" error={errors.dateOfBirth?.message}>
+        <Field id="dateOfBirth" label={t("Date of Birth")} hint={t("Optional")} error={errors.dateOfBirth?.message}>
           <TextInput id="dateOfBirth" type="date" max={today} icon={CalendarDays} invalid={!!errors.dateOfBirth} {...register("dateOfBirth")} />
         </Field>
       </div>
 
-      <Field id="school" label="Current School or College" hint="Optional" error={errors.school?.message}>
-        <TextInput id="school" icon={School} placeholder="e.g. Westminster School, London" invalid={!!errors.school} {...register("school")} />
+      <Field id="school" label={t("Current School or College")} hint={t("Optional")} error={errors.school?.message}>
+        <TextInput id="school" icon={School} placeholder={t("e.g. Westminster School, London")} invalid={!!errors.school} {...register("school")} />
       </Field>
 
       <fieldset>
         <div className="mb-2 flex items-baseline justify-between">
           <legend className="text-[13px] font-medium text-ink">
-            Current Education Level <span aria-hidden className="text-rose-500">*</span>
-            <span className="sr-only"> (required)</span>
+            {t("Current Education Level")} <span aria-hidden className="text-rose-500">*</span>
+            <span className="sr-only"> {t("(required)")}</span>
           </legend>
-          <span className="text-[11px] font-medium text-brand-600">Then choose grade / year</span>
+          <span className="text-[11px] font-medium text-brand-600">{t("Then choose grade / year")}</span>
         </div>
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {educationLevels.map((l) => (
             <ChoiceCard
               key={l.id}
               value={l.id}
-              title={l.name}
-              hint={levelHints[l.id]}
+              title={t(l.name)}
+              hint={t(levelHints[l.id])}
               indicator="check"
               selectedTone="solid"
               {...register("levelGroup", {
@@ -112,11 +116,11 @@ export function StudentStep() {
         {group && (
           <div className="mt-4 rounded-2xl bg-lavender/60 p-4">
             <p id="grade-label" className="mb-2 text-xs font-semibold text-ink">
-              {group.name}: select grade / year
+              {t("{level}: select grade / year", { level: t(group.name) })}
             </p>
             <div role="radiogroup" aria-labelledby="grade-label" className="flex flex-wrap gap-2">
               {group.options.map((opt) => (
-                <PillToggle key={opt} type="radio" value={opt} label={opt} {...register("grade")} />
+                <PillToggle key={opt} type="radio" value={opt} label={t(opt)} {...register("grade")} />
               ))}
             </div>
             <FieldError message={errors.grade?.message} />
@@ -127,15 +131,15 @@ export function StudentStep() {
 
       <fieldset>
         <div className="mb-2 flex items-baseline justify-between">
-          <legend className="text-[13px] font-medium text-ink">Learning Style & Personality Dynamics</legend>
-          <span className="text-[11px] text-muted">Pick all that apply</span>
+          <legend className="text-[13px] font-medium text-ink">{t("Learning Style & Personality Dynamics")}</legend>
+          <span className="text-[11px] text-muted">{t("Pick all that apply")}</span>
         </div>
         <div className="flex flex-wrap gap-2">
           {learningStyleOptions.map((o, i) => (
             <PillToggle
               key={o.value}
               value={o.value}
-              label={o.label}
+              label={t(o.label)}
               icon={styleIcons[o.value]}
               tone={i === 1 ? "violet" : "indigo"}
               {...register("learningStyles")}
@@ -147,14 +151,14 @@ export function StudentStep() {
       <div>
         <div className="mb-3 flex flex-wrap items-start justify-between gap-2">
           <div>
-            <p className="text-[13px] font-medium text-ink">Current Predicted Grade vs. Target Ambition</p>
+            <p className="text-[13px] font-medium text-ink">{t("Current Predicted Grade vs. Target Ambition")}</p>
             <p className="text-[11px] text-muted">
-              Use a 1–{GRADE_SCALE_MAX} scale (IB-style); pick the nearest equivalent for other curricula.
+              {t("Use a 1–{max} scale (IB-style); pick the nearest equivalent for other curricula.", { max: GRADE_SCALE_MAX })}
             </p>
           </div>
           {delta > 0 && (
             <span className="rounded-full bg-brand-100 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-brand-700">
-              +{delta} Grade Uplift Target
+              {t("+{delta} Grade Uplift Target", { delta })}
             </span>
           )}
         </div>
@@ -163,10 +167,10 @@ export function StudentStep() {
           <div className="rounded-xl bg-white p-4">
             <div className="flex items-baseline justify-between">
               <label htmlFor="currentGrade" className="text-[10px] font-bold uppercase tracking-[0.12em] text-muted">
-                Current Predicted
+                {t("Current Predicted")}
               </label>
               <span className="text-lg font-bold text-ink">
-                Grade {currentGrade} / {GRADE_SCALE_MAX}
+                {t("Grade {grade} / {max}", { grade: currentGrade, max: GRADE_SCALE_MAX })}
               </span>
             </div>
             <input
@@ -175,27 +179,27 @@ export function StudentStep() {
               min={1}
               max={GRADE_SCALE_MAX}
               step={1}
-              aria-valuetext={`Grade ${currentGrade} of ${GRADE_SCALE_MAX}`}
+              aria-valuetext={t("Grade {grade} of {max}", { grade: currentGrade, max: GRADE_SCALE_MAX })}
               style={{
-                background: `linear-gradient(to right, var(--color-brand-700) ${pct(currentGrade ?? 1)}%, var(--color-brand-100) ${pct(currentGrade ?? 1)}%)`,
+                background: `linear-gradient(to ${fillDirection}, var(--color-brand-700) ${pct(currentGrade ?? 1)}%, var(--color-brand-100) ${pct(currentGrade ?? 1)}%)`,
               }}
               className="mt-4 h-1.5 w-full cursor-pointer appearance-none rounded-full [&::-moz-range-thumb]:size-4 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:bg-brand-700 [&::-webkit-slider-thumb]:size-4 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-brand-700"
               {...register("currentGrade", { valueAsNumber: true })}
             />
             <div aria-hidden className="mt-2 flex justify-between text-[10px] text-muted">
-              <span>Baseline (3)</span>
-              <span>Average (4–5)</span>
-              <span>Distinction (7)</span>
+              <span>{t("Baseline (3)")}</span>
+              <span>{t("Average (4–5)")}</span>
+              <span>{t("Distinction (7)")}</span>
             </div>
           </div>
 
           <div className="rounded-xl bg-white p-4">
             <div className="flex items-baseline justify-between">
               <label htmlFor="targetGrade" className="text-[10px] font-bold uppercase tracking-[0.12em] text-violet-brand">
-                Target Ambition
+                {t("Target Ambition")}
               </label>
               <span className="flex items-center gap-1 text-lg font-bold text-violet-brand">
-                Grade {targetGrade} / {GRADE_SCALE_MAX}
+                {t("Grade {grade} / {max}", { grade: targetGrade, max: GRADE_SCALE_MAX })}
                 <Star aria-hidden className="size-4" />
               </span>
             </div>
@@ -205,18 +209,18 @@ export function StudentStep() {
               min={1}
               max={GRADE_SCALE_MAX}
               step={1}
-              aria-valuetext={`Grade ${targetGrade} of ${GRADE_SCALE_MAX}`}
+              aria-valuetext={t("Grade {grade} of {max}", { grade: targetGrade, max: GRADE_SCALE_MAX })}
               aria-invalid={!!errors.targetGrade || undefined}
               style={{
-                background: `linear-gradient(to right, var(--color-violet-brand) ${pct(targetGrade ?? 1)}%, var(--color-brand-100) ${pct(targetGrade ?? 1)}%)`,
+                background: `linear-gradient(to ${fillDirection}, var(--color-violet-brand) ${pct(targetGrade ?? 1)}%, var(--color-brand-100) ${pct(targetGrade ?? 1)}%)`,
               }}
               className="mt-4 h-1.5 w-full cursor-pointer appearance-none rounded-full [&::-moz-range-thumb]:size-4 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:bg-violet-brand [&::-webkit-slider-thumb]:size-4 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-violet-brand"
               {...register("targetGrade", { valueAsNumber: true })}
             />
             <div aria-hidden className="mt-2 flex justify-between text-[10px] text-muted">
-              <span>Realistic (5)</span>
-              <span>Target (6)</span>
-              <span className="font-semibold text-violet-brand">Top Band (7)</span>
+              <span>{t("Realistic (5)")}</span>
+              <span>{t("Target (6)")}</span>
+              <span className="font-semibold text-violet-brand">{t("Top Band (7)")}</span>
             </div>
           </div>
         </div>
@@ -227,13 +231,15 @@ export function StudentStep() {
             <TrendingUp aria-hidden className="size-4" />
           </span>
           <div className="min-w-0 flex-1">
-            <p className="text-sm font-semibold text-ink">Target Velocity Calibration</p>
+            <p className="text-sm font-semibold text-ink">{t("Target Velocity Calibration")}</p>
             <p className="text-xs text-muted">
-              Suggested starting point: {suggestedHours(delta)} hours / week with a subject specialist. Your tutor will
-              refine this after the first session.
+              {t(
+                "Suggested starting point: {hours} hours / week with a subject specialist. Your tutor will refine this after the first session.",
+                { hours: suggestedHours(delta) },
+              )}
             </p>
           </div>
-          <svg aria-hidden viewBox="0 0 120 32" className="hidden h-8 w-28 shrink-0 text-violet-brand sm:block">
+          <svg aria-hidden viewBox="0 0 120 32" className="hidden h-8 w-28 shrink-0 text-violet-brand sm:block rtl:-scale-x-100">
             <path d="M2 28 C 40 28, 60 10, 116 6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
             <circle cx="116" cy="6" r="3" fill="currentColor" />
           </svg>

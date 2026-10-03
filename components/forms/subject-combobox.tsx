@@ -3,6 +3,7 @@
 import { useId, useMemo, useRef, useState } from "react";
 import { Check, ChevronDown, Search, Sigma, X } from "lucide-react";
 import { subjectCategories } from "@/lib/constants/taxonomy";
+import { useT } from "@/lib/i18n/client";
 import { cn } from "@/lib/utils/cn";
 
 type SubjectComboboxProps = {
@@ -15,6 +16,7 @@ type SubjectComboboxProps = {
 
 /** Searchable, category-grouped subject selector (SRS FR-05 / §12), following the ARIA combobox pattern. */
 export function SubjectCombobox({ id, value, onChange, onBlur, invalid }: SubjectComboboxProps) {
+  const t = useT();
   const listId = useId();
   const inputRef = useRef<HTMLInputElement>(null);
   const [open, setOpen] = useState(false);
@@ -23,13 +25,15 @@ export function SubjectCombobox({ id, value, onChange, onBlur, invalid }: Subjec
 
   const groups = useMemo(() => {
     const q = query.trim().toLowerCase();
+    // Match the English names and the visitor's language; values stay the English taxonomy names.
+    const hit = (text: string) => text.toLowerCase().includes(q) || t(text).toLowerCase().includes(q);
     return subjectCategories
       .map((c) => ({
         ...c,
-        subjects: c.subjects.filter((s) => !q || s.toLowerCase().includes(q) || c.name.toLowerCase().includes(q)),
+        subjects: c.subjects.filter((s) => !q || hit(s) || hit(c.name)),
       }))
       .filter((c) => c.subjects.length);
-  }, [query]);
+  }, [query, t]);
 
   const flat = groups.flatMap((g) => g.subjects);
   const category = subjectCategories.find((c) => c.subjects.includes(value));
@@ -75,16 +79,16 @@ export function SubjectCombobox({ id, value, onChange, onBlur, invalid }: Subjec
             setOpen(true);
             requestAnimationFrame(() => inputRef.current?.focus());
           }}
-          className="min-w-0 flex-1 text-left"
-          aria-label={`Subject: ${value}. Change subject`}
+          className="min-w-0 flex-1 text-start"
+          aria-label={t("Subject: {subject}. Change subject", { subject: t(value) })}
         >
-          <span className="block truncate text-sm font-semibold text-ink">{value}</span>
-          {category && <span className="block text-[11px] text-muted">{category.name}</span>}
+          <span className="block truncate text-sm font-semibold text-ink">{t(value)}</span>
+          {category && <span className="block text-[11px] text-muted">{t(category.name)}</span>}
         </button>
         <button
           type="button"
           onClick={() => onChange("")}
-          aria-label="Clear subject"
+          aria-label={t("Clear subject")}
           className="grid size-8 shrink-0 place-items-center rounded-full bg-white text-muted hover:text-ink"
         >
           <X aria-hidden className="size-4" />
@@ -97,7 +101,7 @@ export function SubjectCombobox({ id, value, onChange, onBlur, invalid }: Subjec
 
   return (
     <div className="relative">
-      <Search aria-hidden className="pointer-events-none absolute left-4 top-1/2 size-4 -translate-y-1/2 text-brand-600" />
+      <Search aria-hidden className="pointer-events-none absolute start-4 top-1/2 size-4 -translate-y-1/2 text-brand-600" />
       <input
         ref={inputRef}
         id={id}
@@ -110,7 +114,7 @@ export function SubjectCombobox({ id, value, onChange, onBlur, invalid }: Subjec
         aria-activedescendant={open && flat[active] ? `${listId}-${active}` : undefined}
         autoComplete="off"
         value={query}
-        placeholder="Search subjects, e.g. Physics, IB Economics, Coding…"
+        placeholder={t("Search subjects, e.g. Physics, IB Economics, Coding…")}
         onChange={(e) => {
           setQuery(e.target.value);
           setActive(0);
@@ -124,27 +128,27 @@ export function SubjectCombobox({ id, value, onChange, onBlur, invalid }: Subjec
         }}
         onKeyDown={onKeyDown}
         className={cn(
-          "h-14 w-full rounded-xl bg-lavender pl-11 pr-10 text-sm text-ink outline-none ring-1 transition placeholder:text-muted/70 focus:bg-white focus:ring-2 focus:ring-brand-300",
+          "h-14 w-full rounded-xl bg-lavender ps-11 pe-10 text-sm text-ink outline-none ring-1 transition placeholder:text-muted/70 focus:bg-white focus:ring-2 focus:ring-brand-300",
           invalid ? "ring-rose-300" : "ring-transparent",
         )}
       />
-      <ChevronDown aria-hidden className="pointer-events-none absolute right-4 top-1/2 size-4 -translate-y-1/2 text-muted" />
+      <ChevronDown aria-hidden className="pointer-events-none absolute end-4 top-1/2 size-4 -translate-y-1/2 text-muted" />
 
       {open && (
         <div
           id={listId}
           role="listbox"
-          aria-label="Subjects"
+          aria-label={t("Subjects")}
           className="absolute inset-x-0 top-full z-30 mt-2 max-h-80 overflow-y-auto rounded-2xl bg-white p-2 shadow-[0_24px_60px_-20px_rgba(44,37,115,0.45)] ring-1 ring-brand-100"
         >
           {groups.length === 0 ? (
             <p className="px-3 py-6 text-center text-sm text-muted">
-              No subjects match “{query}”. Choose <strong>Other (Please specify)</strong> below.
+              {t("No subjects match “{query}”. Choose", { query })} <strong>{t("Other (Please specify)")}</strong> {t("below.")}
             </p>
           ) : (
             groups.map((g) => (
-              <div key={g.id} role="group" aria-label={g.name} className="py-1">
-                <p className="px-3 pb-1 pt-2 text-[10px] font-bold uppercase tracking-[0.14em] text-brand-600">{g.name}</p>
+              <div key={g.id} role="group" aria-label={t(g.name)} className="py-1">
+                <p className="px-3 pb-1 pt-2 text-[10px] font-bold uppercase tracking-[0.14em] text-brand-600">{t(g.name)}</p>
                 {g.subjects.map((s) => {
                   optionIndex += 1;
                   const idx = optionIndex;
@@ -163,7 +167,7 @@ export function SubjectCombobox({ id, value, onChange, onBlur, invalid }: Subjec
                         idx === active ? "bg-brand-50 text-brand-800" : "text-ink",
                       )}
                     >
-                      {s}
+                      {t(s)}
                       {selected && <Check aria-hidden className="size-4 text-brand-600" />}
                     </div>
                   );
@@ -176,9 +180,9 @@ export function SubjectCombobox({ id, value, onChange, onBlur, invalid }: Subjec
               type="button"
               onMouseDown={(e) => e.preventDefault()}
               onClick={() => select("Other (Please specify)")}
-              className="w-full rounded-lg bg-brand-50 px-3 py-2.5 text-left text-sm font-semibold text-brand-700"
+              className="w-full rounded-lg bg-brand-50 px-3 py-2.5 text-start text-sm font-semibold text-brand-700"
             >
-              Other (Please specify)
+              {t("Other (Please specify)")}
             </button>
           )}
         </div>

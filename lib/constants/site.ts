@@ -26,7 +26,8 @@ export const mainNav: NavItem[] = [
   { label: "How It Works", href: "/how-it-works" },
   { label: "Subjects", href: "/subjects" },
   { label: "Education Levels", href: "/education-levels" },
-  { label: "Reviews", href: "/reviews" },
+  { label: "About Us", href: "/about" },
+  { label: "Blog", href: "/blog" },
   { label: "FAQ", href: "/faq" },
   { label: "Contact Us", href: "/contact" },
 ];
@@ -48,6 +49,7 @@ export const footerNav: { title: string; links: NavItem[] }[] = [
       { label: "Academic Subjects", href: "/subjects" },
       { label: "Education Levels", href: "/education-levels" },
       { label: "Parent Reviews", href: "/reviews" },
+      { label: "Parent Insights", href: "/blog" },
     ],
   },
   {

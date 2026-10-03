@@ -1,7 +1,7 @@
 "use client";
 
-import { useDeferredValue, useId, useState } from "react";
-import Link from "next/link";
+import { useDeferredValue, useId, useMemo, useState } from "react";
+import { Link } from "@/components/ui/link";
 import {
   ArrowRight,
   Atom,
@@ -42,6 +42,9 @@ import { ButtonLink } from "@/components/ui/button-link";
 import { requestSubjectHref } from "@/lib/constants/site";
 import { categoryDisplay, subjectDetails, subjectsHero } from "@/lib/constants/subjects-page";
 import { subjectCategories } from "@/lib/constants/taxonomy";
+import { subjects as subjectsDictionary } from "@/lib/i18n/ar/subjects";
+import { useT } from "@/lib/i18n/client";
+import type { Translator } from "@/lib/i18n/translate";
 import { cn } from "@/lib/utils/cn";
 
 type Icon = typeof Search;
@@ -91,20 +94,22 @@ type Entry = {
   haystack: string;
 };
 
-const entries: Entry[] = subjectCategories.flatMap((c) =>
-  c.subjects.map((name) => {
-    const d = subjectDetails[name];
-    const title = d?.title ?? name;
-    return {
-      name,
-      title,
-      categoryId: c.id,
-      haystack: [name, title, c.name, categoryDisplay[c.id]?.title, d?.tag, d?.description, d?.keywords]
-        .join(" ")
-        .toLowerCase(),
-    };
-  }),
-);
+function buildEntries(t: Translator): Entry[] {
+  return subjectCategories.flatMap((c) =>
+    c.subjects.map((name) => {
+      const d = subjectDetails[name];
+      const title = d?.title ?? name;
+      const copy = [name, title, c.name, categoryDisplay[c.id]?.title, d?.tag, d?.description];
+      return {
+        name,
+        title: t(title),
+        categoryId: c.id,
+        // Search matches the English copy (and exam-code keywords) as well as the visitor's language.
+        haystack: [...copy, ...copy.map((s) => s && t(s)), d?.keywords].join(" ").toLowerCase(),
+      };
+    }),
+  );
+}
 
 const ALL = "all";
 
@@ -114,6 +119,8 @@ function matches(entry: Entry, query: string) {
 }
 
 export function SubjectCatalog() {
+  const t = useT(subjectsDictionary);
+  const entries = useMemo(() => buildEntries(t), [t]);
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState(ALL);
   const deferredQuery = useDeferredValue(query);
@@ -140,32 +147,32 @@ export function SubjectCatalog() {
             e.preventDefault();
             document.getElementById("subject-results")?.scrollIntoView({ block: "start" });
           }}
-          className="flex items-center gap-2 rounded-2xl bg-white p-2 pl-4 shadow-[0_18px_40px_-24px_rgba(44,37,115,0.45)] ring-1 ring-brand-100 focus-within:ring-2 focus-within:ring-brand-400"
+          className="flex items-center gap-2 rounded-2xl bg-white p-2 ps-4 shadow-[0_18px_40px_-24px_rgba(44,37,115,0.45)] ring-1 ring-brand-100 focus-within:ring-2 focus-within:ring-brand-400"
         >
           <Search aria-hidden className="size-4 shrink-0 text-brand-600" />
           <label htmlFor={searchId} className="sr-only">
-            Search subjects
+            {t("Search subjects")}
           </label>
           <input
             id={searchId}
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder={subjectsHero.searchPlaceholder}
+            placeholder={t(subjectsHero.searchPlaceholder)}
             className="h-10 min-w-0 flex-1 bg-transparent text-sm text-ink placeholder:text-muted/80 focus:outline-none"
           />
           <button
             type="submit"
             className="h-10 shrink-0 rounded-xl bg-brand-700 px-5 text-xs font-semibold text-white transition-colors hover:bg-brand-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
           >
-            Search
+            {t("Search")}
           </button>
         </form>
 
-        <div role="group" aria-label="Filter by category" className="mt-5 flex flex-wrap justify-center gap-2">
-          {[{ id: ALL, chip: "All Categories", count: entries.length }]
+        <div role="group" aria-label={t("Filter by category")} className="mt-5 flex flex-wrap justify-center gap-2">
+          {[{ id: ALL, chip: t("All Categories"), count: entries.length }]
             .concat(
-              subjectCategories.map((c) => ({ id: c.id, chip: categoryDisplay[c.id]?.chip ?? c.name, count: c.subjects.length })),
+              subjectCategories.map((c) => ({ id: c.id, chip: t(categoryDisplay[c.id]?.chip ?? c.name), count: c.subjects.length })),
             )
             .map((c) => {
               const active = category === c.id;
@@ -191,11 +198,13 @@ export function SubjectCatalog() {
         <div className="mt-6 flex flex-col items-center justify-between gap-2 text-xs text-muted sm:flex-row">
           <p aria-live="polite" className="flex items-center gap-2">
             <span aria-hidden className="size-1.5 rounded-full bg-brand-600" />
-            Showing {visible.length} Accredited Subject Discipline{visible.length === 1 ? "" : "s"}
+            {t(visible.length === 1 ? "Showing {count} Accredited Subject Discipline" : "Showing {count} Accredited Subject Disciplines", {
+              count: visible.length,
+            })}
           </p>
           <p className="flex items-center gap-2">
             <BookMarked aria-hidden className="size-3.5 text-brand-600" />
-            {subjectsHero.boardsNote}
+            {t(subjectsHero.boardsNote)}
           </p>
         </div>
       </div>
@@ -206,13 +215,13 @@ export function SubjectCatalog() {
             <span className="mx-auto grid size-12 place-items-center rounded-2xl bg-brand-100 text-brand-700">
               <CircleHelp aria-hidden className="size-5" />
             </span>
-            <h2 className="mt-4 text-lg font-bold text-ink">No matching subjects</h2>
+            <h2 className="mt-4 text-lg font-bold text-ink">{t("No matching subjects")}</h2>
             <p className="mt-2 text-sm leading-relaxed text-muted">
-              Our directors can still source a specialist for you. Tell us what you need and we&apos;ll handle the search.
+              {t("Our directors can still source a specialist for you. Tell us what you need and we'll handle the search.")}
             </p>
             <div className="mt-6 flex flex-wrap justify-center gap-3">
               <ButtonLink href={requestSubjectHref("Other (Please specify)")} arrow>
-                Request a Bespoke Match
+                {t("Request a Bespoke Match")}
               </ButtonLink>
               <button
                 type="button"
@@ -220,14 +229,14 @@ export function SubjectCatalog() {
                 className="inline-flex h-11 items-center gap-2 rounded-full px-5 text-sm font-semibold text-brand-700 ring-1 ring-brand-100 hover:ring-brand-300"
               >
                 <X aria-hidden className="size-4" />
-                Clear filters
+                {t("Clear filters")}
               </button>
             </div>
           </div>
         )}
 
         {groups.map(({ category: c, items }) => {
-          const display = categoryDisplay[c.id];
+          const display = t.deep(categoryDisplay[c.id]);
           const CategoryIcon = categoryIcons[c.id] ?? Library;
           const headingId = `${c.slug}-heading`;
           return (
@@ -240,7 +249,7 @@ export function SubjectCatalog() {
                   <div>
                     <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-brand-600">{display?.kicker}</p>
                     <h2 id={headingId} className="text-2xl font-bold tracking-tight text-ink">
-                      {display?.title ?? c.name}
+                      {display?.title ?? t(c.name)}
                     </h2>
                   </div>
                 </div>
@@ -257,7 +266,7 @@ export function SubjectCatalog() {
               >
                 {items.map((e, i) => (
                   <li key={e.name}>
-                    <SubjectCard entry={e} categoryTitle={display?.title ?? c.name} tint={tints[i % 2]} />
+                    <SubjectCard entry={e} categoryTitle={display?.title ?? t(c.name)} tint={tints[i % 2]} />
                   </li>
                 ))}
               </ul>
@@ -270,7 +279,8 @@ export function SubjectCatalog() {
 }
 
 function SubjectCard({ entry, categoryTitle, tint }: { entry: Entry; categoryTitle: string; tint: string }) {
-  const d = subjectDetails[entry.name];
+  const t = useT(subjectsDictionary);
+  const d = t.deep(subjectDetails[entry.name]);
   const Icon = subjectIcons[entry.name] ?? Sparkles;
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-3xl bg-white ring-1 ring-brand-100/80 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_28px_60px_-32px_rgba(79,63,217,0.5)] hover:ring-brand-200">
@@ -296,9 +306,9 @@ function SubjectCard({ entry, categoryTitle, tint }: { entry: Entry; categoryTit
           href={requestSubjectHref(entry.name)}
           className="inline-flex items-center gap-1 text-xs font-semibold text-brand-700 hover:text-brand-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
         >
-          {d?.cta ?? "Request a Tutor"}
-          <span className="sr-only"> for {entry.title}</span>
-          <ArrowRight aria-hidden className="size-3.5 transition-transform group-hover:translate-x-0.5" />
+          {d?.cta ?? t("Request a Tutor")}
+          <span className="sr-only"> {t("for {subject}", { subject: entry.title })}</span>
+          <ArrowRight aria-hidden className="rtl:-scale-x-100 size-3.5 transition-transform group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5" />
         </Link>
       </div>
     </article>

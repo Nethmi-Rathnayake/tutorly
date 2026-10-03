@@ -1,8 +1,9 @@
-import Link from "next/link";
+import { Link } from "@/components/ui/link";
 import { ArrowRight, Backpack, Blocks, GraduationCap, Library, School } from "lucide-react";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { levelStages } from "@/lib/constants/home";
+import { getT } from "@/lib/i18n/server";
 import { cn } from "@/lib/utils/cn";
 
 const icons = {
@@ -13,19 +14,20 @@ const icons = {
   "higher-education": Library,
 } as const;
 
-export function LevelStages() {
+export async function LevelStages() {
+  const t = await getT();
   return (
     <section aria-labelledby="levels-heading" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <SectionHeading
         id="levels-heading"
         align="center"
-        eyebrow="Targeted Pedagogy"
-        title="Every Stage of Student Growth"
-        description="Specialized subject methodologies tailored from foundational motor-cognitive skills to rigorous graduate dissertations."
+        eyebrow={t("Targeted Pedagogy")}
+        title={t("Every Stage of Student Growth")}
+        description={t("Specialized subject methodologies tailored from foundational motor-cognitive skills to rigorous graduate dissertations.")}
       />
 
       <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-        {levelStages.map((stage, i) => {
+        {t.deep(levelStages).map((stage, i) => {
           const Icon = icons[stage.id as keyof typeof icons] ?? GraduationCap;
           return (
             <Reveal key={stage.id} delay={i * 0.06}>
@@ -39,8 +41,8 @@ export function LevelStages() {
                 )}
               >
                 {stage.featured && (
-                  <span className="absolute right-4 top-4 rounded-full bg-linear-to-r from-brand-700 to-brand-600 px-2.5 py-1 text-[9px] font-bold uppercase tracking-wider text-white">
-                    Most Requested
+                  <span className="absolute end-4 top-4 rounded-full bg-linear-to-r from-brand-700 to-brand-600 px-2.5 py-1 text-[9px] font-bold uppercase tracking-wider text-white">
+                    {t("Most Requested")}
                   </span>
                 )}
                 <span
@@ -55,8 +57,8 @@ export function LevelStages() {
                 <p className="mt-1 text-[11px] font-semibold text-brand-600">{stage.range}</p>
                 <p className="mt-3 flex-1 text-xs leading-relaxed text-muted">{stage.description}</p>
                 <span className="mt-6 inline-flex items-center gap-1 text-xs font-semibold text-brand-700">
-                  Explore level
-                  <ArrowRight aria-hidden className="size-3.5 transition-transform group-hover:translate-x-0.5" />
+                  {t("Explore level")}
+                  <ArrowRight aria-hidden className="rtl:-scale-x-100 size-3.5 transition-transform group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5" />
                 </span>
               </Link>
             </Reveal>

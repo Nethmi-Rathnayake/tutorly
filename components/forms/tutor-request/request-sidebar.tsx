@@ -1,30 +1,41 @@
+"use client";
+
 import Image from "next/image";
 import { BadgeCheck, ChartColumn, MessageSquare, PhoneCall, ShieldCheck, Star } from "lucide-react";
-import { networkMetrics, placementDirector, placementLifecycle, requestTestimonial } from "@/lib/constants/request-page";
+import {
+  networkMetrics as metrics,
+  placementDirector,
+  placementLifecycle,
+  requestTestimonial as testimonial,
+} from "@/lib/constants/request-page";
 import { siteConfig } from "@/lib/constants/site";
+import { useT } from "@/lib/i18n/client";
 import { cn } from "@/lib/utils/cn";
 
 export function RequestSidebar() {
-  const d = placementDirector;
+  const t = useT();
+  const d = t.deep(placementDirector);
+  const networkMetrics = t.deep(metrics);
+  const requestTestimonial = t.deep(testimonial);
   const phoneDigits = siteConfig.contact.phone.replace(/\D/g, "");
 
   return (
-    <aside aria-label="Placement support" className="space-y-5">
+    <aside aria-label={t("Placement support")} className="space-y-5">
       <section className="rounded-3xl bg-white p-6 ring-1 ring-brand-100/80">
         <div className="flex items-center gap-3">
           <div className="relative size-14 shrink-0">
             <div className="relative size-full overflow-hidden rounded-2xl bg-brand-50">
-              <Image src={d.image} alt={`Portrait of ${d.name}`} fill sizes="56px" className="object-cover" />
+              <Image src={d.image} alt={t("Portrait of {name}", { name: d.name })} fill sizes="56px" className="object-cover" />
             </div>
-            <span className="absolute -bottom-1 -right-1 grid size-5 place-items-center rounded-full bg-emerald-500 text-white ring-2 ring-white">
+            <span className="absolute -bottom-1 -end-1 grid size-5 place-items-center rounded-full bg-emerald-500 text-white ring-2 ring-white">
               <BadgeCheck aria-hidden className="size-3" />
-              <span className="sr-only">Available now</span>
+              <span className="sr-only">{t("Available now")}</span>
             </span>
           </div>
           <div className="min-w-0">
             <p className="flex items-center gap-1.5 text-base font-bold text-ink">
               {d.name}
-              <BadgeCheck aria-label="Verified" className="size-4 shrink-0 text-brand-500" />
+              <BadgeCheck aria-label={t("Verified")} className="size-4 shrink-0 text-brand-500" />
             </p>
             <p className="text-xs font-medium text-brand-600">{d.role}</p>
             <p className="text-[11px] text-muted">{d.credentials}</p>
@@ -39,31 +50,31 @@ export function RequestSidebar() {
             className="flex h-11 items-center justify-center gap-2 rounded-xl bg-emerald-50 text-xs font-semibold text-emerald-700 ring-1 ring-emerald-100 transition-colors hover:bg-emerald-100"
           >
             <MessageSquare aria-hidden className="size-4" />
-            WhatsApp Academic Desk
+            {t("WhatsApp Academic Desk")}
           </a>
           <a
             href={`tel:+${phoneDigits}`}
             className="flex h-11 items-center justify-center gap-2 rounded-xl bg-lavender text-xs font-semibold text-ink ring-1 ring-brand-100 transition-colors hover:bg-brand-100"
           >
             <PhoneCall aria-hidden className="size-4" />
-            Call Advisory Desk ({siteConfig.contact.phone})
+            {t("Call Advisory Desk")} (<span dir="ltr">{siteConfig.contact.phone}</span>)
           </a>
         </div>
       </section>
 
       <section aria-labelledby="lifecycle-heading" className="rounded-3xl bg-white p-6 ring-1 ring-brand-100/80">
         <div className="flex items-center justify-between gap-3">
-          <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-brand-600">How Concierge Works</p>
+          <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-brand-600">{t("How Concierge Works")}</p>
           <span className="rounded-full bg-brand-100/80 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-brand-700">
-            Zero Spam
+            {t("Zero Spam")}
           </span>
         </div>
         <h2 id="lifecycle-heading" className="mt-3 text-sm font-bold text-ink">
-          The 4-Stage Placement Lifecycle
+          {t("The 4-Stage Placement Lifecycle")}
         </h2>
         <ol className="relative mt-4 space-y-4">
-          <span aria-hidden className="absolute bottom-2 left-3 top-2 w-px bg-brand-100" />
-          {placementLifecycle.map((stage, i) => (
+          <span aria-hidden className="absolute bottom-2 start-3 top-2 w-px bg-brand-100" />
+          {t.deep(placementLifecycle).map((stage, i) => (
             <li key={stage.title} className="relative flex gap-3">
               <span
                 className={cn(
@@ -114,7 +125,7 @@ export function RequestSidebar() {
       </section>
 
       <figure className="rounded-3xl bg-linear-to-br from-brand-700 to-brand-600 p-6 text-white shadow-[0_24px_50px_-24px_rgba(67,49,190,0.8)]">
-        <div className="flex gap-0.5 text-amber-300" role="img" aria-label="Rated 5 out of 5">
+        <div className="flex gap-0.5 text-amber-300" role="img" aria-label={t("Rated 5 out of 5")}>
           {Array.from({ length: 5 }).map((_, i) => (
             <Star key={i} aria-hidden className="size-3.5 fill-current" />
           ))}

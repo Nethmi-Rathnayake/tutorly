@@ -1,13 +1,18 @@
+"use client";
+
 import { AlertCircle, Check, type LucideIcon } from "lucide-react";
 import { forwardRef } from "react";
+import { useT } from "@/lib/i18n/client";
+import { translateError } from "@/lib/i18n/validation";
 import { cn } from "@/lib/utils/cn";
 
 export function FieldError({ id, message }: { id?: string; message?: string }) {
+  const t = useT();
   if (!message) return null;
   return (
     <p id={id} role="alert" className="mt-1.5 flex items-center gap-1.5 text-xs font-medium text-rose-600">
       <AlertCircle aria-hidden className="size-3.5 shrink-0" />
-      {message}
+      {translateError(message, t)}
     </p>
   );
 }
@@ -23,17 +28,18 @@ type FieldProps = {
 };
 
 export function Field({ id, label, required, hint, error, className, children }: FieldProps) {
+  const t = useT();
   return (
     <div className={className}>
       <div className="mb-2 flex items-baseline justify-between gap-3">
         <label htmlFor={id} className="text-[13px] font-medium text-ink">
           {label}
           {required && (
-            <span aria-hidden className="ml-0.5 text-rose-500">
+            <span aria-hidden className="ms-0.5 text-rose-500">
               *
             </span>
           )}
-          {required && <span className="sr-only"> (required)</span>}
+          {required && <span className="sr-only"> {t("(required)")}</span>}
         </label>
         {hint && <span className="text-[11px] text-muted">{hint}</span>}
       </div>
@@ -54,15 +60,15 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(function T
 ) {
   return (
     <div className="relative">
-      {Icon && <Icon aria-hidden className="pointer-events-none absolute left-4 top-1/2 size-4 -translate-y-1/2 text-muted" />}
+      {Icon && <Icon aria-hidden className="pointer-events-none absolute start-4 top-1/2 size-4 -translate-y-1/2 text-muted" />}
       <input
         ref={ref}
         id={id}
         aria-invalid={invalid || undefined}
         aria-describedby={invalid ? `${id}-error` : undefined}
         className={cn(
-          "h-12 w-full rounded-xl bg-lavender pr-4 text-sm text-ink outline-none ring-1 transition placeholder:text-muted/70 focus:bg-white focus:ring-2 focus:ring-brand-300",
-          Icon ? "pl-11" : "pl-4",
+          "h-12 w-full rounded-xl bg-lavender pe-4 text-sm text-ink outline-none ring-1 transition placeholder:text-muted/70 focus:bg-white focus:ring-2 focus:ring-brand-300",
+          Icon ? "ps-11" : "ps-4",
           invalid ? "ring-rose-300 bg-rose-50/40" : "ring-transparent",
           className,
         )}

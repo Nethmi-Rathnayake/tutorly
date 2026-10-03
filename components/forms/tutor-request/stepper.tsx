@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { Check } from "lucide-react";
 import { requestSteps } from "@/lib/constants/tutor-request";
+import { useT } from "@/lib/i18n/client";
 import { cn } from "@/lib/utils/cn";
 
 type StepperProps = {
@@ -13,20 +14,25 @@ type StepperProps = {
 
 /** Tabbed progress indicator (SRS FR-05). Steps already reached are clickable to go back and edit. */
 export function Stepper({ current, completed, onSelect }: StepperProps) {
+  const t = useT();
   const listRef = useRef<HTMLOListElement>(null);
   const progress = ((current + 1) / requestSteps.length) * 100;
 
   // On narrow screens the tabs scroll horizontally; keep the active one in view.
+  // Measured from the rendered boxes so it works for both left-to-right and right-to-left layouts.
   useEffect(() => {
     const list = listRef.current;
     const active = list?.children[current] as HTMLElement | undefined;
     if (list && active && list.scrollWidth > list.clientWidth) {
-      list.scrollTo({ left: active.offsetLeft - list.clientWidth / 2 + active.clientWidth / 2, behavior: "smooth" });
+      const listBox = list.getBoundingClientRect();
+      const activeBox = active.getBoundingClientRect();
+      const offset = activeBox.left + activeBox.width / 2 - (listBox.left + listBox.width / 2);
+      list.scrollBy({ left: offset, behavior: "smooth" });
     }
   }, [current]);
 
   return (
-    <nav aria-label="Request progress" className="rounded-3xl bg-white p-3 ring-1 ring-brand-100/80 sm:p-4">
+    <nav aria-label={t("Request progress")} className="rounded-3xl bg-white p-3 ring-1 ring-brand-100/80 sm:p-4">
       <ol ref={listRef} className="flex gap-2 overflow-x-auto pb-1 sm:grid sm:grid-cols-6 sm:overflow-visible sm:pb-0">
         {requestSteps.map((step, i) => {
           const active = i === current;
@@ -57,10 +63,10 @@ export function Stepper({ current, completed, onSelect }: StepperProps) {
                 >
                   {done ? <Check aria-hidden className="size-3.5" /> : String(i + 1).padStart(2, "0")}
                 </span>
-                <span className={cn("text-xs font-semibold", active ? "text-brand-800" : "text-ink")}>{step.label}</span>
+                <span className={cn("text-xs font-semibold", active ? "text-brand-800" : "text-ink")}>{t(step.label)}</span>
                 <span className="-mt-1 text-[10px] text-muted">
-                  {step.sublabel}
-                  {done && <span className="sr-only"> (completed)</span>}
+                  {t(step.sublabel)}
+                  {done && <span className="sr-only"> {t("(completed)")}</span>}
                 </span>
               </button>
             </li>
@@ -69,7 +75,7 @@ export function Stepper({ current, completed, onSelect }: StepperProps) {
       </ol>
       <div
         role="progressbar"
-        aria-label="Request progress"
+        aria-label={t("Request progress")}
         aria-valuemin={1}
         aria-valuemax={requestSteps.length}
         aria-valuenow={current + 1}

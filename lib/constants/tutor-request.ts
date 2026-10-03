@@ -93,13 +93,14 @@ export const timeWindowOptions = [
 
 /** Exam sessions are labelled with the next upcoming year so the options never go stale. */
 export function examSessionOptions(now = new Date()) {
+  // Labels are "{year}" templates so they can be translated before the year is filled in.
   const year = now.getFullYear();
   const month = now.getMonth(); // 0-based
   const nextMay = month >= 5 ? year + 1 : year;
   const nextNov = month >= 10 ? year + 1 : year;
   return [
-    { value: "summer-finals", label: `May ${nextMay} Final Exams`, hint: "IB Diploma / CIE A-Levels / AP Series" },
-    { value: "november-resits", label: `November ${nextNov} Resits`, hint: "Grade elevation & retake strategies" },
+    { value: "summer-finals", label: "May {year} Final Exams", year: nextMay, hint: "IB Diploma / CIE A-Levels / AP Series" },
+    { value: "november-resits", label: "November {year} Resits", year: nextNov, hint: "Grade elevation & retake strategies" },
     { value: "school-mocks", label: "Internal School Mocks", hint: "Predicted grade stabilization" },
     { value: "coursework", label: "Coursework / IA Polish", hint: "Immediate submission review & proofing" },
     { value: "ongoing", label: "Ongoing Support", hint: "No specific exam – steady progress" },

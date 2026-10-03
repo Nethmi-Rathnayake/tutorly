@@ -1,17 +1,20 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
+import { Link } from "@/components/ui/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { mainNav, requestHref } from "@/lib/constants/site";
+import { useT } from "@/lib/i18n/client";
+import { stripLocale } from "@/lib/i18n/config";
 import { cn } from "@/lib/utils/cn";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Logo } from "./logo";
 
 export function SiteHeader() {
-  const pathname = usePathname();
+  const pathname = stripLocale(usePathname());
+  const t = useT();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -46,7 +49,7 @@ export function SiteHeader() {
       <div className="mx-auto flex h-18 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
         <Logo />
 
-        <nav aria-label="Main" className="hidden xl:block">
+        <nav aria-label={t("Main")} className="hidden xl:block">
           <ul className="flex items-center gap-1 rounded-full bg-white/70 p-1 ring-1 ring-brand-100/80 backdrop-blur">
             {mainNav.map((item) => (
               <li key={item.href}>
@@ -60,7 +63,7 @@ export function SiteHeader() {
                       : "text-muted hover:bg-brand-50 hover:text-ink",
                   )}
                 >
-                  {item.label}
+                  {t(item.label)}
                 </Link>
               </li>
             ))}
@@ -78,17 +81,17 @@ export function SiteHeader() {
                 : "text-ink hover:text-brand-600",
             )}
           >
-            Become a Tutor
+            {t("Become a Tutor")}
           </Link>
           <ButtonLink href={requestHref} size="sm" className="h-10 px-5">
-            Request a Tutor
+            {t("Request a Tutor")}
           </ButtonLink>
         </div>
 
         <button
           type="button"
           onClick={() => setOpen(true)}
-          aria-label="Open menu"
+          aria-label={t("Open menu")}
           aria-expanded={open}
           aria-controls="mobile-menu"
           className="grid size-11 place-items-center rounded-full bg-white text-ink ring-1 ring-brand-100 xl:hidden"
@@ -111,11 +114,11 @@ export function SiteHeader() {
               id="mobile-menu"
               role="dialog"
               aria-modal="true"
-              aria-label="Menu"
-              className="fixed inset-y-0 right-0 z-50 flex w-[86%] max-w-sm flex-col bg-white p-6 shadow-2xl xl:hidden"
-              initial={{ x: "100%" }}
+              aria-label={t("Menu")}
+              className="fixed inset-y-0 end-0 z-50 flex w-[86%] max-w-sm flex-col bg-white p-6 shadow-2xl xl:hidden"
+              initial={{ x: t.locale === "ar" ? "-100%" : "100%" }}
               animate={{ x: 0 }}
-              exit={{ x: "100%" }}
+              exit={{ x: t.locale === "ar" ? "-100%" : "100%" }}
               transition={{ type: "spring", damping: 30, stiffness: 300 }}
             >
               <div className="flex items-center justify-between">
@@ -123,13 +126,13 @@ export function SiteHeader() {
                 <button
                   type="button"
                   onClick={() => setOpen(false)}
-                  aria-label="Close menu"
+                  aria-label={t("Close menu")}
                   className="grid size-11 place-items-center rounded-full bg-brand-50 text-ink"
                 >
                   <X aria-hidden className="size-5" />
                 </button>
               </div>
-              <nav aria-label="Mobile" className="mt-8 flex-1 overflow-y-auto">
+              <nav aria-label={t("Mobile")} className="mt-8 flex-1 overflow-y-auto">
                 <ul className="space-y-1">
                   {mainNav.map((item) => (
                     <li key={item.href}>
@@ -142,7 +145,7 @@ export function SiteHeader() {
                           isActive(item.href) ? "bg-brand-50 text-brand-700" : "text-ink hover:bg-brand-50",
                         )}
                       >
-                        {item.label}
+                        {t(item.label)}
                       </Link>
                     </li>
                   ))}
@@ -150,10 +153,10 @@ export function SiteHeader() {
               </nav>
               <div className="mt-6 grid gap-3">
                 <ButtonLink href={requestHref} size="lg" arrow>
-                  Request a Tutor
+                  {t("Request a Tutor")}
                 </ButtonLink>
                 <ButtonLink href="/become-a-tutor" variant="ghost" size="lg">
-                  Join as a Tutor
+                  {t("Join as a Tutor")}
                 </ButtonLink>
               </div>
             </motion.div>

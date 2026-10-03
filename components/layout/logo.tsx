@@ -1,14 +1,18 @@
-import Link from "next/link";
+"use client";
+
+import { Link } from "@/components/ui/link";
 import { GraduationCap } from "lucide-react";
 import { siteConfig } from "@/lib/constants/site";
+import { useT } from "@/lib/i18n/client";
 
 export function Logo() {
+  const t = useT();
   // Brand name renders as "Tutor" + accented "Flow", matching the design.
   const split = siteConfig.name.match(/^(.*?)(Flow)$/);
   return (
     <Link
       href="/"
-      aria-label={`${siteConfig.name} home`}
+      aria-label={t("{name} home", { name: siteConfig.name })}
       className="flex items-center gap-2.5 rounded-lg focus-visible:outline-2 focus-visible:outline-brand-500"
     >
       <span className="grid size-9 place-items-center rounded-xl bg-linear-to-br from-brand-700 to-brand-600 text-white shadow-md shadow-brand-600/30">

@@ -12,6 +12,7 @@ import {
   tutorModeOptions,
 } from "@/lib/constants/tutor-registration";
 import { dayOptions, timeWindowOptions } from "@/lib/constants/tutor-request";
+import { useT } from "@/lib/i18n/client";
 import { OTHER_SUBJECT } from "@/lib/validations/common";
 import type { TutorRegistrationValues } from "@/lib/validations/tutor-registration";
 
@@ -31,6 +32,7 @@ function Card({
   className?: string;
   children: React.ReactNode;
 }) {
+  const t = useT();
   return (
     <section className={`rounded-2xl bg-lavender/70 p-5 ring-1 ring-brand-100/60 ${className ?? ""}`}>
       <div className="mb-3 flex items-start justify-between gap-3">
@@ -46,7 +48,8 @@ function Card({
           className="inline-flex items-center gap-1 rounded-full px-2 py-1 text-xs font-semibold text-brand-600 hover:bg-white"
         >
           <Pencil aria-hidden className="size-3" />
-          Edit<span className="sr-only"> {title}</span>
+          {t("Edit")}
+          <span className="sr-only"> {title}</span>
         </button>
       </div>
       {children}
@@ -56,15 +59,16 @@ function Card({
 
 const Tags = ({ items }: { items: string[] }) => (
   <ul className="mt-2 flex flex-wrap gap-1.5">
-    {items.map((t) => (
-      <li key={t} className="rounded-md bg-brand-100/80 px-2 py-1 text-[11px] font-medium text-brand-800">
-        {t}
+    {items.map((item) => (
+      <li key={item} className="rounded-md bg-brand-100/80 px-2 py-1 text-[11px] font-medium text-brand-800">
+        {item}
       </li>
     ))}
   </ul>
 );
 
 export function RegistrationReviewStep({ photoUrl, onEdit }: { photoUrl?: string; onEdit: (step: number) => void }) {
+  const t = useT();
   const {
     register,
     control,
@@ -72,21 +76,22 @@ export function RegistrationReviewStep({ photoUrl, onEdit }: { photoUrl?: string
   } = useFormContext<TutorRegistrationValues>();
   const v = useWatch({ control }) as Partial<TutorRegistrationValues>;
 
-  const subjects = (v.subjects ?? []).map((s) => (s === OTHER_SUBJECT && v.customSubject ? v.customSubject : s));
-  const levels = educationLevels.filter((l) => v.levels?.includes(l.id)).map((l) => l.name);
-  const curriculumNames = curricula.filter((c) => v.curricula?.includes(c.id)).map((c) => c.detail || c.name);
-  const days = dayOptions.filter((d) => v.days?.includes(d.value)).map((d) => d.label);
-  const windows = timeWindowOptions.filter((w) => v.timeWindows?.includes(w.value)).map((w) => w.label);
-  const methods = teachingMethodOptions.filter((m) => v.teachingMethods?.includes(m.value)).map((m) => m.label);
+  const subjects = (v.subjects ?? []).map((s) => (s === OTHER_SUBJECT && v.customSubject ? v.customSubject : t(s)));
+  const levels = educationLevels.filter((l) => v.levels?.includes(l.id)).map((l) => t(l.name));
+  const curriculumNames = curricula.filter((c) => v.curricula?.includes(c.id)).map((c) => t(c.detail || c.name));
+  const days = dayOptions.filter((d) => v.days?.includes(d.value)).map((d) => t(d.label));
+  const windows = timeWindowOptions.filter((w) => v.timeWindows?.includes(w.value)).map((w) => t(w.label));
+  const methods = teachingMethodOptions.filter((m) => v.teachingMethods?.includes(m.value)).map((m) => t(m.label));
+  const label = <T extends { value: string; label: string }>(opts: readonly T[], value?: string) => t(labelOf(opts, value));
 
   return (
     <div className="space-y-6">
       <div className="grid gap-4 md:grid-cols-2">
-        <Card title="Personal Details" icon={UserRound} onEdit={() => onEdit(0)}>
+        <Card title={t("Personal Details")} icon={UserRound} onEdit={() => onEdit(0)}>
           <div className="flex items-center gap-4">
             <div className="relative size-16 shrink-0 overflow-hidden rounded-2xl bg-white ring-1 ring-brand-100">
               {photoUrl ? (
-                <Image src={photoUrl} alt="Your headshot" fill unoptimized sizes="64px" className="object-cover" />
+                <Image src={photoUrl} alt={t("Your headshot")} fill unoptimized sizes="64px" className="object-cover" />
               ) : (
                 <span className="grid size-full place-items-center text-brand-300">
                   <UserRound aria-hidden className="size-7" />
@@ -101,41 +106,45 @@ export function RegistrationReviewStep({ photoUrl, onEdit }: { photoUrl?: string
               </p>
               <p className="mt-0.5 flex items-center gap-2 text-xs text-muted">
                 <Phone aria-hidden className="size-3.5 shrink-0" />
-                {v.phoneCountry} {v.phone}
+                <span dir="ltr">
+                  {v.phoneCountry} {v.phone}
+                </span>
               </p>
             </div>
           </div>
         </Card>
 
-        <Card title="Qualifications" icon={GraduationCap} onEdit={() => onEdit(1)}>
-          <p className="text-base font-semibold text-ink">{labelOf(qualificationOptions, v.qualification)}</p>
+        <Card title={t("Qualifications")} icon={GraduationCap} onEdit={() => onEdit(1)}>
+          <p className="text-base font-semibold text-ink">{label(qualificationOptions, v.qualification)}</p>
           <p className="mt-1 text-xs text-muted">{v.institution}</p>
-          <p className="mt-1 text-xs text-muted">Experience: {labelOf(experienceOptions, v.experience)}</p>
+          <p className="mt-1 text-xs text-muted">
+            {t("Experience: {value}", { value: label(experienceOptions, v.experience) })}
+          </p>
           {v.additionalQualifications && <p className="mt-2 line-clamp-2 text-xs italic text-muted">{v.additionalQualifications}</p>}
         </Card>
 
-        <Card title="Subjects, Levels & Curricula" icon={BookOpen} onEdit={() => onEdit(1)} className="md:col-span-2">
-          <p className="text-xs font-semibold text-ink">Subjects</p>
+        <Card title={t("Subjects, Levels & Curricula")} icon={BookOpen} onEdit={() => onEdit(1)} className="md:col-span-2">
+          <p className="text-xs font-semibold text-ink">{t("Subjects")}</p>
           <Tags items={subjects} />
-          <p className="mt-3 text-xs font-semibold text-ink">Education levels</p>
+          <p className="mt-3 text-xs font-semibold text-ink">{t("Education levels")}</p>
           <Tags items={levels} />
-          <p className="mt-3 text-xs font-semibold text-ink">Curricula</p>
+          <p className="mt-3 text-xs font-semibold text-ink">{t("Curricula")}</p>
           <Tags items={curriculumNames} />
         </Card>
 
-        <Card title="Availability" icon={CalendarDays} onEdit={() => onEdit(2)}>
-          <p className="text-base font-semibold text-ink">{labelOf(tutorModeOptions, v.mode)}</p>
+        <Card title={t("Availability")} icon={CalendarDays} onEdit={() => onEdit(2)}>
+          <p className="text-base font-semibold text-ink">{label(tutorModeOptions, v.mode)}</p>
           {v.mode !== "online" && v.locations && (
             <p className="mt-1 flex items-center gap-2 text-xs text-muted">
               <MapPin aria-hidden className="size-3.5 shrink-0" />
               {v.locations}
             </p>
           )}
-          <p className="mt-2 text-xs text-muted">{days.join(", ")}</p>
-          <p className="text-xs text-muted">{windows.join(", ")}</p>
+          <p className="mt-2 text-xs text-muted">{days.join(t(", "))}</p>
+          <p className="text-xs text-muted">{windows.join(t(", "))}</p>
         </Card>
 
-        <Card title="Pedagogy" icon={PenLine} onEdit={() => onEdit(3)}>
+        <Card title={t("Pedagogy")} icon={PenLine} onEdit={() => onEdit(3)}>
           <p className="line-clamp-3 text-xs leading-relaxed text-muted">{v.bio}</p>
           <Tags items={methods} />
         </Card>
@@ -150,8 +159,9 @@ export function RegistrationReviewStep({ photoUrl, onEdit }: { photoUrl?: string
             {...register("consent")}
           />
           <span>
-            I confirm these details are accurate. I consent to TutorFlow verifying my identity, qualifications and
-            background, and to being contacted by the placement team about my application.
+            {t(
+              "I confirm these details are accurate. I consent to TutorFlow verifying my identity, qualifications and background, and to being contacted by the placement team about my application.",
+            )}
           </span>
         </label>
         <FieldError message={errors.consent?.message} />

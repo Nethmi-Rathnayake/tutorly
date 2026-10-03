@@ -14,10 +14,11 @@ import {
   ShieldCheck,
   UserRound,
 } from "lucide-react";
-import { submitTutorRequest } from "@/app/request-a-tutor/actions";
+import { submitTutorRequest } from "@/app/[lang]/request-a-tutor/actions";
 import { DraftNotice, ServerErrorAlert, StepSubmitButton, stepVariants } from "@/components/forms/wizard-parts";
 import { requestSteps } from "@/lib/constants/tutor-request";
 import { useMultiStepForm } from "@/lib/hooks/use-multi-step-form";
+import { useT } from "@/lib/i18n/client";
 import {
   stepFields,
   stepSchemas,
@@ -41,6 +42,7 @@ type WizardProps = {
 };
 
 export function TutorRequestWizard({ requestedTutor, requestedSubject }: WizardProps) {
+  const t = useT();
   const {
     form,
     step,
@@ -69,8 +71,8 @@ export function TutorRequestWizard({ requestedTutor, requestedSubject }: WizardP
     submit: submitTutorRequest,
     successHref: (ref) => `/request-a-tutor/success?ref=${encodeURIComponent(ref)}`,
   });
-  const meta = requestSteps[step];
-  const variants = stepVariants(reduceMotion);
+  const meta = t.deep(requestSteps[step]);
+  const variants = stepVariants(reduceMotion, t.locale === "ar");
   const stepNo = (n: number) => String(n).padStart(2, "0");
   const StepIcon = stepIcons[step];
 
@@ -101,7 +103,7 @@ export function TutorRequestWizard({ requestedTutor, requestedSubject }: WizardP
                 <div className="flex items-start justify-between gap-4">
                   <div>
                     <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-brand-600" aria-live="polite">
-                      Step {stepNo(step + 1)} of {stepNo(requestSteps.length)}
+                      {t("Step {n} of {total}", { n: stepNo(step + 1), total: stepNo(requestSteps.length) })}
                     </p>
                     <h2
                       id="step-heading"
@@ -137,7 +139,7 @@ export function TutorRequestWizard({ requestedTutor, requestedSubject }: WizardP
               <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
                 <span className="inline-flex items-center gap-1.5 text-[11px] text-muted">
                   <Lock aria-hidden className="size-3.5 text-violet-brand" />
-                  Strictly confidential & encrypted
+                  {t("Strictly confidential & encrypted")}
                 </span>
                 {step > 0 && (
                   <button
@@ -146,8 +148,8 @@ export function TutorRequestWizard({ requestedTutor, requestedSubject }: WizardP
                     disabled={submitting}
                     className="inline-flex items-center gap-1.5 text-xs font-semibold text-ink hover:text-brand-700 disabled:opacity-50"
                   >
-                    <ArrowLeft aria-hidden className="size-3.5" />
-                    Back
+                    <ArrowLeft aria-hidden className="size-3.5 rtl:-scale-x-100" />
+                    {t("Back")}
                   </button>
                 )}
                 {isLast ? (
@@ -157,7 +159,7 @@ export function TutorRequestWizard({ requestedTutor, requestedSubject }: WizardP
                     className="inline-flex items-center gap-1.5 text-xs font-semibold text-ink hover:text-brand-700 print:hidden"
                   >
                     <FileDown aria-hidden className="size-3.5" />
-                    Download Summary
+                    {t("Download Summary")}
                   </button>
                 ) : (
                   <button
@@ -166,7 +168,7 @@ export function TutorRequestWizard({ requestedTutor, requestedSubject }: WizardP
                     className="inline-flex items-center gap-1.5 text-xs font-semibold text-ink hover:text-brand-700"
                   >
                     <Save aria-hidden className="size-3.5" />
-                    Save Draft
+                    {t("Save Draft")}
                   </button>
                 )}
               </div>

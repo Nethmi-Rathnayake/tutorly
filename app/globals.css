@@ -8,8 +8,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-jakarta);
-  --font-display: var(--font-jakarta);
+  --font-sans: var(--font-jakarta), var(--font-arabic);
+  --font-display: var(--font-jakarta), var(--font-arabic);
 
   /* Brand palette: indigo → violet, sampled from the reference design */
   --color-brand-50: #f3f2fe;
@@ -37,7 +37,14 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-jakarta), var(--font-arabic), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Letter-spacing breaks the joins between Arabic letters, so tracking utilities are neutralised in RTL. */
+[dir="rtl"] *,
+[dir="rtl"] *::before,
+[dir="rtl"] *::after {
+  letter-spacing: normal !important;
 }
 
 ::selection {

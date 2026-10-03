@@ -3,6 +3,7 @@
 import { useFormContext, useWatch } from "react-hook-form";
 import { FieldError, PillToggle } from "@/components/forms/fields";
 import { teachingMethodOptions } from "@/lib/constants/tutor-registration";
+import { useT } from "@/lib/i18n/client";
 import { cn } from "@/lib/utils/cn";
 import type { TutorRegistrationValues } from "@/lib/validations/tutor-registration";
 
@@ -30,30 +31,31 @@ function LongText({
     control,
     formState: { errors },
   } = useFormContext<TutorRegistrationValues>();
+  const t = useT();
   const value = useWatch({ control, name: id }) ?? "";
   const error = errors[id]?.message;
 
   return (
     <div>
       <label htmlFor={id} className="block text-[13px] font-medium text-ink">
-        {label}
+        {t(label)}
         {required && (
           <>
-            <span aria-hidden className="ml-0.5 text-rose-500">
+            <span aria-hidden className="ms-0.5 text-rose-500">
               *
             </span>
-            <span className="sr-only"> (required)</span>
+            <span className="sr-only"> {t("(required)")}</span>
           </>
         )}
       </label>
       <p id={`${id}-help`} className="mb-2 mt-0.5 text-xs text-muted">
-        {hint}
+        {t(hint)}
       </p>
       <textarea
         id={id}
         rows={rows}
         maxLength={max}
-        placeholder={placeholder}
+        placeholder={t(placeholder)}
         aria-invalid={!!error || undefined}
         aria-describedby={`${id}-help ${id}-count${error ? ` ${id}-error` : ""}`}
         className={cn(
@@ -62,9 +64,9 @@ function LongText({
         )}
         {...register(id)}
       />
-      <p id={`${id}-count`} aria-live="polite" className="mt-1 text-right text-[11px] text-muted">
+      <p id={`${id}-count`} aria-live="polite" className="mt-1 text-end text-[11px] text-muted">
         {value.length} / {max}
-        {min ? ` (min. ${min})` : ""}
+        {min ? ` ${t("(min. {min})", { min })}` : ""}
       </p>
       <FieldError id={`${id}-error`} message={error} />
     </div>
@@ -72,6 +74,7 @@ function LongText({
 }
 
 export function PedagogyStep() {
+  const t = useT();
   const {
     register,
     formState: { errors },
@@ -102,12 +105,13 @@ export function PedagogyStep() {
 
       <fieldset>
         <legend className="mb-2 text-[13px] font-medium text-ink">
-          Teaching Methods<span aria-hidden className="ml-0.5 text-rose-500">*</span>
-          <span className="sr-only"> (required)</span>
+          {t("Teaching Methods")}
+          <span aria-hidden className="ms-0.5 text-rose-500">*</span>
+          <span className="sr-only"> {t("(required)")}</span>
         </legend>
         <div className="flex flex-wrap gap-2">
           {teachingMethodOptions.map((o, i) => (
-            <PillToggle key={o.value} value={o.value} label={o.label} tone={i % 2 ? "violet" : "indigo"} {...register("teachingMethods")} />
+            <PillToggle key={o.value} value={o.value} label={t(o.label)} tone={i % 2 ? "violet" : "indigo"} {...register("teachingMethods")} />
           ))}
         </div>
         <FieldError message={errors.teachingMethods?.message} />

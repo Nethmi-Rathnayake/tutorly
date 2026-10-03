@@ -16,15 +16,17 @@ import {
   UserRound,
   Target,
 } from "lucide-react";
+import { Link } from "@/components/ui/link";
 import { Reveal } from "@/components/ui/reveal";
 import {
   assurances,
   conciergeHero,
   conciergeTestimonial,
-  intakeIntro,
+  intakeIntro as intake,
   placementSteps,
 } from "@/lib/constants/concierge";
 import { requestHref, siteConfig } from "@/lib/constants/site";
+import { getT } from "@/lib/i18n/server";
 
 function Pill({ icon: Icon, children }: { icon?: typeof Sparkles; children: React.ReactNode }) {
   return (
@@ -35,8 +37,9 @@ function Pill({ icon: Icon, children }: { icon?: typeof Sparkles; children: Reac
   );
 }
 
-export function ConciergeHero() {
-  const h = conciergeHero;
+export async function ConciergeHero() {
+  const t = await getT();
+  const h = t.deep(conciergeHero);
   return (
     <section className="relative overflow-hidden">
       <div
@@ -49,13 +52,13 @@ export function ConciergeHero() {
           <h1 className="mt-6 text-4xl font-extrabold leading-[1.08] tracking-tight text-ink sm:text-6xl">{h.title}</h1>
           <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">{h.description}</p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <a
+            <Link
               href={requestHref}
               className="group inline-flex h-12 items-center gap-2 rounded-full bg-linear-to-r from-brand-700 to-violet-brand px-7 text-sm font-semibold text-white shadow-[0_14px_30px_-12px_rgba(79,63,217,0.8)] transition-all hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
             >
               {h.cta}
-              <ArrowRight aria-hidden className="size-4 transition-transform group-hover:translate-x-0.5" />
-            </a>
+              <ArrowRight aria-hidden className="rtl:-scale-x-100 size-4 transition-transform group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5" />
+            </Link>
             <span className="inline-flex h-10 items-center gap-2 rounded-full bg-brand-50 px-4 text-xs text-muted ring-1 ring-brand-100">
               <Lock aria-hidden className="size-3.5 text-brand-600" />
               {h.assurance}
@@ -68,7 +71,7 @@ export function ConciergeHero() {
             <Image src={h.image} alt={h.imageAlt} fill preload sizes="(min-width: 1280px) 1152px, 100vw" className="object-cover" />
           </div>
 
-          <div className="animate-float absolute -top-1 right-3 flex items-center gap-3 rounded-2xl bg-white/95 px-4 py-3 shadow-[0_20px_40px_-20px_rgba(44,37,115,0.5)] ring-1 ring-brand-100 backdrop-blur sm:right-6">
+          <div className="animate-float absolute -top-1 end-3 flex items-center gap-3 rounded-2xl bg-white/95 px-4 py-3 shadow-[0_20px_40px_-20px_rgba(44,37,115,0.5)] ring-1 ring-brand-100 backdrop-blur sm:end-6">
             <span className="grid size-9 place-items-center rounded-xl bg-brand-100 text-brand-700">
               <ShieldCheck aria-hidden className="size-4" />
             </span>
@@ -78,7 +81,7 @@ export function ConciergeHero() {
             </div>
           </div>
 
-          <div className="animate-float-delayed absolute bottom-0 left-3 hidden items-center gap-3 rounded-2xl bg-white/95 px-4 py-3 shadow-[0_20px_40px_-20px_rgba(44,37,115,0.5)] ring-1 ring-brand-100 backdrop-blur sm:left-0 sm:flex sm:-translate-x-4">
+          <div className="animate-float-delayed absolute bottom-0 start-3 hidden items-center gap-3 rounded-2xl bg-white/95 px-4 py-3 shadow-[0_20px_40px_-20px_rgba(44,37,115,0.5)] ring-1 ring-brand-100 backdrop-blur sm:start-0 sm:flex sm:-translate-x-4">
             <span className="grid size-9 place-items-center rounded-xl bg-brand-100 text-brand-700">
               <Sparkles aria-hidden className="size-4" />
             </span>
@@ -88,7 +91,7 @@ export function ConciergeHero() {
             </div>
           </div>
 
-          <dl className="absolute bottom-0 right-3 flex divide-x divide-brand-100 rounded-2xl bg-white/95 px-2 py-3 shadow-[0_20px_40px_-20px_rgba(44,37,115,0.5)] ring-1 ring-brand-100 backdrop-blur sm:right-6">
+          <dl className="absolute bottom-0 end-3 flex divide-x divide-brand-100 rounded-2xl bg-white/95 px-2 py-3 shadow-[0_20px_40px_-20px_rgba(44,37,115,0.5)] ring-1 ring-brand-100 backdrop-blur sm:end-6">
             {h.stats.map((s) => (
               <div key={s.label} className="flex flex-col-reverse px-4">
                 <dt className="text-[10px] font-bold uppercase tracking-[0.12em] text-muted">{s.label}</dt>
@@ -104,21 +107,22 @@ export function ConciergeHero() {
 
 const stepIcons = [UserRound, CalendarDays, ScanSearch, HeartHandshake];
 
-export function PlacementSteps() {
+export async function PlacementSteps() {
+  const t = await getT();
   return (
     <section aria-labelledby="placement-heading" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-2xl text-center">
-        <Pill>Concierge Blueprint</Pill>
+        <Pill>{t("Concierge Blueprint")}</Pill>
         <h2 id="placement-heading" className="mt-4 text-3xl font-bold tracking-tight text-ink sm:text-[2.5rem] sm:leading-tight">
-          How Concierge Placement Works
+          {t("How Concierge Placement Works")}
         </h2>
         <p className="mt-3 text-sm leading-relaxed text-muted sm:text-base">
-          A tailored 4-step process designed to remove the guesswork of finding elite academic support.
+          {t("A tailored 4-step process designed to remove the guesswork of finding elite academic support.")}
         </p>
       </div>
 
       <ol className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-        {placementSteps.map((s, i) => {
+        {t.deep(placementSteps).map((s, i) => {
           const Icon = stepIcons[i];
           return (
             <li key={s.step}>
@@ -143,7 +147,9 @@ export function PlacementSteps() {
   );
 }
 
-export function IntakeHeading() {
+export async function IntakeHeading() {
+  const t = await getT();
+  const intakeIntro = t.deep(intake);
   return (
     <div className="mx-auto max-w-2xl text-center">
       <Pill icon={ClipboardList}>{intakeIntro.eyebrow}</Pill>
@@ -157,17 +163,18 @@ export function IntakeHeading() {
 
 const assuranceIcons = [EyeOff, GraduationCap, Timer, ArrowLeftRight];
 
-export function Assurances() {
+export async function Assurances() {
+  const t = await getT();
   return (
     <section aria-labelledby="assurance-heading" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div className="text-center">
         <h2 id="assurance-heading" className="text-xl font-bold tracking-tight text-ink sm:text-2xl">
-          The {siteConfig.name} Academic Assurance
+          {t("The {name} Academic Assurance", { name: siteConfig.name })}
         </h2>
-        <p className="mt-2 text-sm text-muted">Peace of mind built into every stage of your child&apos;s educational guidance.</p>
+        <p className="mt-2 text-sm text-muted">{t("Peace of mind built into every stage of your child's educational guidance.")}</p>
       </div>
       <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-        {assurances.map((a, i) => {
+        {t.deep(assurances).map((a, i) => {
           const Icon = assuranceIcons[i];
           return (
             <li key={a.title}>
@@ -188,24 +195,25 @@ export function Assurances() {
   );
 }
 
-export function ConciergeTestimonial() {
-  const t = conciergeTestimonial;
+export async function ConciergeTestimonial() {
+  const tr = await getT();
+  const t = tr.deep(conciergeTestimonial);
   return (
-    <section aria-label="Parent testimonial" className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+    <section aria-label={tr("Parent testimonial")} className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
       <Reveal>
         <figure className="flex flex-col gap-5 rounded-[2rem] bg-linear-to-r from-brand-100/70 via-lavender to-white p-7 ring-1 ring-brand-100 sm:flex-row sm:items-center sm:p-9">
           <span className="grid size-14 shrink-0 place-items-center rounded-full bg-linear-to-br from-brand-700 to-violet-brand text-lg font-bold text-white shadow-lg shadow-brand-600/30">
             {t.initial}
           </span>
           <div>
-            <div className="flex gap-0.5 text-brand-500" role="img" aria-label="Rated 5 out of 5">
+            <div className="flex gap-0.5 text-brand-500" role="img" aria-label={tr("Rated 5 out of 5")}>
               {Array.from({ length: 5 }).map((_, i) => (
                 <Star key={i} aria-hidden className="size-3.5" />
               ))}
             </div>
             <blockquote className="mt-3 text-sm italic leading-relaxed text-muted sm:text-base">“{t.quote}”</blockquote>
             <figcaption className="mt-3 text-xs font-semibold text-ink">
-              — {t.name}, {t.context}
+              — {tr("{name}, {context}", { name: t.name, context: t.context })}
             </figcaption>
           </div>
         </figure>

@@ -1,6 +1,7 @@
 "use client";
 
 import { AlertCircle, ArrowRight, CheckCircle2, Loader2, Send } from "lucide-react";
+import { useT } from "@/lib/i18n/client";
 import { cn } from "@/lib/utils/cn";
 
 /** Shared pieces of the multi-step intake forms. */
@@ -14,6 +15,7 @@ export function DraftNotice({
   onDismiss: () => void;
   className?: string;
 }) {
+  const t = useT();
   if (!notice) return null;
   return (
     <div
@@ -25,21 +27,22 @@ export function DraftNotice({
     >
       <span className="flex items-center gap-2">
         <CheckCircle2 aria-hidden className="size-4" />
-        {notice.text}
+        {t(notice.text)}
       </span>
       <button type="button" onClick={onDismiss} className="font-semibold underline-offset-2 hover:underline">
-        {notice.kind === "restored" ? "Start over" : "Dismiss"}
+        {t(notice.kind === "restored" ? "Start over" : "Dismiss")}
       </button>
     </div>
   );
 }
 
 export function ServerErrorAlert({ message }: { message?: string }) {
+  const t = useT();
   if (!message) return null;
   return (
     <p role="alert" className="mt-6 flex items-center gap-2 rounded-2xl bg-rose-50 px-4 py-3 text-sm text-rose-700 ring-1 ring-rose-100">
       <AlertCircle aria-hidden className="size-4 shrink-0" />
-      {message}
+      {t(message)}
     </p>
   );
 }
@@ -55,6 +58,7 @@ export function StepSubmitButton({
   submitting: boolean;
   className?: string;
 }) {
+  const t = useT();
   return (
     <button
       type="submit"
@@ -67,15 +71,15 @@ export function StepSubmitButton({
       {submitting ? (
         <>
           <Loader2 aria-hidden className="size-4 animate-spin" />
-          Submitting…
+          {t("Submitting…")}
         </>
       ) : (
         <>
-          {label}
+          {t(label)}
           {isLast ? (
             <Send aria-hidden className="size-4" />
           ) : (
-            <ArrowRight aria-hidden className="size-4 transition-transform group-hover:translate-x-0.5" />
+            <ArrowRight aria-hidden className="size-4 transition-transform group-hover:translate-x-0.5 rtl:-scale-x-100 rtl:group-hover:-translate-x-0.5" />
           )}
         </>
       )}
@@ -83,9 +87,10 @@ export function StepSubmitButton({
   );
 }
 
-/** Slide-in transition for step content (disabled for reduced motion). */
-export function stepVariants(reduceMotion: boolean) {
+/** Slide-in transition for step content (disabled for reduced motion); mirrored for right-to-left. */
+export function stepVariants(reduceMotion: boolean, rtl = false) {
+  const offset = rtl ? -24 : 24;
   return reduceMotion
     ? { initial: { opacity: 1 }, animate: { opacity: 1 }, exit: { opacity: 1 } }
-    : { initial: { opacity: 0, x: 24 }, animate: { opacity: 1, x: 0 }, exit: { opacity: 0, x: -24 } };
+    : { initial: { opacity: 0, x: offset }, animate: { opacity: 1, x: 0 }, exit: { opacity: 0, x: -offset } };
 }

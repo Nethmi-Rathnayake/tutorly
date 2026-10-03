@@ -1,4 +1,5 @@
 import { curricula, educationLevels, subjectCategories } from "@/lib/constants/taxonomy";
+import type { Translator } from "@/lib/i18n/translate";
 
 /**
  * Copy for the FAQ page (/faq).
@@ -67,6 +68,8 @@ export type Faq = {
   extra?: FaqExtra;
   /** Paragraphs shown after the extra block. */
   after?: string[];
+  /** Values for `{name}` placeholders in the answer; string lists are translated and joined. */
+  vars?: Record<string, number | string[]>;
 };
 
 export type FaqSection = {
@@ -208,11 +211,15 @@ export const faqSections: FaqSection[] = [
         tag: "Coverage",
         question: "What subjects and education levels do you support?",
         answer: [
-          `We currently match tutors across **${subjectCount} subjects** in ${subjectCategories.length} disciplines, ${educationLevels.length} education stages from early years to postgraduate, and ${curricula.length} curricula including ${curricula
-            .slice(0, 3)
-            .map((c) => c.name)
-            .join(", ")}. If your subject is not listed, choose “Other” and describe it.`,
+          "We currently match tutors across **{subjects} subjects** in {disciplines} disciplines, {stages} education stages from early years to postgraduate, and {curricula} curricula including {examples}. If your subject is not listed, choose “Other” and describe it.",
         ],
+        vars: {
+          subjects: subjectCount,
+          disciplines: subjectCategories.length,
+          stages: educationLevels.length,
+          curricula: curricula.length,
+          examples: curricula.slice(0, 3).map((c) => c.name),
+        },
         extra: "subjectsLink",
         topics: ["curricula", "parents"],
       },
@@ -261,3 +268,13 @@ export const faqCta = {
 
 /** Strip **bold** markers for search and structured data. */
 export const plainText = (s: string) => s.replace(/\*\*/g, "");
+
+/** Translates an answer paragraph and fills its placeholders. */
+export const answerText = (text: string, faq: Faq, t: Translator) =>
+  t(
+    text,
+    faq.vars &&
+      Object.fromEntries(
+        Object.entries(faq.vars).map(([k, v]) => [k, Array.isArray(v) ? v.map((s) => t(s)).join(t(", ")) : v]),
+      ),
+  );

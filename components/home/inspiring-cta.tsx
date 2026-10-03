@@ -4,9 +4,11 @@ import { ButtonLink } from "@/components/ui/button-link";
 import { Reveal } from "@/components/ui/reveal";
 import { homeImages } from "@/lib/constants/home";
 import { siteConfig } from "@/lib/constants/site";
+import { getT } from "@/lib/i18n/server";
 
-export function InspiringCta() {
-  const { contact, sessionTimings } = siteConfig;
+export async function InspiringCta() {
+  const t = await getT();
+  const { contact, sessionTimings } = t.deep(siteConfig);
 
   return (
     <section aria-labelledby="inspiring-heading" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -20,26 +22,25 @@ export function InspiringCta() {
             className="object-cover object-right opacity-40"
           />
           <div aria-hidden className="absolute inset-0 bg-linear-to-r from-night via-night/85 to-brand-900/40" />
-          <div aria-hidden className="absolute -right-20 top-10 size-96 rounded-full bg-violet-brand/30 blur-3xl" />
+          <div aria-hidden className="absolute -end-20 top-10 size-96 rounded-full bg-violet-brand/30 blur-3xl" />
 
           <div className="relative px-6 py-14 sm:px-12 lg:py-20">
             <span className="inline-flex rounded-full bg-violet-brand/90 px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.16em] text-white">
-              Premium Learning Experience
+              {t("Premium Learning Experience")}
             </span>
             <h2
               id="inspiring-heading"
               className="mt-6 text-4xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-5xl"
             >
-              Education That
+              {t("Education That")}
               <br />
-              Feels Inspiring.
+              {t("Feels Inspiring.")}
             </h2>
             <p className="mt-5 max-w-md text-base leading-relaxed text-white/75">
-              Clean soft purple aesthetics combined with modern layouts, uncompromising teacher vetting, and a
-              high-focus student-centered experience.
+              {t("Clean soft purple aesthetics combined with modern layouts, uncompromising teacher vetting, and a high-focus student-centered experience.")}
             </p>
             <ButtonLink href="/tutor-request" variant="violet" arrow className="mt-8">
-              Join {siteConfig.name} Now
+              {t("Join {name} Now", { name: siteConfig.name })}
             </ButtonLink>
 
             <div className="mt-14 grid gap-4 md:grid-cols-2">
@@ -75,17 +76,17 @@ export function InspiringCta() {
                   <CalendarClock aria-hidden className="size-5" />
                 </span>
                 <div className="min-w-0 flex-1">
-                  <h3 className="text-base font-bold text-ink">Session Timings</h3>
+                  <h3 className="text-base font-bold text-ink">{t("Session Timings")}</h3>
                   <dl className="mt-2 space-y-1.5 text-xs">
-                    {sessionTimings.map((t) => (
-                      <div key={t.days} className="flex justify-between gap-3">
-                        <dt className="text-muted">{t.days}</dt>
+                    {sessionTimings.map((s) => (
+                      <div key={s.days} className="flex justify-between gap-3">
+                        <dt className="text-muted">{s.days}</dt>
                         <dd
                           className={
-                            "highlight" in t && t.highlight ? "font-semibold text-brand-600" : "font-medium text-ink"
+                            "highlight" in s && s.highlight ? "font-semibold text-brand-600" : "font-medium text-ink"
                           }
                         >
-                          {t.hours}
+                          {s.hours}
                         </dd>
                       </div>
                     ))}

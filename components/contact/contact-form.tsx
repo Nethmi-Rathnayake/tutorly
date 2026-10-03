@@ -17,20 +17,23 @@ import {
   ShieldCheck,
   UserRound,
 } from "lucide-react";
-import { submitContactInquiry } from "@/app/contact/actions";
+import { submitContactInquiry } from "@/app/[lang]/contact/actions";
 import { Field, FieldError, TextInput } from "@/components/forms/fields";
 import { ServerErrorAlert } from "@/components/forms/wizard-parts";
 import { audienceOptions, contactFormCopy, MESSAGE_MAX, topicOptions } from "@/lib/constants/contact-page";
 import { phoneCountryOptions } from "@/lib/constants/tutor-request";
+import { useT } from "@/lib/i18n/client";
 import { cn } from "@/lib/utils/cn";
 import { contactDefaults, contactSchema, type ContactValues } from "@/lib/validations/contact";
 
 const audienceIcons = { parent: GraduationCap, educator: Presentation, general: CircleHelp } as const;
 
 const selectClass =
-  "h-12 w-full cursor-pointer appearance-none rounded-xl bg-lavender pr-9 text-sm text-ink outline-none ring-1 transition focus:bg-white focus:ring-2 focus:ring-brand-300";
+  "h-12 w-full cursor-pointer appearance-none rounded-xl bg-lavender pe-9 text-sm text-ink outline-none ring-1 transition focus:bg-white focus:ring-2 focus:ring-brand-300";
 
 export function ContactForm() {
+  const t = useT();
+  const copy = t.deep(contactFormCopy);
   const [reference, setReference] = useState<string>();
   const [serverError, setServerError] = useState<string>();
   const [submitting, startSubmit] = useTransition();
@@ -69,23 +72,23 @@ export function ContactForm() {
     <div className="rounded-[2rem] bg-white p-6 shadow-[0_40px_80px_-50px_rgba(44,37,115,0.5)] ring-1 ring-brand-100/80 sm:p-8">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <h2 id="contact-form-heading" className="text-2xl font-bold tracking-tight text-ink">
-          {contactFormCopy.title}
+          {copy.title}
         </h2>
         <span className="inline-flex items-center gap-1.5 rounded-full bg-lavender px-3 py-1 text-[10px] font-semibold text-muted">
           <Lock aria-hidden className="size-3" />
-          {contactFormCopy.secureBadge}
+          {copy.secureBadge}
         </span>
       </div>
-      <p className="mt-1.5 text-sm text-muted">{contactFormCopy.description}</p>
+      <p className="mt-1.5 text-sm text-muted">{copy.description}</p>
 
       {reference ? (
         <div role="status" className="mt-8 rounded-3xl bg-emerald-50 px-6 py-10 text-center ring-1 ring-emerald-100">
           <span className="mx-auto grid size-12 place-items-center rounded-full bg-emerald-100 text-emerald-700">
             <CheckCircle2 aria-hidden className="size-6" />
           </span>
-          <h3 className="mt-4 text-lg font-bold text-ink">Message sent</h3>
+          <h3 className="mt-4 text-lg font-bold text-ink">{t("Message sent")}</h3>
           <p className="mx-auto mt-2 max-w-sm text-sm leading-relaxed text-muted">
-            Thank you. An academic advisor will reply to you shortly. Your reference is{" "}
+            {t("Thank you. An academic advisor will reply to you shortly. Your reference is")}{" "}
             <strong className="font-semibold text-ink">{reference}</strong>.
           </p>
           <button
@@ -93,14 +96,14 @@ export function ContactForm() {
             onClick={() => setReference(undefined)}
             className="mt-6 text-sm font-semibold text-brand-700 underline-offset-2 hover:underline"
           >
-            Send another message
+            {t("Send another message")}
           </button>
         </div>
       ) : (
         <form noValidate aria-labelledby="contact-form-heading" onSubmit={handleSubmit(onSubmit)} className="mt-6 space-y-5">
           <fieldset>
             <legend className="mb-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-muted">
-              I am reaching out as:
+              {t("I am reaching out as:")}
             </legend>
             <div className="grid gap-2 sm:grid-cols-3">
               {audienceOptions.map((o) => {
@@ -112,7 +115,7 @@ export function ContactForm() {
                   >
                     <input type="radio" value={o.value} className="sr-only" {...register("audience")} />
                     <Icon aria-hidden className="size-3.5" />
-                    {o.label}
+                    {t(o.label)}
                   </label>
                 );
               })}
@@ -120,19 +123,19 @@ export function ContactForm() {
             <FieldError message={errors.audience?.message} />
           </fieldset>
 
-          <Field id="fullName" label="Full Name" required error={errors.fullName?.message}>
+          <Field id="fullName" label={t("Full Name")} required error={errors.fullName?.message}>
             <TextInput
               id="fullName"
               icon={UserRound}
               autoComplete="name"
-              placeholder="Your full name"
+              placeholder={t("Your full name")}
               invalid={!!errors.fullName}
               {...register("fullName")}
             />
           </Field>
 
           <div className="grid gap-5 sm:grid-cols-2">
-            <Field id="email" label="Email Address" required error={errors.email?.message}>
+            <Field id="email" label={t("Email Address")} required error={errors.email?.message}>
               <TextInput
                 id="email"
                 type="email"
@@ -146,14 +149,14 @@ export function ContactForm() {
 
             <div>
               <label htmlFor="phone" className="mb-2 block text-[13px] font-medium text-ink">
-                Phone Number <span className="text-[11px] font-normal text-muted">(Optional)</span>
+                {t("Phone Number")} <span className="text-[11px] font-normal text-muted">{t("(Optional)")}</span>
               </label>
               <div className="grid grid-cols-[6.5rem_1fr] gap-2">
                 <div className="relative">
                   <select
-                    aria-label="Country code"
+                    aria-label={t("Country code")}
                     autoComplete="tel-country-code"
-                    className={cn(selectClass, "pl-3", errors.phoneCountry ? "ring-rose-300" : "ring-transparent")}
+                    className={cn(selectClass, "ps-3", errors.phoneCountry ? "ring-rose-300" : "ring-transparent")}
                     {...register("phoneCountry")}
                   >
                     {phoneCountryOptions.map((o) => (
@@ -162,7 +165,7 @@ export function ContactForm() {
                       </option>
                     ))}
                   </select>
-                  <ChevronDown aria-hidden className="pointer-events-none absolute right-3 top-1/2 size-4 -translate-y-1/2 text-muted" />
+                  <ChevronDown aria-hidden className="pointer-events-none absolute end-3 top-1/2 size-4 -translate-y-1/2 text-muted" />
                 </div>
                 <TextInput
                   id="phone"
@@ -177,29 +180,29 @@ export function ContactForm() {
             </div>
           </div>
 
-          <Field id="topic" label="Subject" required error={errors.topic?.message}>
+          <Field id="topic" label={t("Subject")} required error={errors.topic?.message}>
             <div className="relative">
-              <Inbox aria-hidden className="pointer-events-none absolute left-4 top-1/2 size-4 -translate-y-1/2 text-muted" />
+              <Inbox aria-hidden className="pointer-events-none absolute start-4 top-1/2 size-4 -translate-y-1/2 text-muted" />
               <select
                 id="topic"
                 aria-invalid={!!errors.topic || undefined}
                 aria-describedby={errors.topic ? "topic-error" : undefined}
-                className={cn(selectClass, "pl-11", errors.topic ? "ring-rose-300" : "ring-transparent")}
+                className={cn(selectClass, "ps-11", errors.topic ? "ring-rose-300" : "ring-transparent")}
                 {...register("topic")}
               >
                 {topicOptions.map((o) => (
                   <option key={o.value} value={o.value}>
-                    {o.label}
+                    {t(o.label)}
                   </option>
                 ))}
               </select>
-              <ChevronDown aria-hidden className="pointer-events-none absolute right-4 top-1/2 size-4 -translate-y-1/2 text-muted" />
+              <ChevronDown aria-hidden className="pointer-events-none absolute end-4 top-1/2 size-4 -translate-y-1/2 text-muted" />
             </div>
           </Field>
 
           <Field
             id="message"
-            label="Your Message"
+            label={t("Your Message")}
             required
             hint={
               <span aria-live="polite" className={cn(messageLength > MESSAGE_MAX && "font-semibold text-rose-600")}>
@@ -212,7 +215,7 @@ export function ContactForm() {
               id="message"
               rows={5}
               maxLength={MESSAGE_MAX}
-              placeholder="Tell us about the student, subject, or question you have in mind."
+              placeholder={t("Tell us about the student, subject, or question you have in mind.")}
               aria-invalid={!!errors.message || undefined}
               aria-describedby={errors.message ? "message-error" : undefined}
               className={cn(
@@ -225,7 +228,7 @@ export function ContactForm() {
 
           <p className="flex items-start gap-2 text-[11px] leading-relaxed text-muted">
             <ShieldCheck aria-hidden className="mt-0.5 size-3.5 shrink-0 text-brand-600" />
-            {contactFormCopy.privacy}
+            {copy.privacy}
           </p>
 
           <ServerErrorAlert message={serverError} />
@@ -238,12 +241,12 @@ export function ContactForm() {
             {submitting ? (
               <>
                 <Loader2 aria-hidden className="size-4 animate-spin" />
-                Sending…
+                {t("Sending…")}
               </>
             ) : (
               <>
-                {contactFormCopy.submit}
-                <Send aria-hidden className="size-4 transition-transform group-hover:translate-x-0.5" />
+                {copy.submit}
+                <Send aria-hidden className="size-4 transition-transform group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5" />
               </>
             )}
           </button>

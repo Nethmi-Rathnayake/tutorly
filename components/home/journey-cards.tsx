@@ -3,6 +3,7 @@ import { ButtonLink } from "@/components/ui/button-link";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Reveal } from "@/components/ui/reveal";
 import { requestHref } from "@/lib/constants/site";
+import { getT } from "@/lib/i18n/server";
 
 const journeys = [
   {
@@ -23,16 +24,17 @@ const journeys = [
   },
 ];
 
-export function JourneyCards() {
+export async function JourneyCards() {
+  const t = await getT();
   return (
-    <section aria-label="Choose your journey" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section aria-label={t("Choose your journey")} className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div className="grid gap-6 md:grid-cols-2">
-        {journeys.map(({ eyebrow, title, body, cta, variant, Icon }, i) => (
+        {t.deep(journeys).map(({ eyebrow, title, body, cta, variant, Icon }, i) => (
           <Reveal key={title} delay={i * 0.1}>
             <article className="group relative h-full overflow-hidden rounded-[1.75rem] bg-linear-to-br from-white via-white to-brand-50 p-8 ring-1 ring-brand-100 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_30px_60px_-30px_rgba(79,63,217,0.45)] sm:p-10">
               <div
                 aria-hidden
-                className="pointer-events-none absolute -right-16 -top-16 size-56 rounded-full bg-brand-200/50 blur-3xl transition-opacity group-hover:opacity-80"
+                className="pointer-events-none absolute -end-16 -top-16 size-56 rounded-full bg-brand-200/50 blur-3xl transition-opacity group-hover:opacity-80"
               />
               <span className="relative grid size-12 place-items-center rounded-2xl bg-brand-100 text-brand-700">
                 <Icon aria-hidden className="size-5" />

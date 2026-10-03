@@ -1,11 +1,13 @@
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/components/ui/link";
 import { ArrowRight, BadgeCheck } from "lucide-react";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Reveal } from "@/components/ui/reveal";
 import { homeImages, nextGenerationStats } from "@/lib/constants/home";
+import { getT } from "@/lib/i18n/server";
 
-export function NextGeneration() {
+export async function NextGeneration() {
+  const t = await getT();
   return (
     <section aria-labelledby="next-gen-heading" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-16">
@@ -13,7 +15,7 @@ export function NextGeneration() {
           <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] shadow-[0_30px_60px_-24px_rgba(44,37,115,0.45)]">
             <Image
               src={homeImages.nextGeneration}
-              alt="Students collaborating around a table with laptops"
+              alt={t("Students collaborating around a table with laptops")}
               fill
               sizes="(min-width: 1024px) 45vw, 95vw"
               className="object-cover"
@@ -24,28 +26,27 @@ export function NextGeneration() {
               <BadgeCheck aria-hidden className="size-5" />
             </span>
             <div>
-              <p className="text-base font-bold text-ink">100% Vetted</p>
-              <p className="text-[11px] text-muted">Identity & background verified</p>
+              <p className="text-base font-bold text-ink">{t("100% Vetted")}</p>
+              <p className="text-[11px] text-muted">{t("Identity & background verified")}</p>
             </div>
           </div>
         </Reveal>
 
         <Reveal delay={0.1}>
-          <Eyebrow>Modern Education</Eyebrow>
+          <Eyebrow>{t("Modern Education")}</Eyebrow>
           <h2 id="next-gen-heading" className="mt-3 text-4xl font-extrabold leading-[1.1] tracking-tight text-ink sm:text-5xl">
-            Built For The
+            {t("Built For The")}
             <br />
             <span className="bg-linear-to-r from-brand-700 to-violet-brand bg-clip-text text-transparent">
-              Next Generation.
+              {t("Next Generation.")}
             </span>
           </h2>
           <p className="mt-6 max-w-lg text-base leading-relaxed text-muted">
-            Designed with smooth visual flow, modern pacing, and elite educational methodology that feels
-            completely distinct from conventional coaching institutes.
+            {t("Designed with smooth visual flow, modern pacing, and elite educational methodology that feels completely distinct from conventional coaching institutes.")}
           </p>
 
           <div className="mt-10 grid max-w-md grid-cols-2 gap-8">
-            {nextGenerationStats.map((stat) => (
+            {t.deep(nextGenerationStats).map((stat) => (
               <div key={stat.label}>
                 <p className="text-4xl font-extrabold text-brand-800">{stat.value}</p>
                 <p className="mt-1 text-sm font-bold text-ink">{stat.label}</p>
@@ -58,8 +59,8 @@ export function NextGeneration() {
             href="/about"
             className="group mt-10 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-700 hover:text-brand-900"
           >
-            Learn more about our pedagogy & standards
-            <ArrowRight aria-hidden className="size-4 transition-transform group-hover:translate-x-0.5" />
+            {t("Learn more about our pedagogy & standards")}
+            <ArrowRight aria-hidden className="rtl:-scale-x-100 size-4 transition-transform group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5" />
           </Link>
         </Reveal>
       </div>

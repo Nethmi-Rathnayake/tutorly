@@ -6,6 +6,8 @@ import { useReducedMotion } from "framer-motion";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, type DefaultValues, type FieldValues, type Path, type Resolver } from "react-hook-form";
 import type { ZodType } from "zod";
+import { useLocale } from "@/lib/i18n/client";
+import { localizeHref } from "@/lib/i18n/config";
 
 export type SubmitResult =
   | { ok: true; reference: string }
@@ -57,6 +59,7 @@ export function useMultiStepForm<T extends FieldValues>(opts: Options<T>) {
   const last = schemas.length - 1;
 
   const router = useRouter();
+  const locale = useLocale();
   const reduceMotion = useReducedMotion() ?? false;
   const [step, setStep] = useState(0);
   const [furthest, setFurthest] = useState(0);
@@ -143,7 +146,7 @@ export function useMultiStepForm<T extends FieldValues>(opts: Options<T>) {
       const result = await submit(values);
       if (result.ok) {
         writeDraft(draftKey, null);
-        router.push(successHref(result.reference));
+        router.push(localizeHref(successHref(result.reference), locale));
         return;
       }
       setServerError(result.message);

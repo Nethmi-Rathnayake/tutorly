@@ -20,6 +20,7 @@ import {
   UsersRound,
 } from "lucide-react";
 import { ButtonLink } from "@/components/ui/button-link";
+import { Link } from "@/components/ui/link";
 import { Reveal } from "@/components/ui/reveal";
 import {
   conciergeNexus,
@@ -33,6 +34,7 @@ import {
   type JourneyStep,
 } from "@/lib/constants/how-it-works";
 import { requestHref, siteConfig } from "@/lib/constants/site";
+import { getT } from "@/lib/i18n/server";
 import { cn } from "@/lib/utils/cn";
 
 const REGISTER_HREF = "/tutor-registration";
@@ -57,8 +59,9 @@ function CenteredHeading({ id, eyebrow, title, description }: { id: string; eyeb
 
 const heroBadgeIcons = [BadgeCheck, ShieldCheck, EyeOff, Sparkles];
 
-export function HowItWorksHero() {
-  const h = howItWorksHero;
+export async function HowItWorksHero() {
+  const t = await getT();
+  const h = t.deep(howItWorksHero);
   return (
     <section className="relative overflow-x-clip">
       <div
@@ -133,8 +136,9 @@ function StreamCard({
 
 const deskIcons = [Brain, BookOpenCheck, Microscope];
 
-export function ConciergeNexus() {
-  const n = conciergeNexus;
+export async function ConciergeNexus() {
+  const t = await getT();
+  const n = t.deep(conciergeNexus);
   return (
     <section aria-labelledby="nexus-heading" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <Reveal className="rounded-[2.5rem] bg-white px-5 py-12 shadow-[0_40px_80px_-50px_rgba(44,37,115,0.45)] ring-1 ring-brand-100/80 sm:px-10 lg:py-14">
@@ -149,7 +153,7 @@ export function ConciergeNexus() {
               {n.desk.badge}
             </span>
             <h3 className="mt-5 text-2xl font-bold leading-tight tracking-tight text-ink sm:text-[1.75rem]">
-              {siteConfig.name} {n.desk.title}
+              {t("{name} {title}", { name: siteConfig.name, title: n.desk.title })}
             </h3>
             <p className="mt-3 max-w-md text-sm leading-relaxed text-muted">{n.desk.description}</p>
             <ul className="mt-7 grid w-full gap-3 sm:grid-cols-3">
@@ -238,7 +242,7 @@ function JourneyCard({
         {journey.steps.map((s, i) => (
           <li key={s.title} className="relative flex gap-4 pb-7 last:pb-0">
             {i < journey.steps.length - 1 && (
-              <span aria-hidden className="absolute left-4 top-9 bottom-1 w-px -translate-x-1/2 bg-brand-100" />
+              <span aria-hidden className="absolute start-4 top-9 bottom-1 w-px -translate-x-1/2 bg-brand-100 rtl:translate-x-1/2" />
             )}
             <span
               className={cn(
@@ -257,7 +261,7 @@ function JourneyCard({
         ))}
       </ol>
 
-      <a
+      <Link
         href={href}
         className={cn(
           "group mt-9 inline-flex h-12 items-center justify-center gap-2 rounded-full px-6 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500",
@@ -267,22 +271,23 @@ function JourneyCard({
         )}
       >
         {journey.cta}
-        <CtaIcon aria-hidden className="size-4 transition-transform group-hover:translate-x-0.5" />
-      </a>
+        <CtaIcon aria-hidden className="size-4 transition-transform group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5" />
+      </Link>
     </article>
   );
 }
 
-export function DualJourneys() {
+export async function DualJourneys() {
+  const t = await getT();
   return (
     <section aria-labelledby="journeys-heading" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <CenteredHeading id="journeys-heading" {...journeysIntro} />
+      <CenteredHeading id="journeys-heading" {...t.deep(journeysIntro)} />
       <div className="mt-12 grid gap-6 lg:grid-cols-2">
         <Reveal className="h-full">
-          <JourneyCard journey={parentJourney} icon={UsersRound} tone="brand" href={requestHref} ctaIcon={ArrowRight} />
+          <JourneyCard journey={t.deep(parentJourney)} icon={UsersRound} tone="brand" href={requestHref} ctaIcon={ArrowRight} />
         </Reveal>
         <Reveal delay={0.08} className="h-full">
-          <JourneyCard journey={tutorJourney} icon={GraduationCap} tone="violet" href={REGISTER_HREF} ctaIcon={UserPlus} />
+          <JourneyCard journey={t.deep(tutorJourney)} icon={GraduationCap} tone="violet" href={REGISTER_HREF} ctaIcon={UserPlus} />
         </Reveal>
       </div>
     </section>
@@ -295,8 +300,9 @@ const contrastStyles = [
   { icon: Lock, tone: "bg-violet-100 text-violet-brand" },
 ];
 
-export function DirectoryContrast() {
-  const d = directoryContrast;
+export async function DirectoryContrast() {
+  const t = await getT();
+  const d = t.deep(directoryContrast);
   return (
     <section aria-labelledby="contrast-heading" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div className="rounded-[2.5rem] bg-lavender/80 px-5 py-12 ring-1 ring-brand-100 sm:px-10 lg:py-14">
@@ -334,14 +340,15 @@ export function DirectoryContrast() {
   );
 }
 
-export function ConnectionProof() {
-  const p = connectionProof;
+export async function ConnectionProof() {
+  const t = await getT();
+  const p = t.deep(connectionProof);
   return (
-    <section aria-label="Parent testimonial and placement figures" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section aria-label={t("Parent testimonial and placement figures")} className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <Reveal className="grid gap-8 rounded-[2.5rem] bg-white p-6 shadow-[0_40px_80px_-50px_rgba(44,37,115,0.45)] ring-1 ring-brand-100/80 sm:p-10 lg:grid-cols-[1.4fr_1fr] lg:items-center lg:gap-12">
         <figure>
           <div className="flex items-center gap-3">
-            <div className="flex gap-0.5 text-brand-500" role="img" aria-label="Rated 5 out of 5">
+            <div className="flex gap-0.5 text-brand-500" role="img" aria-label={t("Rated 5 out of 5")}>
               {Array.from({ length: 5 }).map((_, i) => (
                 <Star key={i} aria-hidden className="size-4" />
               ))}
@@ -381,12 +388,13 @@ export function ConnectionProof() {
   );
 }
 
-export function HowItWorksCta() {
-  const c = howItWorksCta;
+export async function HowItWorksCta() {
+  const t = await getT();
+  const c = t.deep(howItWorksCta);
   return (
     <section aria-labelledby="hiw-cta-heading" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <Reveal className="relative overflow-hidden rounded-[2.5rem] bg-linear-to-br from-brand-600 via-brand-500 to-violet-brand px-6 py-16 text-center shadow-[0_40px_80px_-40px_rgba(79,63,217,0.8)] sm:px-10">
-        <div aria-hidden className="pointer-events-none absolute -left-24 -top-24 size-80 rounded-full bg-white/15 blur-3xl" />
+        <div aria-hidden className="pointer-events-none absolute -start-24 -top-24 size-80 rounded-full bg-white/15 blur-3xl" />
         <div className="relative mx-auto max-w-2xl">
           <span className="inline-flex rounded-full bg-white/15 px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-white ring-1 ring-white/20">
             {c.eyebrow}
@@ -397,14 +405,14 @@ export function HowItWorksCta() {
           <p className="mx-auto mt-4 max-w-lg text-sm leading-relaxed text-white/80 sm:text-base">{c.description}</p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <ButtonLink href={requestHref} variant="ghost" size="lg" arrow className="bg-white text-brand-700 ring-0 hover:bg-white">
-              {parentJourney.cta}
+              {t(parentJourney.cta)}
             </ButtonLink>
             <ButtonLink
               href={REGISTER_HREF}
               size="lg"
               className="bg-white/15 bg-none text-white shadow-none ring-1 ring-white/25 hover:bg-white/25"
             >
-              {tutorJourney.cta}
+              {t(tutorJourney.cta)}
               <UserPlus aria-hidden className="size-4" />
             </ButtonLink>
           </div>

@@ -4,10 +4,11 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { FormProvider } from "react-hook-form";
 import { ArrowLeft, Lock, Save } from "lucide-react";
-import { submitTutorRegistration } from "@/app/tutor-registration/actions";
+import { submitTutorRegistration } from "@/app/[lang]/tutor-registration/actions";
 import { DraftNotice, ServerErrorAlert, StepSubmitButton, stepVariants } from "@/components/forms/wizard-parts";
 import { registrationSteps } from "@/lib/constants/tutor-registration";
 import { useMultiStepForm } from "@/lib/hooks/use-multi-step-form";
+import { useT } from "@/lib/i18n/client";
 import {
   registrationStepFields,
   registrationStepSchemas,
@@ -23,6 +24,7 @@ import { RegistrationStepper } from "./registration-stepper";
 import { TeachingStep } from "./teaching-step";
 
 export function TutorRegistrationWizard() {
+  const t = useT();
   const {
     form,
     step,
@@ -53,8 +55,8 @@ export function TutorRegistrationWizard() {
   const [photoUrl, setPhotoUrl] = useState<string>();
   useEffect(() => () => void (photoUrl && URL.revokeObjectURL(photoUrl)), [photoUrl]);
 
-  const meta = registrationSteps[step];
-  const variants = stepVariants(reduceMotion);
+  const meta = t.deep(registrationSteps[step]);
+  const variants = stepVariants(reduceMotion, t.locale === "ar");
   const stageNo = (n: number) => String(n).padStart(2, "0");
 
   return (
@@ -87,7 +89,7 @@ export function TutorRegistrationWizard() {
                 <div className="flex flex-col gap-3 border-b border-brand-50 pb-6 sm:flex-row sm:items-end sm:justify-between">
                   <div className="max-w-md">
                     <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-brand-600" aria-live="polite">
-                      Stage {stageNo(step + 1)} of {stageNo(registrationSteps.length)}
+                      {t("Stage {n} of {total}", { n: stageNo(step + 1), total: stageNo(registrationSteps.length) })}
                     </p>
                     <h2
                       id="step-heading"
@@ -101,7 +103,7 @@ export function TutorRegistrationWizard() {
                   </div>
                   <span className="inline-flex w-fit shrink-0 items-center gap-1.5 rounded-full bg-brand-50 px-3 py-1.5 text-[11px] font-semibold text-brand-700 ring-1 ring-brand-100">
                     <Lock aria-hidden className="size-3.5" />
-                    Confidential Admin Record
+                    {t("Confidential Admin Record")}
                   </span>
                 </div>
 
@@ -126,8 +128,8 @@ export function TutorRegistrationWizard() {
                     disabled={submitting}
                     className="inline-flex h-10 items-center gap-2 rounded-full bg-lavender px-4 text-sm font-medium text-ink transition-colors hover:bg-brand-100 disabled:opacity-50"
                   >
-                    <ArrowLeft aria-hidden className="size-4" />
-                    Back
+                    <ArrowLeft aria-hidden className="size-4 rtl:-scale-x-100" />
+                    {t("Back")}
                   </button>
                 )}
                 {!isLast && (
@@ -137,7 +139,7 @@ export function TutorRegistrationWizard() {
                     className="inline-flex h-10 items-center gap-2 rounded-full px-4 text-sm font-medium text-ink hover:bg-lavender"
                   >
                     <Save aria-hidden className="size-4" />
-                    Save Draft
+                    {t("Save Draft")}
                   </button>
                 )}
               </div>

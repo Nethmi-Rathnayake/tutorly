@@ -4,6 +4,7 @@ import { BadgeCheck, ChevronDown, IdCard, Mail, MessageSquare, Phone, PhoneCall 
 import { useFormContext } from "react-hook-form";
 import { ChoiceCard, Field, FieldError, TextInput } from "@/components/forms/fields";
 import { contactChannelOptions, phoneCountryOptions, relationshipOptions } from "@/lib/constants/tutor-request";
+import { useT } from "@/lib/i18n/client";
 import { cn } from "@/lib/utils/cn";
 import type { TutorRequestValues } from "@/lib/validations/tutor-request";
 
@@ -11,9 +12,10 @@ const channelIcons = { whatsapp: MessageSquare, phone: PhoneCall, email: Mail } 
 const channelTones = { whatsapp: "text-emerald-600", phone: "text-brand-600", email: "text-violet-brand" } as const;
 
 const selectClass =
-  "h-12 w-full cursor-pointer appearance-none rounded-xl bg-lavender pl-4 pr-9 text-sm text-ink outline-none ring-1 transition focus:bg-white focus:ring-2 focus:ring-brand-300";
+  "h-12 w-full cursor-pointer appearance-none rounded-xl bg-lavender ps-4 pe-9 text-sm text-ink outline-none ring-1 transition focus:bg-white focus:ring-2 focus:ring-brand-300";
 
 export function ParentStep() {
+  const t = useT();
   const {
     register,
     formState: { errors },
@@ -22,17 +24,17 @@ export function ParentStep() {
   return (
     <div className="space-y-6">
       <div className="grid gap-5 sm:grid-cols-2">
-        <Field id="parentName" label="Parent / Guardian Full Name" required error={errors.parentName?.message}>
+        <Field id="parentName" label={t("Parent / Guardian Full Name")} required error={errors.parentName?.message}>
           <TextInput
             id="parentName"
             icon={IdCard}
             autoComplete="name"
-            placeholder="e.g. Eleanor Vance-Croft"
+            placeholder={t("e.g. Eleanor Vance-Croft")}
             invalid={!!errors.parentName}
             {...register("parentName")}
           />
         </Field>
-        <Field id="relationship" label="Relationship to Student" required error={errors.relationship?.message}>
+        <Field id="relationship" label={t("Relationship to Student")} required error={errors.relationship?.message}>
           <div className="relative">
             <select
               id="relationship"
@@ -43,26 +45,26 @@ export function ParentStep() {
               {...register("relationship")}
             >
               <option value="" disabled>
-                Select relationship
+                {t("Select relationship")}
               </option>
               {relationshipOptions.map((o) => (
                 <option key={o.value} value={o.value}>
-                  {o.label}
+                  {t(o.label)}
                 </option>
               ))}
             </select>
-            <ChevronDown aria-hidden className="pointer-events-none absolute right-4 top-1/2 size-4 -translate-y-1/2 text-muted" />
+            <ChevronDown aria-hidden className="pointer-events-none absolute end-4 top-1/2 size-4 -translate-y-1/2 text-muted" />
           </div>
         </Field>
 
         <Field
           id="email"
-          label="Email Address"
+          label={t("Email Address")}
           required
           hint={
             <span className="inline-flex items-center gap-1 font-bold uppercase tracking-wide text-brand-600">
               <BadgeCheck aria-hidden className="size-3" />
-              Verified Briefing
+              {t("Verified Briefing")}
             </span>
           }
           error={errors.email?.message}
@@ -81,15 +83,16 @@ export function ParentStep() {
 
         <div>
           <label htmlFor="phone" className="mb-2 block text-[13px] font-medium text-ink">
-            Direct Phone Number<span aria-hidden className="ml-0.5 text-rose-500">*</span>
-            <span className="sr-only"> (required)</span>
+            {t("Direct Phone Number")}
+            <span aria-hidden className="ms-0.5 text-rose-500">*</span>
+            <span className="sr-only"> {t("(required)")}</span>
           </label>
           <div className="grid grid-cols-[7.5rem_1fr] gap-2">
             <div className="relative">
               <select
-                aria-label="Country code"
+                aria-label={t("Country code")}
                 autoComplete="tel-country-code"
-                className={cn(selectClass, "pl-3", errors.phoneCountry ? "ring-rose-300" : "ring-transparent")}
+                className={cn(selectClass, "ps-3", errors.phoneCountry ? "ring-rose-300" : "ring-transparent")}
                 {...register("phoneCountry")}
               >
                 {phoneCountryOptions.map((o) => (
@@ -98,7 +101,7 @@ export function ParentStep() {
                   </option>
                 ))}
               </select>
-              <ChevronDown aria-hidden className="pointer-events-none absolute right-3 top-1/2 size-4 -translate-y-1/2 text-muted" />
+              <ChevronDown aria-hidden className="pointer-events-none absolute end-3 top-1/2 size-4 -translate-y-1/2 text-muted" />
             </div>
             <TextInput
               id="phone"
@@ -116,7 +119,7 @@ export function ParentStep() {
       </div>
 
       <fieldset>
-        <legend className="mb-2 text-[13px] font-medium text-ink">Preferred Direct Contact Method</legend>
+        <legend className="mb-2 text-[13px] font-medium text-ink">{t("Preferred Direct Contact Method")}</legend>
         <div className="grid gap-3 sm:grid-cols-3">
           {contactChannelOptions.map((o) => {
             const Icon = channelIcons[o.value];
@@ -127,10 +130,10 @@ export function ParentStep() {
                 title={
                   <span className="flex items-center gap-2">
                     <Icon aria-hidden className={cn("size-4 shrink-0", channelTones[o.value])} />
-                    {o.label}
+                    {t(o.label)}
                   </span>
                 }
-                hint={<span className="pl-6">{o.hint}</span>}
+                hint={<span className="ps-6">{t(o.hint)}</span>}
                 {...register("contactChannel")}
               />
             );

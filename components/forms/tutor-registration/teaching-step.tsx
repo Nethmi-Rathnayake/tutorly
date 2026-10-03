@@ -6,14 +6,16 @@ import { Field, FieldError, PillToggle, SectionTitle, TextInput } from "@/compon
 import { SubjectCombobox } from "@/components/forms/subject-combobox";
 import { curricula, educationLevels, subjectCategories } from "@/lib/constants/taxonomy";
 import { experienceOptions, qualificationOptions } from "@/lib/constants/tutor-registration";
+import { useT } from "@/lib/i18n/client";
 import { cn } from "@/lib/utils/cn";
 import { OTHER_SUBJECT } from "@/lib/validations/common";
 import type { TutorRegistrationValues } from "@/lib/validations/tutor-registration";
 
 const selectClass =
-  "h-12 w-full cursor-pointer appearance-none rounded-xl bg-lavender pl-4 pr-10 text-sm text-ink outline-none ring-1 transition focus:bg-white focus:ring-2 focus:ring-brand-300";
+  "h-12 w-full cursor-pointer appearance-none rounded-xl bg-lavender ps-4 pe-10 text-sm text-ink outline-none ring-1 transition focus:bg-white focus:ring-2 focus:ring-brand-300";
 
 export function TeachingStep() {
+  const t = useT();
   const {
     register,
     control,
@@ -25,7 +27,7 @@ export function TeachingStep() {
     <div className="space-y-9">
       <section aria-labelledby="subjects-title">
         <SectionTitle id="subjects-title" icon={BookOpen} aside={`${subjects.length} / 8`}>
-          Subjects You Teach
+          {t("Subjects You Teach")}
         </SectionTitle>
         <Controller
           control={control}
@@ -42,18 +44,18 @@ export function TeachingStep() {
                 }}
               />
               {field.value.length > 0 && (
-                <ul className="mt-3 flex flex-wrap gap-2" aria-label="Selected subjects">
+                <ul className="mt-3 flex flex-wrap gap-2" aria-label={t("Selected subjects")}>
                   {field.value.map((s) => {
                     const category = subjectCategories.find((c) => c.subjects.includes(s));
                     return (
                       <li key={s}>
-                        <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-100/80 py-1 pl-3 pr-1 text-xs font-medium text-brand-800">
-                          {s}
-                          {category && <span className="text-[10px] text-brand-600/80">· {category.name}</span>}
+                        <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-100/80 py-1 ps-3 pe-1 text-xs font-medium text-brand-800">
+                          {t(s)}
+                          {category && <span className="text-[10px] text-brand-600/80">· {t(category.name)}</span>}
                           <button
                             type="button"
                             onClick={() => field.onChange(field.value.filter((x) => x !== s))}
-                            aria-label={`Remove ${s}`}
+                            aria-label={t("Remove {name}", { name: t(s) })}
                             className="grid size-6 place-items-center rounded-full hover:bg-white"
                           >
                             <X aria-hidden className="size-3.5" />
@@ -69,21 +71,21 @@ export function TeachingStep() {
         />
         <FieldError id="subjects-error" message={errors.subjects?.message} />
         {subjects.includes(OTHER_SUBJECT) && (
-          <Field id="customSubject" label="Please specify the other subject" required error={errors.customSubject?.message} className="mt-4">
-            <TextInput id="customSubject" placeholder="e.g. Latin, Music Theory" invalid={!!errors.customSubject} {...register("customSubject")} />
+          <Field id="customSubject" label={t("Please specify the other subject")} required error={errors.customSubject?.message} className="mt-4">
+            <TextInput id="customSubject" placeholder={t("e.g. Latin, Music Theory")} invalid={!!errors.customSubject} {...register("customSubject")} />
           </Field>
         )}
       </section>
 
       <fieldset>
         <legend className="w-full">
-          <SectionTitle icon={Layers} aside="Select all that apply">
-            Education Levels
+          <SectionTitle icon={Layers} aside={t("Select all that apply")}>
+            {t("Education Levels")}
           </SectionTitle>
         </legend>
         <div className="flex flex-wrap gap-2">
           {educationLevels.map((l) => (
-            <PillToggle key={l.id} value={l.id} label={l.name} {...register("levels")} />
+            <PillToggle key={l.id} value={l.id} label={t(l.name)} {...register("levels")} />
           ))}
         </div>
         <FieldError message={errors.levels?.message} />
@@ -91,13 +93,13 @@ export function TeachingStep() {
 
       <fieldset>
         <legend className="w-full">
-          <SectionTitle icon={Library} aside="Select all that apply">
-            Curricula & Exam Boards
+          <SectionTitle icon={Library} aside={t("Select all that apply")}>
+            {t("Curricula & Exam Boards")}
           </SectionTitle>
         </legend>
         <div className="flex flex-wrap gap-2">
           {curricula.map((c) => (
-            <PillToggle key={c.id} value={c.id} label={c.detail ? `${c.name} (${c.detail})` : c.name} tone="violet" {...register("curricula")} />
+            <PillToggle key={c.id} value={c.id} label={c.detail ? `${t(c.name)} (${t(c.detail)})` : t(c.name)} tone="violet" {...register("curricula")} />
           ))}
         </div>
         <FieldError message={errors.curricula?.message} />
@@ -105,10 +107,10 @@ export function TeachingStep() {
 
       <section aria-labelledby="credentials-title">
         <SectionTitle id="credentials-title" icon={GraduationCap}>
-          Experience & Qualifications
+          {t("Experience & Qualifications")}
         </SectionTitle>
         <div className="grid gap-5 sm:grid-cols-2">
-          <Field id="experience" label="Teaching Experience" required error={errors.experience?.message}>
+          <Field id="experience" label={t("Teaching Experience")} required error={errors.experience?.message}>
             <div className="relative">
               <select
                 id="experience"
@@ -119,18 +121,18 @@ export function TeachingStep() {
                 {...register("experience")}
               >
                 <option value="" disabled>
-                  Select experience
+                  {t("Select experience")}
                 </option>
                 {experienceOptions.map((o) => (
                   <option key={o.value} value={o.value}>
-                    {o.label}
+                    {t(o.label)}
                   </option>
                 ))}
               </select>
-              <ChevronDown aria-hidden className="pointer-events-none absolute right-4 top-1/2 size-4 -translate-y-1/2 text-muted" />
+              <ChevronDown aria-hidden className="pointer-events-none absolute end-4 top-1/2 size-4 -translate-y-1/2 text-muted" />
             </div>
           </Field>
-          <Field id="qualification" label="Highest Qualification Earned" required error={errors.qualification?.message}>
+          <Field id="qualification" label={t("Highest Qualification Earned")} required error={errors.qualification?.message}>
             <div className="relative">
               <select
                 id="qualification"
@@ -141,24 +143,24 @@ export function TeachingStep() {
                 {...register("qualification")}
               >
                 <option value="" disabled>
-                  Select qualification
+                  {t("Select qualification")}
                 </option>
                 {qualificationOptions.map((o) => (
                   <option key={o.value} value={o.value}>
-                    {o.label}
+                    {t(o.label)}
                   </option>
                 ))}
               </select>
-              <ChevronDown aria-hidden className="pointer-events-none absolute right-4 top-1/2 size-4 -translate-y-1/2 text-muted" />
+              <ChevronDown aria-hidden className="pointer-events-none absolute end-4 top-1/2 size-4 -translate-y-1/2 text-muted" />
             </div>
           </Field>
-          <Field id="institution" label="Primary University / Alma Mater" required error={errors.institution?.message} className="sm:col-span-2">
-            <TextInput id="institution" icon={School} placeholder="e.g. University of Cambridge" invalid={!!errors.institution} {...register("institution")} />
+          <Field id="institution" label={t("Primary University / Alma Mater")} required error={errors.institution?.message} className="sm:col-span-2">
+            <TextInput id="institution" icon={School} placeholder={t("e.g. University of Cambridge")} invalid={!!errors.institution} {...register("institution")} />
           </Field>
           <Field
             id="additionalQualifications"
-            label="Other Qualifications & Certifications"
-            hint="Optional"
+            label={t("Other Qualifications & Certifications")}
+            hint={t("Optional")}
             error={errors.additionalQualifications?.message}
             className="sm:col-span-2"
           >
@@ -166,7 +168,7 @@ export function TeachingStep() {
               id="additionalQualifications"
               rows={3}
               maxLength={400}
-              placeholder="e.g. PGCE, IB examiner, Cambridge International moderator, published research…"
+              placeholder={t("e.g. PGCE, IB examiner, Cambridge International moderator, published research…")}
               className="w-full resize-y rounded-xl bg-lavender p-4 text-sm leading-relaxed text-ink outline-none ring-1 ring-transparent transition placeholder:text-muted/70 focus:bg-white focus:ring-2 focus:ring-brand-300"
               {...register("additionalQualifications")}
             />
