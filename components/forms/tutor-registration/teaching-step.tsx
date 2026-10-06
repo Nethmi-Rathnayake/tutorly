@@ -1,6 +1,6 @@
 "use client";
 
-import { BookOpen, ChevronDown, GraduationCap, Layers, Library, School, X } from "lucide-react";
+import { BookOpen, GraduationCap, Layers, Library, School, X } from "lucide-react";
 import { Controller, useFormContext, useWatch } from "react-hook-form";
 import { Field, FieldError, PillToggle, SectionTitle, TextInput } from "@/components/forms/fields";
 import { SubjectCombobox } from "@/components/forms/subject-combobox";
@@ -10,6 +10,7 @@ import { useT } from "@/lib/i18n/client";
 import { cn } from "@/lib/utils/cn";
 import { OTHER_SUBJECT } from "@/lib/validations/common";
 import type { TutorRegistrationValues } from "@/lib/validations/tutor-registration";
+import { Select } from "@/components/ui/select";
 
 const selectClass =
   "h-12 w-full cursor-pointer appearance-none rounded-xl bg-lavender ps-4 pe-10 text-sm text-ink outline-none ring-1 transition focus:bg-white focus:ring-2 focus:ring-brand-300";
@@ -112,7 +113,7 @@ export function TeachingStep() {
         <div className="grid gap-5 sm:grid-cols-2">
           <Field id="experience" label={t("Teaching Experience")} required error={errors.experience?.message}>
             <div className="relative">
-              <select
+              <Select
                 id="experience"
                 defaultValue=""
                 aria-invalid={!!errors.experience || undefined}
@@ -128,13 +129,12 @@ export function TeachingStep() {
                     {t(o.label)}
                   </option>
                 ))}
-              </select>
-              <ChevronDown aria-hidden className="pointer-events-none absolute end-4 top-1/2 size-4 -translate-y-1/2 text-muted" />
+              </Select>
             </div>
           </Field>
           <Field id="qualification" label={t("Highest Qualification Earned")} required error={errors.qualification?.message}>
             <div className="relative">
-              <select
+              <Select
                 id="qualification"
                 defaultValue=""
                 aria-invalid={!!errors.qualification || undefined}
@@ -150,8 +150,7 @@ export function TeachingStep() {
                     {t(o.label)}
                   </option>
                 ))}
-              </select>
-              <ChevronDown aria-hidden className="pointer-events-none absolute end-4 top-1/2 size-4 -translate-y-1/2 text-muted" />
+              </Select>
             </div>
           </Field>
           <Field id="institution" label={t("Primary University / Alma Mater")} required error={errors.institution?.message} className="sm:col-span-2">

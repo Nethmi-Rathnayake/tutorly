@@ -1,5 +1,6 @@
 "use client";
 
+import { Fragment } from "react";
 import NextLink from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useLocale } from "@/lib/i18n/client";
@@ -7,14 +8,13 @@ import { localizeHref, stripLocale, type Locale } from "@/lib/i18n/config";
 import { cn } from "@/lib/utils/cn";
 
 const options: { value: Locale; label: string; name: string }[] = [
-  { value: "en", label: "EN", name: "English" },
-  { value: "ar", label: "AR", name: "العربية" },
+  { value: "en", label: "ENG", name: "English" },
+  { value: "ar", label: "العربية", name: "العربية" },
 ];
 
 /**
- * Floating EN/AR control, fixed to the viewport's top-right just below the sticky header
- * (h-18) so it never covers the header's buttons. z-40 keeps it above page content but
- * under the header and mobile menu (z-50). Each button links to the current page in that language.
+ * Inline ENG / العربية control for the header's right side. Each link goes to the current page
+ * in that language.
  */
 export function LanguageSwitcher() {
   const locale = useLocale();
@@ -22,33 +22,42 @@ export function LanguageSwitcher() {
   const router = useRouter();
 
   return (
-    <nav aria-label="Language / اللغة" className="fixed right-4 top-21 z-40 flex gap-1.5 sm:right-6 lg:right-8 print:hidden">
-      {options.map((opt) => {
+    <nav
+      aria-label="Language / اللغة"
+      className="flex shrink-0 items-center gap-0.5 self-center whitespace-nowrap text-xs font-semibold leading-none print:hidden"
+    >
+      {options.map((opt, i) => {
         const active = opt.value === locale;
         const href = localizeHref(path, opt.value);
         return (
-          <NextLink
-            key={opt.value}
-            href={href}
-            // Carry the query string (e.g. a pre-selected subject) over to the other language.
-            onClick={(e) => {
-              if (!window.location.search) return;
-              e.preventDefault();
-              router.push(href + window.location.search);
-            }}
-            hrefLang={opt.value}
-            lang={opt.value}
-            aria-label={opt.name}
-            aria-current={active ? "true" : undefined}
-            className={cn(
-              "grid size-9 place-items-center rounded-lg text-[11px] font-semibold tracking-wider shadow-sm backdrop-blur transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500",
-              active
-                ? "pointer-events-none bg-linear-to-br from-brand-700 to-brand-600 text-white shadow-md shadow-brand-600/25"
-                : "bg-white/85 text-muted ring-1 ring-brand-100 hover:-translate-y-0.5 hover:text-brand-700 hover:ring-brand-200",
+          <Fragment key={opt.value}>
+            {i > 0 && (
+              <span aria-hidden className="text-white/30">
+                /
+              </span>
             )}
-          >
-            {opt.label}
-          </NextLink>
+            <NextLink
+              href={href}
+              // Carry the query string (e.g. a pre-selected subject) over to the other language.
+              onClick={(e) => {
+                if (!window.location.search) return;
+                e.preventDefault();
+                router.push(href + window.location.search);
+              }}
+              hrefLang={opt.value}
+              lang={opt.value}
+              aria-label={opt.name}
+              aria-current={active ? "true" : undefined}
+              className={cn(
+                "inline-flex min-h-11 min-w-8 items-center justify-center transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold",
+                active
+                  ? "pointer-events-none text-white"
+                  : "text-white/60 hover:text-gold",
+              )}
+            >
+              {opt.label}
+            </NextLink>
+          </Fragment>
         );
       })}
     </nav>

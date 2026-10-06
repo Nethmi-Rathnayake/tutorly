@@ -1,8 +1,13 @@
 @import "tailwindcss";
 
+/* Touch devices: Tailwind v4 wraps hover: in @media (hover:hover), so taps never trigger the desktop hover animations. Apply them on tap too. */
+@custom-variant hover (&:hover);
+@custom-variant group-hover (&:is(:where(.group):hover *));
+@custom-variant peer-hover (&:is(:where(.peer):hover ~ *));
+
 :root {
-  --background: #f7f6fd;
-  --foreground: #0f0d1f;
+  --background: #faf8f2;
+  --foreground: #14171d;
 }
 
 @theme inline {
@@ -11,33 +16,81 @@
   --font-sans: var(--font-jakarta), var(--font-arabic);
   --font-display: var(--font-jakarta), var(--font-arabic);
 
-  /* Brand palette: indigo → violet, sampled from the reference design */
-  --color-brand-50: #f3f2fe;
-  --color-brand-100: #e8e6fd;
-  --color-brand-200: #d4d0fb;
-  --color-brand-300: #b3acf6;
-  --color-brand-400: #8b7ff0;
-  --color-brand-500: #6457e6;
-  --color-brand-600: #4f3fd9;
-  --color-brand-700: #4331be;
-  --color-brand-800: #372a98;
-  --color-brand-900: #2c2573;
+  /* Brand palette: gold (50-500) over charcoal-navy (700-900), sampled from the reference design */
+  --color-brand-50: #faf6ea;
+  --color-brand-100: #f3ead0;
+  --color-brand-200: #e9d8a6;
+  --color-brand-300: #deca88;
+  --color-brand-400: #d6b66c;
+  --color-brand-500: #c9a24e;
+  --color-brand-600: #8f6a1d;
+  --color-brand-700: #2a2f3a;
+  --color-brand-800: #212630;
+  --color-brand-900: #181b23;
 
-  --color-violet-brand: #6d28d9;
-  --color-ink: #0f0d1f;
-  --color-muted: #6b6886;
-  --color-lavender: #efedfc;
-  --color-night: #1c1a33;
+  --color-gold: #d9b868;
+  --color-violet-brand: #8f6a1d;
+  --color-ink: #14171d;
+  --color-muted: #5d6270;
+  --color-lavender: #f4f0e4;
+  --color-night: #1b1f27;
 }
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip; /* decorative blurs must never create empty space on the right */
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-jakarta), var(--font-arabic), ui-sans-serif, system-ui, sans-serif;
+}
+
+/*
+ * Slim, themed scrollbar for the page itself. Not applied to form controls, so a native <select>
+ * dropdown keeps the browser's own rendering.
+ */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-brand-400) transparent;
+}
+
+html::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+html::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: var(--color-brand-400);
+  border-radius: 9999px;
+}
+
+select,
+option {
+  scrollbar-width: auto;
+  scrollbar-color: auto;
+}
+
+/* Horizontal strips that scroll by touch/drag (e.g. the reviews row with reduced motion) hide their bar. */
+.marquee {
+  scrollbar-width: none;
+}
+
+.marquee::-webkit-scrollbar {
+  display: none;
+}
+
+/*
+ * Arabic: the layout stays exactly as in English, but each block of text reads right-to-left and
+ * aligns to its own start (the right edge) because its direction is taken from the text itself.
+ */
+[lang="ar"] :is(p, h1, h2, h3, h4, h5, h6, li, blockquote, figcaption, label, legend, dt, dd, summary, input, textarea) {
+  unicode-bidi: plaintext;
 }
 
 /* Letter-spacing breaks the joins between Arabic letters, so tracking utilities are neutralised in RTL. */
@@ -80,4 +133,82 @@ body {
 
 .animate-float-delayed {
   animation: float-slow 7s ease-in-out 1.5s infinite;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Testimonials: every 3s the row steps left by one card (card width + gap); 3 steps, then it loops. */
+.marquee {
+  --pitch: 308px; /* w-72 (288px) + gap-5 (20px) */
+}
+
+@media (min-width: 40rem) {
+  .marquee {
+    --pitch: 340px; /* w-80 (320px) + gap-5 (20px) */
+  }
+}
+
+@keyframes marquee {
+  0%,
+  22% {
+    transform: translateX(0);
+  }
+  33.333%,
+  55.333% {
+    transform: translateX(calc(var(--pitch) * -1));
+  }
+  66.666%,
+  88.666% {
+    transform: translateX(calc(var(--pitch) * -2));
+  }
+  100% {
+    transform: translateX(calc(var(--pitch) * -3));
+  }
+}
+
+.animate-marquee {
+  animation: marquee 9s ease-in-out infinite;
+}
+
+.marquee:hover .animate-marquee,
+.marquee:focus-within .animate-marquee {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+}
+
+/* Custom <Select> list: a quick, soft pop-in (downwards, or upwards when there is no room below). */
+@keyframes select-pop {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes select-pop-up {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }

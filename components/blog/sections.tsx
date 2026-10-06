@@ -7,7 +7,6 @@ import {
   Clock,
   Headset,
   MapPin,
-  Sparkles,
   TrendingUp,
 } from "lucide-react";
 import { NewsletterForm } from "@/components/blog/newsletter-form";
@@ -47,14 +46,15 @@ export async function BlogHero() {
   const t = await getT();
   const h = t.deep(blogHero);
   return (
-    <div className="relative mx-auto max-w-3xl px-4 text-center sm:px-6">
-      <span className={`${pill} bg-brand-100/70 px-3.5 py-1.5 text-brand-700`}>
-        <Sparkles aria-hidden className="size-3.5" />
-        {h.eyebrow}
-      </span>
-      <h1 className="mt-6 text-4xl font-extrabold leading-[1.08] tracking-tight text-ink sm:text-6xl">
+    <div className="relative mx-auto max-w-3xl px-4 text-center sm:px-6 font-[family-name:var(--font-inter),var(--font-arabic)]">
+      <p className="flex items-center justify-center gap-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-600">
+            <span aria-hidden className="h-px w-8 shrink-0 bg-brand-500" />
+            {h.eyebrow}
+            <span aria-hidden className="h-px w-8 shrink-0 bg-brand-500" />
+          </p>
+      <h1 className="mt-5 text-4xl font-bold leading-[1.1] tracking-tight text-ink sm:text-5xl lg:text-[3.4rem]">
         {h.titleLead}{" "}
-        <span className="block bg-linear-to-r from-brand-700 to-violet-brand bg-clip-text pb-1 text-transparent">
+        <span className="block pb-1 text-brand-600">
           {h.titleAccent}
         </span>
       </h1>
@@ -67,7 +67,7 @@ export async function BlogHero() {
 export function PostCard({ post, t }: { post: BlogPost; t: ServerT }) {
   const p = t.deep(post);
   return (
-    <article className="group relative flex w-full flex-col overflow-hidden rounded-3xl bg-white ring-1 ring-brand-100/80 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_30px_60px_-40px_rgba(44,37,115,0.6)] hover:ring-brand-200">
+    <article className="group relative flex w-full flex-col overflow-hidden rounded-3xl bg-white ring-1 ring-brand-100/80 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_30px_60px_-40px_rgba(20,23,29,0.6)] hover:ring-brand-200">
       <div className="relative aspect-[16/10] overflow-hidden">
         <Image
           src={p.image.src}
@@ -114,7 +114,7 @@ function FeaturedCard({ t }: { t: ServerT }) {
   const f = t.deep(featuredCard);
   return (
     <Reveal>
-      <article className="grid items-center gap-8 rounded-[2rem] bg-white p-4 shadow-[0_40px_80px_-50px_rgba(44,37,115,0.45)] ring-1 ring-brand-100/80 sm:p-6 lg:grid-cols-[1.05fr_1fr] lg:gap-10 lg:p-8">
+      <article className="grid items-center gap-8 rounded-[2rem] bg-white p-4 shadow-[0_40px_80px_-50px_rgba(20,23,29,0.45)] ring-1 ring-brand-100/80 sm:p-6 lg:grid-cols-[1.05fr_1fr] lg:gap-10 lg:p-8">
         <div className="relative aspect-[4/3] overflow-hidden rounded-3xl">
           <Image
             src={p.image.src}
@@ -128,7 +128,7 @@ function FeaturedCard({ t }: { t: ServerT }) {
             <span className={`${pill} bg-white/95 text-brand-700 shadow-sm`}>
               {f.label} <span aria-hidden>•</span> {t("{n} min read", { n: post.readMinutes })}
             </span>
-            <span className={`${pill} bg-violet-100/95 text-violet-brand shadow-sm`}>{f.focus}</span>
+            <span className={`${pill} bg-brand-100/95 text-violet-brand shadow-sm`}>{f.focus}</span>
           </div>
           <div className="absolute bottom-3 end-3 flex items-center gap-2.5 rounded-2xl bg-white/95 px-3.5 py-2.5 shadow-lg ring-1 ring-brand-100 backdrop-blur">
             <span className="grid size-8 place-items-center rounded-lg bg-brand-100 text-brand-700">
@@ -203,7 +203,7 @@ export async function EditorialSlots() {
   const t = await getT();
   const e = t.deep(editorialSlots);
   return (
-    <Reveal className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <Reveal className="mx-auto max-w-[90rem] px-4 sm:px-8 lg:px-10">
       <div className="flex flex-col gap-4 rounded-2xl bg-white px-5 py-4 ring-1 ring-brand-100/80 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-start gap-3">
           <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-brand-50 text-brand-700">
@@ -240,7 +240,7 @@ export async function Trajectory() {
   const endX = toX(last, points.length);
   const endY = toY(tutored[last]);
   return (
-    <section aria-labelledby="trajectory-heading" className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <section aria-labelledby="trajectory-heading" className="mx-auto max-w-[90rem] px-4 sm:px-8 lg:px-10">
       <Reveal className="grid items-center gap-10 rounded-[2rem] bg-white p-6 ring-1 ring-brand-100/80 sm:p-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
         <div>
           <span className={`${pill} bg-brand-100/70 text-brand-700`}>
@@ -302,7 +302,7 @@ export async function Trajectory() {
           </div>
           <ol dir="ltr" className="mt-3 grid grid-cols-4 gap-2 text-[10px] leading-snug text-muted">
             {tr.chart.points.map((p, i) => (
-              <li key={i} dir={t.locale === "ar" ? "rtl" : "ltr"} className={i === last ? "text-right" : i === 0 ? "text-left" : "text-center"}>
+              <li key={i} dir="auto" className={i === last ? "text-right" : i === 0 ? "text-left" : "text-center"}>
                 {p.label}
               </li>
             ))}
@@ -327,8 +327,8 @@ export async function NewsletterBand() {
   const t = await getT();
   const n = t.deep(newsletter);
   return (
-    <section aria-labelledby="newsletter-heading" className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-      <Reveal className="relative overflow-hidden rounded-[2rem] bg-linear-to-br from-brand-700 via-brand-600 to-violet-brand p-6 text-white shadow-[0_40px_80px_-40px_rgba(67,49,190,0.8)] sm:p-10">
+    <section aria-labelledby="newsletter-heading" className="mx-auto max-w-[90rem] px-4 sm:px-8 lg:px-10">
+      <Reveal className="relative overflow-hidden rounded-[2rem] bg-linear-to-br from-brand-800 via-brand-700 to-brand-900 p-6 text-white shadow-[0_40px_80px_-40px_rgba(20,23,29,0.8)] sm:p-10">
         <div aria-hidden className="pointer-events-none absolute -end-20 -top-24 size-72 rounded-full bg-white/10 blur-2xl" />
         <div className="relative grid items-center gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]">
           <div>
@@ -349,7 +349,7 @@ export async function AdviceCta() {
   const t = await getT();
   const c = t.deep(adviceCta);
   return (
-    <section aria-labelledby="advice-heading" className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <section aria-labelledby="advice-heading" className="mx-auto max-w-[90rem] px-4 sm:px-8 lg:px-10">
       <Reveal className="rounded-[2rem] bg-white px-6 py-12 text-center ring-1 ring-brand-100/80 sm:px-10">
         <span className="mx-auto grid size-12 place-items-center rounded-2xl bg-brand-50 text-brand-700">
           <Headset aria-hidden className="size-6" />

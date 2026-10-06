@@ -50,8 +50,7 @@ export function StudentStep() {
   const today = new Date().toISOString().slice(0, 10);
 
   const pct = (v: number) => ((v - 1) / (GRADE_SCALE_MAX - 1)) * 100;
-  // Range inputs fill from the right in right-to-left layouts.
-  const fillDirection = t.locale === "ar" ? "left" : "right";
+  const fillDirection = "right";
 
   return (
     <div className="space-y-7">

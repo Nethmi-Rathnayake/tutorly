@@ -1,7 +1,7 @@
 import { Link } from "@/components/ui/link";
 import { ArrowRight, Calculator, FlaskConical, GraduationCap, Landmark, Languages, Monitor } from "lucide-react";
+import { ButtonLink } from "@/components/ui/button-link";
 import { Reveal } from "@/components/ui/reveal";
-import { SectionHeading } from "@/components/ui/section-heading";
 import { subjectCards } from "@/lib/constants/home";
 import { requestHref } from "@/lib/constants/site";
 import { getT } from "@/lib/i18n/server";
@@ -18,51 +18,75 @@ const icons = {
 export async function SubjectGrid() {
   const t = await getT();
   return (
-    <section aria-labelledby="subjects-heading" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <SectionHeading
-        id="subjects-heading"
-        eyebrow={t("Curated Disciplines")}
-        title={t("Find Tutors by Subject")}
-        action={{ label: t("Browse All 60+ Sub-Topics"), href: "/subjects" }}
-      />
+    <section
+      aria-labelledby="subjects-heading"
+      className="mx-auto max-w-[90rem] px-4 font-[family-name:var(--font-inter),var(--font-arabic)] sm:px-8 lg:px-10"
+    >
+      <div className="mx-auto max-w-2xl text-center">
+        <p className="flex items-center justify-center gap-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-600">
+          <span aria-hidden className="h-px w-8 bg-brand-500" />
+          {t("Curated Disciplines")}
+          <span aria-hidden className="h-px w-8 bg-brand-500" />
+        </p>
+        <h2
+          id="subjects-heading"
+          className="mt-4 text-3xl font-bold tracking-tight text-ink sm:text-[2.5rem] sm:leading-tight"
+        >
+          {t("Find Tutors by")} <span className="text-brand-500">{t("Subject")}</span>
+        </h2>
+      </div>
 
-      <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {t.deep(subjectCards).map((subject, i) => {
           const Icon = icons[subject.id as keyof typeof icons] ?? GraduationCap;
           return (
-            <Reveal key={subject.id} delay={(i % 3) * 0.08}>
-              <article className="group flex h-full flex-col rounded-3xl bg-white p-7 ring-1 ring-brand-100/80 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_28px_60px_-30px_rgba(79,63,217,0.5)] hover:ring-brand-200">
+            <Reveal key={subject.id} delay={(i % 3) * 0.08} className="h-full">
+              <article className="group flex h-full flex-col rounded-3xl bg-white p-7 ring-1 ring-brand-200 transition-all duration-300 hover:-translate-y-1 hover:bg-[#e6c97c] hover:shadow-[0_24px_50px_-24px_rgba(143,106,29,0.6)] hover:ring-brand-500">
                 <div className="flex items-start justify-between">
-                  <span className="grid size-12 place-items-center rounded-2xl bg-brand-50 text-brand-600 transition-colors group-hover:bg-brand-600 group-hover:text-white">
+                  <span className="grid size-12 place-items-center rounded-2xl bg-night text-gold">
                     <Icon aria-hidden className="size-5" />
                   </span>
-                  <span className="rounded-full bg-brand-50 px-3 py-1 text-[11px] font-semibold text-brand-700">
+                  <span className="rounded-full bg-night px-3 py-1 text-[11px] font-semibold text-gold">
                     {subject.tutorCount}
                   </span>
                 </div>
-                <h3 className="mt-6 text-lg font-bold text-ink">{subject.title}</h3>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">{subject.description}</p>
-                <div className="mt-7 flex items-center justify-between gap-3">
-                  <ul className="flex flex-wrap gap-2" aria-label={t("Popular topics")}>
-                    {subject.tags.map((tag) => (
-                      <li key={tag} className="rounded-lg bg-lavender px-2.5 py-1 text-[11px] font-medium text-muted">
-                        {tag}
-                      </li>
-                    ))}
-                  </ul>
-                  <Link
-                    href={requestHref}
-                    className="inline-flex shrink-0 items-center gap-1 text-xs font-semibold text-brand-700 hover:text-brand-900"
-                  >
+                <h3 className="mt-6 text-xl font-bold text-ink">{subject.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted transition-colors group-hover:text-brand-900/80">
+                  {subject.description}
+                </p>
+                <ul className="mt-5 flex flex-1 flex-wrap content-start gap-2" aria-label={t("Popular topics")}>
+                  {subject.tags.map((tag) => (
+                    <li
+                      key={tag}
+                      className="rounded-full bg-lavender px-3 py-1 text-[11px] font-medium text-muted transition-colors group-hover:bg-white/60 group-hover:text-brand-900"
+                    >
+                      {tag}
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  href={requestHref}
+                  className="mt-6 flex items-center justify-between border-t border-brand-200 pt-4 text-sm font-semibold text-brand-700 transition-colors group-hover:border-brand-900/20 group-hover:text-brand-900"
+                >
+                  <span>
                     {t("Request a Tutor")}
                     <span className="sr-only"> {t("for {subject}", { subject: subject.title })}</span>
-                    <ArrowRight aria-hidden className="rtl:-scale-x-100 size-3.5 transition-transform group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5" />
-                  </Link>
-                </div>
+                  </span>
+                  <ArrowRight
+                    aria-hidden
+                    className="size-4 transition-transform group-hover:translate-x-1 rtl:-scale-x-100 rtl:group-hover:-translate-x-1"
+                  />
+                </Link>
               </article>
             </Reveal>
           );
         })}
+      </div>
+
+      <div className="mt-10 flex justify-center">
+        <ButtonLink href="/subjects" variant="soft" size="lg" arrow className="bg-night text-gold hover:bg-brand-800">
+          {t("Browse All 60+ Sub-Topics")}
+        </ButtonLink>
       </div>
     </section>
   );

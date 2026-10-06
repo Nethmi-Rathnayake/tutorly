@@ -85,7 +85,7 @@ const Tag = ({ children, tone = "indigo" }: { children: React.ReactNode; tone?: 
   <span
     className={
       tone === "violet"
-        ? "rounded-md bg-violet-100 px-2 py-1 text-[11px] font-medium text-violet-800"
+        ? "rounded-md bg-brand-100 px-2 py-1 text-[11px] font-medium text-violet-800"
         : tone === "rose"
           ? "rounded-md bg-rose-100 px-2 py-1 text-[11px] font-semibold text-rose-700"
           : "rounded-md bg-brand-100/80 px-2 py-1 text-[11px] font-medium text-brand-800"

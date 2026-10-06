@@ -6,9 +6,10 @@
 
 export const howItWorksHero = {
   eyebrow: "Private Concierge Matching Architecture • No Public Directories",
-  title: "How Our Tutoring Connection Works",
+  title: "How Our Tutoring",
+  titleAccent: "Connection Works",
   description:
-    "A private, director-led placement process engineered to match high-achieving students with vetted master educators. No public directories, no search algorithms—just bespoke academic curation.",
+    "A private, director-led placement process engineered to match high achieving students with vetted master educators. No public directories, no search algorithms just bespoke academic curation.",
   badges: [
     "Top 1.8% Acceptance Rate",
     "Enhanced DBS & Degree Verified",
@@ -139,7 +140,7 @@ export const directoryContrast = {
   eyebrow: "Architectural Distinction",
   title: "Why We Reject the “Search Directory” Model",
   description:
-    "Open marketplace platforms force parents to sift through hundreds of unvetted bios. TutorFlow operates like a private medical or legal advisory bureau.",
+    "Open marketplace platforms force parents to sift through hundreds of unvetted bios. Tutorly operates like a private medical or legal advisory bureau.",
   points: [
     {
       title: "Zero Cold Outreach",
@@ -162,10 +163,11 @@ export const directoryContrast = {
 export const connectionProof = {
   eyebrow: "Parent Verification",
   quote:
-    "Searching online directories had become a second full-time job. With TutorFlow, their Academic Director personally analyzed our son’s IB HL Math struggles and assigned an Oxford alumnus in 36 hours. The connection trial was instantaneous chemistry.",
+    "Searching online directories had become a second full-time job. With Tutorly, their Academic Director personally analyzed our son’s IB HL Math struggles and assigned an Oxford alumnus in 36 hours. The connection trial was instantaneous chemistry.",
   name: "Helena Radford",
   context: "Mother of IB Diploma Candidate • Westminster School",
   initial: "H",
+  photo: "/images/reviews/helena-radford.jpg",
   stats: [
     {
       value: "100%",

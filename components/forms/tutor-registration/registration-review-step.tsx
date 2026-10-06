@@ -160,7 +160,7 @@ export function RegistrationReviewStep({ photoUrl, onEdit }: { photoUrl?: string
           />
           <span>
             {t(
-              "I confirm these details are accurate. I consent to TutorFlow verifying my identity, qualifications and background, and to being contacted by the placement team about my application.",
+              "I confirm these details are accurate. I consent to Tutorly verifying my identity, qualifications and background, and to being contacted by the placement team about my application.",
             )}
           </span>
         </label>

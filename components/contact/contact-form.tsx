@@ -6,7 +6,6 @@ import { useForm, useWatch, type Path } from "react-hook-form";
 import {
   AtSign,
   CheckCircle2,
-  ChevronDown,
   CircleHelp,
   GraduationCap,
   Inbox,
@@ -25,6 +24,7 @@ import { phoneCountryOptions } from "@/lib/constants/tutor-request";
 import { useT } from "@/lib/i18n/client";
 import { cn } from "@/lib/utils/cn";
 import { contactDefaults, contactSchema, type ContactValues } from "@/lib/validations/contact";
+import { Select } from "@/components/ui/select";
 
 const audienceIcons = { parent: GraduationCap, educator: Presentation, general: CircleHelp } as const;
 
@@ -69,12 +69,12 @@ export function ContactForm() {
   };
 
   return (
-    <div className="rounded-[2rem] bg-white p-6 shadow-[0_40px_80px_-50px_rgba(44,37,115,0.5)] ring-1 ring-brand-100/80 sm:p-8">
+    <div className="flex flex-col rounded-3xl bg-white p-6 shadow-[0_30px_60px_-40px_rgba(143,106,29,0.45)] ring-2 ring-brand-300 sm:p-8">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <h2 id="contact-form-heading" className="text-2xl font-bold tracking-tight text-ink">
           {copy.title}
         </h2>
-        <span className="inline-flex items-center gap-1.5 rounded-full bg-lavender px-3 py-1 text-[10px] font-semibold text-muted">
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-night px-3 py-1 text-[10px] font-semibold text-gold">
           <Lock aria-hidden className="size-3" />
           {copy.secureBadge}
         </span>
@@ -100,7 +100,7 @@ export function ContactForm() {
           </button>
         </div>
       ) : (
-        <form noValidate aria-labelledby="contact-form-heading" onSubmit={handleSubmit(onSubmit)} className="mt-6 space-y-5">
+        <form noValidate aria-labelledby="contact-form-heading" onSubmit={handleSubmit(onSubmit)} className="mt-6 flex flex-1 flex-col space-y-5">
           <fieldset>
             <legend className="mb-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-muted">
               {t("I am reaching out as:")}
@@ -111,7 +111,7 @@ export function ContactForm() {
                 return (
                   <label
                     key={o.value}
-                    className="flex h-11 cursor-pointer items-center justify-center gap-2 rounded-full bg-lavender px-3 text-xs font-medium text-ink/80 transition-all hover:bg-brand-100 has-[:checked]:bg-linear-to-r has-[:checked]:from-brand-700 has-[:checked]:to-brand-600 has-[:checked]:font-semibold has-[:checked]:text-white has-[:checked]:shadow-md has-[:checked]:shadow-brand-600/25 has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-brand-500"
+                    className="flex h-11 cursor-pointer items-center justify-center gap-2 rounded-full bg-lavender px-3 text-xs font-medium text-ink/80 transition-all hover:bg-brand-100 has-[:checked]:bg-night has-[:checked]:font-semibold has-[:checked]:text-gold has-[:checked]:shadow-md has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-brand-500"
                   >
                     <input type="radio" value={o.value} className="sr-only" {...register("audience")} />
                     <Icon aria-hidden className="size-3.5" />
@@ -153,7 +153,7 @@ export function ContactForm() {
               </label>
               <div className="grid grid-cols-[6.5rem_1fr] gap-2">
                 <div className="relative">
-                  <select
+                  <Select
                     aria-label={t("Country code")}
                     autoComplete="tel-country-code"
                     className={cn(selectClass, "ps-3", errors.phoneCountry ? "ring-rose-300" : "ring-transparent")}
@@ -164,8 +164,7 @@ export function ContactForm() {
                         {o.label}
                       </option>
                     ))}
-                  </select>
-                  <ChevronDown aria-hidden className="pointer-events-none absolute end-3 top-1/2 size-4 -translate-y-1/2 text-muted" />
+                  </Select>
                 </div>
                 <TextInput
                   id="phone"
@@ -183,7 +182,7 @@ export function ContactForm() {
           <Field id="topic" label={t("Subject")} required error={errors.topic?.message}>
             <div className="relative">
               <Inbox aria-hidden className="pointer-events-none absolute start-4 top-1/2 size-4 -translate-y-1/2 text-muted" />
-              <select
+              <Select
                 id="topic"
                 aria-invalid={!!errors.topic || undefined}
                 aria-describedby={errors.topic ? "topic-error" : undefined}
@@ -195,8 +194,7 @@ export function ContactForm() {
                     {t(o.label)}
                   </option>
                 ))}
-              </select>
-              <ChevronDown aria-hidden className="pointer-events-none absolute end-4 top-1/2 size-4 -translate-y-1/2 text-muted" />
+              </Select>
             </div>
           </Field>
 
@@ -226,7 +224,7 @@ export function ContactForm() {
             />
           </Field>
 
-          <p className="flex items-start gap-2 text-[11px] leading-relaxed text-muted">
+          <p className="flex items-start gap-2 text-[11px] leading-relaxed text-muted lg:mt-auto">
             <ShieldCheck aria-hidden className="mt-0.5 size-3.5 shrink-0 text-brand-600" />
             {copy.privacy}
           </p>
@@ -236,7 +234,7 @@ export function ContactForm() {
           <button
             type="submit"
             disabled={submitting}
-            className="group flex h-13 w-full items-center justify-center gap-2 rounded-full bg-linear-to-r from-brand-700 via-brand-600 to-violet-brand text-sm font-semibold text-white shadow-[0_18px_36px_-16px_rgba(79,63,217,0.85)] transition-all hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500 disabled:translate-y-0 disabled:opacity-70"
+            className="group flex h-13 w-full items-center justify-center gap-2 rounded-full bg-linear-to-b from-[#ecd28c] to-[#c9a24e] text-sm font-semibold text-brand-900 shadow-[0_14px_30px_-12px_rgba(201,162,78,0.8)] transition-all hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500 disabled:translate-y-0 disabled:opacity-70"
           >
             {submitting ? (
               <>

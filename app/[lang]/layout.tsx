@@ -1,12 +1,22 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Sans_Arabic, Plus_Jakarta_Sans } from "next/font/google";
+import { Aclonica, IBM_Plex_Sans_Arabic, Inter, Plus_Jakarta_Sans } from "next/font/google";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
-import { LanguageSwitcher } from "@/components/layout/language-switcher";
 import { siteConfig } from "@/lib/constants/site";
 import { localeDir, locales } from "@/lib/i18n/config";
 import { getT } from "@/lib/i18n/server";
 import "../globals.css";
+
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+});
+
+const aclonica = Aclonica({
+  variable: "--font-brand",
+  subsets: ["latin"],
+  weight: "400",
+});
 
 const jakarta = Plus_Jakarta_Sans({
   variable: "--font-jakarta",
@@ -44,7 +54,7 @@ export default async function RootLayout({ children }: LayoutProps<"/[lang]">) {
     <html
       lang={t.locale}
       dir={localeDir(t.locale)}
-      className={`${jakarta.variable} ${plexArabic.variable} h-full antialiased`}
+      className={`${jakarta.variable} ${aclonica.variable} ${inter.variable} ${plexArabic.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
         <a
@@ -54,7 +64,6 @@ export default async function RootLayout({ children }: LayoutProps<"/[lang]">) {
           {t("Skip to content")}
         </a>
         <SiteHeader />
-        <LanguageSwitcher />
         <main id="main" className="flex-1">
           {children}
         </main>

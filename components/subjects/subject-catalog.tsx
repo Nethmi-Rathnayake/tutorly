@@ -2,42 +2,7 @@
 
 import { useDeferredValue, useId, useMemo, useState } from "react";
 import { Link } from "@/components/ui/link";
-import {
-  ArrowRight,
-  Atom,
-  Baby,
-  BookMarked,
-  BookOpenText,
-  BriefcaseBusiness,
-  Brain,
-  Calculator,
-  ChartLine,
-  ChartSpline,
-  CircleHelp,
-  CodeXml,
-  Compass,
-  Cpu,
-  Earth,
-  FlaskConical,
-  GraduationCap,
-  HardHat,
-  Landmark,
-  Languages,
-  Library,
-  Microscope,
-  Monitor,
-  Orbit,
-  PenLine,
-  Receipt,
-  ScrollText,
-  Search,
-  Shapes,
-  Sigma,
-  Sparkles,
-  TrendingUp,
-  UsersRound,
-  X,
-} from "lucide-react";
+import { ArrowRight, BookMarked, CircleHelp, Search, UsersRound, X } from "lucide-react";
 import { ButtonLink } from "@/components/ui/button-link";
 import { requestSubjectHref } from "@/lib/constants/site";
 import { categoryDisplay, subjectDetails, subjectsHero } from "@/lib/constants/subjects-page";
@@ -46,46 +11,6 @@ import { subjects as subjectsDictionary } from "@/lib/i18n/ar/subjects";
 import { useT } from "@/lib/i18n/client";
 import type { Translator } from "@/lib/i18n/translate";
 import { cn } from "@/lib/utils/cn";
-
-type Icon = typeof Search;
-
-const categoryIcons: Record<string, Icon> = {
-  maths: Sigma,
-  sciences: FlaskConical,
-  languages: Languages,
-  humanities: Landmark,
-  technology: Monitor,
-  university: GraduationCap,
-  general: Shapes,
-};
-
-const subjectIcons: Record<string, Icon> = {
-  "Mathematics (General / Standard)": Calculator,
-  "Additional / Further Mathematics": Sigma,
-  "Statistics & Calculus": ChartSpline,
-  Physics: Orbit,
-  Chemistry: FlaskConical,
-  Biology: Microscope,
-  "Combined / Integrated Science": Atom,
-  "English Language & Literature": BookOpenText,
-  "Arabic (Language / Literature / Islamic Studies)": ScrollText,
-  "French / German / Other Modern Languages": Languages,
-  Economics: TrendingUp,
-  "Business Studies / Commerce": BriefcaseBusiness,
-  Accounting: Receipt,
-  "History & Geography": Earth,
-  "Psychology / Sociology": Brain,
-  "Computer Science / Information Technology (IT)": Cpu,
-  "Coding & ICT": CodeXml,
-  "Undergraduate Engineering / Science Modules": HardHat,
-  "Business Management & Finance Modules": ChartLine,
-  "Advanced Academic Writing & Research": PenLine,
-  "All Primary Subjects": Baby,
-  "Other (Please specify)": Compass,
-};
-
-// Alternate the icon tint per card, as in the design.
-const tints = ["bg-brand-100 text-brand-700", "bg-violet-100 text-violet-brand"];
 
 type Entry = {
   name: string;
@@ -140,16 +65,16 @@ export function SubjectCatalog() {
 
   return (
     <>
-      <div className="mx-auto mt-9 max-w-3xl px-4 sm:px-6">
+      <div className="mx-auto mt-10 max-w-[90rem] px-4 font-[family-name:var(--font-inter),var(--font-arabic)] sm:px-8 lg:px-10">
         <form
           role="search"
           onSubmit={(e) => {
             e.preventDefault();
             document.getElementById("subject-results")?.scrollIntoView({ block: "start" });
           }}
-          className="flex items-center gap-2 rounded-2xl bg-white p-2 ps-4 shadow-[0_18px_40px_-24px_rgba(44,37,115,0.45)] ring-1 ring-brand-100 focus-within:ring-2 focus-within:ring-brand-400"
+          className="mx-auto flex max-w-4xl items-center gap-2 rounded-full bg-white p-2 ps-6 shadow-[0_18px_40px_-24px_rgba(143,106,29,0.5)] ring-2 ring-brand-300 transition-shadow focus-within:ring-brand-500"
         >
-          <Search aria-hidden className="size-4 shrink-0 text-brand-600" />
+          <Search aria-hidden className="size-5 shrink-0 text-brand-600" />
           <label htmlFor={searchId} className="sr-only">
             {t("Search subjects")}
           </label>
@@ -159,17 +84,17 @@ export function SubjectCatalog() {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder={t(subjectsHero.searchPlaceholder)}
-            className="h-10 min-w-0 flex-1 bg-transparent text-sm text-ink placeholder:text-muted/80 focus:outline-none"
+            className="h-12 min-w-0 flex-1 bg-transparent text-sm text-ink placeholder:text-muted/80 focus:outline-none sm:text-base"
           />
           <button
             type="submit"
-            className="h-10 shrink-0 rounded-xl bg-brand-700 px-5 text-xs font-semibold text-white transition-colors hover:bg-brand-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
+            className="h-12 shrink-0 rounded-full bg-linear-to-b from-[#ecd28c] to-[#c9a24e] px-7 text-sm font-semibold text-brand-900 transition-transform hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
           >
             {t("Search")}
           </button>
         </form>
 
-        <div role="group" aria-label={t("Filter by category")} className="mt-5 flex flex-wrap justify-center gap-2">
+        <div role="group" aria-label={t("Filter by category")} className="mt-6 grid grid-cols-2 gap-2.5 sm:grid-cols-4">
           {[{ id: ALL, chip: t("All Categories"), count: entries.length }]
             .concat(
               subjectCategories.map((c) => ({ id: c.id, chip: t(categoryDisplay[c.id]?.chip ?? c.name), count: c.subjects.length })),
@@ -183,10 +108,10 @@ export function SubjectCatalog() {
                   aria-pressed={active}
                   onClick={() => setCategory(c.id)}
                   className={cn(
-                    "rounded-full px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.1em] transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500",
+                    "rounded-full px-3 py-3 text-center text-[11px] font-semibold uppercase tracking-[0.06em] transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500",
                     active
-                      ? "bg-brand-700 text-white shadow-[0_8px_18px_-10px_rgba(67,49,190,0.9)]"
-                      : "bg-white text-ink ring-1 ring-brand-100 hover:ring-brand-300",
+                      ? "bg-night text-gold shadow-[0_8px_18px_-10px_rgba(20,23,29,0.9)]"
+                      : "bg-white text-ink ring-1 ring-brand-300 hover:bg-[#e6c97c] hover:ring-brand-500",
                   )}
                 >
                   {c.chip} ({c.count})
@@ -195,9 +120,9 @@ export function SubjectCatalog() {
             })}
         </div>
 
-        <div className="mt-6 flex flex-col items-center justify-between gap-2 text-xs text-muted sm:flex-row">
+        <div className="mt-8 flex flex-col items-center justify-between gap-2 border-t border-brand-200 pt-5 text-xs text-muted sm:flex-row">
           <p aria-live="polite" className="flex items-center gap-2">
-            <span aria-hidden className="size-1.5 rounded-full bg-brand-600" />
+            <span aria-hidden className="size-1.5 rounded-full bg-brand-500" />
             {t(visible.length === 1 ? "Showing {count} Accredited Subject Discipline" : "Showing {count} Accredited Subject Disciplines", {
               count: visible.length,
             })}
@@ -209,7 +134,7 @@ export function SubjectCatalog() {
         </div>
       </div>
 
-      <div id="subject-results" className="mx-auto mt-16 max-w-7xl scroll-mt-24 space-y-16 px-4 sm:px-6 lg:px-8">
+      <div id="subject-results" className="mx-auto mt-10 max-w-[90rem] scroll-mt-24 space-y-10 px-4 sm:px-8 lg:px-10">
         {groups.length === 0 && (
           <div className="mx-auto max-w-lg rounded-3xl bg-white px-6 py-12 text-center ring-1 ring-brand-100">
             <span className="mx-auto grid size-12 place-items-center rounded-2xl bg-brand-100 text-brand-700">
@@ -237,23 +162,20 @@ export function SubjectCatalog() {
 
         {groups.map(({ category: c, items }) => {
           const display = t.deep(categoryDisplay[c.id]);
-          const CategoryIcon = categoryIcons[c.id] ?? Library;
-          const headingId = `${c.slug}-heading`;
+                    const headingId = `${c.slug}-heading`;
           return (
             <section key={c.id} id={c.slug} aria-labelledby={headingId} className="scroll-mt-24">
-              <header className="flex flex-wrap items-end justify-between gap-3">
-                <div className="flex items-center gap-3">
-                  <span className="grid size-11 place-items-center rounded-xl bg-brand-100/80 text-brand-700">
-                    <CategoryIcon aria-hidden className="size-5" />
-                  </span>
-                  <div>
-                    <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-brand-600">{display?.kicker}</p>
-                    <h2 id={headingId} className="text-2xl font-bold tracking-tight text-ink">
-                      {display?.title ?? t(c.name)}
-                    </h2>
-                  </div>
+              <header className="flex flex-wrap items-end justify-between gap-3 border-b border-brand-200 pb-4">
+                <div>
+                  <p className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-600">
+                    <span aria-hidden className="h-px w-8 shrink-0 bg-brand-500" />
+                    {display?.kicker}
+                  </p>
+                  <h2 id={headingId} className="mt-2 text-2xl font-bold tracking-tight text-ink sm:text-3xl">
+                    {display?.title ?? t(c.name)}
+                  </h2>
                 </div>
-                <p className="text-xs text-muted">
+                <p className="rounded-full bg-night px-3.5 py-1.5 text-xs font-semibold text-gold">
                   {c.subjects.length} {display?.countLabel}
                 </p>
               </header>
@@ -264,9 +186,9 @@ export function SubjectCatalog() {
                   c.subjects.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3",
                 )}
               >
-                {items.map((e, i) => (
+                {items.map((e) => (
                   <li key={e.name}>
-                    <SubjectCard entry={e} categoryTitle={display?.title ?? t(c.name)} tint={tints[i % 2]} />
+                    <SubjectCard entry={e} categoryTitle={display?.title ?? t(c.name)} />
                   </li>
                 ))}
               </ul>
@@ -278,37 +200,39 @@ export function SubjectCatalog() {
   );
 }
 
-function SubjectCard({ entry, categoryTitle, tint }: { entry: Entry; categoryTitle: string; tint: string }) {
+function SubjectCard({ entry, categoryTitle }: { entry: Entry; categoryTitle: string }) {
   const t = useT(subjectsDictionary);
   const d = t.deep(subjectDetails[entry.name]);
-  const Icon = subjectIcons[entry.name] ?? Sparkles;
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-3xl bg-white ring-1 ring-brand-100/80 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_28px_60px_-32px_rgba(79,63,217,0.5)] hover:ring-brand-200">
-      <div className="flex flex-1 flex-col p-6">
+    <article className="group flex h-full flex-col overflow-hidden rounded-3xl bg-white ring-1 ring-brand-200 transition-all duration-300 hover:-translate-y-1 hover:bg-[#e6c97c] hover:shadow-[0_24px_50px_-24px_rgba(143,106,29,0.6)] hover:ring-brand-500">
+      <div className="flex flex-1 flex-col p-7">
         <div className="flex items-start justify-between gap-3">
-          <span className={cn("grid size-11 place-items-center rounded-xl", tint)}>
-            <Icon aria-hidden className="size-5" />
-          </span>
+          <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-brand-600 transition-colors group-hover:text-brand-900">
+            {categoryTitle}
+          </p>
           {d?.tag && (
-            <span className="rounded-full bg-brand-50 px-2.5 py-1 text-[10px] font-semibold text-brand-700">{d.tag}</span>
+            <span className="shrink-0 rounded-full bg-night px-3 py-1 text-[10px] font-semibold text-gold">{d.tag}</span>
           )}
         </div>
-        <p className="mt-5 text-[10px] font-semibold uppercase tracking-[0.12em] text-muted">{categoryTitle}</p>
-        <h3 className="mt-1 text-base font-bold leading-snug text-ink">{entry.title}</h3>
-        {d?.description && <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-muted">{d.description}</p>}
+        <h3 className="mt-4 text-xl font-bold leading-snug text-ink">{entry.title}</h3>
+        {d?.description && (
+          <p className="mt-3 line-clamp-4 text-sm leading-relaxed text-muted transition-colors group-hover:text-brand-900/85">
+            {d.description}
+          </p>
+        )}
       </div>
-      <div className="flex items-center justify-between gap-3 border-t border-brand-50 bg-lavender/40 px-6 py-3.5">
-        <span className="flex items-center gap-1.5 text-[11px] font-medium text-muted">
-          <UsersRound aria-hidden className="size-3.5 text-brand-500" />
+      <div className="flex items-center justify-between gap-3 border-t border-brand-200 px-7 py-4 transition-colors group-hover:border-brand-900/20">
+        <span className="flex items-center gap-1.5 text-xs font-medium text-muted transition-colors group-hover:text-brand-900/80">
+          <UsersRound aria-hidden className="size-4 text-brand-500 transition-colors group-hover:text-brand-900" />
           {d?.mentors}
         </span>
         <Link
           href={requestSubjectHref(entry.name)}
-          className="inline-flex items-center gap-1 text-xs font-semibold text-brand-700 hover:text-brand-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
+          className="-my-2 inline-flex min-h-11 items-center gap-1.5 py-2 text-sm font-semibold text-brand-700 transition-colors hover:text-brand-900 group-hover:text-brand-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
         >
           {d?.cta ?? t("Request a Tutor")}
           <span className="sr-only"> {t("for {subject}", { subject: entry.title })}</span>
-          <ArrowRight aria-hidden className="rtl:-scale-x-100 size-3.5 transition-transform group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5" />
+          <ArrowRight aria-hidden className="size-4 transition-transform group-hover:translate-x-0.5 rtl:-scale-x-100 rtl:group-hover:-translate-x-0.5" />
         </Link>
       </div>
     </article>

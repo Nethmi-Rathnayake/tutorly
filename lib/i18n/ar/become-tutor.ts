@@ -104,8 +104,8 @@ export const becomeTutor: Dictionary = {
   "Dr. Julian Croft": "د. جوليان كروفت",
   "Senior Educator Fellow • Natural Sciences": "زميل تعليمي أول • العلوم الطبيعية",
   "BA, MSc, PhD (Cantab)": "بكالوريوس، ماجستير، دكتوراه (كامبريدج)",
-  "TutorFlow completely eliminates the noise of commercial tutoring marketplaces. There are no client bidding wars or public profile metrics to manage. Every student introduction made by the Academic Placement Team is thoughtfully aligned with my research syllabus and schedule.":
-    "تُبعد TutorFlow تمامًا ضجيج أسواق التدريس التجارية؛ فلا مزايدات على العملاء ولا مؤشرات لملفات عامة أحتاج إلى متابعتها. كل تعارف مع طالب يرتّبه فريق الترشيح الأكاديمي يتوافق بعناية مع منهجي البحثي وجدولي.",
+  "Tutorly completely eliminates the noise of commercial tutoring marketplaces. There are no client bidding wars or public profile metrics to manage. Every student introduction made by the Academic Placement Team is thoughtfully aligned with my research syllabus and schedule.":
+    "تُبعد Tutorly تمامًا ضجيج أسواق التدريس التجارية؛ فلا مزايدات على العملاء ولا مؤشرات لملفات عامة أحتاج إلى متابعتها. كل تعارف مع طالب يرتّبه فريق الترشيح الأكاديمي يتوافق بعناية مع منهجي البحثي وجدولي.",
   "Cambridge Tripos Examiner": "مصحح في Cambridge Tripos",
   "STEP & MAA Mentor": "مرشد STEP و MAA",
   "Fellow Since 2021": "زميل منذ 2021",

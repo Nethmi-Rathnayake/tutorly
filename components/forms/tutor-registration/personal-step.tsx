@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useRef, useState } from "react";
-import { BadgeCheck, ChevronDown, EyeOff, IdCard, Mail, Phone, ShieldCheck, UserRound, X } from "lucide-react";
+import { BadgeCheck, EyeOff, IdCard, Mail, Phone, ShieldCheck, UserRound, X } from "lucide-react";
 import { useFormContext, useWatch } from "react-hook-form";
 import { Field, FieldError, TextInput } from "@/components/forms/fields";
 import { PHOTO_MAX_BYTES, PHOTO_MIN_PX, PHOTO_TYPES } from "@/lib/constants/tutor-registration";
@@ -11,6 +11,7 @@ import { useT } from "@/lib/i18n/client";
 import { cn } from "@/lib/utils/cn";
 import { formatBytes } from "@/lib/utils/format";
 import type { TutorRegistrationValues } from "@/lib/validations/tutor-registration";
+import { Select } from "@/components/ui/select";
 
 type PersonalStepProps = {
   photoUrl?: string;
@@ -121,14 +122,13 @@ export function PersonalStep({ photoUrl, onPhotoUrlChange }: PersonalStepProps) 
           </label>
           <div className="grid grid-cols-[7.5rem_1fr] gap-2">
             <div className="relative">
-              <select aria-label={t("Country code")} autoComplete="tel-country-code" className={cn(selectClass, "ring-transparent")} {...register("phoneCountry")}>
+              <Select aria-label={t("Country code")} autoComplete="tel-country-code" className={cn(selectClass, "ring-transparent")} {...register("phoneCountry")}>
                 {phoneCountryOptions.map((o) => (
                   <option key={o.value} value={o.value}>
                     {o.label}
                   </option>
                 ))}
-              </select>
-              <ChevronDown aria-hidden className="pointer-events-none absolute end-3 top-1/2 size-4 -translate-y-1/2 text-muted" />
+              </Select>
             </div>
             <TextInput
               id="phone"

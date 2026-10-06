@@ -33,7 +33,7 @@ export default async function RequestATutorPage(props: PageProps<"/[lang]/reques
         aria-hidden
         className="pointer-events-none absolute -end-40 -top-48 size-[560px] rounded-full bg-brand-200/40 blur-3xl print:hidden"
       />
-      <div className="relative mx-auto max-w-7xl px-4 pb-20 pt-8 sm:px-6 lg:px-8 lg:pt-12">
+      <div className="relative mx-auto max-w-[90rem] px-4 pb-20 pt-8 sm:px-8 lg:px-10 lg:pt-12">
         <header className="max-w-3xl">
           <span className="inline-flex items-center gap-2 rounded-full bg-brand-100/70 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-brand-700">
             <span aria-hidden className="size-1.5 rounded-full bg-brand-600" />
@@ -52,10 +52,10 @@ export default async function RequestATutorPage(props: PageProps<"/[lang]/reques
       </div>
 
       <section aria-labelledby="assurance-heading" className="border-t border-brand-100/70 bg-lavender/40 py-14 print:hidden">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-[90rem] px-4 sm:px-8 lg:px-10">
           <div className="flex flex-col gap-5 rounded-3xl bg-white p-6 ring-1 ring-brand-100/80 sm:p-8 md:flex-row md:items-center md:justify-between">
             <div className="flex items-start gap-4">
-              <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-violet-100 text-violet-brand">
+              <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-brand-100 text-violet-brand">
                 <ShieldCheck aria-hidden className="size-5" />
               </span>
               <div>

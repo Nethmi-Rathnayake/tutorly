@@ -43,7 +43,7 @@ export const networkMetrics = {
 
 export const requestTestimonial = {
   quote:
-    "Finding someone who genuinely understood Cambridge Further Maths STEP papers was impossible until TutorFlow assigned Dr. Aris. It saved our daughter's Cambridge offer.",
+    "Finding someone who genuinely understood Cambridge Further Maths STEP papers was impossible until Tutorly assigned Dr. Aris. It saved our daughter's Cambridge offer.",
   name: "Lady C. Montgomery",
   context: "Eton / Cambridge Placement",
 };

@@ -9,7 +9,14 @@ export const defaultLocale: Locale = "en";
 
 export const isLocale = (value: unknown): value is Locale => locales.includes(value as Locale);
 
-export const localeDir = (locale: Locale) => (locale === "ar" ? "rtl" : "ltr");
+/**
+ * The page layout is the same in every language (columns, menus and buttons stay where they are);
+ * only the text itself reads right-to-left in Arabic (see the [lang="ar"] rules in globals.css).
+ */
+export function localeDir(locale: Locale): "ltr" {
+  void locale;
+  return "ltr";
+}
 
 /** Prefixes an internal path for the given locale. External links, hashes and English paths pass through. */
 export function localizeHref(href: string, locale: Locale) {

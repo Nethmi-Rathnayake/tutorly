@@ -1,150 +1,69 @@
-import Image from "next/image";
-import { Sparkles, Star } from "lucide-react";
-import { ButtonLink } from "@/components/ui/button-link";
+import { readdirSync } from "node:fs";
+import path from "node:path";
+import { Star } from "lucide-react";
 import { Reveal } from "@/components/ui/reveal";
-import { requestHref, siteConfig } from "@/lib/constants/site";
-import { heroSocialProof, heroStats, homeImages } from "@/lib/constants/home";
+import { HeroSlideshow } from "@/components/home/hero-slideshow";
+import { JourneyCards } from "@/components/home/journey-cards";
+import { heroSocialProof, heroStats } from "@/lib/constants/home";
 import { getT } from "@/lib/i18n/server";
 
 export async function Hero() {
   const t = await getT();
+  // The home hero shows exactly the images in public/images/hero/, in natural filename order.
+  const slides = readdirSync(path.join(process.cwd(), "public", "images", "hero"))
+    .filter((file) => /\.(jpe?g|png|webp|avif)$/i.test(file))
+    .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))
+    .map((file) => `/images/hero/${file}`);
+  const stats = t.deep(heroStats);
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative isolate flex min-h-[min(calc(100svh-4.5rem),46rem)] flex-col overflow-hidden bg-night">
+      <HeroSlideshow images={slides} />
       <div
         aria-hidden
-        className="pointer-events-none absolute -end-40 -top-40 size-[640px] rounded-full bg-brand-200/40 blur-3xl"
+        className="absolute inset-0 -z-10 bg-night/60"
       />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -start-40 top-40 size-[420px] rounded-full bg-violet-200/30 blur-3xl"
-      />
+      <div aria-hidden className="absolute inset-x-0 bottom-0 -z-10 h-40 bg-linear-to-t from-night/90 to-transparent" />
 
-      <div className="relative mx-auto grid max-w-7xl items-center gap-14 px-4 pb-20 pt-10 sm:px-6 lg:grid-cols-[1.05fr_1fr] lg:gap-10 lg:px-8 lg:pb-28 lg:pt-16">
-        <Reveal>
-          <span className="inline-flex items-center gap-2 rounded-full bg-white/80 px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] text-brand-600 ring-1 ring-brand-100">
-            <Sparkles aria-hidden className="size-3.5" />
-            {t("Future-Focused Learning")}
-          </span>
-
-          <h1 className="mt-6 text-[2.6rem] font-extrabold leading-[1.05] tracking-tight text-ink sm:text-6xl lg:text-[4.1rem]">
-            {t("Find the Right Tutor for Your")}{" "}
-            <span className="bg-linear-to-r from-brand-700 to-violet-brand bg-clip-text text-transparent">
-              {t("Learning Journey.")}
-            </span>
-          </h1>
-
-          <p className="mt-6 max-w-lg text-base leading-relaxed text-muted sm:text-lg">
-            {t(siteConfig.description)}
+      <Reveal className="mx-auto flex w-full max-w-[90rem] flex-1 flex-col justify-start px-4 pb-12 pt-6 sm:px-8 lg:px-10 lg:pb-16 lg:pt-8">
+        <div className="mx-auto max-w-5xl text-center">
+          <p className="flex items-center justify-center gap-3 text-xs font-semibold uppercase tracking-[0.18em] text-gold">
+            <span aria-hidden className="h-px w-10 bg-gold" />
+            {t("Trusted by 500+ families in the UAE")}
+            <span aria-hidden className="h-px w-10 bg-gold" />
           </p>
-
-          <div className="mt-9 flex flex-wrap items-center gap-3">
-            <ButtonLink href={requestHref} size="lg" arrow>
-              {t("I Need a Tutor")}
-            </ButtonLink>
-            <ButtonLink href="/become-a-tutor" variant="ghost" size="lg">
-              {t("Become a Tutor")}
-            </ButtonLink>
-          </div>
-
-          <div className="mt-10 flex items-center gap-4">
-            <div className="flex -space-x-2.5">
-              {heroSocialProof.initials.map((initials, i) => (
-                <span
-                  key={initials}
-                  className="grid size-10 place-items-center rounded-full border-2 border-white text-[11px] font-bold text-brand-700"
-                  style={{ backgroundColor: ["#e8e6fd", "#dcd8fb", "#ede3fd", "#f3f2fe"][i % 4] }}
-                >
-                  {initials}
-                </span>
-              ))}
-            </div>
-            <div>
-              <div className="flex items-center gap-1.5">
-                <span className="flex text-amber-400" aria-hidden>
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} className="size-4 fill-current" />
-                  ))}
-                </span>
-                <span className="text-sm font-bold text-ink">{heroSocialProof.rating}</span>
-              </div>
-              <p className="mt-0.5 text-xs text-muted">{t(heroSocialProof.caption)}</p>
-            </div>
-          </div>
-        </Reveal>
-
-        <Reveal delay={0.15} className="relative mx-auto w-full max-w-xl lg:max-w-none">
-          <HeroVisual />
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
-async function HeroVisual() {
-  const t = await getT();
-  return (
-    <div className="relative pb-16 pe-4 pt-8 sm:pe-10">
-      {/* Main photo */}
-      <div className="relative aspect-[4/4.2] w-[88%] overflow-hidden rounded-[2rem] shadow-[0_30px_60px_-20px_rgba(44,37,115,0.45)] ring-1 ring-white/60">
-        <Image
-          src={homeImages.heroMain}
-          alt={t("A tutor smiling while working through lessons with students")}
-          fill
-          preload
-          sizes="(min-width: 1024px) 40vw, 90vw"
-          className="object-cover"
-        />
-      </div>
-
-      {/* Secondary photo + stats */}
-      <div className="animate-float absolute end-0 top-0 w-[46%] overflow-hidden rounded-3xl bg-white shadow-[0_24px_50px_-18px_rgba(44,37,115,0.45)] ring-4 ring-white">
-        <div className="relative aspect-[4/3]">
-          <Image
-            src={homeImages.heroSecondary}
-            alt={t("Students studying together in a library")}
-            fill
-            sizes="(min-width: 1024px) 20vw, 45vw"
-            className="object-cover"
-          />
+          <h1 className="mt-6 font-serif text-balance text-4xl font-bold uppercase leading-[1.08] tracking-wide text-white [text-shadow:0_2px_16px_rgba(0,0,0,0.5)] sm:text-[2.6rem] lg:text-5xl xl:text-[3.4rem]">
+            <span className="block xl:whitespace-nowrap">{t("Find the Perfect Teacher for")}</span>
+            <span className="block text-gold xl:whitespace-nowrap">{t("Your Child's Success")}</span>
+          </h1>
+          <p className="mx-auto mt-6 max-w-xl font-[family-name:var(--font-inter),var(--font-arabic)] text-base leading-relaxed text-white/85 sm:text-lg">
+            {t("Fill out our simple form and get matched with a hand picked expert tutor from our vast network.")}
+          </p>
         </div>
-        <dl className="grid grid-cols-2 divide-x divide-brand-100 px-2 py-3 text-center sm:py-4">
-          {t.deep(heroStats).map((stat) => (
-            <div key={stat.label} className="px-1">
-              <dt className="sr-only">{stat.label}</dt>
-              <dd className="text-xl font-extrabold text-brand-800 sm:text-3xl">{stat.value}</dd>
-              <dd className="mt-0.5 text-[10px] font-medium text-muted sm:text-[11px]">{stat.label}</dd>
+        <div className="mx-auto mt-10 w-full max-w-4xl">
+          <JourneyCards inHero />
+        </div>
+      </Reveal>
+
+      <div className="border-t border-white/10 bg-night/55 backdrop-blur-sm">
+        <dl className="font-[family-name:var(--font-inter),var(--font-arabic)] mx-auto grid max-w-[90rem] grid-cols-1 divide-y divide-white/10 px-4 sm:grid-cols-3 sm:divide-x sm:divide-y-0 sm:px-8 lg:px-10 rtl:sm:divide-x-reverse">
+          {stats.map((stat) => (
+            <div key={stat.label} className="flex flex-col items-center justify-center gap-1 py-7 text-center">
+              <dd className="text-3xl font-bold text-gold">{stat.value}</dd>
+              <dt className="text-sm text-white/80">{stat.label}</dt>
             </div>
           ))}
+          <div className="flex flex-col items-center justify-center gap-2 py-7 text-center">
+            <span className="flex text-gold" aria-hidden>
+              {Array.from({ length: 5 }).map((_, i) => (
+                <Star key={i} className="size-4 fill-current" />
+              ))}
+            </span>
+            <span className="text-sm text-white/80">
+              <span className="font-semibold text-white">{heroSocialProof.rating}</span> · {t(heroSocialProof.caption)}
+            </span>
+          </div>
         </dl>
       </div>
-
-      {/* Live network bar */}
-      <div className="absolute bottom-6 left-[18%] right-[4%] hidden items-center sm:flex justify-between rounded-2xl bg-white/90 px-5 py-4 shadow-[0_20px_40px_-20px_rgba(44,37,115,0.5)] ring-1 ring-brand-100 backdrop-blur-md">
-        <div className="pl-[38%]">
-          <p className="text-sm font-bold text-ink">{t("Live Tutoring Network")}</p>
-          <p className="text-[11px] text-muted">{t("1-on-1 sessions happening now")}</p>
-        </div>
-        <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-50 px-3 py-1 text-[11px] font-bold text-brand-700">
-          <span className="size-1.5 animate-pulse rounded-full bg-emerald-500" aria-hidden />
-          {t("Active")}
-        </span>
-      </div>
-
-      {/* Parent review glass card */}
-      <figure className="animate-float-delayed absolute bottom-0 start-0 w-[52%] rounded-2xl bg-white/75 p-4 shadow-[0_24px_50px_-20px_rgba(44,37,115,0.55)] ring-1 ring-white backdrop-blur-xl sm:w-[46%]">
-        <div className="flex items-center gap-2">
-          <span className="flex text-amber-400" aria-hidden>
-            {Array.from({ length: 5 }).map((_, i) => (
-              <Star key={i} className="size-3 fill-current" />
-            ))}
-          </span>
-          <span className="text-[11px] font-bold text-ink">{t("Parent Review")}</span>
-        </div>
-        <blockquote className="mt-2 text-[11px] italic leading-relaxed text-muted sm:text-xs">
-          “{t("An exceptional tutor who rebuilt my son's confidence in Calculus in just 4 weeks.")}”
-        </blockquote>
-        <figcaption className="mt-2 text-[10px] font-semibold text-brand-700">{t("Sarah M. • IGCSE Parent")}</figcaption>
-      </figure>
-    </div>
+    </section>
   );
 }

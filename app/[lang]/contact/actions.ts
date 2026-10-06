@@ -19,7 +19,8 @@ export async function submitContactInquiry(input: unknown): Promise<SubmitResult
   try {
     const { reference } = await createContactInquiry(parsed.data);
     return { ok: true, reference };
-  } catch {
+  } catch (error) {
+    console.error("[form submit] failed:", error);
     return { ok: false, message: "We couldn't send your message right now. Please try again in a moment." };
   }
 }

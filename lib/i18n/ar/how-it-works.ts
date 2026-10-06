@@ -7,8 +7,9 @@ export const howItWorks: Dictionary = {
 
   // Hero
   "Private Concierge Matching Architecture • No Public Directories": "نظام مطابقة شخصي وخاص • بلا أدلة عامة",
-  "How Our Tutoring Connection Works": "كيف نصلك بالمعلم المناسب",
-  "A private, director-led placement process engineered to match high-achieving students with vetted master educators. No public directories, no search algorithms—just bespoke academic curation.":
+  "How Our Tutoring": "كيف نصلك",
+  "Connection Works": "بالمعلم المناسب",
+  "A private, director-led placement process engineered to match high achieving students with vetted master educators. No public directories, no search algorithms just bespoke academic curation.":
     "عملية ترشيح خاصة يقودها مديرون أكاديميون، صُممت لمطابقة الطلاب المتفوقين مع معلمين خبراء موثّقين. لا أدلة عامة ولا خوارزميات بحث — بل انتقاء أكاديمي مخصص.",
   "Top 1.8% Acceptance Rate": "نسبة قبول لا تتجاوز 1.8%",
   "Enhanced DBS & Degree Verified": "فحص DBS المعزز والتحقق من الشهادات",
@@ -104,8 +105,8 @@ export const howItWorks: Dictionary = {
   // Directory contrast
   "Architectural Distinction": "اختلاف جوهري",
   "Why We Reject the “Search Directory” Model": "لماذا نرفض نموذج «دليل البحث»",
-  "Open marketplace platforms force parents to sift through hundreds of unvetted bios. TutorFlow operates like a private medical or legal advisory bureau.":
-    "تُجبر المنصات المفتوحة أولياء الأمور على تصفح مئات السير الذاتية غير الموثّقة. أما TutorFlow فتعمل كمكتب استشاري طبي أو قانوني خاص.",
+  "Open marketplace platforms force parents to sift through hundreds of unvetted bios. Tutorly operates like a private medical or legal advisory bureau.":
+    "تُجبر المنصات المفتوحة أولياء الأمور على تصفح مئات السير الذاتية غير الموثّقة. أما Tutorly فتعمل كمكتب استشاري طبي أو قانوني خاص.",
   "Zero Cold Outreach": "لا تواصل عشوائي",
   "Tutors do not pitch families. Parents are not spammed by automated messages. Every conversation is pre-screened and pre-briefed by our directorship desk.":
     "لا يعرض المعلمون خدماتهم على العائلات، ولا يتلقى أولياء الأمور رسائل آلية مزعجة. كل محادثة تُفحص مسبقًا ويُمهَّد لها من مكتب المديرين.",
@@ -122,8 +123,8 @@ export const howItWorks: Dictionary = {
   // Connection proof
   "Parent testimonial and placement figures": "شهادة ولي أمر وأرقام الترشيح",
   "Parent Verification": "شهادة ولي أمر",
-  "Searching online directories had become a second full-time job. With TutorFlow, their Academic Director personally analyzed our son’s IB HL Math struggles and assigned an Oxford alumnus in 36 hours. The connection trial was instantaneous chemistry.":
-    "أصبح البحث في الأدلة الإلكترونية وظيفة ثانية بدوام كامل. مع TutorFlow، حلّل المدير الأكاديمي بنفسه صعوبات ابننا في رياضيات IB HL ورشّح له خريجًا من أكسفورد خلال 36 ساعة. وكان الانسجام فوريًا منذ حصة التعارف.",
+  "Searching online directories had become a second full-time job. With Tutorly, their Academic Director personally analyzed our son’s IB HL Math struggles and assigned an Oxford alumnus in 36 hours. The connection trial was instantaneous chemistry.":
+    "أصبح البحث في الأدلة الإلكترونية وظيفة ثانية بدوام كامل. مع Tutorly، حلّل المدير الأكاديمي بنفسه صعوبات ابننا في رياضيات IB HL ورشّح له خريجًا من أكسفورد خلال 36 ساعة. وكان الانسجام فوريًا منذ حصة التعارف.",
   "Helena Radford": "هيلينا رادفورد",
   "Mother of IB Diploma Candidate • Westminster School": "والدة طالب دبلوم IB • مدرسة وستمنستر",
   "Placement Chemistry Guarantee": "ضمان الانسجام في الترشيح",

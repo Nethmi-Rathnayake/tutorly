@@ -18,8 +18,8 @@ export default async function TutorRegistrationPage() {
   const t = await getT();
   const r = t.deep(registrationIntro);
   return (
-    <div className="mx-auto max-w-7xl px-4 pb-24 pt-8 sm:px-6 lg:px-8 lg:pt-12">
-      <header className="relative overflow-hidden rounded-[2rem] bg-linear-to-br from-brand-100 via-lavender to-violet-100 p-7 ring-1 ring-brand-100 sm:p-10">
+    <div className="mx-auto max-w-[90rem] px-4 pb-16 pt-8 sm:px-8 lg:px-10 lg:pt-12">
+      <header className="relative overflow-hidden rounded-[2rem] bg-linear-to-br from-brand-100 via-lavender to-brand-100 p-7 ring-1 ring-brand-100 sm:p-10">
         <div aria-hidden className="pointer-events-none absolute -end-20 -top-20 size-72 rounded-full bg-white/50 blur-3xl" />
         <div className="relative flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
           <div className="max-w-2xl">
@@ -38,7 +38,7 @@ export default async function TutorRegistrationPage() {
             {r.stats.map((s, i) => (
               <div key={s.label} className="flex flex-col-reverse px-5">
                 <dt className="text-[10px] font-bold uppercase tracking-[0.14em] text-muted">{s.label}</dt>
-                <dd className={`text-3xl font-extrabold sm:text-4xl ${i === 0 ? "text-brand-700" : "text-violet-brand"}`}>{s.value}</dd>
+                <dd className={`whitespace-nowrap text-2xl font-extrabold min-[400px]:text-3xl sm:text-4xl ${i === 0 ? "text-brand-700" : "text-violet-brand"}`}>{s.value}</dd>
               </div>
             ))}
           </dl>

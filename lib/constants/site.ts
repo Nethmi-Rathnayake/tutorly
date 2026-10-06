@@ -3,14 +3,13 @@
  * Replace these values with the approved business information.
  */
 export const siteConfig = {
-  name: "TutorFlow",
+  name: "Tutorly",
   description:
     "A modern tutoring ecosystem connecting motivated students and discerning parents with qualified, verified educators across diverse international curriculums and academic tiers.",
   contact: {
     centerName: "Academic Center",
     address: "Level 14, Al Saqr Business Tower, DIFC, Dubai, UAE",
-    phone: "+971 4 000 0000",
-    email: "admissions@tutorflow.ae",
+    email: "Tutorlyuae@gmail.com",
   },
   sessionTimings: [
     { days: "Monday – Friday", hours: "8:00 AM – 10:00 PM GST" },

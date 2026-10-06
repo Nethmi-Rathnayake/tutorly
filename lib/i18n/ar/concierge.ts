@@ -67,8 +67,8 @@ export const concierge: Dictionary = {
   // Testimonial
   "Parent testimonial": "شهادة ولي أمر",
   "{name}, {context}": "{name}، {context}",
-  "TutorFlow’s concierge matched our son for IB Higher Level Physics within 24 hours. Not having to browse hundreds of unvetted profiles was an absolute revelation. The chemistry was instantaneous.":
-    "رشّحت خدمة TutorFlow الشخصية معلمًا لابننا في فيزياء IB للمستوى العالي خلال 24 ساعة. كان الاستغناء عن تصفح مئات الملفات غير الموثّقة تجربة مذهلة، والانسجام كان فوريًا.",
+  "Tutorly’s concierge matched our son for IB Higher Level Physics within 24 hours. Not having to browse hundreds of unvetted profiles was an absolute revelation. The chemistry was instantaneous.":
+    "رشّحت خدمة Tutorly الشخصية معلمًا لابننا في فيزياء IB للمستوى العالي خلال 24 ساعة. كان الاستغناء عن تصفح مئات الملفات غير الموثّقة تجربة مذهلة، والانسجام كان فوريًا.",
   "Lady Caroline M.": "السيدة كارولين م.",
   "Parent of Year 12 Student, London": "ولية أمر طالب في Year 12، لندن",
 };

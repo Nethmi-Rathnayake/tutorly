@@ -2,23 +2,18 @@ import type { Metadata } from "next";
 import { Link } from "@/components/ui/link";
 import {
   ArrowRight,
-  BadgeCheck,
-  BookOpenCheck,
   Clock3,
   ExternalLink,
   Mail,
   MapPin,
-  Phone,
-  ScanSearch,
-  Award,
   Accessibility,
 } from "lucide-react";
 import { ContactForm } from "@/components/contact/contact-form";
+import { AccentTitle } from "@/components/ui/accent-title";
 import { Reveal } from "@/components/ui/reveal";
 import {
   contactCardNotes,
   contactHero as hero,
-  liaison as liaisonCard,
   mapCard as map,
   pathways,
   pathwaysIntro as intro,
@@ -36,11 +31,11 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-const telHref = `tel:${siteConfig.contact.phone.replace(/[^\d+]/g, "")}`;
 // The maps link always searches the English address.
 const mapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(siteConfig.contact.address)}`;
+// Keyless embedded map of the same address.
+const embedHref = `https://www.google.com/maps?q=${encodeURIComponent(siteConfig.contact.address)}&output=embed`;
 
-const pathwayIcons = [ScanSearch, Award, BookOpenCheck];
 
 export default async function ContactPage() {
   const t = await getT();
@@ -48,12 +43,10 @@ export default async function ContactPage() {
   const notes = t.deep(contactCardNotes);
   const contactHero = t.deep(hero);
   const mapCard = t.deep(map);
-  const liaison = t.deep(liaisonCard);
   const pathwaysIntro = t.deep(intro);
   const weekdayHours = sessionTimings[0];
   const contactCards = [
     { label: t("Email Inquiries"), value: contact.email, href: `mailto:${contact.email}`, note: notes.email, icon: Mail },
-    { label: t("Direct Advisory Line"), value: contact.phone, href: telHref, note: notes.phone, icon: Phone },
     { label: t("Headquarters"), value: contact.centerName, note: contact.address, icon: MapPin },
     {
       label: t("Advisory Hours"),
@@ -64,90 +57,70 @@ export default async function ContactPage() {
   ];
 
   return (
-    <div className="space-y-24 pb-24">
+    <div className="space-y-14 pb-16">
       <section className="relative overflow-x-clip">
         <div
           aria-hidden
-          className="pointer-events-none absolute -end-40 top-40 size-[560px] rounded-full bg-violet-200/30 blur-3xl"
+          className="pointer-events-none absolute -end-40 top-40 size-[560px] rounded-full bg-brand-200/30 blur-3xl"
         />
         {/* Mobile order: intro → form → contact details. Desktop: intro and details on the left, form on the right. */}
-        <div className="relative mx-auto grid max-w-7xl gap-10 px-4 pt-12 sm:px-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:grid-rows-[auto_1fr] lg:gap-x-12 lg:gap-y-0 lg:px-8 lg:pt-16">
-          <div className="lg:col-start-1 lg:row-start-1">
-            <span className="inline-flex items-center gap-2 rounded-full bg-brand-100/70 px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-brand-700">
-              <span aria-hidden className="size-1.5 rounded-full bg-brand-600" />
-              {contactHero.eyebrow}
-            </span>
-            <h1 className="mt-6 text-5xl font-extrabold tracking-tight text-ink sm:text-6xl">
+        <div className="relative mx-auto grid max-w-[90rem] gap-10 px-4 pt-12 sm:px-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:grid-rows-[auto_1fr] lg:gap-x-12 lg:gap-y-0 lg:px-10 lg:pt-12">
+          <div className="lg:col-start-1 lg:row-start-1 font-[family-name:var(--font-inter),var(--font-arabic)]">
+            <p className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-600">
+            <span aria-hidden className="h-px w-8 shrink-0 bg-brand-500" />
+            {contactHero.eyebrow}
+          </p>
+            <h1 className="mt-5 text-4xl font-bold leading-[1.1] tracking-tight text-ink sm:text-5xl lg:text-[3.4rem]">
               {contactHero.titleLead}{" "}
-              <span className="bg-linear-to-r from-brand-700 to-violet-brand bg-clip-text text-transparent">
+              <span className="text-brand-600">
                 {contactHero.titleAccent}
               </span>
             </h1>
             <p className="mt-5 max-w-md text-base leading-relaxed text-muted">{contactHero.description}</p>
           </div>
 
-          <div className="lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:pt-2">
+          <div className="lg:col-start-2 lg:row-span-2 lg:row-start-1 [&>div]:h-full">
             <ContactForm />
           </div>
 
-          <div className="lg:col-start-1 lg:row-start-2 lg:pt-8">
+          <div className="flex flex-col lg:col-start-1 lg:row-start-2 lg:pt-8">
             <ul className="grid gap-3 sm:grid-cols-2">
-              {contactCards.map((c) => {
-                const Icon = c.icon;
-                return (
-                  <li key={c.label} className="flex flex-col rounded-2xl bg-white p-4 ring-1 ring-brand-100/80">
-                    <div className="flex items-start gap-3">
-                      <span className="grid size-10 shrink-0 place-items-center rounded-full bg-brand-100/80 text-brand-700">
-                        <Icon aria-hidden className="size-4" />
-                      </span>
-                      <div className="min-w-0">
-                        <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-muted">{c.label}</p>
-                        {c.href ? (
-                          <a
-                            href={c.href}
-                            className="mt-0.5 block text-[13px] font-semibold text-ink [overflow-wrap:anywhere] hover:text-brand-700"
-                          >
-                            {c.value}
-                          </a>
-                        ) : (
-                          <p className="mt-0.5 text-[13px] font-semibold text-ink">{c.value}</p>
-                        )}
-                      </div>
-                    </div>
-                    <p className="mt-3 text-[11px] leading-relaxed text-muted">{c.note}</p>
-                  </li>
-                );
-              })}
+              {contactCards.map((c) => (
+                <li
+                  key={c.label}
+                  className="group flex flex-col rounded-2xl bg-white p-5 ring-1 ring-brand-200 transition-colors duration-300 hover:bg-[#e6c97c] hover:ring-brand-500 sm:last:odd:col-span-2"
+                >
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-brand-600 transition-colors group-hover:text-brand-900">
+                    {c.label}
+                  </p>
+                  {c.href ? (
+                    <a href={c.href} className="-my-1.5 mt-1.5 block py-1.5 text-sm font-bold text-ink [overflow-wrap:anywhere] hover:text-brand-700">
+                      {c.value}
+                    </a>
+                  ) : (
+                    <p className="mt-1.5 text-sm font-bold text-ink">{c.value}</p>
+                  )}
+                  <p className="mt-2 text-xs leading-relaxed text-muted transition-colors group-hover:text-brand-900/80">{c.note}</p>
+                </li>
+              ))}
             </ul>
 
-            <div className="mt-3 overflow-hidden rounded-2xl bg-white ring-1 ring-brand-100/80">
-              <div className="relative h-40 bg-lavender">
-                {/* Decorative map; the real location opens in the user's maps app. */}
-                <svg aria-hidden viewBox="0 0 400 160" preserveAspectRatio="none" className="absolute inset-0 size-full">
-                  <g fill="none" stroke="var(--color-brand-200)" strokeWidth="1">
-                    {Array.from({ length: 9 }).map((_, i) => (
-                      <line key={`v${i}`} x1={i * 50} y1="0" x2={i * 50} y2="160" />
-                    ))}
-                    {Array.from({ length: 4 }).map((_, i) => (
-                      <line key={`h${i}`} x1="0" y1={i * 50 + 5} x2="400" y2={i * 50 + 5} />
-                    ))}
-                  </g>
-                  <path d="M0 40 C120 20 260 30 400 8" fill="none" stroke="var(--color-brand-300)" strokeWidth="3" opacity="0.7" />
-                  <path d="M110 0 C150 60 170 110 230 160" fill="none" stroke="var(--color-brand-300)" strokeWidth="2.5" opacity="0.6" />
-                  <path d="M0 130 C140 120 300 150 400 110" fill="none" stroke="var(--color-brand-200)" strokeWidth="6" opacity="0.8" />
-                </svg>
-                <span className="absolute start-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1 text-[10px] font-medium text-ink shadow-sm">
-                  <span aria-hidden className="size-1.5 rounded-full bg-brand-600" />
+            <div className="mt-3 flex flex-1 flex-col overflow-hidden rounded-2xl bg-white ring-1 ring-brand-200">
+              <div className="relative min-h-72 flex-1 bg-brand-50">
+                <iframe
+                  title={t("Map showing {name}", { name: contact.centerName })}
+                  src={embedHref}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                  className="absolute inset-0 size-full border-0"
+                />
+                <span className="pointer-events-none absolute start-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1 text-[10px] font-medium text-ink shadow-sm">
+                  <span aria-hidden className="size-1.5 rounded-full bg-brand-500" />
                   {contact.centerName} • {mapCard.label}
                 </span>
-                <span
-                  aria-hidden
-                  className="absolute left-1/2 top-1/2 grid size-11 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-brand-600 text-white shadow-[0_0_0_8px_rgba(100,87,230,0.18)]"
-                >
-                  <MapPin className="size-5" />
-                </span>
               </div>
-              <div className="flex items-center justify-between gap-3 px-4 py-3 text-[11px]">
+              <div className="flex items-center justify-between gap-3 border-t border-brand-200 px-4 py-3 text-xs">
                 <span className="flex items-center gap-1.5 text-muted">
                   <Accessibility aria-hidden className="size-3.5" />
                   {mapCard.transit}
@@ -164,64 +137,48 @@ export default async function ContactPage() {
                 </a>
               </div>
             </div>
-
-            <div className="mt-3 flex items-center justify-between gap-4 rounded-2xl bg-lavender px-4 py-3.5 ring-1 ring-brand-100">
-              <div className="flex items-center gap-3">
-                <span className="relative grid size-11 shrink-0 place-items-center rounded-full bg-linear-to-br from-brand-700 to-violet-brand text-sm font-bold text-white">
-                  {liaison.initials}
-                  <span aria-hidden className="absolute -bottom-0.5 -end-0.5 size-3.5 rounded-full bg-emerald-500 ring-2 ring-lavender" />
-                </span>
-                <div>
-                  <p className="flex items-center gap-1 text-sm font-semibold text-ink">
-                    {liaison.title}
-                    <BadgeCheck aria-hidden className="size-3.5 text-brand-600" />
-                  </p>
-                  <p className="text-[11px] text-muted">{liaison.status}</p>
-                </div>
-              </div>
-              <div className="text-end">
-                <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-muted">{liaison.responseLabel}</p>
-                <p className="text-sm font-bold text-brand-700">{liaison.responseValue}</p>
-              </div>
-            </div>
           </div>
         </div>
       </section>
 
-      <section aria-labelledby="pathways-heading" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
-          <div>
-            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-brand-600">{pathwaysIntro.eyebrow}</p>
-            <h2 id="pathways-heading" className="mt-2 text-2xl font-bold tracking-tight text-ink">
-              {pathwaysIntro.title}
-            </h2>
-          </div>
-          <p className="max-w-sm text-sm leading-relaxed text-muted">{pathwaysIntro.description}</p>
+      <section
+        aria-labelledby="pathways-heading"
+        className="mx-auto max-w-[90rem] px-4 font-[family-name:var(--font-inter),var(--font-arabic)] sm:px-8 lg:px-10"
+      >
+        <div className="mx-auto max-w-2xl text-center">
+          <p className="flex items-center justify-center gap-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-600">
+            <span aria-hidden className="h-px w-8 shrink-0 bg-brand-500" />
+            {pathwaysIntro.eyebrow}
+            <span aria-hidden className="h-px w-8 shrink-0 bg-brand-500" />
+          </p>
+          <h2 id="pathways-heading" className="mt-4 text-3xl font-bold tracking-tight text-ink sm:text-[2.5rem] sm:leading-tight">
+            <AccentTitle text={pathwaysIntro.title} />
+          </h2>
+          <p className="mt-4 text-sm leading-relaxed text-muted sm:text-base">{pathwaysIntro.description}</p>
         </div>
-        <ul className="mt-8 grid gap-5 md:grid-cols-3">
-          {t.deep(pathways).map((p, i) => {
-            const Icon = pathwayIcons[i];
-            return (
-              <li key={p.title}>
-                <Reveal delay={i * 0.07} className="h-full">
-                  <article className="group flex h-full flex-col rounded-3xl bg-white p-6 ring-1 ring-brand-100/80 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_28px_60px_-32px_rgba(79,63,217,0.5)]">
-                    <span className="grid size-11 place-items-center rounded-xl bg-brand-100/80 text-brand-700">
-                      <Icon aria-hidden className="size-5" />
-                    </span>
-                    <h3 className="mt-5 text-base font-bold text-ink">{p.title}</h3>
-                    <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">{p.body}</p>
-                    <Link
-                      href={p.href}
-                      className="mt-6 inline-flex items-center gap-1 text-xs font-semibold text-brand-700 hover:text-brand-900"
-                    >
-                      {p.cta}
-                      <ArrowRight aria-hidden className="rtl:-scale-x-100 size-3.5 transition-transform group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5" />
-                    </Link>
-                  </article>
-                </Reveal>
-              </li>
-            );
-          })}
+        <ul className="mt-12 grid gap-5 md:grid-cols-3">
+          {t.deep(pathways).map((p, i) => (
+            <li key={p.title}>
+              <Reveal delay={i * 0.07} className="h-full">
+                <article className="group flex h-full flex-col rounded-3xl bg-white p-7 ring-1 ring-brand-200 transition-all duration-300 hover:-translate-y-1 hover:bg-[#e6c97c] hover:shadow-[0_24px_50px_-24px_rgba(143,106,29,0.6)] hover:ring-brand-500">
+                  <span aria-hidden className="text-4xl font-bold text-brand-500 transition-colors group-hover:text-brand-900">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="mt-4 text-lg font-bold text-ink">{p.title}</h3>
+                  <p className="mt-2 flex-1 text-sm leading-relaxed text-muted transition-colors group-hover:text-brand-900/85">
+                    {p.body}
+                  </p>
+                  <Link
+                    href={p.href}
+                    className="mt-6 inline-flex items-center gap-1.5 border-t border-brand-200 pt-4 text-sm font-semibold text-brand-700 transition-colors group-hover:border-brand-900/20 group-hover:text-brand-900"
+                  >
+                    {p.cta}
+                    <ArrowRight aria-hidden className="size-4 transition-transform group-hover:translate-x-0.5 rtl:-scale-x-100 rtl:group-hover:-translate-x-0.5" />
+                  </Link>
+                </article>
+              </Reveal>
+            </li>
+          ))}
         </ul>
       </section>
     </div>

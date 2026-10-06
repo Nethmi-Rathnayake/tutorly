@@ -33,20 +33,20 @@ export function Stepper({ current, completed, onSelect }: StepperProps) {
 
   return (
     <nav aria-label={t("Request progress")} className="rounded-3xl bg-white p-3 ring-1 ring-brand-100/80 sm:p-4">
-      <ol ref={listRef} className="flex gap-2 overflow-x-auto pb-1 sm:grid sm:grid-cols-6 sm:overflow-visible sm:pb-0">
+      <ol ref={listRef} className="grid grid-cols-6 gap-1.5 sm:gap-2">
         {requestSteps.map((step, i) => {
           const active = i === current;
           const done = i < current;
           const reachable = i <= completed && !active;
           return (
-            <li key={step.id} className="min-w-[5.5rem] flex-1 sm:min-w-0">
+            <li key={step.id} className="min-w-0">
               <button
                 type="button"
                 disabled={!reachable}
                 onClick={() => onSelect(i)}
                 aria-current={active ? "step" : undefined}
                 className={cn(
-                  "flex w-full flex-col items-center gap-1 rounded-2xl px-2 py-3 text-center transition-colors focus-visible:outline-2 focus-visible:outline-brand-500",
+                  "flex w-full flex-col items-center gap-1 rounded-2xl px-1 py-2.5 text-center transition-colors focus-visible:outline-2 focus-visible:outline-brand-500 sm:px-2 sm:py-3",
                   active ? "bg-brand-100/80" : "bg-lavender/60",
                   reachable ? "hover:bg-brand-50" : "cursor-default",
                 )}
@@ -63,8 +63,8 @@ export function Stepper({ current, completed, onSelect }: StepperProps) {
                 >
                   {done ? <Check aria-hidden className="size-3.5" /> : String(i + 1).padStart(2, "0")}
                 </span>
-                <span className={cn("text-xs font-semibold", active ? "text-brand-800" : "text-ink")}>{t(step.label)}</span>
-                <span className="-mt-1 text-[10px] text-muted">
+                <span className={cn("hidden text-xs font-semibold sm:block", active ? "text-brand-800" : "text-ink")}>{t(step.label)}</span>
+                <span className="sr-only sm:not-sr-only sm:-mt-1 sm:block sm:text-[10px] sm:text-muted">
                   {t(step.sublabel)}
                   {done && <span className="sr-only"> {t("(completed)")}</span>}
                 </span>
@@ -73,6 +73,10 @@ export function Stepper({ current, completed, onSelect }: StepperProps) {
           );
         })}
       </ol>
+      <p className="mt-3 text-center text-sm font-semibold text-ink sm:hidden">
+        {t("Step {n} of {total}", { n: current + 1, total: requestSteps.length })}
+        <span className="text-brand-600"> · {t(requestSteps[current].label)}</span>
+      </p>
       <div
         role="progressbar"
         aria-label={t("Request progress")}

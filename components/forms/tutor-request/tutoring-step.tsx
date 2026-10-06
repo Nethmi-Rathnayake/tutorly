@@ -140,7 +140,7 @@ export function TutoringStep({ part, requestedTutorName }: { part: "subject" | "
             return (
               <label
                 key={m.value}
-                className="group relative flex cursor-pointer flex-col rounded-2xl bg-lavender/70 p-5 ring-1 ring-transparent transition-all hover:bg-lavender has-[:checked]:bg-white has-[:checked]:shadow-[0_24px_50px_-28px_rgba(79,63,217,0.6)] has-[:checked]:ring-brand-300 has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-brand-500"
+                className="group relative flex cursor-pointer flex-col rounded-2xl bg-lavender/70 p-5 ring-1 ring-transparent transition-all hover:bg-lavender has-[:checked]:bg-white has-[:checked]:shadow-[0_24px_50px_-28px_rgba(20,23,29,0.6)] has-[:checked]:ring-brand-300 has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-brand-500"
               >
                 <input type="radio" value={m.value} className="sr-only" {...register("mode")} />
                 <div className="flex items-start justify-between">

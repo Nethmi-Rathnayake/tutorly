@@ -54,7 +54,7 @@ export async function BecomeTutorHero() {
   return (
     <section className="relative overflow-hidden">
       <div aria-hidden className="pointer-events-none absolute -end-40 -top-40 size-[600px] rounded-full bg-brand-200/40 blur-3xl" />
-      <div className="relative mx-auto grid max-w-7xl items-center gap-14 px-4 pb-16 pt-10 sm:px-6 lg:grid-cols-[1.1fr_1fr] lg:px-8 lg:pb-24 lg:pt-16">
+      <div className="relative mx-auto grid max-w-[90rem] items-center gap-14 px-4 pb-16 pt-10 sm:px-6 lg:grid-cols-[1.1fr_1fr] lg:px-6 lg:pb-24 lg:pt-16">
         <Reveal>
           <Pill>{h.eyebrow}</Pill>
           <h1 className="mt-6 text-[2.6rem] font-extrabold leading-[1.05] tracking-tight text-ink sm:text-6xl">
@@ -62,7 +62,7 @@ export async function BecomeTutorHero() {
             <br />
             {h.titleLines[1]}
             <br />
-            <span className="bg-linear-to-r from-brand-700 to-violet-brand bg-clip-text text-transparent">{h.titleAccent}</span>{" "}
+            <span className="bg-linear-to-r from-brand-600 to-brand-500 bg-clip-text text-transparent">{h.titleAccent}</span>{" "}
             {h.titleRest}
           </h1>
           <p className="mt-6 max-w-lg text-base leading-relaxed text-muted sm:text-lg">{h.description}</p>
@@ -88,7 +88,7 @@ export async function BecomeTutorHero() {
         </Reveal>
 
         <Reveal delay={0.12} className="relative mx-auto w-full max-w-md lg:max-w-none">
-          <div className="relative aspect-[4/4.4] overflow-hidden rounded-[2rem] shadow-[0_40px_80px_-40px_rgba(44,37,115,0.6)]">
+          <div className="relative aspect-[4/4.4] overflow-hidden rounded-[2rem] shadow-[0_40px_80px_-40px_rgba(20,23,29,0.6)]">
             <Image src={h.image} alt={h.imageAlt} fill preload sizes="(min-width: 1024px) 40vw, 90vw" className="object-cover" />
           </div>
           <div className="animate-float absolute end-4 top-4 flex items-center gap-3 rounded-2xl bg-white/90 px-4 py-3 shadow-lg ring-1 ring-white backdrop-blur">
@@ -120,7 +120,7 @@ export async function PrivateRoster() {
   const privateRoster = t.deep(roster);
   return (
     <section aria-labelledby="roster-heading" className="bg-lavender/60 py-10">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[90rem] px-4 sm:px-8 lg:px-10">
         <div className="flex flex-col gap-5 rounded-3xl bg-white p-6 ring-1 ring-brand-100/80 sm:p-8 md:flex-row md:items-center md:justify-between">
           <div className="flex items-start gap-4">
             <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-brand-100 text-brand-700">
@@ -149,7 +149,7 @@ export async function EducatorBenefits() {
   const t = await getT();
   const dedicatedTeam = t.deep(team);
   return (
-    <section aria-labelledby="benefits-heading" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section aria-labelledby="benefits-heading" className="mx-auto max-w-[90rem] px-4 sm:px-8 lg:px-10">
       <div className="mx-auto max-w-2xl text-center">
         <Pill>{t("Educator Alliance")}</Pill>
         <h2 id="benefits-heading" className="mt-4 text-3xl font-bold tracking-tight text-ink sm:text-[2.5rem] sm:leading-tight">
@@ -166,7 +166,7 @@ export async function EducatorBenefits() {
           return (
             <li key={b.title}>
               <Reveal delay={(i % 3) * 0.07} className="h-full">
-                <article className="flex h-full flex-col rounded-3xl bg-white p-7 ring-1 ring-brand-100/80 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_28px_60px_-32px_rgba(79,63,217,0.5)]">
+                <article className="flex h-full flex-col rounded-3xl bg-white p-7 ring-1 ring-brand-100/80 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_28px_60px_-32px_rgba(20,23,29,0.5)]">
                   <span className="grid size-11 place-items-center rounded-xl bg-brand-100/80 text-brand-700">
                     <Icon aria-hidden className="size-5" />
                   </span>
@@ -220,8 +220,8 @@ const stageMetaIcons = [Clock, SlidersHorizontal, UserCheck, UsersRound];
 export async function EngagementStages() {
   const t = await getT();
   return (
-    <section id="how-it-works" aria-labelledby="engagement-heading" className="scroll-mt-20 bg-lavender/70 py-16 lg:py-20">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section id="how-it-works" aria-labelledby="engagement-heading" className="scroll-mt-20 bg-lavender/70 py-10 lg:py-14">
+      <div className="mx-auto max-w-[90rem] px-4 sm:px-8 lg:px-10">
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div className="max-w-xl">
             <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-brand-600">{t("The Placement Process")}</p>
@@ -281,7 +281,7 @@ export async function SafetyCommitments() {
   const s = tr.deep(safetyCommitments);
   const t = s.testimonial;
   return (
-    <section aria-labelledby="safety-heading" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section aria-labelledby="safety-heading" className="mx-auto max-w-[90rem] px-4 sm:px-8 lg:px-10">
       <div className="grid gap-10 rounded-[2rem] bg-white p-7 ring-1 ring-brand-100/80 sm:p-10 lg:grid-cols-2 lg:gap-12">
         <Reveal>
           <p className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.14em] text-brand-600">
@@ -340,7 +340,7 @@ export async function CredentialsPreview() {
   const t = await getT();
   const credentialsPreview = t.deep(preview);
   return (
-    <section aria-labelledby="credentials-heading" className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+    <section aria-labelledby="credentials-heading" className="mx-auto max-w-4xl px-4 sm:px-8 lg:px-10">
       <div className="text-center">
         <Pill icon={Lock}>{credentialsPreview.eyebrow}</Pill>
         <h2 id="credentials-heading" className="mt-4 text-3xl font-bold tracking-tight text-ink sm:text-[2.5rem] sm:leading-tight">
@@ -382,9 +382,9 @@ export async function RegisterCta() {
   const t = await getT();
   const registerCta = t.deep(cta);
   return (
-    <section aria-labelledby="register-cta-heading" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section aria-labelledby="register-cta-heading" className="mx-auto max-w-[90rem] px-4 sm:px-8 lg:px-10">
       <Reveal>
-        <div className="relative overflow-hidden rounded-[2rem] bg-night px-6 py-16 text-center shadow-[0_40px_80px_-30px_rgba(28,26,51,0.7)] sm:px-12">
+        <div className="relative overflow-hidden rounded-[2rem] bg-night px-6 py-10 text-center shadow-[0_40px_80px_-30px_rgba(28,26,51,0.7)] sm:px-12">
           <div aria-hidden className="absolute left-1/2 top-0 size-96 -translate-x-1/2 rounded-full bg-brand-600/30 blur-3xl" />
           <div className="relative">
             <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-white/90 ring-1 ring-white/15">

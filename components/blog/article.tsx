@@ -12,7 +12,6 @@ import {
   Landmark,
   ListOrdered,
   Lock,
-  MessageCircle,
   Quote,
   ShieldCheck,
   Tag,
@@ -25,12 +24,11 @@ import { Link } from "@/components/ui/link";
 import { Reveal } from "@/components/ui/reveal";
 import { articlePage } from "@/lib/constants/blog";
 import { blogPosts, type ArticleBlock, type BlogPost } from "@/lib/constants/blog-posts";
-import { requestHref, siteConfig } from "@/lib/constants/site";
+import { requestHref } from "@/lib/constants/site";
 import { getT } from "@/lib/i18n/server";
 import { formatDate } from "@/lib/utils/format-date";
 import { AuthorAvatar, PostCard } from "./sections";
 
-const phoneDigits = siteConfig.contact.phone.replace(/\D/g, "");
 const curriculumIcons: Record<string, LucideIcon> = { british: Landmark, ib: Globe, american: GraduationCap };
 
 const pill =
@@ -67,7 +65,7 @@ export async function ArticleHeader({ post }: { post: BlogPost }) {
           {p.kicker} <span aria-hidden>•</span> {t("{n} min read", { n: post.readMinutes })}
         </span>
         {p.badges?.map((b) => (
-          <span key={b} className={`${pill} bg-violet-100 text-violet-brand`}>
+          <span key={b} className={`${pill} bg-brand-100 text-violet-brand`}>
             <ShieldCheck aria-hidden className="size-3" />
             {b}
           </span>
@@ -107,7 +105,7 @@ export async function ArticleHeroImage({ post }: { post: BlogPost }) {
         <Image src={p.image.src} alt={p.image.alt} fill priority sizes="(min-width: 1024px) 760px, 100vw" className="object-cover" />
       </div>
       {p.heroStats && (
-        <dl className="absolute bottom-0 end-4 flex gap-5 rounded-2xl bg-white/95 px-5 py-3.5 shadow-[0_20px_40px_-20px_rgba(44,37,115,0.5)] ring-1 ring-brand-100 backdrop-blur sm:bottom-5 sm:end-5">
+        <dl className="absolute bottom-0 end-4 flex gap-5 rounded-2xl bg-white/95 px-5 py-3.5 shadow-[0_20px_40px_-20px_rgba(20,23,29,0.5)] ring-1 ring-brand-100 backdrop-blur sm:bottom-5 sm:end-5">
           {p.heroStats.map((s, i) => (
             <div key={s.label} className={i ? "flex flex-col border-s border-brand-100 ps-5" : "flex flex-col"}>
               <dt className="order-2 text-[10px] font-semibold uppercase tracking-[0.1em] text-muted">{s.label}</dt>
@@ -213,7 +211,7 @@ function Block({ block }: { block: ArticleBlock }) {
               ))}
             </ul>
           </div>
-          <div className="rounded-3xl bg-white p-5 shadow-[0_24px_50px_-36px_rgba(67,49,190,0.7)] ring-2 ring-brand-200">
+          <div className="rounded-3xl bg-white p-5 shadow-[0_24px_50px_-36px_rgba(20,23,29,0.7)] ring-2 ring-brand-200">
             <h3 className="flex items-center gap-2 text-sm font-bold text-brand-700">
               <CircleCheck aria-hidden className="size-4" />
               {block.ours.title}
@@ -305,16 +303,6 @@ export async function ArticleSidebar({ post }: { post: BlogPost }) {
         <ButtonLink href={requestHref} size="sm" className="mt-5 w-full">
           {a.placement.primary}
         </ButtonLink>
-        <a
-          href={`https://wa.me/${phoneDigits}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-2 inline-flex h-9 w-full items-center justify-center gap-2 rounded-full bg-white text-xs font-semibold text-ink ring-1 ring-brand-100 transition hover:ring-brand-300"
-        >
-          <MessageCircle aria-hidden className="size-3.5 text-emerald-600" />
-          {a.placement.whatsapp}
-          <span className="sr-only"> {t("(opens WhatsApp)")}</span>
-        </a>
         <ul className="mt-4 flex flex-wrap justify-between gap-2 text-[10px] text-muted">
           <li className="inline-flex items-center gap-1">
             <Clock aria-hidden className="size-3" />
@@ -349,7 +337,7 @@ export async function ArticleCta() {
   const t = await getT();
   const c = t.deep(articlePage.cta);
   return (
-    <Reveal className="relative mt-16 overflow-hidden rounded-[2rem] bg-linear-to-br from-brand-700 via-brand-600 to-violet-brand p-7 text-white shadow-[0_40px_80px_-40px_rgba(67,49,190,0.8)] sm:p-10">
+    <Reveal className="relative mt-16 overflow-hidden rounded-[2rem] bg-linear-to-br from-brand-800 via-brand-700 to-brand-900 p-7 text-white shadow-[0_40px_80px_-40px_rgba(20,23,29,0.8)] sm:p-10">
       <div aria-hidden className="pointer-events-none absolute -end-16 -top-20 size-64 rounded-full bg-white/10 blur-2xl" />
       <span className={`${pill} relative bg-white/15 text-white ring-1 ring-white/25`}>{c.eyebrow}</span>
       <h2 className="relative mt-4 max-w-2xl text-2xl font-extrabold leading-tight tracking-tight sm:text-3xl">{c.title}</h2>
@@ -402,7 +390,7 @@ export async function MoreInsights({ post }: { post: BlogPost }) {
   const t = await getT();
   const others = blogPosts.filter((p) => p.slug !== post.slug).slice(0, 3);
   return (
-    <section aria-labelledby="more-insights-heading" className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <section aria-labelledby="more-insights-heading" className="mx-auto max-w-6xl px-4 sm:px-8 lg:px-10">
       <h2 id="more-insights-heading" className="text-2xl font-bold tracking-tight text-ink">
         {t(articlePage.more)}
       </h2>

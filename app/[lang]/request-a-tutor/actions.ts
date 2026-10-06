@@ -22,7 +22,8 @@ export async function submitTutorRequest(input: unknown): Promise<SubmitTutorReq
   try {
     const { reference } = await createParentRequirement(parsed.data);
     return { ok: true, reference };
-  } catch {
+  } catch (error) {
+    console.error("[form submit] failed:", error);
     return { ok: false, message: "We couldn't submit your request right now. Please try again in a moment." };
   }
 }

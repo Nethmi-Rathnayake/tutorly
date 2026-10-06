@@ -23,11 +23,11 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function ConciergeMatchingPage() {
   const t = await getT();
   return (
-    <div className="space-y-20 pb-24 lg:space-y-28">
+    <div className="space-y-12 pb-16 lg:space-y-16">
       <ConciergeHero />
       <PlacementSteps />
 
-      <section id="intake" aria-labelledby="intake-heading" className="scroll-mt-20 px-4 sm:px-6 lg:px-8">
+      <section id="intake" aria-labelledby="intake-heading" className="scroll-mt-20 px-4 sm:px-8 lg:px-10">
         <IntakeHeading />
         <div className="mx-auto mt-8 flex max-w-xl flex-col items-center gap-3 text-center">
           <ButtonLink href={requestHref} size="lg" arrow>

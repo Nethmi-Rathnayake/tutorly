@@ -13,7 +13,7 @@ export const faqHero = {
   titleLead: "Frequently Asked",
   titleAccent: "Questions",
   description:
-    "Everything you need to know about TutorFlow’s private administrative matching model, educator intake standards, and online or in-person lesson delivery.",
+    "Everything you need to know about Tutorly’s private administrative matching model, educator intake standards, and online or in-person lesson delivery.",
   searchPlaceholder: "Search questions or keywords (e.g. matching timeline, exam boards, in-person)",
 };
 
@@ -90,7 +90,7 @@ export const faqSections: FaqSection[] = [
       {
         id: "how-to-request",
         tag: "Step 01",
-        question: "How do I request a tutor through TutorFlow?",
+        question: "How do I request a tutor through Tutorly?",
         answer: [
           "Requesting an educator does not involve browsing pages of profiles. Instead, parents complete our confidential **6-Step Parent Requirement Form**. Our placement directors use these exact details to manually select a qualified educator from our vetted fellowship.",
         ],
@@ -105,7 +105,7 @@ export const faqSections: FaqSection[] = [
         tag: "Model",
         question: "Do I choose a tutor directly from a public directory?",
         answer: [
-          "No. TutorFlow deliberately has **no public tutor directory**. Tutor profiles are never listed for browsing; instead our directors compare your requirement against the educators in our private fellowship and recommend the best fit.",
+          "No. Tutorly deliberately has **no public tutor directory**. Tutor profiles are never listed for browsing; instead our directors compare your requirement against the educators in our private fellowship and recommend the best fit.",
           "If you already know a tutor you would like to work with, you can mention them in your request and our team will check their availability.",
         ],
         topics: ["parents", "requests"],

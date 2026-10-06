@@ -8,6 +8,7 @@
 export const levelsImages = {
   hero: "/images/hero-main.jpg",
   earlyYears: "/images/inspiring.jpg",
+  cta: "/images/levels-cta.jpg",
 };
 
 export const levelsHero = {

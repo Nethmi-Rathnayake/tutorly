@@ -5,7 +5,7 @@
  */
 
 export const aboutImages = {
-  hero: "/images/concierge-hero.jpg",
+  hero: "/images/about-hero.jpg",
   whoWeAre: "/images/next-generation.jpg",
 };
 

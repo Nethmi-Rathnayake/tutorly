@@ -72,4 +72,5 @@ export const contact: Dictionary = {
   "Grace Kim": "غريس كيم",
   "Ethan Brooks": "إيثان بروكس",
   "Leila Haddad": "ليلى حداد",
+  "Map showing {name}": "خريطة توضح موقع {name}",
 };

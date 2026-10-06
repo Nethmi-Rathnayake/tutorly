@@ -20,6 +20,29 @@ export const home: Dictionary = {
     "معلم استثنائي أعاد لابني ثقته في التفاضل والتكامل خلال 4 أسابيع فقط.",
   "Sarah M. • IGCSE Parent": "سارة م. • ولية أمر طالب IGCSE",
 
+  // Hero (dark layout)
+  "Find the Perfect Teacher for": "اعثر على المعلم المثالي",
+  "Your Child's Success": "لنجاح طفلك",
+  "Fill out our simple form and get matched with a hand picked expert tutor from our vast network.":
+    "املأ النموذج البسيط لدينا لنرشّح لك معلمًا خبيرًا مختارًا بعناية من شبكتنا الواسعة.",
+  "Trusted by 500+ families in the UAE": "موثوق من أكثر من 500 عائلة في الإمارات",
+
+  // Curriculum selector descriptions
+  "Specialist IGCSE and A-Level tutors who know the Edexcel, Cambridge and AQA specifications and teach to the mark scheme, from past-paper technique to examiner-report insights.":
+    "معلمون متخصصون في IGCSE وA-Level يعرفون مواصفات Edexcel وCambridge وAQA ويدرّسون وفق سلّم التصحيح، من أسلوب حل الأوراق السابقة إلى رؤى تقارير الممتحنين.",
+  "Tutors experienced across the PYP, MYP and Diploma Programme, supporting Internal Assessments, Extended Essays and Theory of Knowledge alongside the core subject content.":
+    "معلمون من ذوي الخبرة في برامج PYP وMYP وبرنامج الدبلوم، يدعمون التقييمات الداخلية والمقالات الموسّعة ونظرية المعرفة إلى جانب محتوى المواد الأساسية.",
+  "Guidance for US High School coursework, SAT and ACT preparation and Advanced Placement exams, with tutors who understand GPA targets and college applications.":
+    "إرشاد في مقررات المرحلة الثانوية الأمريكية والتحضير لاختبارَي SAT وACT واختبارات المستوى المتقدم (AP)، مع معلمين يفهمون أهداف المعدل التراكمي وطلبات الالتحاق بالجامعات.",
+  "CBSE and ICSE specialists who follow the board syllabus and NCERT approach, with focused revision plans for the board examinations.":
+    "متخصصون في CBSE وICSE يتّبعون منهج المجلس ونهج NCERT، مع خطط مراجعة مركّزة لامتحانات المجلس.",
+  "Tutors familiar with the UAE Ministry of Education curriculum, including Arabic, Islamic Studies and Social Studies, aligned to the national assessment framework.":
+    "معلمون على دراية بمنهج وزارة التربية والتعليم في الإمارات، بما في ذلك اللغة العربية والتربية الإسلامية والدراسات الاجتماعية، وفق إطار التقييم الوطني.",
+  "Support for the Canadian provincial curricula, building strong foundations in core subjects and the skills required for school assessments and university pathways.":
+    "دعم للمناهج الإقليمية الكندية، لبناء أسس قوية في المواد الأساسية والمهارات اللازمة للتقييمات المدرسية والمسارات الجامعية.",
+  "Studying another syllabus? Tell us about it and we will match you with a tutor who has taught that curriculum and its examination requirements.":
+    "تدرس منهجًا آخر؟ أخبرنا عنه وسنرشّح لك معلمًا درّس هذا المنهج ويعرف متطلبات امتحاناته.",
+
   // Journey cards
   "Choose your journey": "اختر رحلتك",
   "For Parents & Students": "لأولياء الأمور والطلاب",
@@ -33,7 +56,8 @@ export const home: Dictionary = {
 
   // Level stages
   "Targeted Pedagogy": "منهجية تعليمية موجّهة",
-  "Every Stage of Student Growth": "لكل مرحلة من مراحل نمو الطالب",
+  "Every Stage of": "لكل مرحلة من مراحل",
+  "Student Growth": "نمو الطالب",
   "Specialized subject methodologies tailored from foundational motor-cognitive skills to rigorous graduate dissertations.":
     "منهجيات متخصصة في كل مادة، من المهارات الحركية والمعرفية الأساسية وصولًا إلى رسائل الدراسات العليا.",
   "Early Years": "الطفولة المبكرة",
@@ -60,7 +84,7 @@ export const home: Dictionary = {
 
   // Subject grid
   "Curated Disciplines": "تخصصات منتقاة",
-  "Find Tutors by Subject": "ابحث عن معلمين حسب المادة",
+  "Find Tutors by": "ابحث عن معلمين حسب",
   "Browse All 60+ Sub-Topics": "تصفّح أكثر من 60 موضوعًا فرعيًا",
   "Popular topics": "مواضيع شائعة",
   "for {subject}": "لمادة {subject}",
@@ -140,7 +164,7 @@ export const home: Dictionary = {
   "Premium Learning Experience": "تجربة تعليمية متميزة",
   "Education That": "تعليمٌ",
   "Feels Inspiring.": "يُلهم حقًا.",
-  "Clean soft purple aesthetics combined with modern layouts, uncompromising teacher vetting, and a high-focus student-centered experience.":
+  "Clean, elegant design combined with modern layouts, uncompromising teacher vetting, and a high-focus student-centered experience.":
     "تصميم أنيق هادئ وتجربة عصرية، مع تدقيق صارم في اختيار المعلمين وتجربة تتمحور حول الطالب بتركيز عالٍ.",
   "Join {name} Now": "انضم إلى {name} الآن",
   "Session Timings": "مواعيد الحصص",
@@ -150,8 +174,8 @@ export const home: Dictionary = {
   "What Parents & Students Say": "ماذا يقول أولياء الأمور والطلاب",
   "Read All 450+ Verified Reviews": "اقرأ أكثر من 450 تقييمًا موثّقًا",
   "Rated 5 out of 5": "تقييم 5 من 5",
-  "We were struggling with our daughter's IB Chemistry SL marks. TutorFlow matched us with Dr. Elena, and within two terms she went from a 4 to a solid 7. Incredible dedication!":
-    "كنا نعاني من درجات ابنتنا في كيمياء IB SL. رشّحت لنا TutorFlow الدكتورة إيلينا، وخلال فصلين دراسيين ارتفعت درجتها من 4 إلى 7 بجدارة. تفانٍ مذهل!",
+  "We were struggling with our daughter's IB Chemistry SL marks. Tutorly matched us with Dr. Elena, and within two terms she went from a 4 to a solid 7. Incredible dedication!":
+    "كنا نعاني من درجات ابنتنا في كيمياء IB SL. رشّحت لنا Tutorly الدكتورة إيلينا، وخلال فصلين دراسيين ارتفعت درجتها من 4 إلى 7 بجدارة. تفانٍ مذهل!",
   "Nadia Mansour": "نادية منصور",
   "Mother of Year 12 IB Student": "والدة طالبة IB في Year 12",
   "The platform's verification gives complete peace of mind. Both in-person and digital sessions are thoroughly documented with progress logs after every class.":

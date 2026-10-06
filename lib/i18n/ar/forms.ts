@@ -326,8 +326,8 @@ export const forms: Dictionary = {
   "Confidentiality Guarantee": "ضمان السرية",
   "Your email and telephone are never sold, auctioned, or broadcast to open tutor marketplaces.":
     "لا يُباع بريدك الإلكتروني أو رقم هاتفك أو يُعرض في المزادات أو يُنشر في أسواق المعلمين المفتوحة أبدًا.",
-  "Finding someone who genuinely understood Cambridge Further Maths STEP papers was impossible until TutorFlow assigned Dr. Aris. It saved our daughter's Cambridge offer.":
-    "كان العثور على من يفهم حقًا أوراق STEP للرياضيات المتقدمة في كامبريدج مستحيلًا، حتى رشّحت لنا TutorFlow الدكتور آريس. لقد أنقذ عرض القبول لابنتنا في كامبريدج.",
+  "Finding someone who genuinely understood Cambridge Further Maths STEP papers was impossible until Tutorly assigned Dr. Aris. It saved our daughter's Cambridge offer.":
+    "كان العثور على من يفهم حقًا أوراق STEP للرياضيات المتقدمة في كامبريدج مستحيلًا، حتى رشّحت لنا Tutorly الدكتور آريس. لقد أنقذ عرض القبول لابنتنا في كامبريدج.",
   "Lady C. Montgomery": "السيدة ك. مونتغمري",
   "Eton / Cambridge Placement": "إيتون / قبول في كامبريدج",
   "Concierge Intake Portal • Direct Admin Review • 100% Confidential": "بوابة الاستقبال الشخصي • مراجعة إدارية مباشرة • سرية تامة",
@@ -422,8 +422,8 @@ export const forms: Dictionary = {
   "Hand-Curated Student Connection": "تواصل منتقى بعناية مع الطلاب",
   "Direct liaison dispatch to families based on fit.": "تواصل مباشر مع العائلات بناءً على مدى التوافق.",
   "Private Administrator Placement": "ترشيح إداري خاص",
-  "TutorFlow does not sell contact lists or index tutor credentials on public search engines. Your qualifications remain strictly confidential to our academic intake board and are shared only with vetted client families upon tailored arrangement.":
-    "لا تبيع TutorFlow قوائم التواصل ولا تفهرس مؤهلات المعلمين في محركات البحث العامة. تبقى مؤهلاتك سرية تمامًا لدى مجلس الاستقبال الأكاديمي، ولا تُشارك إلا مع العائلات الموثّقة ضمن ترتيب مخصص.",
+  "Tutorly does not sell contact lists or index tutor credentials on public search engines. Your qualifications remain strictly confidential to our academic intake board and are shared only with vetted client families upon tailored arrangement.":
+    "لا تبيع Tutorly قوائم التواصل ولا تفهرس مؤهلات المعلمين في محركات البحث العامة. تبقى مؤهلاتك سرية تمامًا لدى مجلس الاستقبال الأكاديمي، ولا تُشارك إلا مع العائلات الموثّقة ضمن ترتيب مخصص.",
 
   // Tutor registration: personal step
   "Full Legal Name": "الاسم القانوني الكامل",
@@ -510,8 +510,8 @@ export const forms: Dictionary = {
   // Tutor registration: review & success
   "Experience: {value}": "الخبرة: {value}",
   "Subjects, Levels & Curricula": "المواد والمراحل والمناهج",
-  "I confirm these details are accurate. I consent to TutorFlow verifying my identity, qualifications and background, and to being contacted by the placement team about my application.":
-    "أؤكد صحة هذه البيانات، وأوافق على أن تتحقق TutorFlow من هويتي ومؤهلاتي وسجلي، وأن يتواصل معي فريق الترشيح بشأن طلبي.",
+  "I confirm these details are accurate. I consent to Tutorly verifying my identity, qualifications and background, and to being contacted by the placement team about my application.":
+    "أؤكد صحة هذه البيانات، وأوافق على أن تتحقق Tutorly من هويتي ومؤهلاتي وسجلي، وأن يتواصل معي فريق الترشيح بشأن طلبي.",
   "Registration Received": "تم استلام التسجيل",
   "Registration received": "تم استلام التسجيل",
   "Thank you for applying. Your profile has been submitted to our Academic Placement Board, and we'll contact you by email once it has been reviewed.":

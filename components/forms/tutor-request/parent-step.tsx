@@ -1,12 +1,13 @@
 "use client";
 
-import { BadgeCheck, ChevronDown, IdCard, Mail, MessageSquare, Phone, PhoneCall } from "lucide-react";
+import { BadgeCheck, IdCard, Mail, MessageSquare, Phone, PhoneCall } from "lucide-react";
 import { useFormContext } from "react-hook-form";
 import { ChoiceCard, Field, FieldError, TextInput } from "@/components/forms/fields";
 import { contactChannelOptions, phoneCountryOptions, relationshipOptions } from "@/lib/constants/tutor-request";
 import { useT } from "@/lib/i18n/client";
 import { cn } from "@/lib/utils/cn";
 import type { TutorRequestValues } from "@/lib/validations/tutor-request";
+import { Select } from "@/components/ui/select";
 
 const channelIcons = { whatsapp: MessageSquare, phone: PhoneCall, email: Mail } as const;
 const channelTones = { whatsapp: "text-emerald-600", phone: "text-brand-600", email: "text-violet-brand" } as const;
@@ -36,7 +37,7 @@ export function ParentStep() {
         </Field>
         <Field id="relationship" label={t("Relationship to Student")} required error={errors.relationship?.message}>
           <div className="relative">
-            <select
+            <Select
               id="relationship"
               defaultValue=""
               aria-invalid={!!errors.relationship || undefined}
@@ -52,8 +53,7 @@ export function ParentStep() {
                   {t(o.label)}
                 </option>
               ))}
-            </select>
-            <ChevronDown aria-hidden className="pointer-events-none absolute end-4 top-1/2 size-4 -translate-y-1/2 text-muted" />
+            </Select>
           </div>
         </Field>
 
@@ -89,7 +89,7 @@ export function ParentStep() {
           </label>
           <div className="grid grid-cols-[7.5rem_1fr] gap-2">
             <div className="relative">
-              <select
+              <Select
                 aria-label={t("Country code")}
                 autoComplete="tel-country-code"
                 className={cn(selectClass, "ps-3", errors.phoneCountry ? "ring-rose-300" : "ring-transparent")}
@@ -100,8 +100,7 @@ export function ParentStep() {
                     {o.label}
                   </option>
                 ))}
-              </select>
-              <ChevronDown aria-hidden className="pointer-events-none absolute end-3 top-1/2 size-4 -translate-y-1/2 text-muted" />
+              </Select>
             </div>
             <TextInput
               id="phone"

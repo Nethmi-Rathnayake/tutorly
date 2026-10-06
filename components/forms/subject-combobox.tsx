@@ -139,7 +139,7 @@ export function SubjectCombobox({ id, value, onChange, onBlur, invalid }: Subjec
           id={listId}
           role="listbox"
           aria-label={t("Subjects")}
-          className="absolute inset-x-0 top-full z-30 mt-2 max-h-80 overflow-y-auto rounded-2xl bg-white p-2 shadow-[0_24px_60px_-20px_rgba(44,37,115,0.45)] ring-1 ring-brand-100"
+          className="absolute inset-x-0 top-full z-30 mt-2 max-h-80 overflow-y-auto rounded-2xl bg-white p-2 shadow-[0_24px_60px_-20px_rgba(20,23,29,0.45)] ring-1 ring-brand-100"
         >
           {groups.length === 0 ? (
             <p className="px-3 py-6 text-center text-sm text-muted">

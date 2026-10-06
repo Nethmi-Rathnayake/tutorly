@@ -44,7 +44,7 @@ export function TutorRegistrationWizard() {
     schemas: registrationStepSchemas,
     stepFields: registrationStepFields,
     defaultValues: tutorRegistrationDefaults,
-    draftKey: "tutorflow:tutor-registration-draft-v1",
+    draftKey: "tutorly:tutor-registration-draft-v1",
     // The headshot lives in memory only, so it isn't kept in drafts.
     transientFields: ["consent", "photo"],
     submit: submitTutorRegistration,
@@ -56,7 +56,7 @@ export function TutorRegistrationWizard() {
   useEffect(() => () => void (photoUrl && URL.revokeObjectURL(photoUrl)), [photoUrl]);
 
   const meta = t.deep(registrationSteps[step]);
-  const variants = stepVariants(reduceMotion, t.locale === "ar");
+  const variants = stepVariants(reduceMotion);
   const stageNo = (n: number) => String(n).padStart(2, "0");
 
   return (
@@ -65,7 +65,7 @@ export function TutorRegistrationWizard() {
         <RegistrationStepper current={step} completed={furthest} onSelect={goTo} />
       </div>
 
-      <div className="mt-8 grid grid-cols-1 items-start gap-6 lg:grid-cols-[minmax(0,1fr)_320px]">
+      <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_320px]">
         <div className="min-w-0 space-y-5">
           <DraftNotice notice={notice} onDismiss={dismissNotice} />
 
@@ -148,7 +148,7 @@ export function TutorRegistrationWizard() {
           </form>
         </div>
 
-        <div className="lg:sticky lg:top-24">
+        <div>
           <RegistrationSidebar />
         </div>
       </div>

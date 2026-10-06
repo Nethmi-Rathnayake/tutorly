@@ -115,7 +115,7 @@ export const tutorLifecycle = [
 
 export const privatePlacementNote = {
   title: "Private Administrator Placement",
-  body: "TutorFlow does not sell contact lists or index tutor credentials on public search engines. Your qualifications remain strictly confidential to our academic intake board and are shared only with vetted client families upon tailored arrangement.",
+  body: "Tutorly does not sell contact lists or index tutor credentials on public search engines. Your qualifications remain strictly confidential to our academic intake board and are shared only with vetted client families upon tailored arrangement.",
 };
 
 /* ---------------------------- Become a Tutor page ---------------------------- */
@@ -216,7 +216,7 @@ export const safetyCommitments = {
     credentials: "BA, MSc, PhD (Cantab)",
     image: "/images/tutors/james-whitfield.jpg",
     quote:
-      "TutorFlow completely eliminates the noise of commercial tutoring marketplaces. There are no client bidding wars or public profile metrics to manage. Every student introduction made by the Academic Placement Team is thoughtfully aligned with my research syllabus and schedule.",
+      "Tutorly completely eliminates the noise of commercial tutoring marketplaces. There are no client bidding wars or public profile metrics to manage. Every student introduction made by the Academic Placement Team is thoughtfully aligned with my research syllabus and schedule.",
     tags: ["Cambridge Tripos Examiner", "STEP & MAA Mentor", "Fellow Since 2021"],
   },
 };

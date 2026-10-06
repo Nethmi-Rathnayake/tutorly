@@ -1,28 +1,16 @@
 "use client";
 
-import { Fragment, useId, useState } from "react";
+import { Fragment, useEffect, useId, useState } from "react";
+import { AccentTitle } from "@/components/ui/accent-title";
 import { Link } from "@/components/ui/link";
-import {
-  ArrowRight,
-  ChevronDown,
-  CircleHelp,
-  GraduationCap,
-  Laptop,
-  Route,
-  Search,
-  UsersRound,
-  X,
-  type LucideIcon,
-} from "lucide-react";
+import { ArrowRight, CircleHelp, Minus, Plus, Search, X } from "lucide-react";
 import {
   answerText,
   faqHero,
   faqSections,
-  faqTopics,
   plainText,
   vettingStats,
   type Faq,
-  type FaqTopic,
 } from "@/lib/constants/faq";
 import { requestSteps } from "@/lib/constants/tutor-request";
 import { faq as faqDictionary } from "@/lib/i18n/ar/faq";
@@ -30,15 +18,7 @@ import { useT } from "@/lib/i18n/client";
 import type { Translator } from "@/lib/i18n/translate";
 import { cn } from "@/lib/utils/cn";
 
-const sectionIcons: Record<string, LucideIcon> = {
-  parents: UsersRound,
-  delivery: Laptop,
-  tutors: GraduationCap,
-  curricula: CircleHelp,
-};
-
-const ALL = "all";
-const defaultOpen = ["how-to-request", "tutor-registration"];
+const defaultOpen = ["how-to-request"];
 
 // Search covers the English copy as well as the visitor's language.
 const searchText = (f: Faq, t: Translator) => {
@@ -75,15 +55,15 @@ function Rich({ text }: { text: string }) {
 function RequestBlueprint() {
   const t = useT(faqDictionary);
   return (
-    <div className="rounded-2xl bg-white p-4 ring-1 ring-brand-100">
-      <p className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.14em] text-brand-600">
-        <Route aria-hidden className="size-3.5" />
+    <div className="rounded-2xl bg-white p-4 ring-1 ring-brand-300">
+      <p className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-brand-600">
+        <span aria-hidden className="h-px w-6 shrink-0 bg-brand-500" />
         {t("The {count}-Step Requirement Blueprint", { count: requestSteps.length })}
       </p>
       <ol className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-6">
         {requestSteps.map((s, i) => (
-          <li key={s.id} className="rounded-xl bg-lavender px-3 py-2.5 text-center">
-            <span className="block text-[9px] font-bold uppercase tracking-[0.12em] text-brand-600">
+          <li key={s.id} className="rounded-xl bg-brand-50 px-3 py-3 text-center ring-1 ring-brand-200">
+            <span className="block text-[10px] font-semibold uppercase tracking-[0.12em] text-brand-600">
               {t("Step {n}", { n: String(i + 1).padStart(2, "0") })}
             </span>
             <span className="mt-0.5 block text-xs font-medium text-ink">{t(s.title)}</span>
@@ -99,9 +79,9 @@ function VettingStats() {
   return (
     <dl className="grid gap-3 sm:grid-cols-3">
       {t.deep(vettingStats).map((s, i) => (
-        <div key={s.label} className="flex flex-col rounded-2xl bg-white p-4 ring-1 ring-brand-100">
+        <div key={s.label} className="flex flex-col rounded-2xl bg-white p-4 ring-1 ring-brand-300">
           <dt className="text-xs font-semibold text-ink">{s.label}</dt>
-          <dd className={cn("order-first text-lg font-bold", i === 0 ? "text-brand-700" : i === 1 ? "text-violet-brand" : "text-ink")}>
+          <dd className={cn("order-first text-2xl font-bold", i === 0 ? "text-brand-500" : "text-brand-600")}>
             {s.value}
           </dd>
           <dd className="mt-1 text-[11px] leading-relaxed text-muted">{s.body}</dd>
@@ -119,8 +99,8 @@ function FaqItem({ faq, open, onToggle }: { faq: Faq; open: boolean; onToggle: (
     <div
       id={`faq-${faq.id}`}
       className={cn(
-        "scroll-mt-24 rounded-2xl ring-1 transition-colors",
-        open ? "bg-lavender/60 ring-brand-100" : "bg-white ring-brand-100/80 hover:ring-brand-200",
+        "scroll-mt-24 border-s-4 transition-colors duration-200",
+        open ? "border-brand-500 bg-brand-50" : "border-transparent bg-white hover:bg-brand-50/60",
       )}
     >
       <h3>
@@ -130,21 +110,27 @@ function FaqItem({ faq, open, onToggle }: { faq: Faq; open: boolean; onToggle: (
           aria-expanded={open}
           aria-controls={panelId}
           onClick={onToggle}
-          className="flex w-full items-center gap-3 rounded-2xl px-5 py-4 text-start focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
+          className="group flex w-full items-center gap-4 px-5 py-5 text-start focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
         >
-          <span className="flex flex-1 flex-col items-start gap-1.5 sm:flex-row sm:items-center sm:gap-3">
-            <span className="shrink-0 rounded-full bg-brand-100/80 px-2.5 py-1 text-[9px] font-bold uppercase tracking-[0.1em] text-brand-700">
-              {t(faq.tag)}
-            </span>
-            <span className="text-sm font-semibold text-ink sm:text-[15px]">{t(faq.question)}</span>
+          <span
+            className={cn(
+              "flex-1 text-base font-semibold leading-snug transition-colors sm:text-[17px]",
+              open ? "text-ink" : "text-ink/90 group-hover:text-brand-600",
+            )}
+          >
+            {t(faq.question)}
           </span>
-          <ChevronDown
-            aria-hidden
-            className={cn("size-4 shrink-0 text-muted transition-transform duration-200", open && "rotate-180")}
-          />
+          <span
+            className={cn(
+              "grid size-8 shrink-0 place-items-center rounded-full transition-colors",
+              open ? "bg-night text-gold" : "bg-brand-100 text-brand-700 group-hover:bg-brand-200",
+            )}
+          >
+            {open ? <Minus aria-hidden className="size-4" /> : <Plus aria-hidden className="size-4" />}
+          </span>
         </button>
       </h3>
-      <div id={panelId} role="region" aria-labelledby={buttonId} hidden={!open} className="space-y-4 px-5 pb-5 text-sm leading-relaxed text-muted">
+      <div id={panelId} role="region" aria-labelledby={buttonId} hidden={!open} className="max-w-4xl space-y-4 px-5 pb-7 text-[15px] leading-relaxed text-muted">
         {faq.answer.map((p) => (
           <p key={p}>
             <Rich text={answerText(p, faq, t)} />
@@ -172,56 +158,62 @@ function FaqItem({ faq, open, onToggle }: { faq: Faq; open: boolean; onToggle: (
 export function FaqBrowser({ children }: { children?: React.ReactNode }) {
   const t = useT(faqDictionary);
   const [query, setQuery] = useState("");
-  const [topic, setTopic] = useState<FaqTopic | typeof ALL>(ALL);
   const [open, setOpen] = useState<Set<string>>(() => new Set(defaultOpen));
   const searchId = useId();
+  const [activeSection, setActiveSection] = useState<string | null>(null);
 
-  const visibleFor = (q: string, selected: typeof topic) =>
+  const visibleFor = (q: string) =>
     faqSections
-      .map((s) => ({ ...s, faqs: s.faqs.filter((f) => (selected === ALL || f.topics.includes(selected)) && matches(f, q, t)) }))
+      .map((s) => ({ ...s, faqs: s.faqs.filter((f) => matches(f, q, t)) }))
       .filter((s) => s.faqs.length > 0);
 
-  const sections = visibleFor(query, topic);
+  const sections = visibleFor(query);
   const count = sections.reduce((n, s) => n + s.faqs.length, 0);
+
+  // Highlight the menu entry for the section currently in view.
+  const sectionKey = sections.map((s) => s.id).join(",");
+  useEffect(() => {
+    const els = sectionKey
+      .split(",")
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => Boolean(el));
+    if (els.length === 0 || typeof IntersectionObserver === "undefined") return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.filter((e) => e.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+        if (visible[0]) setActiveSection(visible[0].target.id);
+      },
+      { rootMargin: "-20% 0px -65% 0px" },
+    );
+    els.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, [sectionKey]);
 
   // Searching expands every matching answer so the hit is visible; clearing restores the default.
   const onSearch = (q: string) => {
     setQuery(q);
     setOpen(
-      q.trim() ? new Set(visibleFor(q, topic).flatMap((s) => s.faqs.map((f) => f.id))) : new Set(defaultOpen),
+      q.trim() ? new Set(visibleFor(q).flatMap((s) => s.faqs.map((f) => f.id))) : new Set(defaultOpen),
     );
   };
 
-  const toggle = (id: string) =>
-    setOpen((prev) => {
-      const next = new Set(prev);
-      if (next.has(id)) next.delete(id);
-      else next.add(id);
-      return next;
-    });
+  // One answer open at a time: opening a question closes every other one.
+  const toggle = (id: string) => setOpen((prev) => (prev.has(id) ? new Set<string>() : new Set([id])));
 
-  const reset = () => {
-    setTopic(ALL);
-    onSearch("");
-  };
-
-  const chips: { id: FaqTopic | typeof ALL; label: string }[] = [{ id: ALL, label: "All FAQs" }, ...faqTopics].map((c) => ({
-    id: c.id as FaqTopic | typeof ALL,
-    label: t(c.label),
-  }));
+  const reset = () => onSearch("");
 
   return (
     <>
-      <div className="mx-auto mt-9 max-w-3xl px-4 sm:px-6">
+      <div className="mx-auto mt-10 max-w-4xl px-4 font-[family-name:var(--font-inter),var(--font-arabic)] sm:px-6">
         <form
           role="search"
           onSubmit={(e) => {
             e.preventDefault();
             document.getElementById("faq-results")?.scrollIntoView({ block: "start" });
           }}
-          className="flex items-center gap-2 rounded-full bg-white p-1.5 ps-5 shadow-[0_18px_40px_-24px_rgba(44,37,115,0.45)] ring-1 ring-brand-100 focus-within:ring-2 focus-within:ring-brand-400"
+          className="flex items-center gap-2 rounded-full bg-white p-2 ps-6 shadow-[0_18px_40px_-24px_rgba(143,106,29,0.5)] ring-2 ring-brand-300 transition-shadow focus-within:ring-brand-500"
         >
-          <Search aria-hidden className="size-4 shrink-0 text-brand-600" />
+          <Search aria-hidden className="size-5 shrink-0 text-brand-600" />
           <label htmlFor={searchId} className="sr-only">
             {t("Search frequently asked questions")}
           </label>
@@ -231,37 +223,16 @@ export function FaqBrowser({ children }: { children?: React.ReactNode }) {
             value={query}
             onChange={(e) => onSearch(e.target.value)}
             placeholder={t(faqHero.searchPlaceholder)}
-            className="h-10 min-w-0 flex-1 bg-transparent text-sm text-ink placeholder:text-muted/80 focus:outline-none"
+            className="h-12 min-w-0 flex-1 bg-transparent text-sm text-ink placeholder:text-muted/80 focus:outline-none sm:text-base"
           />
           <button
             type="submit"
-            className="h-10 shrink-0 rounded-full bg-brand-700 px-5 text-xs font-semibold text-white transition-colors hover:bg-brand-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
+            className="h-12 shrink-0 rounded-full bg-linear-to-b from-[#ecd28c] to-[#c9a24e] px-7 text-sm font-semibold text-brand-900 transition-transform hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
           >
             {t("Search")}
           </button>
         </form>
 
-        <div role="group" aria-label={t("Filter by topic")} className="mt-5 flex flex-wrap justify-center gap-2">
-          {chips.map((c) => {
-            const active = topic === c.id;
-            return (
-              <button
-                key={c.id}
-                type="button"
-                aria-pressed={active}
-                onClick={() => setTopic(c.id)}
-                className={cn(
-                  "rounded-full px-4 py-2 text-xs font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500",
-                  active
-                    ? "bg-brand-700 font-semibold text-white shadow-[0_8px_18px_-10px_rgba(67,49,190,0.9)]"
-                    : "bg-white/80 text-ink ring-1 ring-brand-100 hover:ring-brand-300",
-                )}
-              >
-                {c.label}
-              </button>
-            );
-          })}
-        </div>
         <p aria-live="polite" className="sr-only">
           {t(count === 1 ? "{count} question shown" : "{count} questions shown", { count })}
         </p>
@@ -269,12 +240,54 @@ export function FaqBrowser({ children }: { children?: React.ReactNode }) {
 
       {children}
 
-      <div id="faq-results" className="mx-auto mt-20 max-w-5xl scroll-mt-24 space-y-16 px-4 sm:px-6 lg:px-8">
+      <div
+        id="faq-results"
+        className="mx-auto mt-12 max-w-[90rem] scroll-mt-24 px-4 font-[family-name:var(--font-inter),var(--font-arabic)] sm:px-8 lg:grid lg:grid-cols-[240px_minmax(0,1fr)] lg:items-start lg:gap-14 lg:px-10"
+      >
+        {sections.length > 0 && (
+          <nav aria-label={t("Jump to a section")} className="mb-8 lg:sticky lg:top-24 lg:mb-0">
+            <div className="rounded-3xl bg-brand-50 p-3 ring-1 ring-brand-300">
+              <p className="flex items-center gap-3 px-3 pb-3 pt-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-600">
+                <span aria-hidden className="h-px w-8 shrink-0 bg-brand-500" />
+                {t("Menu")}
+              </p>
+              <ul className="space-y-1.5">
+                {sections.map((s, i) => {
+                  const active = (activeSection ?? sections[0]?.id) === s.id;
+                  return (
+                    <li key={s.id}>
+                      <a
+                        href={`#${s.id}`}
+                        aria-current={active ? "true" : undefined}
+                        className={cn(
+                          "flex items-center gap-3 rounded-2xl px-3 py-3 text-sm font-semibold leading-snug transition-colors",
+                          active
+                            ? "bg-white text-ink ring-1 ring-brand-500 shadow-sm"
+                            : "text-ink/80 hover:bg-white/70 hover:text-ink",
+                        )}
+                      >
+                        <span
+                          className={cn(
+                            "grid size-7 shrink-0 place-items-center rounded-full text-[11px] font-bold",
+                            active ? "bg-night text-gold" : "bg-brand-100 text-brand-700",
+                          )}
+                        >
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        <span className="min-w-0 flex-1">{t(s.title)}</span>
+                        <span className="shrink-0 text-xs font-medium text-muted">{s.faqs.length}</span>
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          </nav>
+        )}
+        <div className="space-y-10 lg:col-start-2">
         {sections.length === 0 && (
-          <div className="rounded-3xl bg-white px-6 py-12 text-center ring-1 ring-brand-100">
-            <span className="mx-auto grid size-12 place-items-center rounded-2xl bg-brand-100 text-brand-700">
-              <CircleHelp aria-hidden className="size-5" />
-            </span>
+          <div className="rounded-3xl bg-white px-6 py-12 text-center ring-1 ring-brand-300">
+            <CircleHelp aria-hidden className="mx-auto size-8 text-brand-500" />
             <h2 className="mt-4 text-lg font-bold text-ink">{t("No matching questions")}</h2>
             <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-muted">
               {t("Try a different keyword, or ask our advisory team directly and we'll get back to you promptly.")}
@@ -282,7 +295,7 @@ export function FaqBrowser({ children }: { children?: React.ReactNode }) {
             <div className="mt-6 flex flex-wrap justify-center gap-3">
               <Link
                 href="/contact"
-                className="inline-flex h-11 items-center gap-2 rounded-full bg-brand-700 px-5 text-sm font-semibold text-white hover:bg-brand-800"
+                className="inline-flex h-11 items-center gap-2 rounded-full bg-night px-5 text-sm font-semibold text-gold hover:bg-brand-800"
               >
                 {t("Ask our advisors")}
                 <ArrowRight aria-hidden className="rtl:-scale-x-100 size-4" />
@@ -290,7 +303,7 @@ export function FaqBrowser({ children }: { children?: React.ReactNode }) {
               <button
                 type="button"
                 onClick={reset}
-                className="inline-flex h-11 items-center gap-2 rounded-full px-5 text-sm font-semibold text-brand-700 ring-1 ring-brand-100 hover:ring-brand-300"
+                className="inline-flex h-11 items-center gap-2 rounded-full px-5 text-sm font-semibold text-brand-700 ring-1 ring-brand-300 hover:ring-brand-500"
               >
                 <X aria-hidden className="size-4" />
                 {t("Clear filters")}
@@ -299,22 +312,20 @@ export function FaqBrowser({ children }: { children?: React.ReactNode }) {
           </div>
         )}
 
-        {sections.map((s) => {
-          const Icon = sectionIcons[s.id] ?? CircleHelp;
+        {sections.map((s, sectionIndex) => {
           return (
             <section key={s.id} id={s.id} aria-labelledby={`${s.id}-heading`} className="scroll-mt-24">
-              <header className="flex items-start gap-3 border-b border-brand-100/80 pb-4">
-                <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-brand-100/80 text-brand-700">
-                  <Icon aria-hidden className="size-5" />
-                </span>
-                <div>
-                  <h2 id={`${s.id}-heading`} className="text-xl font-bold tracking-tight text-ink sm:text-2xl">
-                    {t(s.title)}
-                  </h2>
-                  <p className="mt-0.5 text-xs text-muted">{t(s.description)}</p>
-                </div>
+              <header className="pb-3">
+                <p className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-600">
+                  <span aria-hidden className="h-px w-8 shrink-0 bg-brand-500" />
+                  {t("Section {n}", { n: String(sectionIndex + 1).padStart(2, "0") })}
+                </p>
+                <h2 id={`${s.id}-heading`} className="mt-2 text-2xl font-bold tracking-tight text-ink sm:text-3xl">
+                  <AccentTitle text={t(s.title)} />
+                </h2>
+                <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted sm:text-base">{t(s.description)}</p>
               </header>
-              <div className="mt-5 space-y-3">
+              <div className="mt-3 divide-y divide-black/10 overflow-hidden rounded-2xl border border-black/10">
                 {s.faqs.map((f) => (
                   <FaqItem key={f.id} faq={f} open={open.has(f.id)} onToggle={() => toggle(f.id)} />
                 ))}
@@ -322,6 +333,7 @@ export function FaqBrowser({ children }: { children?: React.ReactNode }) {
             </section>
           );
         })}
+        </div>
       </div>
     </>
   );

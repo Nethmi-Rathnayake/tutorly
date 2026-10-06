@@ -1,32 +1,22 @@
 "use client";
 
 import { Link } from "@/components/ui/link";
-import { GraduationCap } from "lucide-react";
+import Image from "next/image";
 import { siteConfig } from "@/lib/constants/site";
 import { useT } from "@/lib/i18n/client";
+import { cn } from "@/lib/utils/cn";
 
-export function Logo() {
+export function Logo({ tone = "dark" }: { tone?: "dark" | "light" }) {
   const t = useT();
-  // Brand name renders as "Tutor" + accented "Flow", matching the design.
-  const split = siteConfig.name.match(/^(.*?)(Flow)$/);
   return (
     <Link
       href="/"
       aria-label={t("{name} home", { name: siteConfig.name })}
-      className="flex items-center gap-2.5 rounded-lg focus-visible:outline-2 focus-visible:outline-brand-500"
+      className="flex shrink-0 items-center gap-2 rounded-lg sm:gap-2.5 focus-visible:outline-2 focus-visible:outline-brand-500"
     >
-      <span className="grid size-9 place-items-center rounded-xl bg-linear-to-br from-brand-700 to-brand-600 text-white shadow-md shadow-brand-600/30">
-        <GraduationCap aria-hidden className="size-5" />
-      </span>
-      <span className="text-lg font-bold tracking-tight text-ink">
-        {split ? (
-          <>
-            {split[1]}
-            <span className="text-brand-600">{split[2]}</span>
-          </>
-        ) : (
-          siteConfig.name
-        )}
+      <Image src="/logo.png" alt="" width={312} height={312} priority className="size-9 object-contain sm:size-11" />
+      <span className={cn("font-[family-name:var(--font-brand)] text-lg font-normal sm:text-xl", tone === "light" ? "text-white" : "text-ink")}>
+        {siteConfig.name}
       </span>
     </Link>
   );

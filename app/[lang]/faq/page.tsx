@@ -2,21 +2,13 @@ import type { Metadata } from "next";
 import { Link } from "@/components/ui/link";
 import {
   ArrowRight,
-  BadgeCheck,
-  ClipboardCheck,
-  FileCheck2,
-  HeartHandshake,
-  Lock,
-  MessageCircle,
-  PhoneCall,
-  ShieldCheck,
-  UserPlus,
 } from "lucide-react";
 import { FaqBrowser } from "@/components/faq/faq-browser";
+import { AccentTitle } from "@/components/ui/accent-title";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Reveal } from "@/components/ui/reveal";
 import { answerText, conciergeModel, faqCta, faqHero, faqSections, plainText } from "@/lib/constants/faq";
-import { requestHref, siteConfig } from "@/lib/constants/site";
+import { requestHref } from "@/lib/constants/site";
 import { getT } from "@/lib/i18n/server";
 import type { Translator } from "@/lib/i18n/translate";
 
@@ -30,8 +22,6 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-const phoneDigits = siteConfig.contact.phone.replace(/\D/g, "");
-const outcomeIcons = [FileCheck2, BadgeCheck, HeartHandshake];
 
 // FAQPage structured data (see node_modules/next/dist/docs/01-app/02-guides/json-ld.md).
 const jsonLd = (t: Translator) => ({
@@ -55,25 +45,26 @@ export default async function FaqPage() {
   const m = t.deep(conciergeModel);
   const c = t.deep(faqCta);
   return (
-    <div className="space-y-24 pb-24">
+    <div className="space-y-14 pb-16">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd(t)).replace(/</g, "\\u003c") }}
       />
 
-      <section className="relative overflow-x-clip pt-12 lg:pt-16">
+      <section className="relative overflow-x-clip pt-8 lg:pt-10">
         <div
           aria-hidden
           className="pointer-events-none absolute left-1/2 top-0 size-[640px] -translate-x-1/2 rounded-full bg-brand-200/40 blur-3xl"
         />
-        <div className="relative mx-auto max-w-3xl px-4 text-center sm:px-6">
-          <span className="inline-flex items-center gap-2 rounded-full bg-brand-100/70 px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-brand-700">
-            <BadgeCheck aria-hidden className="size-3.5" />
+        <div className="relative mx-auto max-w-3xl px-4 text-center sm:px-6 font-[family-name:var(--font-inter),var(--font-arabic)]">
+          <p className="flex items-center justify-center gap-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-600">
+            <span aria-hidden className="h-px w-8 shrink-0 bg-brand-500" />
             {hero.eyebrow}
-          </span>
-          <h1 className="mt-6 text-4xl font-extrabold leading-[1.08] tracking-tight text-ink sm:text-6xl">
+            <span aria-hidden className="h-px w-8 shrink-0 bg-brand-500" />
+          </p>
+          <h1 className="mt-5 text-4xl font-bold leading-[1.1] tracking-tight text-ink sm:text-5xl lg:text-[3.4rem]">
             {hero.titleLead}{" "}
-            <span className="bg-linear-to-r from-brand-700 to-violet-brand bg-clip-text text-transparent">
+            <span className="text-brand-600">
               {hero.titleAccent}
             </span>
           </h1>
@@ -82,58 +73,50 @@ export default async function FaqPage() {
 
         <div className="relative">
           <FaqBrowser>
-            <div className="mx-auto mt-16 max-w-6xl px-4 sm:px-6 lg:px-8">
-              <Reveal className="rounded-[2rem] bg-white/80 p-6 shadow-[0_40px_80px_-50px_rgba(44,37,115,0.45)] ring-1 ring-brand-100/80 backdrop-blur sm:p-8">
-                <div className="flex flex-wrap items-start justify-between gap-3">
+            <div className="mx-auto mt-10 max-w-[90rem] px-4 sm:px-8 lg:px-10">
+              <Reveal className="rounded-3xl bg-brand-50 p-6 ring-1 ring-brand-300 sm:p-8">
+                <div className="flex flex-wrap items-start justify-between gap-3 font-[family-name:var(--font-inter),var(--font-arabic)]">
                   <div>
-                    <p className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-brand-600">
-                      <Lock aria-hidden className="size-3" />
+                    <p className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-600">
+                      <span aria-hidden className="h-px w-8 shrink-0 bg-brand-500" />
                       {m.eyebrow}
                     </p>
-                    <h2 className="mt-2 text-2xl font-bold tracking-tight text-ink">{m.title}</h2>
+                    <h2 className="mt-2 text-2xl font-bold tracking-tight text-ink sm:text-3xl">
+                      <AccentTitle text={m.title} />
+                    </h2>
                   </div>
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-violet-100 px-3 py-1 text-[11px] font-semibold text-violet-brand">
-                    <span aria-hidden className="size-1.5 rounded-full bg-violet-brand" />
+                  <span className="inline-flex items-center rounded-full bg-night px-4 py-1.5 text-[11px] font-semibold text-gold">
                     {m.badge}
                   </span>
                 </div>
 
-                <ol className="mt-7 grid gap-4 md:grid-cols-3">
-                  {m.steps.map((s, i) => {
-                    const Icon = outcomeIcons[i];
-                    const last = i === m.steps.length - 1;
-                    return (
-                      <li key={s.title} className="flex flex-col rounded-2xl bg-white p-5 ring-1 ring-brand-100">
-                        <div className="flex items-start justify-between gap-3">
-                          <span
-                            className={
-                              last
-                                ? "grid size-9 place-items-center rounded-lg bg-brand-600 text-sm font-bold text-white"
-                                : "grid size-9 place-items-center rounded-lg bg-brand-100 text-sm font-bold text-brand-700"
-                            }
-                          >
-                            {String(i + 1).padStart(2, "0")}
-                          </span>
-                          <span className="rounded-full bg-brand-50 px-2.5 py-1 text-[9px] font-bold uppercase tracking-[0.1em] text-brand-700">
-                            {s.tag}
-                          </span>
-                        </div>
-                        <h3 className="mt-4 text-base font-bold text-ink">{s.title}</h3>
-                        <p className="mt-2 flex-1 text-xs leading-relaxed text-muted">{s.body}</p>
-                        <p className="mt-5 flex items-center gap-1.5 text-xs font-semibold text-brand-700">
-                          <Icon aria-hidden className="size-3.5" />
-                          {s.outcome}
-                        </p>
-                      </li>
-                    );
-                  })}
+                <ol className="mt-7 grid gap-4 font-[family-name:var(--font-inter),var(--font-arabic)] md:grid-cols-3">
+                  {m.steps.map((s, i) => (
+                    <li
+                      key={s.title}
+                      className="group flex flex-col rounded-2xl bg-white p-6 ring-1 ring-brand-200 transition-colors duration-300 hover:bg-[#e6c97c] hover:ring-brand-500"
+                    >
+                      <div className="flex items-start justify-between gap-3">
+                        <span className="text-4xl font-bold text-brand-500 transition-colors group-hover:text-brand-900">
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        <span className="rounded-full bg-night px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.1em] text-gold">
+                          {s.tag}
+                        </span>
+                      </div>
+                      <h3 className="mt-4 text-lg font-bold text-ink">{s.title}</h3>
+                      <p className="mt-2 flex-1 text-sm leading-relaxed text-muted transition-colors group-hover:text-brand-900/85">
+                        {s.body}
+                      </p>
+                      <p className="mt-5 border-t border-brand-200 pt-4 text-xs font-semibold text-brand-700 transition-colors group-hover:border-brand-900/20 group-hover:text-brand-900">
+                        {s.outcome}
+                      </p>
+                    </li>
+                  ))}
                 </ol>
 
-                <div className="mt-4 flex flex-col gap-2 rounded-2xl bg-lavender px-4 py-3 text-xs sm:flex-row sm:items-center sm:justify-between">
-                  <p className="flex items-center gap-2 font-medium text-ink">
-                    <ShieldCheck aria-hidden className="size-4 shrink-0 text-brand-600" />
-                    {m.covenant}
-                  </p>
+                <div className="mt-4 flex flex-col gap-2 rounded-2xl bg-white px-5 py-4 text-sm ring-1 ring-brand-200 sm:flex-row sm:items-center sm:justify-between">
+                  <p className="font-semibold text-ink">{m.covenant}</p>
                   <p className="italic text-muted">{m.covenantNote}</p>
                 </div>
               </Reveal>
@@ -142,53 +125,35 @@ export default async function FaqPage() {
         </div>
       </section>
 
-      <section aria-labelledby="faq-cta-heading" className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <Reveal className="grid items-center gap-8 rounded-[2rem] bg-linear-to-br from-brand-100 via-lavender to-violet-100 p-6 ring-1 ring-brand-200/70 sm:p-10 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)]">
-          <div>
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1 text-[10px] font-medium text-ink">
-              <span aria-hidden className="size-1.5 rounded-full bg-brand-600" />
+      <section
+        aria-labelledby="faq-cta-heading"
+        className="mx-auto max-w-[90rem] px-4 font-[family-name:var(--font-inter),var(--font-arabic)] sm:px-8 lg:px-10"
+      >
+        <Reveal className="rounded-3xl bg-brand-100 px-6 py-14 text-center ring-1 ring-brand-300 sm:px-10">
+          <div className="mx-auto max-w-2xl">
+            <p className="flex items-center justify-center gap-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-600">
+              <span aria-hidden className="h-px w-8 shrink-0 bg-brand-500" />
               {c.eyebrow}
-            </span>
-            <h2 id="faq-cta-heading" className="mt-4 text-3xl font-extrabold tracking-tight text-ink sm:text-4xl">
-              {c.title}
+              <span aria-hidden className="h-px w-8 shrink-0 bg-brand-500" />
+            </p>
+            <h2 id="faq-cta-heading" className="mt-4 text-3xl font-bold tracking-tight text-ink sm:text-[2.5rem] sm:leading-tight">
+              <AccentTitle text={c.title} />
             </h2>
-            <p className="mt-3 max-w-lg text-sm leading-relaxed text-muted">{c.description}</p>
-            <div className="mt-5 flex flex-wrap gap-2">
-              <a
-                href={`https://wa.me/${phoneDigits}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex h-9 items-center gap-2 rounded-full bg-white px-4 text-xs font-medium text-ink ring-1 ring-brand-100 hover:ring-brand-300"
-              >
-                <MessageCircle aria-hidden className="size-3.5 text-emerald-600" />
-                {c.whatsapp}
-                <span className="sr-only"> {t("(opens WhatsApp)")}</span>
-              </a>
-              <a
-                href={`tel:+${phoneDigits}`}
-                className="inline-flex h-9 items-center gap-2 rounded-full bg-white px-4 text-xs font-medium text-ink ring-1 ring-brand-100 hover:ring-brand-300"
-              >
-                <PhoneCall aria-hidden className="size-3.5 text-violet-brand" />
-                {c.call}
-              </a>
+            <p className="mx-auto mt-4 max-w-lg text-sm leading-relaxed text-muted sm:text-base">{c.description}</p>
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+              <ButtonLink href={requestHref} size="lg" arrow>
+                {c.primary}
+              </ButtonLink>
+              <ButtonLink href="/tutor-registration" variant="soft" size="lg" className="bg-night text-gold hover:bg-brand-800">
+                {c.secondary}
+              </ButtonLink>
             </div>
-            <Link
-              href="/contact"
-              className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-brand-700 hover:text-brand-900"
-            >
-              {c.contact}
-              <ArrowRight aria-hidden className="rtl:-scale-x-100 size-4" />
-            </Link>
-          </div>
-          <div className="flex flex-col gap-3">
-            <ButtonLink href={requestHref} size="lg" className="w-full">
-              <ClipboardCheck aria-hidden className="size-4" />
-              {c.primary}
-            </ButtonLink>
-            <ButtonLink href="/tutor-registration" variant="ghost" size="lg" className="w-full bg-white">
-              <UserPlus aria-hidden className="size-4 text-violet-brand" />
-              {c.secondary}
-            </ButtonLink>
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-2.5">
+              <Link href="/contact" className="inline-flex min-h-10 items-center gap-1 px-2 text-sm font-semibold text-brand-700 hover:text-brand-900">
+                {c.contact}
+                <ArrowRight aria-hidden className="size-4 rtl:-scale-x-100" />
+              </Link>
+            </div>
           </div>
         </Reveal>
       </section>

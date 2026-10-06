@@ -7,10 +7,31 @@
 
 // Placeholder photography (Unsplash) stored in public/images; swap for approved assets.
 export const homeImages = {
-  heroMain: "/images/hero-main.jpg",
-  heroSecondary: "/images/hero-library.jpg",
   nextGeneration: "/images/next-generation.jpg",
   inspiring: "/images/inspiring.jpg",
+};
+
+/**
+ * Text shown in the curriculum selector for each curriculum id in taxonomy.ts.
+ * PLACEHOLDER: the certification and syllabus-alignment claims must be confirmed by the business.
+ */
+export const curriculumIntro =
+  "Our tutors hold verified certifications across primary global examination bodies, ensuring syllabus alignment down to mark-scheme rubrics.";
+
+export const curriculumDescriptions: Record<string, string> = {
+  british:
+    "Specialist IGCSE and A-Level tutors who know the Edexcel, Cambridge and AQA specifications and teach to the mark scheme, from past-paper technique to examiner-report insights.",
+  ib: "Tutors experienced across the PYP, MYP and Diploma Programme, supporting Internal Assessments, Extended Essays and Theory of Knowledge alongside the core subject content.",
+  american:
+    "Guidance for US High School coursework, SAT and ACT preparation and Advanced Placement exams, with tutors who understand GPA targets and college applications.",
+  indian:
+    "CBSE and ICSE specialists who follow the board syllabus and NCERT approach, with focused revision plans for the board examinations.",
+  "uae-moe":
+    "Tutors familiar with the UAE Ministry of Education curriculum, including Arabic, Islamic Studies and Social Studies, aligned to the national assessment framework.",
+  canadian:
+    "Support for the Canadian provincial curricula, building strong foundations in core subjects and the skills required for school assessments and university pathways.",
+  other:
+    "Studying another syllabus? Tell us about it and we will match you with a tutor who has taught that curriculum and its examination requirements.",
 };
 
 export const heroStats = [
@@ -165,10 +186,11 @@ export const testimonials = [
   {
     id: "t1",
     quote:
-      "We were struggling with our daughter's IB Chemistry SL marks. TutorFlow matched us with Dr. Elena, and within two terms she went from a 4 to a solid 7. Incredible dedication!",
+      "We were struggling with our daughter's IB Chemistry SL marks. Tutorly matched us with Dr. Elena, and within two terms she went from a 4 to a solid 7. Incredible dedication!",
     name: "Nadia Mansour",
     context: "Mother of Year 12 IB Student",
     initials: "NM",
+    photo: "/images/reviews/nadia-mansour.jpg",
   },
   {
     id: "t2",
@@ -177,6 +199,7 @@ export const testimonials = [
     name: "Anthony Lewis",
     context: "Father of IGCSE Student",
     initials: "AL",
+    photo: "/images/reviews/anthony-lewis.jpg",
   },
   {
     id: "t3",
@@ -185,6 +208,7 @@ export const testimonials = [
     name: "Rohan Kapoor",
     context: "Year 13 Student • A-Level",
     initials: "RK",
+    photo: "/images/reviews/rohan-kapoor.jpg",
   },
 ];
 

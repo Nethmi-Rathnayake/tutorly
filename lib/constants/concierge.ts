@@ -76,7 +76,7 @@ export const assurances = [
 
 export const conciergeTestimonial = {
   quote:
-    "TutorFlow’s concierge matched our son for IB Higher Level Physics within 24 hours. Not having to browse hundreds of unvetted profiles was an absolute revelation. The chemistry was instantaneous.",
+    "Tutorly’s concierge matched our son for IB Higher Level Physics within 24 hours. Not having to browse hundreds of unvetted profiles was an absolute revelation. The chemistry was instantaneous.",
   name: "Lady Caroline M.",
   context: "Parent of Year 12 Student, London",
   initial: "L",

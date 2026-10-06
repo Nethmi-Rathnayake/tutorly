@@ -62,7 +62,7 @@ export function TutorRequestWizard({ requestedTutor, requestedSubject }: WizardP
     schemas: stepSchemas,
     stepFields,
     defaultValues: tutorRequestDefaults,
-    draftKey: "tutorflow:tutor-request-draft-v2",
+    draftKey: "tutorly:tutor-request-draft-v2",
     transientFields: ["consent"],
     overrides: {
       ...(requestedTutor && { requestedTutorId: requestedTutor.id }),
@@ -72,13 +72,13 @@ export function TutorRequestWizard({ requestedTutor, requestedSubject }: WizardP
     successHref: (ref) => `/request-a-tutor/success?ref=${encodeURIComponent(ref)}`,
   });
   const meta = t.deep(requestSteps[step]);
-  const variants = stepVariants(reduceMotion, t.locale === "ar");
+  const variants = stepVariants(reduceMotion);
   const stepNo = (n: number) => String(n).padStart(2, "0");
   const StepIcon = stepIcons[step];
 
   return (
     <FormProvider {...form}>
-      <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-[minmax(0,1fr)_320px]">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_320px]">
         <div ref={topRef} className="min-w-0 scroll-mt-24 space-y-5">
           <Stepper current={step} completed={furthest} onSelect={goTo} />
           <DraftNotice notice={notice} onDismiss={dismissNotice} />
@@ -165,7 +165,7 @@ export function TutorRequestWizard({ requestedTutor, requestedSubject }: WizardP
                   <button
                     type="button"
                     onClick={saveDraft}
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-ink hover:text-brand-700"
+                    className="inline-flex min-h-11 items-center gap-1.5 text-xs font-semibold text-ink hover:text-brand-700"
                   >
                     <Save aria-hidden className="size-3.5" />
                     {t("Save Draft")}
@@ -177,7 +177,7 @@ export function TutorRequestWizard({ requestedTutor, requestedSubject }: WizardP
           </form>
         </div>
 
-        <div className="print:hidden lg:sticky lg:top-24">
+        <div className="print:hidden">
           <RequestSidebar />
         </div>
       </div>

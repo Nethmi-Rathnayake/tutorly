@@ -64,7 +64,7 @@ export function StepSubmitButton({
       type="submit"
       disabled={submitting}
       className={cn(
-        "group inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-linear-to-r from-brand-700 to-violet-brand px-7 py-3 text-sm font-semibold text-white shadow-[0_14px_30px_-12px_rgba(79,63,217,0.8)] transition-all hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500 disabled:translate-y-0 disabled:opacity-70 print:hidden",
+        "group inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-linear-to-r from-brand-700 to-violet-brand px-7 py-3 text-sm font-semibold text-white shadow-[0_14px_30px_-12px_rgba(20,23,29,0.8)] transition-all hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500 disabled:translate-y-0 disabled:opacity-70 print:hidden",
         className,
       )}
     >

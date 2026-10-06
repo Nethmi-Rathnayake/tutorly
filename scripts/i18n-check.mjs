@@ -16,7 +16,7 @@ const jiti = createJiti(import.meta.url, { alias: { "@": root } });
 
 // Keys holding ids, paths or search-only text rather than display copy.
 const SKIP_KEYS = new Set(["id", "slug", "href", "image", "src", "icon", "key", "anchor", "tone", "variant", "keywords", "short", "initials", "initial", "extra"]);
-const BRAND = "TutorFlow";
+const BRAND = "Tutorly";
 const isCopy = (s) =>
   /[A-Za-z]/.test(s) &&
   s !== BRAND &&

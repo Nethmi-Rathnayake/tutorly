@@ -51,7 +51,7 @@ export default async function ArticlePage({ params }: PageProps<"/[lang]/blog/[s
   if (!post) notFound();
   const t = await getT();
   return (
-    <div className="space-y-20 pb-24 pt-8 lg:pt-12">
+    <div className="space-y-12 pb-16 pt-8 lg:pt-12">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd(post, t)).replace(/</g, "\\u003c") }}

@@ -9,14 +9,16 @@ export const faq: Dictionary = {
   "Academic Concierge Knowledge Base • Verified Answers": "قاعدة معرفة الخدمة الأكاديمية • إجابات موثّقة",
   "Frequently Asked": "الأسئلة",
   Questions: "الشائعة",
-  "Everything you need to know about TutorFlow’s private administrative matching model, educator intake standards, and online or in-person lesson delivery.":
-    "كل ما تحتاج معرفته عن نموذج المطابقة الإداري الخاص في TutorFlow، ومعايير قبول المعلمين، وتقديم الدروس عبر الإنترنت أو حضوريًا.",
+  "Everything you need to know about Tutorly’s private administrative matching model, educator intake standards, and online or in-person lesson delivery.":
+    "كل ما تحتاج معرفته عن نموذج المطابقة الإداري الخاص في Tutorly، ومعايير قبول المعلمين، وتقديم الدروس عبر الإنترنت أو حضوريًا.",
   "Search questions or keywords (e.g. matching timeline, exam boards, in-person)":
     "ابحث في الأسئلة أو الكلمات المفتاحية (مثل مدة المطابقة، جهات الامتحانات، الحصص الحضورية)",
   "Search frequently asked questions": "ابحث في الأسئلة الشائعة",
   Search: "بحث",
-  "Filter by topic": "تصفية حسب الموضوع",
   "All FAQs": "جميع الأسئلة",
+  "Jump to a section": "انتقل إلى قسم",
+  Menu: "القائمة",
+  "Section {n}": "القسم {n}",
   "For Parents & Students": "لأولياء الأمور والطلاب",
   "For Tutors & Educators": "للمعلمين والتربويين",
   "How Requests Work": "كيف تعمل الطلبات",
@@ -98,14 +100,14 @@ export const faq: Dictionary = {
   Assurance: "الضمان",
 
   // Questions & answers
-  "How do I request a tutor through TutorFlow?": "كيف أطلب معلمًا عبر TutorFlow؟",
+  "How do I request a tutor through Tutorly?": "كيف أطلب معلمًا عبر Tutorly؟",
   "Requesting an educator does not involve browsing pages of profiles. Instead, parents complete our confidential **6-Step Parent Requirement Form**. Our placement directors use these exact details to manually select a qualified educator from our vetted fellowship.":
     "لا يتطلب طلب معلم تصفح صفحات من الملفات. بدلًا من ذلك، يُكمل أولياء الأمور **نموذج طلب ولي الأمر السري المكوّن من 6 خطوات**، ويستخدم مديرو الترشيح هذه التفاصيل بدقة لاختيار معلم مؤهل يدويًا من نخبتنا الموثّقة.",
   "Once received, our Senior Academic Directors review your syllabus benchmarks and learning targets within **24 to 48 hours**, and introduce an educator with expertise in that exact specification.":
     "فور استلام الطلب، يراجع كبار مديرينا الأكاديميين معايير المنهج وأهداف التعلّم خلال **24 إلى 48 ساعة**، ويعرّفونك بمعلم خبير في تلك المواصفات تحديدًا.",
   "Do I choose a tutor directly from a public directory?": "هل أختار المعلم مباشرة من دليل عام؟",
-  "No. TutorFlow deliberately has **no public tutor directory**. Tutor profiles are never listed for browsing; instead our directors compare your requirement against the educators in our private fellowship and recommend the best fit.":
-    "لا. تعتمد TutorFlow عن قصد **عدم وجود دليل عام للمعلمين**. لا تُعرض ملفات المعلمين للتصفح أبدًا؛ بل يقارن مديرونا طلبك بالمعلمين في زمالتنا الخاصة ويرشّحون الأنسب.",
+  "No. Tutorly deliberately has **no public tutor directory**. Tutor profiles are never listed for browsing; instead our directors compare your requirement against the educators in our private fellowship and recommend the best fit.":
+    "لا. تعتمد Tutorly عن قصد **عدم وجود دليل عام للمعلمين**. لا تُعرض ملفات المعلمين للتصفح أبدًا؛ بل يقارن مديرونا طلبك بالمعلمين في زمالتنا الخاصة ويرشّحون الأنسب.",
   "If you already know a tutor you would like to work with, you can mention them in your request and our team will check their availability.":
     "إذا كنت تعرف معلمًا بعينه وترغب في العمل معه، يمكنك ذكره في طلبك وسيتحقق فريقنا من توفره.",
   "How does the platform connect parents and tutors?": "كيف تربط المنصة بين أولياء الأمور والمعلمين؟",

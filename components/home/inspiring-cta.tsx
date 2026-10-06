@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { CalendarClock, Mail, MapPin, Phone, ShieldCheck } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Reveal } from "@/components/ui/reveal";
 import { homeImages } from "@/lib/constants/home";
@@ -11,7 +11,7 @@ export async function InspiringCta() {
   const { contact, sessionTimings } = t.deep(siteConfig);
 
   return (
-    <section aria-labelledby="inspiring-heading" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section aria-labelledby="inspiring-heading" className="mx-auto max-w-[90rem] px-4 sm:px-8 lg:px-10">
       <Reveal>
         <div className="relative overflow-hidden rounded-[2rem] bg-night shadow-[0_40px_80px_-30px_rgba(28,26,51,0.7)]">
           <Image
@@ -22,76 +22,60 @@ export async function InspiringCta() {
             className="object-cover object-right opacity-40"
           />
           <div aria-hidden className="absolute inset-0 bg-linear-to-r from-night via-night/85 to-brand-900/40" />
-          <div aria-hidden className="absolute -end-20 top-10 size-96 rounded-full bg-violet-brand/30 blur-3xl" />
 
-          <div className="relative px-6 py-14 sm:px-12 lg:py-20">
-            <span className="inline-flex rounded-full bg-violet-brand/90 px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.16em] text-white">
-              {t("Premium Learning Experience")}
-            </span>
-            <h2
-              id="inspiring-heading"
-              className="mt-6 text-4xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-5xl"
-            >
-              {t("Education That")}
-              <br />
-              {t("Feels Inspiring.")}
-            </h2>
-            <p className="mt-5 max-w-md text-base leading-relaxed text-white/75">
-              {t("Clean soft purple aesthetics combined with modern layouts, uncompromising teacher vetting, and a high-focus student-centered experience.")}
-            </p>
-            <ButtonLink href="/tutor-request" variant="violet" arrow className="mt-8">
-              {t("Join {name} Now", { name: siteConfig.name })}
-            </ButtonLink>
+          <span aria-hidden className="absolute inset-x-0 top-0 h-1 bg-linear-to-r from-brand-400 via-gold to-brand-500" />
 
-            <div className="mt-14 grid gap-4 md:grid-cols-2">
-              <div className="flex gap-4 rounded-2xl bg-white/95 p-5 backdrop-blur">
-                <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-brand-50 text-brand-600">
-                  <ShieldCheck aria-hidden className="size-5" />
-                </span>
-                <div className="min-w-0">
-                  <h3 className="text-base font-bold text-ink">{contact.centerName}</h3>
-                  <ul className="mt-2 space-y-1.5 text-xs text-muted">
-                    <li className="flex items-start gap-2">
-                      <MapPin aria-hidden className="mt-0.5 size-3.5 shrink-0" />
-                      {contact.address}
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <Phone aria-hidden className="size-3.5 shrink-0" />
-                      <a href={`tel:${contact.phone.replace(/\s/g, "")}`} className="hover:text-brand-700">
-                        {contact.phone}
-                      </a>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <Mail aria-hidden className="size-3.5 shrink-0" />
-                      <a href={`mailto:${contact.email}`} className="truncate hover:text-brand-700">
-                        {contact.email}
-                      </a>
-                    </li>
-                  </ul>
-                </div>
+          <div className="relative grid items-center gap-12 px-6 py-14 font-[family-name:var(--font-inter),var(--font-arabic)] sm:px-12 lg:grid-cols-2 lg:gap-16 lg:py-20">
+            <div className="text-start">
+              <p className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-gold">
+                <span aria-hidden className="h-px w-8 bg-gold" />
+                {t("Premium Learning Experience")}
+              </p>
+              <h2
+                id="inspiring-heading"
+                className="mt-5 text-3xl font-bold leading-tight tracking-tight text-white sm:text-[2.5rem]"
+              >
+                {t("Education That")}
+                <br />
+                <span className="text-brand-400">{t("Feels Inspiring.")}</span>
+              </h2>
+              <p className="mt-5 max-w-md text-base leading-relaxed text-white/75">
+                {t("Clean, elegant design combined with modern layouts, uncompromising teacher vetting, and a high-focus student-centered experience.")}
+              </p>
+              <ButtonLink href="/tutor-request" size="lg" arrow className="mt-8">
+                {t("Join {name} Now", { name: siteConfig.name })}
+              </ButtonLink>
+            </div>
+
+            <div className="grid gap-4">
+              <div className="rounded-2xl bg-night/60 p-6 ring-1 ring-white/20 backdrop-blur-md transition-colors duration-300 hover:ring-gold/60">
+                <h3 className="text-base font-bold text-gold">{contact.centerName}</h3>
+                <ul className="mt-3 space-y-2.5 text-sm text-white/80">
+                  <li className="flex items-start gap-3">
+                    <MapPin aria-hidden className="mt-0.5 size-4 shrink-0 text-gold" />
+                    {contact.address}
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <Mail aria-hidden className="size-4 shrink-0 text-gold" />
+                    <a href={`mailto:${contact.email}`} className="-my-1.5 inline-block truncate py-1.5 hover:text-gold">
+                      {contact.email}
+                    </a>
+                  </li>
+                </ul>
               </div>
 
-              <div className="flex gap-4 rounded-2xl bg-white/95 p-5 backdrop-blur">
-                <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-brand-50 text-brand-600">
-                  <CalendarClock aria-hidden className="size-5" />
-                </span>
-                <div className="min-w-0 flex-1">
-                  <h3 className="text-base font-bold text-ink">{t("Session Timings")}</h3>
-                  <dl className="mt-2 space-y-1.5 text-xs">
-                    {sessionTimings.map((s) => (
-                      <div key={s.days} className="flex justify-between gap-3">
-                        <dt className="text-muted">{s.days}</dt>
-                        <dd
-                          className={
-                            "highlight" in s && s.highlight ? "font-semibold text-brand-600" : "font-medium text-ink"
-                          }
-                        >
-                          {s.hours}
-                        </dd>
-                      </div>
-                    ))}
-                  </dl>
-                </div>
+              <div className="rounded-2xl bg-night/60 p-6 ring-1 ring-white/20 backdrop-blur-md transition-colors duration-300 hover:ring-gold/60">
+                <h3 className="text-base font-bold text-gold">{t("Session Timings")}</h3>
+                <dl className="mt-3 space-y-2.5 text-sm">
+                  {sessionTimings.map((s) => (
+                    <div key={s.days} className="flex justify-between gap-3 border-b border-white/10 pb-2.5 last:border-0 last:pb-0">
+                      <dt className="text-white/70">{s.days}</dt>
+                      <dd className={"highlight" in s && s.highlight ? "font-semibold text-gold" : "font-medium text-white"}>
+                        {s.hours}
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
               </div>
             </div>
           </div>

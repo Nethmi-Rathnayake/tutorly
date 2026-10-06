@@ -21,7 +21,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function HowItWorksPage() {
   return (
-    <div className="space-y-20 pb-24 lg:space-y-28">
+    <div className="space-y-12 pb-16 lg:space-y-16">
       <HowItWorksHero />
       <ConciergeNexus />
       <DualJourneys />

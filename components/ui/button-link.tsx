@@ -7,10 +7,10 @@ type Size = "sm" | "md" | "lg";
 
 const variants: Record<Variant, string> = {
   primary:
-    "bg-linear-to-r from-brand-700 to-brand-600 text-white shadow-[0_10px_24px_-10px_rgba(67,49,190,0.7)] hover:shadow-[0_14px_30px_-10px_rgba(67,49,190,0.8)]",
+    "bg-linear-to-b from-[#ecd28c] to-[#c9a24e] text-brand-900 shadow-[0_10px_24px_-10px_rgba(201,162,78,0.8)] hover:shadow-[0_14px_30px_-10px_rgba(201,162,78,0.9)]",
   violet:
-    "bg-linear-to-r from-violet-brand to-brand-600 text-white shadow-[0_10px_24px_-10px_rgba(109,40,217,0.7)] hover:shadow-[0_14px_30px_-10px_rgba(109,40,217,0.8)]",
-  ghost: "bg-white/70 text-ink ring-1 ring-brand-100 hover:bg-white hover:ring-brand-200",
+    "bg-linear-to-b from-[#ecd28c] to-[#c9a24e] text-brand-900 shadow-[0_10px_24px_-10px_rgba(201,162,78,0.8)] hover:shadow-[0_14px_30px_-10px_rgba(201,162,78,0.9)]",
+  ghost: "bg-white/70 text-ink ring-1 ring-brand-300 hover:bg-white hover:ring-brand-400",
   soft: "bg-brand-50 text-brand-700 hover:bg-brand-100",
 };
 
