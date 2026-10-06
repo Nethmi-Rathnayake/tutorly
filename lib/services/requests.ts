@@ -12,13 +12,15 @@ export type CreatedRequest = { reference: string };
  */
 export async function createParentRequirement(data: TutorRequestValues): Promise<CreatedRequest> {
   const { reference } = { reference: `TF-${randomUUID().slice(0, 8).toUpperCase()}` };
-  await notifyTeam({ subject: "New tutor request", reference, data, replyTo: data.email });
-  await sendConfirmation({
-    to: data.email,
-    name: data.parentName,
-    reference,
-    subject: "We've received your tutor request",
-    message: "Thank you for your request. Our team will review it and contact you shortly with tutor matches.",
-  });
+  await notifyTeam({ subject: "New tutor request", reference, data, replyTo: data.email || undefined });
+  if (data.email) {
+    await sendConfirmation({
+      to: data.email,
+      name: data.parentName,
+      reference,
+      subject: "We've received your tutor request",
+      message: "Thank you for your request. Our team will review it and contact you shortly with tutor matches.",
+    });
+  }
   return { reference };
 }

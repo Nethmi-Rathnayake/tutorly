@@ -4,13 +4,13 @@ import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 
 /**
- * Site-wide scroll-in animation. After each navigation it finds the sections, footer and grid
+ * Site-wide scroll-in animation. After each navigation it finds the sections and grid
  * cards that start below the fold, hides them (`.rv`, see globals.css) and fades them in as
  * they scroll into view. Elements already handled by `Reveal` (inline opacity), form fields and
  * reduced-motion users are left alone, and nothing above the fold is ever hidden, so there is
  * no flash on load.
  */
-const SELECTOR = "main section, footer, main .grid > *";
+const SELECTOR = "main section, main .grid > *";
 
 export function ScrollAnimations() {
   const pathname = usePathname();

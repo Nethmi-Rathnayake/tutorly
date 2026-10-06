@@ -1,11 +1,12 @@
 "use client";
 
-import { BadgeCheck, IdCard, Mail, MessageSquare, Phone, PhoneCall } from "lucide-react";
+import { IdCard, Mail, MessageSquare, Phone, PhoneCall } from "lucide-react";
 import { useFormContext } from "react-hook-form";
 import { ChoiceCard, Field, FieldError, TextInput } from "@/components/forms/fields";
 import { educationLevels } from "@/lib/constants/taxonomy";
 import {
   contactChannelOptions,
+  emirateOptions,
   phoneCountryOptions,
   relationshipOptions,
   requestCurriculumOptions,
@@ -66,13 +67,7 @@ export function RequestStep() {
         <Field
           id="email"
           label={t("Email Address")}
-          required
-          hint={
-            <span className="inline-flex items-center gap-1 font-bold uppercase tracking-wide text-brand-600">
-              <BadgeCheck aria-hidden className="size-3" />
-              {t("Verified Briefing")}
-            </span>
-          }
+          hint={t("Optional")}
           error={errors.email?.message}
         >
           <TextInput
@@ -158,6 +153,25 @@ export function RequestStep() {
               {t("Select curriculum")}
             </option>
             {requestCurriculumOptions.map((o) => (
+              <option key={o.value} value={o.value}>
+                {t(o.label)}
+              </option>
+            ))}
+          </Select>
+        </Field>
+        <Field id="emirate" label={t("Emirate")} required error={errors.emirate?.message} className="sm:col-span-2">
+          <Select
+            id="emirate"
+            defaultValue=""
+            aria-invalid={!!errors.emirate || undefined}
+            aria-describedby={errors.emirate ? "emirate-error" : undefined}
+            className={cn(selectClass, errors.emirate ? "ring-rose-300" : "ring-transparent")}
+            {...register("emirate")}
+          >
+            <option value="" disabled>
+              {t("Select emirate")}
+            </option>
+            {emirateOptions.map((o) => (
               <option key={o.value} value={o.value}>
                 {t(o.label)}
               </option>

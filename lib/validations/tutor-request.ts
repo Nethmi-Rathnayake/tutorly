@@ -1,6 +1,7 @@
 import { z } from "zod";
 import {
   contactChannelOptions,
+  emirateOptions,
   relationshipOptions,
 } from "@/lib/constants/tutor-request";
 import { curricula, educationLevels } from "@/lib/constants/taxonomy";
@@ -22,7 +23,8 @@ const levelOptionValues = educationLevels.flatMap((g) => g.options);
 
 export const parentStepSchema = z.object({
   parentName: text("Full name", 2, 80),
-  email: emailSchema,
+  // Optional: blank is fine, but anything entered must be a valid address.
+  email: z.union([emailSchema, z.literal("")]),
   phoneCountry: phoneCountrySchema,
   phone: phoneSchema,
   relationship: z.enum(values(relationshipOptions), { error: "Select your role" }),
@@ -33,6 +35,7 @@ export const requestDetailsSchema = z.object({
   grade: z.string({ error: "Select the student's grade or year" }).refine((v) => levelOptionValues.includes(v), {
     error: "Select the student's grade or year",
   }),
+  emirate: z.enum(values(emirateOptions), { error: "Select your emirate" }),
   curriculum: z.enum(curricula.map((c) => c.id) as [string, ...string[]], { error: "Select a curriculum" }),
   consent: z.literal(true, { error: "Please confirm you agree to be contacted about this request" }),
   /** Pre-filled from `?subject=` / `?tutor=` links; never shown as a field. */
@@ -41,7 +44,13 @@ export const requestDetailsSchema = z.object({
 });
 
 /** The request is one step: parent contact details plus the student's grade and curriculum. */
-export const tutorRequestSchema = parentStepSchema.extend(requestDetailsSchema.shape);
+const requestObjectSchema = parentStepSchema.extend(requestDetailsSchema.shape);
+
+export const tutorRequestSchema = requestObjectSchema.superRefine((data, ctx) => {
+  if (data.contactChannel === "email" && data.email === "") {
+    ctx.addIssue({ code: "custom", path: ["email"], message: "Enter your email to be contacted by email" });
+  }
+});
 
 export type TutorRequestValues = z.infer<typeof tutorRequestSchema>;
 
@@ -49,7 +58,7 @@ export type TutorRequestValues = z.infer<typeof tutorRequestSchema>;
 export const stepSchemas = [tutorRequestSchema] as const;
 
 /** Field names owned by each wizard step (used to route server errors back to the right step). */
-export const stepFields: string[][] = [Object.keys(tutorRequestSchema.shape)];
+export const stepFields: string[][] = [Object.keys(requestObjectSchema.shape)];
 
 export const tutorRequestDefaults: Partial<TutorRequestValues> = {
   parentName: "",

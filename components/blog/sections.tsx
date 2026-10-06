@@ -136,7 +136,7 @@ function FeaturedCard({ t }: { t: ServerT }) {
             </span>
             <span>
               <span className="block text-xs font-bold text-ink">{f.verified.title}</span>
-              <span className="block text-[9px] font-semibold uppercase tracking-[0.12em] text-muted">{f.verified.note}</span>
+              <span className="block text-[10px] font-semibold uppercase tracking-[0.12em] text-muted">{f.verified.note}</span>
             </span>
           </div>
         </div>

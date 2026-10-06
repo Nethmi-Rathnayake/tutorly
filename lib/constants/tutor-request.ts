@@ -186,6 +186,17 @@ export const requestSteps = [
   },
 ] as const;
 
+/** The seven emirates of the UAE (values are stored as the English name). */
+export const emirateOptions = [
+  { value: "Abu Dhabi", label: "Abu Dhabi" },
+  { value: "Dubai", label: "Dubai" },
+  { value: "Sharjah", label: "Sharjah" },
+  { value: "Ajman", label: "Ajman" },
+  { value: "Umm Al Quwain", label: "Umm Al Quwain" },
+  { value: "Ras Al Khaimah", label: "Ras Al Khaimah" },
+  { value: "Fujairah", label: "Fujairah" },
+] as const;
+
 /** The request form is a single step; the six-step `requestSteps` above only feeds the FAQ blueprint. */
 export const requestFormStep = {
   title: "Parent & Guardian Details",

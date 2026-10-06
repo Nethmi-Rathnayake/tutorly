@@ -635,4 +635,17 @@ export const forms: Dictionary = {
   "UAE Ministry of Education (MoE Curriculum)": "وزارة التربية والتعليم الإماراتية (منهج MoE)",
   "Indian Curriculum (CBSE / ICSE)": "المنهج الهندي (CBSE / ICSE)",
   "Other International Curriculums": "مناهج دولية أخرى",
+
+  // Tutor request: emirate
+  "Emirate": "الإمارة",
+  "Select emirate": "اختر الإمارة",
+  "Select your emirate": "اختر الإمارة",
+  "Abu Dhabi": "أبوظبي",
+  "Dubai": "دبي",
+  "Sharjah": "الشارقة",
+  "Ajman": "عجمان",
+  "Umm Al Quwain": "أم القيوين",
+  "Ras Al Khaimah": "رأس الخيمة",
+  "Fujairah": "الفجيرة",
+  "Enter your email to be contacted by email": "أدخل بريدك الإلكتروني ليتم التواصل معك عبره",
 };

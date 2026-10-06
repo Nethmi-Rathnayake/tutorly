@@ -40,7 +40,7 @@ export function TutorRequestWizard({ requestedTutor, requestedSubject }: WizardP
     schemas: stepSchemas,
     stepFields,
     defaultValues: tutorRequestDefaults,
-    draftKey: "tutorly:tutor-request-draft-v3",
+    draftKey: "tutorly:tutor-request-draft-v4",
     transientFields: ["consent"],
     overrides: {
       ...(requestedTutor && { requestedTutorId: requestedTutor.id }),
