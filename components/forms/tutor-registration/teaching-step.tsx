@@ -153,7 +153,7 @@ export function TeachingStep() {
               </Select>
             </div>
           </Field>
-          <Field id="institution" label={t("Primary University / Alma Mater")} required error={errors.institution?.message} className="sm:col-span-2">
+          <Field id="institution" label={t("Primary University / Alma Mater")} hint={t("Optional")} error={errors.institution?.message} className="sm:col-span-2">
             <TextInput id="institution" icon={School} placeholder={t("e.g. University of Cambridge")} invalid={!!errors.institution} {...register("institution")} />
           </Field>
           <Field

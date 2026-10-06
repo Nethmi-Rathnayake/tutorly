@@ -3,7 +3,13 @@
 import { BadgeCheck, IdCard, Mail, MessageSquare, Phone, PhoneCall } from "lucide-react";
 import { useFormContext } from "react-hook-form";
 import { ChoiceCard, Field, FieldError, TextInput } from "@/components/forms/fields";
-import { contactChannelOptions, phoneCountryOptions, relationshipOptions } from "@/lib/constants/tutor-request";
+import { educationLevels } from "@/lib/constants/taxonomy";
+import {
+  contactChannelOptions,
+  phoneCountryOptions,
+  relationshipOptions,
+  requestCurriculumOptions,
+} from "@/lib/constants/tutor-request";
 import { useT } from "@/lib/i18n/client";
 import { cn } from "@/lib/utils/cn";
 import type { TutorRequestValues } from "@/lib/validations/tutor-request";
@@ -15,7 +21,7 @@ const channelTones = { whatsapp: "text-emerald-600", phone: "text-brand-600", em
 const selectClass =
   "h-12 w-full cursor-pointer appearance-none rounded-xl bg-lavender ps-4 pe-9 text-sm text-ink outline-none ring-1 transition focus:bg-white focus:ring-2 focus:ring-brand-300";
 
-export function ParentStep() {
+export function RequestStep() {
   const t = useT();
   const {
     register,
@@ -25,7 +31,7 @@ export function ParentStep() {
   return (
     <div className="space-y-6">
       <div className="grid gap-5 sm:grid-cols-2">
-        <Field id="parentName" label={t("Parent / Guardian Full Name")} required error={errors.parentName?.message}>
+        <Field id="parentName" label={t("Full Name")} required error={errors.parentName?.message}>
           <TextInput
             id="parentName"
             icon={IdCard}
@@ -35,7 +41,7 @@ export function ParentStep() {
             {...register("parentName")}
           />
         </Field>
-        <Field id="relationship" label={t("Relationship to Student")} required error={errors.relationship?.message}>
+        <Field id="relationship" label={t("Your Role")} required error={errors.relationship?.message}>
           <div className="relative">
             <Select
               id="relationship"
@@ -46,7 +52,7 @@ export function ParentStep() {
               {...register("relationship")}
             >
               <option value="" disabled>
-                {t("Select relationship")}
+                {t("Select your role")}
               </option>
               {relationshipOptions.map((o) => (
                 <option key={o.value} value={o.value}>
@@ -115,6 +121,49 @@ export function ParentStep() {
           </div>
           <FieldError id="phone-error" message={errors.phoneCountry?.message ?? errors.phone?.message} />
         </div>
+
+        <Field id="grade" label={t("Student's Grade / Year")} required error={errors.grade?.message}>
+          <Select
+            id="grade"
+            defaultValue=""
+            aria-invalid={!!errors.grade || undefined}
+            aria-describedby={errors.grade ? "grade-error" : undefined}
+            className={cn(selectClass, errors.grade ? "ring-rose-300" : "ring-transparent")}
+            {...register("grade")}
+          >
+            <option value="" disabled>
+              {t("Select grade / year")}
+            </option>
+            {educationLevels.map((g) => (
+              <optgroup key={g.id} label={t(g.name)}>
+                {g.options.map((o) => (
+                  <option key={o} value={o}>
+                    {t(o)}
+                  </option>
+                ))}
+              </optgroup>
+            ))}
+          </Select>
+        </Field>
+        <Field id="curriculum" label={t("Curriculum")} required error={errors.curriculum?.message}>
+          <Select
+            id="curriculum"
+            defaultValue=""
+            aria-invalid={!!errors.curriculum || undefined}
+            aria-describedby={errors.curriculum ? "curriculum-error" : undefined}
+            className={cn(selectClass, errors.curriculum ? "ring-rose-300" : "ring-transparent")}
+            {...register("curriculum")}
+          >
+            <option value="" disabled>
+              {t("Select curriculum")}
+            </option>
+            {requestCurriculumOptions.map((o) => (
+              <option key={o.value} value={o.value}>
+                {t(o.label)}
+              </option>
+            ))}
+          </Select>
+        </Field>
       </div>
 
       <fieldset>
@@ -140,6 +189,23 @@ export function ParentStep() {
         </div>
         <FieldError message={errors.contactChannel?.message} />
       </fieldset>
+
+      <div>
+        <label className="flex cursor-pointer items-start gap-3 rounded-2xl bg-lavender/60 p-4 text-xs leading-relaxed text-muted has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-brand-500">
+          <input
+            type="checkbox"
+            className="mt-0.5 size-4 shrink-0 cursor-pointer accent-brand-700"
+            aria-invalid={!!errors.consent || undefined}
+            {...register("consent")}
+          />
+          <span>
+            {t(
+              "I confirm these details are accurate and agree to be contacted about this request. Contact details stay private and are only shared with a tutor after I confirm a trial match.",
+            )}
+          </span>
+        </label>
+        <FieldError message={errors.consent?.message} />
+      </div>
     </div>
   );
 }

@@ -138,8 +138,8 @@ export const forms: Dictionary = {
   // Tutor request: parent step
   "Parent / Guardian Full Name": "الاسم الكامل لولي الأمر / الوصي",
   "e.g. Eleanor Vance-Croft": "مثال: فاطمة أحمد المنصوري",
-  "Relationship to Student": "صلة القرابة بالطالب",
-  "Select relationship": "اختر صلة القرابة",
+  "Your Role": "صفتك",
+  "Select your role": "اختر صفتك",
   Mother: "الأم",
   Father: "الأب",
   "Legal Guardian": "الوصي القانوني",
@@ -585,7 +585,6 @@ export const forms: Dictionary = {
   "Enter a valid email address": "أدخل بريدًا إلكترونيًا صحيحًا",
   "Tell us who is reaching out": "أخبرنا بصفتك في التواصل",
   "Choose a subject for your message": "اختر موضوع رسالتك",
-  "Select your relationship to the student": "اختر صلة القرابة بالطالب",
   "Choose how we should contact you": "اختر طريقة التواصل معك",
   "Enter the student's age": "أدخل عمر الطالب",
   "Age must be a whole number": "يجب أن يكون العمر عددًا صحيحًا",
@@ -625,4 +624,15 @@ export const forms: Dictionary = {
   "Select at least one teaching method": "اختر أسلوب تدريس واحدًا على الأقل",
   "Please confirm your details are accurate and consent to verification": "يرجى تأكيد صحة بياناتك والموافقة على التحقق منها",
   "Enter the areas you can travel to for in-person lessons": "أدخل المناطق التي يمكنك التنقل إليها للدروس الحضورية",
+
+  // Tutor request: single-step form
+  "Student's Grade / Year": "صف الطالب / السنة الدراسية",
+  "Select grade / year": "اختر الصف / السنة الدراسية",
+  "Select curriculum": "اختر المنهج",
+  "British Curriculum (IGCSE / A-Levels)": "المنهج البريطاني (IGCSE / A-Levels)",
+  "American Curriculum (US High School / AP)": "المنهج الأمريكي (المرحلة الثانوية الأمريكية / AP)",
+  "International Baccalaureate (IB - PYP / MYP / DP)": "البكالوريا الدولية (IB - PYP / MYP / DP)",
+  "UAE Ministry of Education (MoE Curriculum)": "وزارة التربية والتعليم الإماراتية (منهج MoE)",
+  "Indian Curriculum (CBSE / ICSE)": "المنهج الهندي (CBSE / ICSE)",
+  "Other International Curriculums": "مناهج دولية أخرى",
 };

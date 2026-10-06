@@ -60,7 +60,7 @@ export const teachingStepSchema = z.object({
     .min(1, { error: "Select at least one curriculum" }),
   experience: z.enum(values(experienceOptions), { error: "Select your teaching experience" }),
   qualification: z.enum(values(qualificationOptions), { error: "Select your highest qualification" }),
-  institution: text("University / institution", 2, 120),
+  institution: optionalText("University / institution", 120),
   additionalQualifications: optionalText("Additional qualifications", 400),
 });
 
@@ -73,7 +73,7 @@ export const availabilityStepSchema = z.object({
 
 export const pedagogyStepSchema = z.object({
   bio: text("Biography", 80, 800),
-  teachingApproach: text("Teaching approach", 50, 1000),
+  teachingApproach: optionalText("Teaching approach", 1000),
   teachingMethods: z.array(z.enum(values(teachingMethodOptions))).min(1, { error: "Select at least one teaching method" }),
   additionalInfo: optionalText("Additional information", 500),
 });

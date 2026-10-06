@@ -185,3 +185,21 @@ export const requestSteps = [
     next: "Submit Requirement",
   },
 ] as const;
+
+/** The request form is a single step; the six-step `requestSteps` above only feeds the FAQ blueprint. */
+export const requestFormStep = {
+  title: "Parent & Guardian Details",
+  description: "Primary family contact for intake consultation, schedule verification, and academic liaison updates.",
+  next: "Submit Requirement",
+} as const;
+
+/** Curriculum choices for the request form; `value` is the taxonomy curriculum id. */
+export const requestCurriculumOptions = [
+  { value: "british", label: "British Curriculum (IGCSE / A-Levels)" },
+  { value: "american", label: "American Curriculum (US High School / AP)" },
+  { value: "ib", label: "International Baccalaureate (IB - PYP / MYP / DP)" },
+  { value: "uae-moe", label: "UAE Ministry of Education (MoE Curriculum)" },
+  { value: "indian", label: "Indian Curriculum (CBSE / ICSE)" },
+  { value: "canadian", label: "Canadian Curriculum" },
+  { value: "other", label: "Other International Curriculums" },
+] as const;

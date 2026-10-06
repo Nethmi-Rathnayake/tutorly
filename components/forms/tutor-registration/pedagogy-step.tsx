@@ -47,6 +47,7 @@ function LongText({
             <span className="sr-only"> {t("(required)")}</span>
           </>
         )}
+        {!required && <span className="ms-1.5 text-[11px] font-normal text-muted">{t("Optional")}</span>}
       </label>
       <p id={`${id}-help`} className="mb-2 mt-0.5 text-xs text-muted">
         {t(hint)}
@@ -96,9 +97,7 @@ export function PedagogyStep() {
         id="teachingApproach"
         label="Teaching Approach"
         hint="How you structure lessons, check understanding and adapt to different learners."
-        required
         rows={5}
-        min={50}
         max={1000}
         placeholder="e.g. I start each course with a diagnostic, then build from first principles before moving to exam-style questions…"
       />

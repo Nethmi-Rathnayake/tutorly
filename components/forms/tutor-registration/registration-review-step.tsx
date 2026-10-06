@@ -116,7 +116,7 @@ export function RegistrationReviewStep({ photoUrl, onEdit }: { photoUrl?: string
 
         <Card title={t("Qualifications")} icon={GraduationCap} onEdit={() => onEdit(1)}>
           <p className="text-base font-semibold text-ink">{label(qualificationOptions, v.qualification)}</p>
-          <p className="mt-1 text-xs text-muted">{v.institution}</p>
+          {v.institution && <p className="mt-1 text-xs text-muted">{v.institution}</p>}
           <p className="mt-1 text-xs text-muted">
             {t("Experience: {value}", { value: label(experienceOptions, v.experience) })}
           </p>

@@ -1,6 +1,6 @@
 "use client";
 
-import { CalendarRange, Clock, Moon, Sun } from "lucide-react";
+import { Check, CalendarRange, Clock, Moon, Sun } from "lucide-react";
 import { useFormContext, useWatch } from "react-hook-form";
 import { ChoiceCard, FieldError, SectionTitle } from "@/components/forms/fields";
 import { dayOptions, timeWindowOptions } from "@/lib/constants/tutor-request";
@@ -36,14 +36,14 @@ export function AvailabilityFields({ startNumber = 1 }: { startNumber?: number }
             {t("Available Days of the Week")}
           </SectionTitle>
         </legend>
-        <div className="grid grid-cols-7 gap-1.5 sm:gap-2.5">
+        <div className="grid grid-cols-4 gap-2 sm:grid-cols-7 sm:gap-3">
           {dayOptions.map((d) => (
-            <label key={d.value} className="group flex min-w-0 cursor-pointer flex-col items-center gap-1.5">
+            <label key={d.value} className="group relative cursor-pointer">
               <input type="checkbox" value={d.value} className="peer sr-only" {...register("days")} />
-              <span className="grid aspect-square w-full max-w-12 place-items-center rounded-full bg-lavender text-xs font-semibold text-ink sm:text-sm transition-all group-hover:bg-brand-100 peer-checked:bg-linear-to-br peer-checked:from-brand-700 peer-checked:to-violet-brand peer-checked:text-white peer-checked:shadow-md peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-brand-500">
-                {t(`${d.label} (short)`)}
+              <span className="flex h-12 items-center justify-center gap-1.5 rounded-xl bg-lavender text-sm font-semibold text-ink ring-1 ring-transparent transition-all group-hover:bg-brand-100 peer-checked:bg-linear-to-br peer-checked:from-brand-700 peer-checked:to-violet-brand peer-checked:text-white peer-checked:shadow-md peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-brand-500">
+                <Check aria-hidden className="hidden size-3.5 group-has-[:checked]:block" />
+                {t(d.label)}
               </span>
-              <span className="max-w-full truncate text-[10px] text-muted peer-checked:font-semibold peer-checked:text-brand-700">{t(d.label)}</span>
             </label>
           ))}
         </div>
