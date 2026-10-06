@@ -234,3 +234,13 @@ option {
     transition: none;
   }
 }
+
+/*
+ * The header is sticky, so on client-side navigation Next scrolls the page content (not the
+ * header) to the top of the viewport, which leaves the first 4.5rem of every page hidden behind
+ * the header. This offsets that scroll by the header height (h-18) so pages open at the very top.
+ */
+main,
+main > * {
+  scroll-margin-top: 4.5rem;
+}
