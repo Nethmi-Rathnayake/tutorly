@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Aclonica, IBM_Plex_Sans_Arabic, Inter, Plus_Jakarta_Sans } from "next/font/google";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
+import { MotionProvider } from "@/components/ui/motion-provider";
+import { ScrollAnimations } from "@/components/ui/scroll-animations";
 import { siteConfig } from "@/lib/constants/site";
 import { localeDir, locales } from "@/lib/i18n/config";
 import { getT } from "@/lib/i18n/server";
@@ -63,11 +65,14 @@ export default async function RootLayout({ children }: LayoutProps<"/[lang]">) {
         >
           {t("Skip to content")}
         </a>
-        <SiteHeader />
-        <main id="main" className="flex-1">
-          {children}
-        </main>
-        <SiteFooter />
+        <MotionProvider>
+          <SiteHeader />
+          <main id="main" className="flex-1">
+            {children}
+          </main>
+          <SiteFooter />
+          <ScrollAnimations />
+        </MotionProvider>
       </body>
     </html>
   );

@@ -153,7 +153,8 @@ export async function EducatorBenefits() {
       <div className="mx-auto max-w-2xl text-center">
         <Pill>{t("Educator Alliance")}</Pill>
         <h2 id="benefits-heading" className="mt-4 text-3xl font-bold tracking-tight text-ink sm:text-[2.5rem] sm:leading-tight">
-          {t("Why Distinguished Educators Partner With {name}", { name: siteConfig.name })}
+          {t("Why Distinguished")}{" "}
+          <span className="text-brand-500">{t("Educators Partner With {name}", { name: siteConfig.name })}</span>
         </h2>
         <p className="mt-3 text-sm leading-relaxed text-muted sm:text-base">
           {t("Experience an elevated academic partnership designed around pedagogical integrity, direct professional review, and unconditional schedule respect.")}
@@ -245,8 +246,8 @@ export async function EngagementStages() {
             return (
               <li key={s.title}>
                 <Reveal delay={i * 0.07} className="h-full">
-                  <article className="relative flex h-full flex-col overflow-hidden rounded-3xl bg-white p-6 ring-1 ring-brand-100/80">
-                    <span aria-hidden className="absolute -end-2 -top-4 text-7xl font-extrabold text-brand-50">
+                  <article className="group relative flex h-full flex-col overflow-hidden rounded-3xl bg-white p-6 ring-1 ring-brand-100/80 transition-colors duration-300 hover:bg-[#e6c97c] hover:ring-brand-500">
+                    <span aria-hidden className="absolute -end-2 -top-4 text-7xl font-extrabold text-brand-50 transition-colors duration-300 group-hover:text-white/40">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <span
@@ -254,13 +255,13 @@ export async function EngagementStages() {
                     >
                       <Icon aria-hidden className="size-4" />
                     </span>
-                    <p className="relative mt-5 text-[10px] font-bold uppercase tracking-[0.14em] text-brand-600">
+                    <p className="relative mt-5 text-[10px] font-bold uppercase tracking-[0.14em] text-brand-600 transition-colors duration-300 group-hover:text-brand-900">
                       {t("Stage {n}", { n: String(i + 1).padStart(2, "0") })}
                     </p>
                     <h3 className="relative mt-1 text-base font-bold text-ink">{s.title}</h3>
-                    <p className="relative mt-2 flex-1 text-xs leading-relaxed text-muted">{s.body}</p>
-                    <p className="relative mt-5 flex items-center gap-1.5 border-t border-brand-50 pt-4 text-xs text-ink/80">
-                      <MetaIcon aria-hidden className="size-3.5 text-brand-600" />
+                    <p className="relative mt-2 flex-1 text-xs leading-relaxed text-muted transition-colors duration-300 group-hover:text-ink/80">{s.body}</p>
+                    <p className="relative mt-5 flex items-center gap-1.5 border-t border-brand-50 pt-4 text-xs text-ink/80 transition-colors duration-300 group-hover:border-brand-900/15">
+                      <MetaIcon aria-hidden className="size-3.5 text-brand-600 transition-colors duration-300 group-hover:text-brand-900" />
                       {s.meta}
                     </p>
                   </article>

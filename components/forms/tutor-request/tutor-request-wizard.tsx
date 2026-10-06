@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import { FormProvider } from "react-hook-form";
 import { Lock, Save, UserRound } from "lucide-react";
 import { submitTutorRequest } from "@/app/[lang]/request-a-tutor/actions";
@@ -68,7 +68,7 @@ export function TutorRequestWizard({ requestedTutor, requestedSubject }: WizardP
             className="rounded-3xl bg-white p-6 ring-1 ring-brand-100/80 sm:p-8"
           >
             <AnimatePresence mode="wait" initial={false}>
-              <motion.div
+              <m.div
                 key="request"
                 initial={variants.initial}
                 animate={variants.animate}
@@ -97,7 +97,7 @@ export function TutorRequestWizard({ requestedTutor, requestedSubject }: WizardP
                 <div className="mt-6">
                   <RequestStep />
                 </div>
-              </motion.div>
+              </m.div>
             </AnimatePresence>
 
             <ServerErrorAlert message={serverError} />

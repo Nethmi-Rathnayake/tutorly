@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { m, useReducedMotion } from "framer-motion";
 
 type RevealProps = {
   children: React.ReactNode;
@@ -17,7 +17,7 @@ export function Reveal({ children, className, delay = 0, y = 24 }: RevealProps) 
   // (the server can't know the motion preference). Reduced motion only changes the
   // transition, which never reaches the DOM, so content appears instantly instead.
   return (
-    <motion.div
+    <m.div
       className={className}
       initial={{ opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -25,6 +25,6 @@ export function Reveal({ children, className, delay = 0, y = 24 }: RevealProps) 
       transition={reduce ? { duration: 0 } : { duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }

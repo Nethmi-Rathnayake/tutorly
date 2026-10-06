@@ -4,7 +4,7 @@ import { useEffect, useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 import { Link } from "@/components/ui/link";
 import { usePathname } from "next/navigation";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { mainNav, requestHref } from "@/lib/constants/site";
 import { useT } from "@/lib/i18n/client";
@@ -134,14 +134,14 @@ export function SiteHeader() {
         <AnimatePresence>
           {open && (
             <>
-              <motion.div
+              <m.div
                 className="fixed inset-0 z-[60] bg-night/40 backdrop-blur-sm xl:hidden"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 onClick={() => setOpen(false)}
               />
-              <motion.div
+              <m.div
                 id="mobile-menu"
                 role="dialog"
                 aria-modal="true"
@@ -195,7 +195,7 @@ export function SiteHeader() {
                     {t("Join as a Tutor")}
                   </ButtonLink>
                 </div>
-              </motion.div>
+              </m.div>
             </>
           )}
         </AnimatePresence>,

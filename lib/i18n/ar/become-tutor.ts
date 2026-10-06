@@ -33,7 +33,8 @@ export const becomeTutor: Dictionary = {
 
   // Benefits
   "Educator Alliance": "تحالف المعلمين",
-  "Why Distinguished Educators Partner With {name}": "لماذا يتعاون المعلمون المتميزون مع {name}",
+  "Why Distinguished": "لماذا",
+  "Educators Partner With {name}": "يتعاون المعلمون المتميزون مع {name}",
   "Experience an elevated academic partnership designed around pedagogical integrity, direct professional review, and unconditional schedule respect.":
     "استمتع بشراكة أكاديمية راقية قائمة على النزاهة التربوية والمراجعة المهنية المباشرة والاحترام التام لجدولك.",
   "Showcase Your Expertise": "اعرض خبرتك",

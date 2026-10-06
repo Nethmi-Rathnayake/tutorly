@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import { FormProvider } from "react-hook-form";
 import { ArrowLeft, Lock, Save } from "lucide-react";
 import { submitTutorRegistration } from "@/app/[lang]/tutor-registration/actions";
@@ -79,7 +79,7 @@ export function TutorRegistrationWizard() {
             className="rounded-3xl bg-white p-6 ring-1 ring-brand-100/80 sm:p-8"
           >
             <AnimatePresence mode="wait" initial={false}>
-              <motion.div
+              <m.div
                 key={step}
                 initial={variants.initial}
                 animate={variants.animate}
@@ -114,7 +114,7 @@ export function TutorRegistrationWizard() {
                   {step === 3 && <PedagogyStep />}
                   {step === 4 && <RegistrationReviewStep photoUrl={photoUrl} onEdit={goTo} />}
                 </div>
-              </motion.div>
+              </m.div>
             </AnimatePresence>
 
             <ServerErrorAlert message={serverError} />
