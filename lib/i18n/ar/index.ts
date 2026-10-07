@@ -1,5 +1,6 @@
 import type { Dictionary } from "../translate";
 import { about } from "./about";
+import { autismTutors } from "./autism-tutors";
 import { becomeTutor } from "./become-tutor";
 import { blog } from "./blog";
 import { blogArticles } from "./blog-posts";
@@ -30,5 +31,6 @@ export const arDictionary: Dictionary = {
   ...blog,
   ...blogArticles,
   ...contact,
+  ...autismTutors,
   ...forms,
 };

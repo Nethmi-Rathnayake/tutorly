@@ -37,6 +37,7 @@ export const requestDetailsSchema = z.object({
   }),
   emirate: z.enum(values(emirateOptions), { error: "Select your emirate" }),
   curriculum: z.enum(curricula.map((c) => c.id) as [string, ...string[]], { error: "Select a curriculum" }),
+  message: z.string().trim().max(1000, { error: "Keep your message under 1000 characters" }).optional(),
   consent: z.literal(true, { error: "Please confirm you agree to be contacted about this request" }),
   /** Pre-filled from `?subject=` / `?tutor=` links; never shown as a field. */
   subject: z.string().max(120).optional(),
@@ -65,5 +66,6 @@ export const tutorRequestDefaults: Partial<TutorRequestValues> = {
   email: "",
   phoneCountry: "+44",
   phone: "",
+  message: "",
   contactChannel: "whatsapp",
 };

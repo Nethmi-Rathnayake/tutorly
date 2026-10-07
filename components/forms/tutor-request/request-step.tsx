@@ -178,6 +178,21 @@ export function RequestStep() {
             ))}
           </Select>
         </Field>
+        <Field id="message" label={t("Message")} hint={t("Optional")} error={errors.message?.message} className="sm:col-span-2">
+          <textarea
+            id="message"
+            rows={4}
+            maxLength={1000}
+            placeholder={t("Anything else we should know, such as subjects, goals or schedule.")}
+            aria-invalid={!!errors.message || undefined}
+            aria-describedby={errors.message ? "message-error" : undefined}
+            className={cn(
+              "w-full resize-y rounded-xl bg-lavender px-4 py-3 text-sm leading-relaxed text-ink outline-none ring-1 transition placeholder:text-muted/70 focus:bg-white focus:ring-2 focus:ring-brand-300",
+              errors.message ? "ring-rose-300" : "ring-transparent",
+            )}
+            {...register("message")}
+          />
+        </Field>
       </div>
 
       <fieldset>

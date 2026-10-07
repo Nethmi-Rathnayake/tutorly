@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "components/autism-tutors/faq-accordion.tsx"
+        ],
+        "createdAt": "2026-10-07T10:57:38.281Z",
+        "reason": "Claude decided: copies the existing /faq accordion (components/faq/faq-browser.tsx uses the same border-s-4 border-brand-500 open state); user asked the page to match the existing design system exactly"
+      }
+    ]
+  }
+}

@@ -648,4 +648,7 @@ export const forms: Dictionary = {
   "Ras Al Khaimah": "رأس الخيمة",
   "Fujairah": "الفجيرة",
   "Enter your email to be contacted by email": "أدخل بريدك الإلكتروني ليتم التواصل معك عبره",
+  "Anything else we should know, such as subjects, goals or schedule.":
+    "أي شيء آخر يجب أن نعرفه، مثل المواد أو الأهداف أو المواعيد.",
+  "Keep your message under 1000 characters": "يجب ألا تتجاوز رسالتك 1000 حرف",
 };

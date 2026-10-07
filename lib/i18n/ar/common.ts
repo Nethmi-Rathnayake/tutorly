@@ -9,6 +9,7 @@ export const common: Dictionary = {
   "How It Works": "كيف نعمل",
   Subjects: "المواد الدراسية",
   "Education Levels": "المراحل الدراسية",
+  "Autism Tutors": "معلمو التوحد",
   "About Us": "من نحن",
   Blog: "المدونة",
   FAQ: "الأسئلة الشائعة",
