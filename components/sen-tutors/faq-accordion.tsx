@@ -6,15 +6,15 @@ import { cn } from "@/lib/utils/cn";
 
 type Item = { id: string; question: string; answer: string };
 
-/** Accordion for the autism page FAQ. Items arrive already translated from the server. */
+/** Accordion for the SEN page FAQ. Items arrive already translated from the server. */
 export function FaqAccordion({ items }: { items: Item[] }) {
   const [open, setOpen] = useState<string | null>(items[0]?.id ?? null);
   return (
     <div className="divide-y divide-brand-200 overflow-hidden rounded-3xl bg-white ring-1 ring-brand-200">
       {items.map((item) => {
         const isOpen = open === item.id;
-        const buttonId = `autism-faq-${item.id}-button`;
-        const panelId = `autism-faq-${item.id}-panel`;
+        const buttonId = `sen-faq-${item.id}-button`;
+        const panelId = `sen-faq-${item.id}-panel`;
         return (
           <div
             key={item.id}

@@ -7,36 +7,33 @@ import {
   ClipboardList,
   FlaskConical,
   GraduationCap,
-  HeartHandshake,
   ListChecks,
   MessagesSquare,
   NotebookPen,
   PencilLine,
   Puzzle,
-  Sparkles,
   Sprout,
   Target,
-  UserRound,
 } from "lucide-react";
-import { FaqAccordion } from "@/components/autism-tutors/faq-accordion";
+import { FaqAccordion } from "@/components/sen-tutors/faq-accordion";
 import { AccentTitle } from "@/components/ui/accent-title";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Link } from "@/components/ui/link";
 import { Reveal } from "@/components/ui/reveal";
 import {
-  autismBenefits,
-  autismCurricula,
-  autismFaq,
-  autismFinalCta,
-  autismHero,
-  autismImages,
-  autismIntro,
-  autismParentGuide,
-  autismProcess,
-  autismRequestCta,
-  autismStages,
-  autismSupportAreas,
-} from "@/lib/constants/autism-tutors";
+  senBenefits,
+  senCurricula,
+  senFaq,
+  senFinalCta,
+  senHero,
+  senImages,
+  senIntro,
+  senParentGuide,
+  senProcess,
+  senRequestCta,
+  senStages,
+  senSupportAreas,
+} from "@/lib/constants/sen-tutors";
 import { requestHref } from "@/lib/constants/site";
 import { getT } from "@/lib/i18n/server";
 import { cn } from "@/lib/utils/cn";
@@ -87,16 +84,9 @@ function InlineLink({ href, children }: { href: string; children: React.ReactNod
   );
 }
 
-const heroLabelIcons = [Sparkles, UserRound, HeartHandshake];
-const heroLabelPositions = [
-  "-start-3 top-6 animate-float sm:-start-6",
-  "-end-3 top-1/2 animate-float-delayed sm:-end-6",
-  "bottom-6 start-6 animate-float sm:bottom-8",
-];
-
-export async function AutismHero() {
+export async function SenHero() {
   const t = await getT();
-  const h = t.deep(autismHero);
+  const h = t.deep(senHero);
   return (
     <section className={cn("relative overflow-x-clip", FONT)}>
       <div
@@ -120,57 +110,37 @@ export async function AutismHero() {
           </div>
         </Reveal>
 
-        <Reveal delay={0.1} className="relative mx-auto w-full max-w-xl lg:max-w-none">
+        <Reveal delay={0.1} className="relative mx-auto w-full max-w-sm sm:max-w-md lg:max-w-md">
           {/* offset gold frame behind the photo */}
           <span
             aria-hidden
             className="absolute -bottom-4 -end-4 size-full rounded-3xl border-2 border-brand-400 sm:-bottom-5 sm:-end-5"
           />
-          <div className="relative aspect-[4/3.4] overflow-hidden rounded-3xl shadow-[0_30px_60px_-30px_rgba(20,23,29,0.5)]">
+          <div className="relative aspect-square overflow-hidden rounded-3xl shadow-[0_30px_60px_-30px_rgba(20,23,29,0.5)]">
             <Image
-              src={autismImages.hero}
+              src={senImages.hero}
               alt={h.imageAlt}
               fill
               priority
-              sizes="(min-width: 1024px) 45vw, 100vw"
+              sizes="(min-width: 640px) 448px, 384px"
               className="object-cover transition-transform duration-[1200ms] ease-out hover:scale-[1.03]"
             />
           </div>
-          {/* Decorative labels only: they repeat ideas from the copy and make no claims. */}
-          <ul aria-hidden className="contents">
-            {h.labels.map((label, i) => {
-              const Icon = heroLabelIcons[i];
-              return (
-                <li
-                  key={label}
-                  className={cn(
-                    "absolute flex items-center gap-2.5 rounded-2xl bg-white/95 px-3.5 py-2.5 shadow-[0_18px_40px_-20px_rgba(20,23,29,0.45)] ring-1 ring-brand-200 backdrop-blur-sm",
-                    heroLabelPositions[i],
-                  )}
-                >
-                  <span className="grid size-8 shrink-0 place-items-center rounded-full bg-brand-50 text-brand-600">
-                    <Icon className="size-4" />
-                  </span>
-                  <span className="whitespace-nowrap text-xs font-semibold text-ink sm:text-sm">{label}</span>
-                </li>
-              );
-            })}
-          </ul>
         </Reveal>
       </div>
     </section>
   );
 }
 
-export async function AutismIntro() {
+export async function SenIntro() {
   const t = await getT();
-  const c = t.deep(autismIntro);
+  const c = t.deep(senIntro);
   return (
-    <section aria-labelledby="autism-intro-heading" className={cn("bg-brand-50/70 py-12 lg:py-16", FONT)}>
+    <section aria-labelledby="sen-intro-heading" className={cn("bg-brand-50/70 py-12 lg:py-16", FONT)}>
       <Reveal className={cn(CONTAINER, "grid gap-8 lg:grid-cols-[1fr_1.2fr] lg:gap-16")}>
         <div>
           <Pill center={false}>{c.eyebrow}</Pill>
-          <h2 id="autism-intro-heading" className="mt-4 text-3xl font-bold tracking-tight text-ink sm:text-[2.5rem] sm:leading-tight">
+          <h2 id="sen-intro-heading" className="mt-4 text-3xl font-bold tracking-tight text-ink sm:text-[2.5rem] sm:leading-tight">
             <AccentTitle text={c.title} />
           </h2>
         </div>
@@ -196,13 +166,13 @@ export async function AutismIntro() {
 
 const benefitIcons = [Target, Puzzle, MessagesSquare, Sprout];
 
-export async function AutismBenefits() {
+export async function SenBenefits() {
   const t = await getT();
-  const b = t.deep(autismBenefits);
+  const b = t.deep(senBenefits);
   return (
-    <section aria-labelledby="autism-benefits-heading" className={cn(CONTAINER, FONT)}>
+    <section aria-labelledby="sen-benefits-heading" className={cn(CONTAINER, FONT)}>
       <Reveal>
-        <CenteredHeading id="autism-benefits-heading" eyebrow={b.eyebrow} title={b.title} description={b.description} />
+        <CenteredHeading id="sen-benefits-heading" eyebrow={b.eyebrow} title={b.title} description={b.description} />
       </Reveal>
       <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
         {b.items.map((item, i) => {
@@ -233,13 +203,13 @@ export async function AutismBenefits() {
 
 const areaIcons = [GraduationCap, BookOpenText, Calculator, FlaskConical, ListChecks, NotebookPen, PencilLine, MessagesSquare];
 
-export async function AutismSupportAreas() {
+export async function SenSupportAreas() {
   const t = await getT();
-  const s = t.deep(autismSupportAreas);
+  const s = t.deep(senSupportAreas);
   return (
-    <section aria-labelledby="autism-areas-heading" className={cn(CONTAINER, FONT)}>
+    <section aria-labelledby="sen-areas-heading" className={cn(CONTAINER, FONT)}>
       <Reveal>
-        <CenteredHeading id="autism-areas-heading" eyebrow={s.eyebrow} title={s.title} description={s.description} />
+        <CenteredHeading id="sen-areas-heading" eyebrow={s.eyebrow} title={s.title} description={s.description} />
       </Reveal>
       <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {s.items.map((item, i) => {
@@ -266,14 +236,14 @@ export async function AutismSupportAreas() {
   );
 }
 
-export async function AutismStages() {
+export async function SenStages() {
   const t = await getT();
-  const s = t.deep(autismStages);
+  const s = t.deep(senStages);
   return (
-    <section aria-labelledby="autism-stages-heading" className={cn("bg-brand-50/70 py-12 lg:py-16", FONT)}>
+    <section aria-labelledby="sen-stages-heading" className={cn("bg-brand-50/70 py-12 lg:py-16", FONT)}>
       <div className={CONTAINER}>
         <Reveal>
-          <CenteredHeading id="autism-stages-heading" eyebrow={s.eyebrow} title={s.title} description={s.description} />
+          <CenteredHeading id="sen-stages-heading" eyebrow={s.eyebrow} title={s.title} description={s.description} />
         </Reveal>
         <Reveal delay={0.08}>
           <ol className="relative mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-6 lg:gap-3">
@@ -304,13 +274,13 @@ export async function AutismStages() {
   );
 }
 
-export async function AutismCurricula() {
+export async function SenCurricula() {
   const t = await getT();
-  const c = t.deep(autismCurricula);
+  const c = t.deep(senCurricula);
   return (
-    <section aria-labelledby="autism-curricula-heading" className={cn(CONTAINER, FONT)}>
+    <section aria-labelledby="sen-curricula-heading" className={cn(CONTAINER, FONT)}>
       <Reveal className="rounded-3xl bg-white px-6 py-12 ring-1 ring-brand-200 sm:px-10 lg:py-14">
-        <CenteredHeading id="autism-curricula-heading" eyebrow={c.eyebrow} title={c.title} description={c.description} />
+        <CenteredHeading id="sen-curricula-heading" eyebrow={c.eyebrow} title={c.title} description={c.description} />
         <ul className="mx-auto mt-10 flex max-w-3xl flex-wrap justify-center gap-2.5 sm:gap-3">
           {c.items.map((name) => (
             <li
@@ -327,15 +297,15 @@ export async function AutismCurricula() {
   );
 }
 
-export async function AutismParentGuide() {
+export async function SenParentGuide() {
   const t = await getT();
-  const g = t.deep(autismParentGuide);
+  const g = t.deep(senParentGuide);
   return (
-    <section aria-labelledby="autism-guide-heading" className={cn(CONTAINER, FONT)}>
+    <section aria-labelledby="sen-guide-heading" className={cn(CONTAINER, FONT)}>
       <div className="grid gap-10 lg:grid-cols-[1.25fr_1fr] lg:items-start lg:gap-16">
         <Reveal>
           <Pill center={false}>{g.eyebrow}</Pill>
-          <h2 id="autism-guide-heading" className="mt-4 text-3xl font-bold tracking-tight text-ink sm:text-[2.5rem] sm:leading-tight">
+          <h2 id="sen-guide-heading" className="mt-4 text-3xl font-bold tracking-tight text-ink sm:text-[2.5rem] sm:leading-tight">
             <AccentTitle text={g.title} />
           </h2>
           <p className="mt-5 max-w-xl text-sm leading-relaxed text-muted sm:text-base">{g.description}</p>
@@ -376,13 +346,13 @@ export async function AutismParentGuide() {
   );
 }
 
-export async function AutismProcess() {
+export async function SenProcess() {
   const t = await getT();
-  const p = t.deep(autismProcess);
+  const p = t.deep(senProcess);
   return (
-    <section aria-labelledby="autism-process-heading" className={cn(CONTAINER, FONT)}>
+    <section aria-labelledby="sen-process-heading" className={cn(CONTAINER, FONT)}>
       <Reveal>
-        <CenteredHeading id="autism-process-heading" eyebrow={p.eyebrow} title={p.title} />
+        <CenteredHeading id="sen-process-heading" eyebrow={p.eyebrow} title={p.title} />
       </Reveal>
       <ol className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
         {p.steps.map((step, i) => (
@@ -455,25 +425,25 @@ function DarkCta({
   );
 }
 
-export async function AutismRequestCta() {
+export async function SenRequestCta() {
   const t = await getT();
-  const c = t.deep(autismRequestCta);
+  const c = t.deep(senRequestCta);
   return (
-    <section aria-labelledby="autism-request-heading" className={cn(CONTAINER, FONT)}>
-      <DarkCta id="autism-request-heading" {...c} />
+    <section aria-labelledby="sen-request-heading" className={cn(CONTAINER, FONT)}>
+      <DarkCta id="sen-request-heading" {...c} />
     </section>
   );
 }
 
-export async function AutismFaq() {
+export async function SenFaq() {
   const t = await getT();
-  const f = t.deep(autismFaq);
+  const f = t.deep(senFaq);
   return (
-    <section aria-labelledby="autism-faq-heading" className={cn(CONTAINER, FONT)}>
+    <section aria-labelledby="sen-faq-heading" className={cn(CONTAINER, FONT)}>
       <div className="grid gap-10 lg:grid-cols-[1fr_1.6fr] lg:gap-16">
         <Reveal>
           <Pill center={false}>{f.eyebrow}</Pill>
-          <h2 id="autism-faq-heading" className="mt-4 text-3xl font-bold tracking-tight text-ink sm:text-[2.5rem] sm:leading-tight">
+          <h2 id="sen-faq-heading" className="mt-4 text-3xl font-bold tracking-tight text-ink sm:text-[2.5rem] sm:leading-tight">
             <AccentTitle text={f.title} />
           </h2>
           <p className="mt-5 text-sm text-muted">
@@ -488,14 +458,14 @@ export async function AutismFaq() {
   );
 }
 
-export async function AutismFinalCta() {
+export async function SenFinalCta() {
   const t = await getT();
-  const c = t.deep(autismFinalCta);
+  const c = t.deep(senFinalCta);
   return (
-    <section aria-labelledby="autism-final-heading" className={cn(CONTAINER, FONT)}>
+    <section aria-labelledby="sen-final-heading" className={cn(CONTAINER, FONT)}>
       <Reveal className="rounded-3xl bg-brand-100 px-6 py-14 text-center ring-1 ring-brand-300 sm:px-10 lg:py-16">
         <div className="mx-auto max-w-2xl">
-          <h2 id="autism-final-heading" className="text-3xl font-bold leading-tight tracking-tight text-ink sm:text-[2.5rem]">
+          <h2 id="sen-final-heading" className="text-3xl font-bold leading-tight tracking-tight text-ink sm:text-[2.5rem]">
             <AccentTitle text={c.title} />
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-sm leading-relaxed text-muted sm:text-base">{c.description}</p>

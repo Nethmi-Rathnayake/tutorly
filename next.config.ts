@@ -8,6 +8,7 @@ const nextConfig: NextConfig = {
       { source: `${prefix}/find-a-tutor`, destination: `${prefix}/request-a-tutor`, permanent: false },
       { source: `${prefix}/tutors/:path*`, destination: `${prefix}/request-a-tutor`, permanent: false },
       { source: `${prefix}/tutor-request/success`, destination: `${prefix}/request-a-tutor/success`, permanent: false },
+      { source: `${prefix}/autism-tutors-dubai`, destination: `${prefix}/sen-tutors-dubai`, permanent: true },
     ]);
   },
 };

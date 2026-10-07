@@ -1,41 +1,41 @@
 import type { Dictionary } from "../translate";
 
-/** Arabic for the Autism Tutors in Dubai page (/autism-tutors-dubai). */
-export const autismTutors: Dictionary = {
-  "Autism Tutors in Dubai": "معلمو التوحد في دبي",
-  "Autism Tutors in Dubai | Special Educational Needs Tutoring": "معلمو التوحد في دبي | دروس خصوصية لذوي الاحتياجات التعليمية الخاصة",
-  "Looking for experienced autism tutors in Dubai? Tutorly helps families connect with suitable tutors experienced in supporting children with autism and Special Educational Needs (SEN).":
-    "هل تبحث عن معلمين ذوي خبرة في دعم الأطفال المصابين بالتوحد في دبي؟ تساعد Tutorly العائلات على التواصل مع معلمين مناسبين لديهم خبرة في دعم الأطفال المصابين بالتوحد وذوي الاحتياجات التعليمية الخاصة.",
+/** Arabic for the Special Child Tutors in Dubai page (/sen-tutors-dubai). */
+export const senTutors: Dictionary = {
+  "Special Child Tutors in Dubai": "معلمو الاحتياجات التعليمية الخاصة في دبي",
+  "Special Child Tutors in Dubai | SEN Tutoring for Special Students": "معلمو الاحتياجات التعليمية الخاصة في دبي | دروس خصوصية لذوي الاحتياجات التعليمية الخاصة",
+  "Looking for experienced special child tutors in Dubai? Tutorly helps families connect with suitable tutors experienced in supporting special children and students with Special Educational Needs (SEN).":
+    "هل تبحث عن معلمين ذوي خبرة في دعم الأطفال ذوي الاحتياجات التعليمية الخاصة في دبي؟ تساعد Tutorly العائلات على التواصل مع معلمين مناسبين لديهم خبرة في دعم الأطفال ذوي الاحتياجات التعليمية الخاصة وذوي الاحتياجات التعليمية الخاصة.",
 
   // Hero
-  "Special Educational Needs Support": "دعم ذوي الاحتياجات التعليمية الخاصة",
-  // The hero H1 is three pieces ("Experienced" + accent "Autism Tutors", in common.ts, + "in Dubai").
+  "Special Child Support": "دعم ذوي الاحتياجات التعليمية الخاصة",
+  // The hero H1 is three pieces ("Experienced" + accent "Special Child Tutors", in common.ts, + "in Dubai").
   // Arabic puts the adjective after the noun, so the lead is blank and "ذوو الخبرة" moves into the
-  // tail: "معلمو التوحد ذوو الخبرة في دبي". Only this H1 uses these two keys.
+  // tail: "معلمو الاحتياجات التعليمية الخاصة ذوو الخبرة في دبي". Only this H1 uses these two keys.
   Experienced: "",
   "in Dubai": "ذوو الخبرة في دبي",
-  "Finding the right educational support for a child with autism can be challenging. Tutorly helps families across Dubai and the UAE connect with carefully selected tutors who understand the importance of personalized, patient and supportive learning.":
-    "قد يكون العثور على الدعم التعليمي المناسب لطفل مصاب بالتوحد أمرًا صعبًا. تساعد Tutorly العائلات في دبي وجميع أنحاء الإمارات على التواصل مع معلمين مختارين بعناية يدركون أهمية التعلّم المخصص والصبور والداعم.",
-  "A child learning calmly at a desk in a bright, quiet room during a one-to-one tutoring session":
-    "طفل يتعلّم بهدوء على مكتب في غرفة مشرقة وهادئة خلال درس خصوصي فردي",
+  "Finding the right educational support for a special child can be challenging. Tutorly helps families across Dubai and the UAE connect with carefully selected tutors who understand the importance of personalized, patient and supportive learning.":
+    "قد يكون العثور على الدعم التعليمي المناسب لطفل من ذوي الاحتياجات التعليمية الخاصة أمرًا صعبًا. تساعد Tutorly العائلات في دبي وجميع أنحاء الإمارات على التواصل مع معلمين مختارين بعناية يدركون أهمية التعلّم المخصص والصبور والداعم.",
+  "A smiling child at a wooden desk with colourful learning toys, supported in a bright, welcoming classroom":
+    "طفل مبتسم على مكتب خشبي مع ألعاب تعليمية ملونة في فصل مشرق ومرحّب",
   "Personalized Learning": "تعلّم مخصص",
   "One-to-One Support": "دعم فردي",
   "SEN Experience": "خبرة في الاحتياجات الخاصة",
 
   // Introduction
   "Personalized Tutoring": "دروس خصوصية مخصصة",
-  "Supporting Children With Autism Through Personalized Tutoring": "دعم الأطفال المصابين بالتوحد من خلال دروس خصوصية مخصصة",
-  "Every child learns differently. For children on the autism spectrum, a personalized learning environment can provide the additional structure, patience and individual attention they may need to engage confidently with their education.":
-    "يتعلّم كل طفل بطريقته الخاصة. وبالنسبة للأطفال المصابين باضطراب طيف التوحد، يمكن لبيئة تعلّم مخصصة أن توفر لهم مزيدًا من التنظيم والصبر والاهتمام الفردي الذي قد يحتاجونه للتفاعل مع تعليمهم بثقة.",
-  "Tutorly helps parents in Dubai and across the UAE find suitable tutors experienced in supporting children with autism and Special Educational Needs (SEN).":
-    "تساعد Tutorly أولياء الأمور في دبي وجميع أنحاء الإمارات على إيجاد معلمين مناسبين لديهم خبرة في دعم الأطفال المصابين بالتوحد وذوي الاحتياجات التعليمية الخاصة.",
+  "Supporting Special Children Through Personalized Tutoring": "دعم الأطفال ذوي الاحتياجات التعليمية الخاصة من خلال دروس خصوصية مخصصة",
+  "Every child learns differently. For special children, a personalized learning environment can provide the additional structure, patience and individual attention they may need to engage confidently with their education.":
+    "يتعلّم كل طفل بطريقته الخاصة. وبالنسبة للأطفال ذوي الاحتياجات التعليمية الخاصة، يمكن لبيئة تعلّم مخصصة أن توفر لهم مزيدًا من التنظيم والصبر والاهتمام الفردي الذي قد يحتاجونه للتفاعل مع تعليمهم بثقة.",
+  "Tutorly helps parents in Dubai and across the UAE find suitable tutors experienced in supporting special children and students with Special Educational Needs (SEN).":
+    "تساعد Tutorly أولياء الأمور في دبي وجميع أنحاء الإمارات على إيجاد معلمين مناسبين لديهم خبرة في دعم الأطفال ذوي الاحتياجات التعليمية الخاصة وذوي الاحتياجات التعليمية الخاصة.",
   "Find the Right Tutor": "اعثر على المعلم المناسب",
   "New to Tutorly? See": "جديد على Tutorly؟ اطّلع على",
   "how our tutor matching works": "طريقة اختيارنا للمعلم المناسب",
 
   // Why one-to-one
   "One-to-One Tutoring": "الدروس الفردية",
-  "Why One-to-One Autism Tutoring Can Make a Difference": "لماذا قد تُحدث الدروس الفردية لأطفال التوحد فرقًا",
+  "Why One-to-One Special Child Tutoring Can Make a Difference": "لماذا قد تُحدث الدروس الفردية للأطفال ذوي الاحتياجات التعليمية الخاصة فرقًا",
   "A dedicated tutor can shape each session around the student, rather than asking the student to fit a fixed lesson.":
     "يستطيع المعلم المتفرغ أن يبني كل حصة حول الطالب، بدلًا من أن يُطلب من الطالب التكيّف مع درس ثابت.",
   "Personalized Learning Plans": "خطط تعلّم مخصصة",
@@ -93,7 +93,7 @@ export const autismTutors: Dictionary = {
   "Explore education levels in detail": "استكشف المراحل الدراسية بالتفصيل",
 
   // Curricula
-  "Autism Tutoring Across Different Curricula": "دروس خصوصية لأطفال التوحد عبر مختلف المناهج",
+  "Special Child Tutoring Across Different Curricula": "دروس خصوصية للأطفال ذوي الاحتياجات التعليمية الخاصة عبر مختلف المناهج",
   "Finding a tutor who understands both the student's learning needs and their academic curriculum can make the tutoring experience more relevant and effective.":
     "إن إيجاد معلم يفهم احتياجات الطالب التعليمية ومنهجه الدراسي معًا يمكن أن يجعل تجربة الدروس الخصوصية أكثر ملاءمة وفاعلية.",
   "A-Levels": "A-Levels",
@@ -103,10 +103,10 @@ export const autismTutors: Dictionary = {
     "أخبرنا بمنهج طفلك عند طلب معلم، وسنبحث عن معلم مُلمّ به.",
 
   // Parent guide
-  "What Should Parents Look for in an Autism Tutor?": "ما الذي يجب أن يبحث عنه أولياء الأمور في معلم أطفال التوحد؟",
-  "Every family's priorities are different. These are some of the qualities parents may want to consider when choosing a tutor for a child with autism.":
-    "تختلف أولويات كل عائلة. هذه بعض الصفات التي قد يرغب أولياء الأمور في مراعاتها عند اختيار معلم لطفل مصاب بالتوحد.",
-  "Relevant SEN / autism experience": "خبرة مناسبة في الاحتياجات الخاصة / التوحد",
+  "What Should Parents Look for in a Special Child Tutor?": "ما الذي يجب أن يبحث عنه أولياء الأمور في معلم للأطفال ذوي الاحتياجات التعليمية الخاصة؟",
+  "Every family's priorities are different. These are some of the qualities parents may want to consider when choosing a tutor for a special child.":
+    "تختلف أولويات كل عائلة. هذه بعض الصفات التي قد يرغب أولياء الأمور في مراعاتها عند اختيار معلم لطفل من ذوي الاحتياجات التعليمية الخاصة.",
+  "Relevant SEN experience": "خبرة مناسبة في الاحتياجات الخاصة",
   "Patient and supportive teaching approach": "أسلوب تدريس صبور وداعم",
   "Ability to adapt lessons to individual needs": "القدرة على تكييف الدروس وفق الاحتياجات الفردية",
   "Understanding of the student's academic curriculum": "فهم المنهج الدراسي للطالب",
@@ -123,8 +123,8 @@ export const autismTutors: Dictionary = {
   "Parents share the student's age, grade, curriculum, subject and learning requirements.":
     "يشارك أولياء الأمور عمر الطالب وصفّه ومنهجه والمادة ومتطلباته التعليمية.",
   "Tell Us What Support You Need": "أخبرنا بالدعم الذي تحتاجه",
-  "Parents can describe autism / SEN-related tutoring requirements and preferred learning arrangements.":
-    "يمكن لأولياء الأمور وصف متطلبات الدروس الخصوصية المتعلقة بالتوحد أو الاحتياجات الخاصة وترتيبات التعلّم المفضلة.",
+  "Parents can describe SEN-related tutoring requirements and preferred learning arrangements.":
+    "يمكن لأولياء الأمور وصف متطلبات الدروس الخصوصية المتعلقة بالاحتياجات التعليمية الخاصة وترتيبات التعلّم المفضلة.",
   "We Review Your Requirement": "نراجع طلبك",
   "Tutorly reviews the information provided by the family.": "تراجع Tutorly المعلومات التي قدّمتها العائلة.",
   "Connect With a Suitable Tutor": "التواصل مع معلم مناسب",
@@ -132,29 +132,29 @@ export const autismTutors: Dictionary = {
     "تساعد Tutorly في ربط العائلة بمعلم يناسب المتطلبات المذكورة.",
 
   // Request CTA
-  "Looking for an Autism Tutor in Dubai?": "هل تبحث عن معلم لأطفال التوحد في دبي؟",
+  "Looking for a Special Child Tutor in Dubai?": "هل تبحث عن معلم للأطفال ذوي الاحتياجات التعليمية الخاصة في دبي؟",
   "Tell us about your child's learning needs and the type of tutoring support you are looking for.":
     "أخبرنا عن احتياجات طفلك التعليمية ونوع الدعم الذي تبحث عنه.",
   "Contact Tutorly": "تواصل مع Tutorly",
 
   // FAQ
-  "Frequently Asked Questions About Autism Tutoring in Dubai": "الأسئلة الشائعة حول الدروس الخصوصية لأطفال التوحد في دبي",
-  "Can I request an autism tutor in Dubai?": "هل يمكنني طلب معلم لطفل مصاب بالتوحد في دبي؟",
+  "Frequently Asked Questions About Special Child Tutoring in Dubai": "الأسئلة الشائعة حول الدروس الخصوصية للأطفال ذوي الاحتياجات التعليمية الخاصة في دبي",
+  "Can I request a special child tutor in Dubai?": "هل يمكنني طلب معلم لطفل من ذوي الاحتياجات التعليمية الخاصة في دبي؟",
   "Yes. Parents can submit a tutoring request through Tutorly and provide information about the student's learning requirements, curriculum, preferred lesson format and other relevant details.":
     "نعم. يمكن لأولياء الأمور تقديم طلب عبر Tutorly وتوضيح متطلبات الطالب التعليمية ومنهجه وطريقة الدروس المفضلة وأي تفاصيل أخرى ذات صلة.",
-  "What subjects can an autism tutor support?": "ما المواد التي يمكن لمعلم أطفال التوحد دعمها؟",
+  "What subjects can a special child tutor support?": "ما المواد التي يمكن لمعلم للأطفال ذوي الاحتياجات التعليمية الخاصة دعمها؟",
   "Depending on the tutor's experience and the student's requirements, tutoring may include subjects such as Mathematics, English, Science, reading and writing, homework support and exam preparation.":
     "بحسب خبرة المعلم ومتطلبات الطالب، قد تشمل الدروس مواد مثل الرياضيات واللغة الإنجليزية والعلوم والقراءة والكتابة والمساعدة في الواجبات والتحضير للامتحانات.",
-  "Can autism tutoring be provided at home?": "هل يمكن تقديم الدروس لأطفال التوحد في المنزل؟",
+  "Can special child tutoring be provided at home?": "هل يمكن تقديم الدروس للأطفال ذوي الاحتياجات التعليمية الخاصة في المنزل؟",
   "Parents can indicate in-person tutoring and provide their preferred location when submitting a tutoring request, subject to suitable tutor availability.":
     "يمكن لأولياء الأمور تحديد رغبتهم في الدروس الحضورية وذكر الموقع المفضل عند تقديم الطلب، وذلك حسب توفر معلم مناسب.",
-  "Can I request online autism tutoring?": "هل يمكنني طلب دروس عبر الإنترنت لطفل مصاب بالتوحد؟",
+  "Can I request online special child tutoring?": "هل يمكنني طلب دروس عبر الإنترنت لطفل من ذوي الاحتياجات التعليمية الخاصة؟",
   "Yes. Parents can indicate online tutoring as their preferred lesson mode when submitting a tutoring request.":
     "نعم. يمكن لأولياء الأمور تحديد الدروس عبر الإنترنت كطريقة مفضلة عند تقديم الطلب.",
   "Does Tutorly provide Special Educational Needs (SEN) tutors?": "هل توفر Tutorly معلمين لذوي الاحتياجات التعليمية الخاصة؟",
-  "Parents can request tutors with relevant SEN or autism tutoring experience when submitting their tutoring requirements.":
-    "يمكن لأولياء الأمور طلب معلمين لديهم خبرة مناسبة في تدريس ذوي الاحتياجات الخاصة أو أطفال التوحد عند تقديم متطلباتهم.",
-  "How do I find an autism tutor through Tutorly?": "كيف أجد معلمًا لطفل مصاب بالتوحد عبر Tutorly؟",
+  "Parents can request tutors with relevant special child or SEN tutoring experience when submitting their tutoring requirements.":
+    "يمكن لأولياء الأمور طلب معلمين لديهم خبرة مناسبة في تدريس ذوي الاحتياجات الخاصة عند تقديم متطلباتهم.",
+  "How do I find a special child tutor through Tutorly?": "كيف أجد معلمًا لطفل من ذوي الاحتياجات التعليمية الخاصة عبر Tutorly؟",
   "Submit the Request a Tutor form and provide details about the student's age, education level, curriculum, subject and learning requirements. Tutorly can then review the request and help connect the family with a suitable tutor.":
     "قدّم نموذج طلب معلم مع تفاصيل عن عمر الطالب ومرحلته الدراسية ومنهجه والمادة ومتطلباته التعليمية. بعدها يمكن لـ Tutorly مراجعة الطلب والمساعدة في ربط العائلة بمعلم مناسب.",
   "Have another question?": "لديك سؤال آخر؟",

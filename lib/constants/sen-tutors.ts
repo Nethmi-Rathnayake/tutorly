@@ -1,51 +1,51 @@
 /**
- * Copy for the Autism Tutors in Dubai page (/autism-tutors-dubai), an SEO landing page for
- * autism / SEN tutoring requests.
+ * Copy for the Special Child Tutors in Dubai page (/sen-tutors-dubai), an SEO landing page for
+ * special child tutoring requests.
  * Deliberately makes no claims about tutor counts, ratings, qualifications, outcomes or
  * availability, and no medical claims: every statement describes what parents can request.
  * The business must confirm the copy before launch (SRS §11, §27).
  */
 
-export const autismHref = "/autism-tutors-dubai";
+export const senHref = "/sen-tutors-dubai";
 
-export const autismImages = {
-  hero: "/images/hero/hero-5.jpg",
+export const senImages = {
+  hero: "/images/special-child-hero.jpg",
 };
 
-export const autismMeta = {
-  title: "Autism Tutors in Dubai | Special Educational Needs Tutoring",
+export const senMeta = {
+  title: "Special Child Tutors in Dubai | SEN Tutoring for Special Students",
   description:
-    "Looking for experienced autism tutors in Dubai? Tutorly helps families connect with suitable tutors experienced in supporting children with autism and Special Educational Needs (SEN).",
+    "Looking for experienced special child tutors in Dubai? Tutorly helps families connect with suitable tutors experienced in supporting special children and students with Special Educational Needs (SEN).",
 };
 
-export const autismHero = {
-  eyebrow: "Special Educational Needs Support",
+export const senHero = {
+  eyebrow: "Special Child Support",
   titleLead: "Experienced",
-  titleAccent: "Autism Tutors",
+  titleAccent: "Special Child Tutors",
   titleTail: "in Dubai",
   description:
-    "Finding the right educational support for a child with autism can be challenging. Tutorly helps families across Dubai and the UAE connect with carefully selected tutors who understand the importance of personalized, patient and supportive learning.",
+    "Finding the right educational support for a special child can be challenging. Tutorly helps families across Dubai and the UAE connect with carefully selected tutors who understand the importance of personalized, patient and supportive learning.",
   primaryCta: "Request a Tutor",
   secondaryCta: "Contact Us",
-  imageAlt: "A child learning calmly at a desk in a bright, quiet room during a one-to-one tutoring session",
+  imageAlt: "A smiling child at a wooden desk with colourful learning toys, supported in a bright, welcoming classroom",
   labels: ["Personalized Learning", "One-to-One Support", "SEN Experience"],
 };
 
-export const autismIntro = {
+export const senIntro = {
   eyebrow: "Personalized Tutoring",
-  title: "Supporting Children With Autism Through Personalized Tutoring",
+  title: "Supporting Special Children Through Personalized Tutoring",
   paragraphs: [
-    "Every child learns differently. For children on the autism spectrum, a personalized learning environment can provide the additional structure, patience and individual attention they may need to engage confidently with their education.",
-    "Tutorly helps parents in Dubai and across the UAE find suitable tutors experienced in supporting children with autism and Special Educational Needs (SEN).",
+    "Every child learns differently. For special children, a personalized learning environment can provide the additional structure, patience and individual attention they may need to engage confidently with their education.",
+    "Tutorly helps parents in Dubai and across the UAE find suitable tutors experienced in supporting special children and students with Special Educational Needs (SEN).",
   ],
   cta: "Find the Right Tutor",
   linkLead: "New to Tutorly? See",
   linkLabel: "how our tutor matching works",
 };
 
-export const autismBenefits = {
+export const senBenefits = {
   eyebrow: "One-to-One Tutoring",
-  title: "Why One-to-One Autism Tutoring Can Make a Difference",
+  title: "Why One-to-One Special Child Tutoring Can Make a Difference",
   description:
     "A dedicated tutor can shape each session around the student, rather than asking the student to fit a fixed lesson.",
   items: [
@@ -68,7 +68,7 @@ export const autismBenefits = {
   ],
 };
 
-export const autismSupportAreas = {
+export const senSupportAreas = {
   eyebrow: "Support Areas",
   title: "Areas Our Tutors Can Support",
   description:
@@ -90,7 +90,7 @@ export const autismSupportAreas = {
   linkLabel: "Browse all subjects we cover",
 };
 
-export const autismStages = {
+export const senStages = {
   eyebrow: "Learning Stages",
   title: "Support for Different Learning Stages",
   description:
@@ -106,22 +106,22 @@ export const autismStages = {
   linkLabel: "Explore education levels in detail",
 };
 
-export const autismCurricula = {
+export const senCurricula = {
   eyebrow: "Curricula",
-  title: "Autism Tutoring Across Different Curricula",
+  title: "Special Child Tutoring Across Different Curricula",
   description:
     "Finding a tutor who understands both the student's learning needs and their academic curriculum can make the tutoring experience more relevant and effective.",
   items: ["British Curriculum", "IGCSE", "GCSE", "A-Levels", "American Curriculum", "IB", "CBSE", "UAE Curriculum"],
   note: "Let us know your child's curriculum when you request a tutor, and we will look for a tutor familiar with it.",
 };
 
-export const autismParentGuide = {
+export const senParentGuide = {
   eyebrow: "Parent Guide",
-  title: "What Should Parents Look for in an Autism Tutor?",
+  title: "What Should Parents Look for in a Special Child Tutor?",
   description:
-    "Every family's priorities are different. These are some of the qualities parents may want to consider when choosing a tutor for a child with autism.",
+    "Every family's priorities are different. These are some of the qualities parents may want to consider when choosing a tutor for a special child.",
   items: [
-    "Relevant SEN / autism experience",
+    "Relevant SEN experience",
     "Patient and supportive teaching approach",
     "Ability to adapt lessons to individual needs",
     "Understanding of the student's academic curriculum",
@@ -135,7 +135,7 @@ export const autismParentGuide = {
   },
 };
 
-export const autismProcess = {
+export const senProcess = {
   eyebrow: "How It Works",
   title: "How Tutorly Helps You Find the Right Support",
   steps: [
@@ -145,7 +145,7 @@ export const autismProcess = {
     },
     {
       title: "Tell Us What Support You Need",
-      body: "Parents can describe autism / SEN-related tutoring requirements and preferred learning arrangements.",
+      body: "Parents can describe SEN-related tutoring requirements and preferred learning arrangements.",
     },
     {
       title: "We Review Your Requirement",
@@ -158,50 +158,50 @@ export const autismProcess = {
   ],
 };
 
-export const autismRequestCta = {
+export const senRequestCta = {
   eyebrow: "Request a Tutor",
-  title: "Looking for an Autism Tutor in Dubai?",
+  title: "Looking for a Special Child Tutor in Dubai?",
   description: "Tell us about your child's learning needs and the type of tutoring support you are looking for.",
   primaryCta: "Request a Tutor",
   secondaryCta: "Contact Tutorly",
 };
 
-export const autismFaq = {
+export const senFaq = {
   eyebrow: "FAQ",
-  title: "Frequently Asked Questions About Autism Tutoring in Dubai",
+  title: "Frequently Asked Questions About Special Child Tutoring in Dubai",
   items: [
     {
       id: "request",
-      question: "Can I request an autism tutor in Dubai?",
+      question: "Can I request a special child tutor in Dubai?",
       answer:
         "Yes. Parents can submit a tutoring request through Tutorly and provide information about the student's learning requirements, curriculum, preferred lesson format and other relevant details.",
     },
     {
       id: "subjects",
-      question: "What subjects can an autism tutor support?",
+      question: "What subjects can a special child tutor support?",
       answer:
         "Depending on the tutor's experience and the student's requirements, tutoring may include subjects such as Mathematics, English, Science, reading and writing, homework support and exam preparation.",
     },
     {
       id: "home",
-      question: "Can autism tutoring be provided at home?",
+      question: "Can special child tutoring be provided at home?",
       answer:
         "Parents can indicate in-person tutoring and provide their preferred location when submitting a tutoring request, subject to suitable tutor availability.",
     },
     {
       id: "online",
-      question: "Can I request online autism tutoring?",
+      question: "Can I request online special child tutoring?",
       answer: "Yes. Parents can indicate online tutoring as their preferred lesson mode when submitting a tutoring request.",
     },
     {
       id: "sen",
       question: "Does Tutorly provide Special Educational Needs (SEN) tutors?",
       answer:
-        "Parents can request tutors with relevant SEN or autism tutoring experience when submitting their tutoring requirements.",
+        "Parents can request tutors with relevant special child or SEN tutoring experience when submitting their tutoring requirements.",
     },
     {
       id: "how",
-      question: "How do I find an autism tutor through Tutorly?",
+      question: "How do I find a special child tutor through Tutorly?",
       answer:
         "Submit the Request a Tutor form and provide details about the student's age, education level, curriculum, subject and learning requirements. Tutorly can then review the request and help connect the family with a suitable tutor.",
     },
@@ -210,7 +210,7 @@ export const autismFaq = {
   moreLabel: "Read our general FAQ",
 };
 
-export const autismFinalCta = {
+export const senFinalCta = {
   title: "Let's Find the Right Learning Support for Your Child",
   description:
     "Every child deserves learning support that respects their individual needs, learning style and educational goals.",
