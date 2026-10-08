@@ -48,7 +48,7 @@ export const footerNav: { title: string; links: NavItem[] }[] = [
       { label: "How It Works", href: "/how-it-works" },
       { label: "Academic Subjects", href: "/subjects" },
       { label: "Education Levels", href: "/education-levels" },
-      { label: "Special Child Tutors in Dubai", href: "/sen-tutors-dubai" },
+      { label: "Special Child Tutors in the UAE", href: "/sen-tutors-dubai" },
       { label: "Parent Reviews", href: "/reviews" },
       { label: "Parent Insights", href: "/blog" },
     ],

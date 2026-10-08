@@ -1,5 +1,5 @@
 /**
- * Copy for the Special Child Tutors in Dubai page (/sen-tutors-dubai), an SEO landing page for
+ * Copy for the Special Child Tutors in the UAE page (/sen-tutors-dubai), an SEO landing page for
  * special child tutoring requests.
  * Deliberately makes no claims about tutor counts, ratings, qualifications, outcomes or
  * availability, and no medical claims: every statement describes what parents can request.
@@ -13,18 +13,18 @@ export const senImages = {
 };
 
 export const senMeta = {
-  title: "Special Child Tutors in Dubai | SEN Tutoring for Special Students",
+  title: "Special Child Tutors in the UAE | SEN Tutoring for Special Students",
   description:
-    "Looking for experienced special child tutors in Dubai? Tutorly helps families connect with suitable tutors experienced in supporting special children and students with Special Educational Needs (SEN).",
+    "Looking for experienced special child tutors in the UAE? Tutorly helps families connect with suitable tutors experienced in supporting special children and students with Special Educational Needs (SEN).",
 };
 
 export const senHero = {
   eyebrow: "Special Child Support",
   titleLead: "Experienced",
   titleAccent: "Special Child Tutors",
-  titleTail: "in Dubai",
+  titleTail: "in the UAE",
   description:
-    "Finding the right educational support for a special child can be challenging. Tutorly helps families across Dubai and the UAE connect with carefully selected tutors who understand the importance of personalized, patient and supportive learning.",
+    "Finding the right educational support for a special child can be challenging. Tutorly helps families across the UAE connect with carefully selected tutors who understand the importance of personalized, patient and supportive learning.",
   primaryCta: "Request a Tutor",
   secondaryCta: "Contact Us",
   imageAlt: "A smiling child at a wooden desk with colourful learning toys, supported in a bright, welcoming classroom",
@@ -36,7 +36,7 @@ export const senIntro = {
   title: "Supporting Special Children Through Personalized Tutoring",
   paragraphs: [
     "Every child learns differently. For special children, a personalized learning environment can provide the additional structure, patience and individual attention they may need to engage confidently with their education.",
-    "Tutorly helps parents in Dubai and across the UAE find suitable tutors experienced in supporting special children and students with Special Educational Needs (SEN).",
+    "Tutorly helps parents across the UAE find suitable tutors experienced in supporting special children and students with Special Educational Needs (SEN).",
   ],
   cta: "Find the Right Tutor",
   linkLead: "New to Tutorly? See",
@@ -160,7 +160,7 @@ export const senProcess = {
 
 export const senRequestCta = {
   eyebrow: "Request a Tutor",
-  title: "Looking for a Special Child Tutor in Dubai?",
+  title: "Looking for a Special Child Tutor in the UAE?",
   description: "Tell us about your child's learning needs and the type of tutoring support you are looking for.",
   primaryCta: "Request a Tutor",
   secondaryCta: "Contact Tutorly",
@@ -168,11 +168,11 @@ export const senRequestCta = {
 
 export const senFaq = {
   eyebrow: "FAQ",
-  title: "Frequently Asked Questions About Special Child Tutoring in Dubai",
+  title: "Frequently Asked Questions About Special Child Tutoring in the UAE",
   items: [
     {
       id: "request",
-      question: "Can I request a special child tutor in Dubai?",
+      question: "Can I request a special child tutor in the UAE?",
       answer:
         "Yes. Parents can submit a tutoring request through Tutorly and provide information about the student's learning requirements, curriculum, preferred lesson format and other relevant details.",
     },

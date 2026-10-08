@@ -1,21 +1,21 @@
 import type { Dictionary } from "../translate";
 
-/** Arabic for the Special Child Tutors in Dubai page (/sen-tutors-dubai). */
+/** Arabic for the Special Child Tutors in the UAE page (/sen-tutors-dubai). */
 export const senTutors: Dictionary = {
-  "Special Child Tutors in Dubai": "معلمو الاحتياجات التعليمية الخاصة في دبي",
-  "Special Child Tutors in Dubai | SEN Tutoring for Special Students": "معلمو الاحتياجات التعليمية الخاصة في دبي | دروس خصوصية لذوي الاحتياجات التعليمية الخاصة",
-  "Looking for experienced special child tutors in Dubai? Tutorly helps families connect with suitable tutors experienced in supporting special children and students with Special Educational Needs (SEN).":
-    "هل تبحث عن معلمين ذوي خبرة في دعم الأطفال ذوي الاحتياجات التعليمية الخاصة في دبي؟ تساعد Tutorly العائلات على التواصل مع معلمين مناسبين لديهم خبرة في دعم الأطفال ذوي الاحتياجات التعليمية الخاصة وذوي الاحتياجات التعليمية الخاصة.",
+  "Special Child Tutors in the UAE": "معلمو الاحتياجات التعليمية الخاصة في الإمارات",
+  "Special Child Tutors in the UAE | SEN Tutoring for Special Students": "معلمو الاحتياجات التعليمية الخاصة في الإمارات | دروس خصوصية لذوي الاحتياجات التعليمية الخاصة",
+  "Looking for experienced special child tutors in the UAE? Tutorly helps families connect with suitable tutors experienced in supporting special children and students with Special Educational Needs (SEN).":
+    "هل تبحث عن معلمين ذوي خبرة في دعم الأطفال ذوي الاحتياجات التعليمية الخاصة في الإمارات؟ تساعد Tutorly العائلات على التواصل مع معلمين مناسبين لديهم خبرة في دعم الأطفال ذوي الاحتياجات التعليمية الخاصة وذوي الاحتياجات التعليمية الخاصة.",
 
   // Hero
   "Special Child Support": "دعم ذوي الاحتياجات التعليمية الخاصة",
-  // The hero H1 is three pieces ("Experienced" + accent "Special Child Tutors", in common.ts, + "in Dubai").
+  // The hero H1 is three pieces ("Experienced" + accent "Special Child Tutors", in common.ts, + "in the UAE").
   // Arabic puts the adjective after the noun, so the lead is blank and "ذوو الخبرة" moves into the
-  // tail: "معلمو الاحتياجات التعليمية الخاصة ذوو الخبرة في دبي". Only this H1 uses these two keys.
+  // tail: "معلمو الاحتياجات التعليمية الخاصة ذوو الخبرة في الإمارات". Only this H1 uses these two keys.
   Experienced: "",
-  "in Dubai": "ذوو الخبرة في دبي",
-  "Finding the right educational support for a special child can be challenging. Tutorly helps families across Dubai and the UAE connect with carefully selected tutors who understand the importance of personalized, patient and supportive learning.":
-    "قد يكون العثور على الدعم التعليمي المناسب لطفل من ذوي الاحتياجات التعليمية الخاصة أمرًا صعبًا. تساعد Tutorly العائلات في دبي وجميع أنحاء الإمارات على التواصل مع معلمين مختارين بعناية يدركون أهمية التعلّم المخصص والصبور والداعم.",
+  "in the UAE": "ذوو الخبرة في الإمارات",
+  "Finding the right educational support for a special child can be challenging. Tutorly helps families across the UAE connect with carefully selected tutors who understand the importance of personalized, patient and supportive learning.":
+    "قد يكون العثور على الدعم التعليمي المناسب لطفل من ذوي الاحتياجات التعليمية الخاصة أمرًا صعبًا. تساعد Tutorly العائلات في جميع أنحاء الإمارات على التواصل مع معلمين مختارين بعناية يدركون أهمية التعلّم المخصص والصبور والداعم.",
   "A smiling child at a wooden desk with colourful learning toys, supported in a bright, welcoming classroom":
     "طفل مبتسم على مكتب خشبي مع ألعاب تعليمية ملونة في فصل مشرق ومرحّب",
   "Personalized Learning": "تعلّم مخصص",
@@ -27,8 +27,8 @@ export const senTutors: Dictionary = {
   "Supporting Special Children Through Personalized Tutoring": "دعم الأطفال ذوي الاحتياجات التعليمية الخاصة من خلال دروس خصوصية مخصصة",
   "Every child learns differently. For special children, a personalized learning environment can provide the additional structure, patience and individual attention they may need to engage confidently with their education.":
     "يتعلّم كل طفل بطريقته الخاصة. وبالنسبة للأطفال ذوي الاحتياجات التعليمية الخاصة، يمكن لبيئة تعلّم مخصصة أن توفر لهم مزيدًا من التنظيم والصبر والاهتمام الفردي الذي قد يحتاجونه للتفاعل مع تعليمهم بثقة.",
-  "Tutorly helps parents in Dubai and across the UAE find suitable tutors experienced in supporting special children and students with Special Educational Needs (SEN).":
-    "تساعد Tutorly أولياء الأمور في دبي وجميع أنحاء الإمارات على إيجاد معلمين مناسبين لديهم خبرة في دعم الأطفال ذوي الاحتياجات التعليمية الخاصة وذوي الاحتياجات التعليمية الخاصة.",
+  "Tutorly helps parents across the UAE find suitable tutors experienced in supporting special children and students with Special Educational Needs (SEN).":
+    "تساعد Tutorly أولياء الأمور في جميع أنحاء الإمارات على إيجاد معلمين مناسبين لديهم خبرة في دعم الأطفال ذوي الاحتياجات التعليمية الخاصة وذوي الاحتياجات التعليمية الخاصة.",
   "Find the Right Tutor": "اعثر على المعلم المناسب",
   "New to Tutorly? See": "جديد على Tutorly؟ اطّلع على",
   "how our tutor matching works": "طريقة اختيارنا للمعلم المناسب",
@@ -132,14 +132,14 @@ export const senTutors: Dictionary = {
     "تساعد Tutorly في ربط العائلة بمعلم يناسب المتطلبات المذكورة.",
 
   // Request CTA
-  "Looking for a Special Child Tutor in Dubai?": "هل تبحث عن معلم للأطفال ذوي الاحتياجات التعليمية الخاصة في دبي؟",
+  "Looking for a Special Child Tutor in the UAE?": "هل تبحث عن معلم للأطفال ذوي الاحتياجات التعليمية الخاصة في الإمارات؟",
   "Tell us about your child's learning needs and the type of tutoring support you are looking for.":
     "أخبرنا عن احتياجات طفلك التعليمية ونوع الدعم الذي تبحث عنه.",
   "Contact Tutorly": "تواصل مع Tutorly",
 
   // FAQ
-  "Frequently Asked Questions About Special Child Tutoring in Dubai": "الأسئلة الشائعة حول الدروس الخصوصية للأطفال ذوي الاحتياجات التعليمية الخاصة في دبي",
-  "Can I request a special child tutor in Dubai?": "هل يمكنني طلب معلم لطفل من ذوي الاحتياجات التعليمية الخاصة في دبي؟",
+  "Frequently Asked Questions About Special Child Tutoring in the UAE": "الأسئلة الشائعة حول الدروس الخصوصية للأطفال ذوي الاحتياجات التعليمية الخاصة في الإمارات",
+  "Can I request a special child tutor in the UAE?": "هل يمكنني طلب معلم لطفل من ذوي الاحتياجات التعليمية الخاصة في الإمارات؟",
   "Yes. Parents can submit a tutoring request through Tutorly and provide information about the student's learning requirements, curriculum, preferred lesson format and other relevant details.":
     "نعم. يمكن لأولياء الأمور تقديم طلب عبر Tutorly وتوضيح متطلبات الطالب التعليمية ومنهجه وطريقة الدروس المفضلة وأي تفاصيل أخرى ذات صلة.",
   "What subjects can a special child tutor support?": "ما المواد التي يمكن لمعلم للأطفال ذوي الاحتياجات التعليمية الخاصة دعمها؟",
