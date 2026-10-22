@@ -28,7 +28,7 @@ const escapeHtml = (s: string) =>
   s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
 /**
- * Email a form submission to the Tutorly inbox (`siteConfig.contact.email`).
+ * Email a form submission to the Tuteme inbox (`siteConfig.contact.email`).
  *
  * Needs GMAIL_USER (defaults to the inbox address) and GMAIL_APP_PASSWORD, a Google
  * "App password" for that account. Without a password the submission is logged in
@@ -63,7 +63,7 @@ export async function notifyTeam(opts: {
   const user = process.env.GMAIL_USER ?? to;
   const transporter = nodemailer.createTransport({ service: "gmail", auth: { user, pass } });
   await transporter.sendMail({
-    from: `"Tutorly Website" <${user}>`,
+    from: `"Tuteme Website" <${user}>`,
     to,
     replyTo: opts.replyTo,
     subject: `${opts.subject} (${opts.reference})`,
@@ -89,10 +89,10 @@ export async function sendConfirmation(opts: {
     const user = process.env.GMAIL_USER ?? siteConfig.contact.email;
     const transporter = nodemailer.createTransport({ service: "gmail", auth: { user, pass } });
     const inbox = siteConfig.contact.email;
-    const text = `Hi ${opts.name},\n\n${opts.message}\n\nYour reference: ${opts.reference}\n\nIf you need anything, reply to this email or write to ${inbox}.\n\nTutorly`;
-    const html = `<p>Hi ${escapeHtml(opts.name)},</p><p>${escapeHtml(opts.message)}</p><p><strong>Your reference:</strong> ${escapeHtml(opts.reference)}</p><p>If you need anything, reply to this email or write to <a href="mailto:${inbox}">${inbox}</a>.</p><p>Tutorly</p>`;
+    const text = `Hi ${opts.name},\n\n${opts.message}\n\nYour reference: ${opts.reference}\n\nIf you need anything, reply to this email or write to ${inbox}.\n\nTuteme`;
+    const html = `<p>Hi ${escapeHtml(opts.name)},</p><p>${escapeHtml(opts.message)}</p><p><strong>Your reference:</strong> ${escapeHtml(opts.reference)}</p><p>If you need anything, reply to this email or write to <a href="mailto:${inbox}">${inbox}</a>.</p><p>Tuteme</p>`;
     await transporter.sendMail({
-      from: `"Tutorly" <${user}>`,
+      from: `"Tuteme" <${user}>`,
       to: opts.to,
       replyTo: inbox,
       subject: opts.subject,

@@ -18,7 +18,7 @@ import type { Translator } from "@/lib/i18n/translate";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
-  // The root layout's title template appends "| Tutorly".
+  // The root layout's title template appends "| Tuteme".
   const title = t(senMeta.title);
   const description = t(senMeta.description);
   return {

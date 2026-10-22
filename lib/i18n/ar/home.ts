@@ -174,8 +174,8 @@ export const home: Dictionary = {
   "What Parents & Students Say": "ماذا يقول أولياء الأمور والطلاب",
   "Read All 450+ Verified Reviews": "اقرأ أكثر من 450 تقييمًا موثّقًا",
   "Rated 5 out of 5": "تقييم 5 من 5",
-  "We were struggling with our daughter's IB Chemistry SL marks. Tutorly matched us with Dr. Elena, and within two terms she went from a 4 to a solid 7. Incredible dedication!":
-    "كنا نعاني من درجات ابنتنا في كيمياء IB SL. رشّحت لنا Tutorly الدكتورة إيلينا، وخلال فصلين دراسيين ارتفعت درجتها من 4 إلى 7 بجدارة. تفانٍ مذهل!",
+  "We were struggling with our daughter's IB Chemistry SL marks. Tuteme matched us with Dr. Elena, and within two terms she went from a 4 to a solid 7. Incredible dedication!":
+    "كنا نعاني من درجات ابنتنا في كيمياء IB SL. رشّحت لنا Tuteme الدكتورة إيلينا، وخلال فصلين دراسيين ارتفعت درجتها من 4 إلى 7 بجدارة. تفانٍ مذهل!",
   "Nadia Mansour": "نادية منصور",
   "Mother of Year 12 IB Student": "والدة طالبة IB في Year 12",
   "The platform's verification gives complete peace of mind. Both in-person and digital sessions are thoroughly documented with progress logs after every class.":

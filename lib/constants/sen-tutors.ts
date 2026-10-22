@@ -15,7 +15,7 @@ export const senImages = {
 export const senMeta = {
   title: "Special Child Tutors in the UAE | SEN Tutoring for Special Students",
   description:
-    "Looking for experienced special child tutors in the UAE? Tutorly helps families connect with suitable tutors experienced in supporting special children and students with Special Educational Needs (SEN).",
+    "Looking for experienced special child tutors in the UAE? Tuteme helps families connect with suitable tutors experienced in supporting special children and students with Special Educational Needs (SEN).",
 };
 
 export const senHero = {
@@ -24,7 +24,7 @@ export const senHero = {
   titleAccent: "Special Child Tutors",
   titleTail: "in the UAE",
   description:
-    "Finding the right educational support for a special child can be challenging. Tutorly helps families across the UAE connect with carefully selected tutors who understand the importance of personalized, patient and supportive learning.",
+    "Finding the right educational support for a special child can be challenging. Tuteme helps families across the UAE connect with carefully selected tutors who understand the importance of personalized, patient and supportive learning.",
   primaryCta: "Request a Tutor",
   secondaryCta: "Contact Us",
   imageAlt: "A smiling child at a wooden desk with colourful learning toys, supported in a bright, welcoming classroom",
@@ -36,10 +36,10 @@ export const senIntro = {
   title: "Supporting Special Children Through Personalized Tutoring",
   paragraphs: [
     "Every child learns differently. For special children, a personalized learning environment can provide the additional structure, patience and individual attention they may need to engage confidently with their education.",
-    "Tutorly helps parents across the UAE find suitable tutors experienced in supporting special children and students with Special Educational Needs (SEN).",
+    "Tuteme helps parents across the UAE find suitable tutors experienced in supporting special children and students with Special Educational Needs (SEN).",
   ],
   cta: "Find the Right Tutor",
-  linkLead: "New to Tutorly? See",
+  linkLead: "New to Tuteme? See",
   linkLabel: "how our tutor matching works",
 };
 
@@ -94,7 +94,7 @@ export const senStages = {
   eyebrow: "Learning Stages",
   title: "Support for Different Learning Stages",
   description:
-    "Tutoring requirements can vary at every stage of education. Tutorly helps families communicate their child's specific academic and learning requirements when requesting a tutor.",
+    "Tutoring requirements can vary at every stage of education. Tuteme helps families communicate their child's specific academic and learning requirements when requesting a tutor.",
   items: [
     { title: "Early Years", anchor: "early-years" },
     { title: "Primary School", anchor: "primary" },
@@ -131,13 +131,13 @@ export const senParentGuide = {
   aside: {
     title: "Share what matters to you",
     body: "When you request a tutor, you can tell us which of these qualities matter most for your child, along with any other learning requirements.",
-    linkLabel: "Learn more about Tutorly",
+    linkLabel: "Learn more about Tuteme",
   },
 };
 
 export const senProcess = {
   eyebrow: "How It Works",
-  title: "How Tutorly Helps You Find the Right Support",
+  title: "How Tuteme Helps You Find the Right Support",
   steps: [
     {
       title: "Tell Us About Your Child",
@@ -149,11 +149,11 @@ export const senProcess = {
     },
     {
       title: "We Review Your Requirement",
-      body: "Tutorly reviews the information provided by the family.",
+      body: "Tuteme reviews the information provided by the family.",
     },
     {
       title: "Connect With a Suitable Tutor",
-      body: "Tutorly helps connect the family with a tutor who is suitable for the stated requirements.",
+      body: "Tuteme helps connect the family with a tutor who is suitable for the stated requirements.",
     },
   ],
 };
@@ -163,7 +163,7 @@ export const senRequestCta = {
   title: "Looking for a Special Child Tutor in the UAE?",
   description: "Tell us about your child's learning needs and the type of tutoring support you are looking for.",
   primaryCta: "Request a Tutor",
-  secondaryCta: "Contact Tutorly",
+  secondaryCta: "Contact Tuteme",
 };
 
 export const senFaq = {
@@ -174,7 +174,7 @@ export const senFaq = {
       id: "request",
       question: "Can I request a special child tutor in the UAE?",
       answer:
-        "Yes. Parents can submit a tutoring request through Tutorly and provide information about the student's learning requirements, curriculum, preferred lesson format and other relevant details.",
+        "Yes. Parents can submit a tutoring request through Tuteme and provide information about the student's learning requirements, curriculum, preferred lesson format and other relevant details.",
     },
     {
       id: "subjects",
@@ -195,15 +195,15 @@ export const senFaq = {
     },
     {
       id: "sen",
-      question: "Does Tutorly provide Special Educational Needs (SEN) tutors?",
+      question: "Does Tuteme provide Special Educational Needs (SEN) tutors?",
       answer:
         "Parents can request tutors with relevant special child or SEN tutoring experience when submitting their tutoring requirements.",
     },
     {
       id: "how",
-      question: "How do I find a special child tutor through Tutorly?",
+      question: "How do I find a special child tutor through Tuteme?",
       answer:
-        "Submit the Request a Tutor form and provide details about the student's age, education level, curriculum, subject and learning requirements. Tutorly can then review the request and help connect the family with a suitable tutor.",
+        "Submit the Request a Tutor form and provide details about the student's age, education level, curriculum, subject and learning requirements. Tuteme can then review the request and help connect the family with a suitable tutor.",
     },
   ],
   moreLead: "Have another question?",

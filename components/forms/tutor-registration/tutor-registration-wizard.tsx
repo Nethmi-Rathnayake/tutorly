@@ -44,7 +44,7 @@ export function TutorRegistrationWizard() {
     schemas: registrationStepSchemas,
     stepFields: registrationStepFields,
     defaultValues: tutorRegistrationDefaults,
-    draftKey: "tutorly:tutor-registration-draft-v1",
+    draftKey: "tuteme:tutor-registration-draft-v1",
     // The headshot lives in memory only, so it isn't kept in drafts.
     transientFields: ["consent", "photo"],
     submit: submitTutorRegistration,

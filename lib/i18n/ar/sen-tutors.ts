@@ -4,8 +4,8 @@ import type { Dictionary } from "../translate";
 export const senTutors: Dictionary = {
   "Special Child Tutors in the UAE": "معلمو الاحتياجات التعليمية الخاصة في الإمارات",
   "Special Child Tutors in the UAE | SEN Tutoring for Special Students": "معلمو الاحتياجات التعليمية الخاصة في الإمارات | دروس خصوصية لذوي الاحتياجات التعليمية الخاصة",
-  "Looking for experienced special child tutors in the UAE? Tutorly helps families connect with suitable tutors experienced in supporting special children and students with Special Educational Needs (SEN).":
-    "هل تبحث عن معلمين ذوي خبرة في دعم الأطفال ذوي الاحتياجات التعليمية الخاصة في الإمارات؟ تساعد Tutorly العائلات على التواصل مع معلمين مناسبين لديهم خبرة في دعم الأطفال ذوي الاحتياجات التعليمية الخاصة وذوي الاحتياجات التعليمية الخاصة.",
+  "Looking for experienced special child tutors in the UAE? Tuteme helps families connect with suitable tutors experienced in supporting special children and students with Special Educational Needs (SEN).":
+    "هل تبحث عن معلمين ذوي خبرة في دعم الأطفال ذوي الاحتياجات التعليمية الخاصة في الإمارات؟ تساعد Tuteme العائلات على التواصل مع معلمين مناسبين لديهم خبرة في دعم الأطفال ذوي الاحتياجات التعليمية الخاصة وذوي الاحتياجات التعليمية الخاصة.",
 
   // Hero
   "Special Child Support": "دعم ذوي الاحتياجات التعليمية الخاصة",
@@ -14,8 +14,8 @@ export const senTutors: Dictionary = {
   // tail: "معلمو الاحتياجات التعليمية الخاصة ذوو الخبرة في الإمارات". Only this H1 uses these two keys.
   Experienced: "",
   "in the UAE": "ذوو الخبرة في الإمارات",
-  "Finding the right educational support for a special child can be challenging. Tutorly helps families across the UAE connect with carefully selected tutors who understand the importance of personalized, patient and supportive learning.":
-    "قد يكون العثور على الدعم التعليمي المناسب لطفل من ذوي الاحتياجات التعليمية الخاصة أمرًا صعبًا. تساعد Tutorly العائلات في جميع أنحاء الإمارات على التواصل مع معلمين مختارين بعناية يدركون أهمية التعلّم المخصص والصبور والداعم.",
+  "Finding the right educational support for a special child can be challenging. Tuteme helps families across the UAE connect with carefully selected tutors who understand the importance of personalized, patient and supportive learning.":
+    "قد يكون العثور على الدعم التعليمي المناسب لطفل من ذوي الاحتياجات التعليمية الخاصة أمرًا صعبًا. تساعد Tuteme العائلات في جميع أنحاء الإمارات على التواصل مع معلمين مختارين بعناية يدركون أهمية التعلّم المخصص والصبور والداعم.",
   "A smiling child at a wooden desk with colourful learning toys, supported in a bright, welcoming classroom":
     "طفل مبتسم على مكتب خشبي مع ألعاب تعليمية ملونة في فصل مشرق ومرحّب",
   "Personalized Learning": "تعلّم مخصص",
@@ -27,10 +27,10 @@ export const senTutors: Dictionary = {
   "Supporting Special Children Through Personalized Tutoring": "دعم الأطفال ذوي الاحتياجات التعليمية الخاصة من خلال دروس خصوصية مخصصة",
   "Every child learns differently. For special children, a personalized learning environment can provide the additional structure, patience and individual attention they may need to engage confidently with their education.":
     "يتعلّم كل طفل بطريقته الخاصة. وبالنسبة للأطفال ذوي الاحتياجات التعليمية الخاصة، يمكن لبيئة تعلّم مخصصة أن توفر لهم مزيدًا من التنظيم والصبر والاهتمام الفردي الذي قد يحتاجونه للتفاعل مع تعليمهم بثقة.",
-  "Tutorly helps parents across the UAE find suitable tutors experienced in supporting special children and students with Special Educational Needs (SEN).":
-    "تساعد Tutorly أولياء الأمور في جميع أنحاء الإمارات على إيجاد معلمين مناسبين لديهم خبرة في دعم الأطفال ذوي الاحتياجات التعليمية الخاصة وذوي الاحتياجات التعليمية الخاصة.",
+  "Tuteme helps parents across the UAE find suitable tutors experienced in supporting special children and students with Special Educational Needs (SEN).":
+    "تساعد Tuteme أولياء الأمور في جميع أنحاء الإمارات على إيجاد معلمين مناسبين لديهم خبرة في دعم الأطفال ذوي الاحتياجات التعليمية الخاصة وذوي الاحتياجات التعليمية الخاصة.",
   "Find the Right Tutor": "اعثر على المعلم المناسب",
-  "New to Tutorly? See": "جديد على Tutorly؟ اطّلع على",
+  "New to Tuteme? See": "جديد على Tuteme؟ اطّلع على",
   "how our tutor matching works": "طريقة اختيارنا للمعلم المناسب",
 
   // Why one-to-one
@@ -84,8 +84,8 @@ export const senTutors: Dictionary = {
   // Learning stages
   "Learning Stages": "المراحل التعليمية",
   "Support for Different Learning Stages": "دعم لمختلف المراحل التعليمية",
-  "Tutoring requirements can vary at every stage of education. Tutorly helps families communicate their child's specific academic and learning requirements when requesting a tutor.":
-    "قد تختلف متطلبات الدروس الخصوصية في كل مرحلة دراسية. تساعد Tutorly العائلات على توضيح المتطلبات الأكاديمية والتعليمية الخاصة بطفلهم عند طلب معلم.",
+  "Tutoring requirements can vary at every stage of education. Tuteme helps families communicate their child's specific academic and learning requirements when requesting a tutor.":
+    "قد تختلف متطلبات الدروس الخصوصية في كل مرحلة دراسية. تساعد Tuteme العائلات على توضيح المتطلبات الأكاديمية والتعليمية الخاصة بطفلهم عند طلب معلم.",
   "Secondary School": "المرحلة الثانوية",
   "IGCSE / GCSE": "IGCSE / GCSE",
   "A-Levels / IB": "A-Levels / IB",
@@ -115,10 +115,10 @@ export const senTutors: Dictionary = {
   "Share what matters to you": "شاركنا ما يهمك",
   "When you request a tutor, you can tell us which of these qualities matter most for your child, along with any other learning requirements.":
     "عند طلب معلم، يمكنك إخبارنا بأي من هذه الصفات هو الأهم لطفلك، إلى جانب أي متطلبات تعليمية أخرى.",
-  "Learn more about Tutorly": "تعرّف أكثر على Tutorly",
+  "Learn more about Tuteme": "تعرّف أكثر على Tuteme",
 
   // Process
-  "How Tutorly Helps You Find the Right Support": "كيف تساعدك Tutorly في إيجاد الدعم المناسب",
+  "How Tuteme Helps You Find the Right Support": "كيف تساعدك Tuteme في إيجاد الدعم المناسب",
   "Tell Us About Your Child": "أخبرنا عن طفلك",
   "Parents share the student's age, grade, curriculum, subject and learning requirements.":
     "يشارك أولياء الأمور عمر الطالب وصفّه ومنهجه والمادة ومتطلباته التعليمية.",
@@ -126,22 +126,22 @@ export const senTutors: Dictionary = {
   "Parents can describe SEN-related tutoring requirements and preferred learning arrangements.":
     "يمكن لأولياء الأمور وصف متطلبات الدروس الخصوصية المتعلقة بالاحتياجات التعليمية الخاصة وترتيبات التعلّم المفضلة.",
   "We Review Your Requirement": "نراجع طلبك",
-  "Tutorly reviews the information provided by the family.": "تراجع Tutorly المعلومات التي قدّمتها العائلة.",
+  "Tuteme reviews the information provided by the family.": "تراجع Tuteme المعلومات التي قدّمتها العائلة.",
   "Connect With a Suitable Tutor": "التواصل مع معلم مناسب",
-  "Tutorly helps connect the family with a tutor who is suitable for the stated requirements.":
-    "تساعد Tutorly في ربط العائلة بمعلم يناسب المتطلبات المذكورة.",
+  "Tuteme helps connect the family with a tutor who is suitable for the stated requirements.":
+    "تساعد Tuteme في ربط العائلة بمعلم يناسب المتطلبات المذكورة.",
 
   // Request CTA
   "Looking for a Special Child Tutor in the UAE?": "هل تبحث عن معلم للأطفال ذوي الاحتياجات التعليمية الخاصة في الإمارات؟",
   "Tell us about your child's learning needs and the type of tutoring support you are looking for.":
     "أخبرنا عن احتياجات طفلك التعليمية ونوع الدعم الذي تبحث عنه.",
-  "Contact Tutorly": "تواصل مع Tutorly",
+  "Contact Tuteme": "تواصل مع Tuteme",
 
   // FAQ
   "Frequently Asked Questions About Special Child Tutoring in the UAE": "الأسئلة الشائعة حول الدروس الخصوصية للأطفال ذوي الاحتياجات التعليمية الخاصة في الإمارات",
   "Can I request a special child tutor in the UAE?": "هل يمكنني طلب معلم لطفل من ذوي الاحتياجات التعليمية الخاصة في الإمارات؟",
-  "Yes. Parents can submit a tutoring request through Tutorly and provide information about the student's learning requirements, curriculum, preferred lesson format and other relevant details.":
-    "نعم. يمكن لأولياء الأمور تقديم طلب عبر Tutorly وتوضيح متطلبات الطالب التعليمية ومنهجه وطريقة الدروس المفضلة وأي تفاصيل أخرى ذات صلة.",
+  "Yes. Parents can submit a tutoring request through Tuteme and provide information about the student's learning requirements, curriculum, preferred lesson format and other relevant details.":
+    "نعم. يمكن لأولياء الأمور تقديم طلب عبر Tuteme وتوضيح متطلبات الطالب التعليمية ومنهجه وطريقة الدروس المفضلة وأي تفاصيل أخرى ذات صلة.",
   "What subjects can a special child tutor support?": "ما المواد التي يمكن لمعلم للأطفال ذوي الاحتياجات التعليمية الخاصة دعمها؟",
   "Depending on the tutor's experience and the student's requirements, tutoring may include subjects such as Mathematics, English, Science, reading and writing, homework support and exam preparation.":
     "بحسب خبرة المعلم ومتطلبات الطالب، قد تشمل الدروس مواد مثل الرياضيات واللغة الإنجليزية والعلوم والقراءة والكتابة والمساعدة في الواجبات والتحضير للامتحانات.",
@@ -151,12 +151,12 @@ export const senTutors: Dictionary = {
   "Can I request online special child tutoring?": "هل يمكنني طلب دروس عبر الإنترنت لطفل من ذوي الاحتياجات التعليمية الخاصة؟",
   "Yes. Parents can indicate online tutoring as their preferred lesson mode when submitting a tutoring request.":
     "نعم. يمكن لأولياء الأمور تحديد الدروس عبر الإنترنت كطريقة مفضلة عند تقديم الطلب.",
-  "Does Tutorly provide Special Educational Needs (SEN) tutors?": "هل توفر Tutorly معلمين لذوي الاحتياجات التعليمية الخاصة؟",
+  "Does Tuteme provide Special Educational Needs (SEN) tutors?": "هل توفر Tuteme معلمين لذوي الاحتياجات التعليمية الخاصة؟",
   "Parents can request tutors with relevant special child or SEN tutoring experience when submitting their tutoring requirements.":
     "يمكن لأولياء الأمور طلب معلمين لديهم خبرة مناسبة في تدريس ذوي الاحتياجات الخاصة عند تقديم متطلباتهم.",
-  "How do I find a special child tutor through Tutorly?": "كيف أجد معلمًا لطفل من ذوي الاحتياجات التعليمية الخاصة عبر Tutorly؟",
-  "Submit the Request a Tutor form and provide details about the student's age, education level, curriculum, subject and learning requirements. Tutorly can then review the request and help connect the family with a suitable tutor.":
-    "قدّم نموذج طلب معلم مع تفاصيل عن عمر الطالب ومرحلته الدراسية ومنهجه والمادة ومتطلباته التعليمية. بعدها يمكن لـ Tutorly مراجعة الطلب والمساعدة في ربط العائلة بمعلم مناسب.",
+  "How do I find a special child tutor through Tuteme?": "كيف أجد معلمًا لطفل من ذوي الاحتياجات التعليمية الخاصة عبر Tuteme؟",
+  "Submit the Request a Tutor form and provide details about the student's age, education level, curriculum, subject and learning requirements. Tuteme can then review the request and help connect the family with a suitable tutor.":
+    "قدّم نموذج طلب معلم مع تفاصيل عن عمر الطالب ومرحلته الدراسية ومنهجه والمادة ومتطلباته التعليمية. بعدها يمكن لـ Tuteme مراجعة الطلب والمساعدة في ربط العائلة بمعلم مناسب.",
   "Have another question?": "لديك سؤال آخر؟",
   "Read our general FAQ": "اقرأ الأسئلة الشائعة العامة",
 

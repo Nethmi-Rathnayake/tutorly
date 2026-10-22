@@ -140,7 +140,7 @@ export const directoryContrast = {
   eyebrow: "Architectural Distinction",
   title: "Why We Reject the “Search Directory” Model",
   description:
-    "Open marketplace platforms force parents to sift through hundreds of unvetted bios. Tutorly operates like a private medical or legal advisory bureau.",
+    "Open marketplace platforms force parents to sift through hundreds of unvetted bios. Tuteme operates like a private medical or legal advisory bureau.",
   points: [
     {
       title: "Zero Cold Outreach",
@@ -163,7 +163,7 @@ export const directoryContrast = {
 export const connectionProof = {
   eyebrow: "Parent Verification",
   quote:
-    "Searching online directories had become a second full-time job. With Tutorly, their Academic Director personally analyzed our son’s IB HL Math struggles and assigned an Oxford alumnus in 36 hours. The connection trial was instantaneous chemistry.",
+    "Searching online directories had become a second full-time job. With Tuteme, their Academic Director personally analyzed our son’s IB HL Math struggles and assigned an Oxford alumnus in 36 hours. The connection trial was instantaneous chemistry.",
   name: "Helena Radford",
   context: "Mother of IB Diploma Candidate • Westminster School",
   initial: "H",

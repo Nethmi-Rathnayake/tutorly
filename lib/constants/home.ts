@@ -186,7 +186,7 @@ export const testimonials = [
   {
     id: "t1",
     quote:
-      "We were struggling with our daughter's IB Chemistry SL marks. Tutorly matched us with Dr. Elena, and within two terms she went from a 4 to a solid 7. Incredible dedication!",
+      "We were struggling with our daughter's IB Chemistry SL marks. Tuteme matched us with Dr. Elena, and within two terms she went from a 4 to a solid 7. Incredible dedication!",
     name: "Nadia Mansour",
     context: "Mother of Year 12 IB Student",
     initials: "NM",

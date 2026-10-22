@@ -3,7 +3,7 @@
  * Replace these values with the approved business information.
  */
 export const siteConfig = {
-  name: "Tutorly",
+  name: "Tuteme",
   description:
     "A modern tutoring ecosystem connecting motivated students and discerning parents with qualified, verified educators across diverse international curriculums and academic tiers.",
   contact: {

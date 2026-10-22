@@ -19,7 +19,7 @@ export async function createTutorApplication(data: TutorRegistrationValues): Pro
     name: data.fullName,
     reference,
     subject: "We've received your tutor application",
-    message: "Thank you for applying to teach with Tutorly. Our team will review your application and get back to you soon.",
+    message: "Thank you for applying to teach with Tuteme. Our team will review your application and get back to you soon.",
   });
   return { reference };
 }
