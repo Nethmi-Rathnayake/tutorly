@@ -35,7 +35,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency,
       // Every URL lists all of its language versions (hreflang), including itself.
-      priority: locale === defaultLocale ? priority : Math.max(priority - 0.1, 0.1),
+      priority: locale === defaultLocale ? priority : Math.round(Math.max(priority - 0.1, 0.1) * 10) / 10,
       alternates: {
         languages: Object.fromEntries(locales.map((l) => [l, absoluteUrl(path, l)])),
       },

@@ -52,8 +52,8 @@ export async function generateMetadata(): Promise<Metadata> {
     description,
     applicationName: siteConfig.name,
     category: "education",
-    openGraph: { type: "website", siteName: siteConfig.name, description },
-    twitter: { card: "summary_large_image" },
+    openGraph: { type: "website", siteName: siteConfig.name, description, images: ["/og-image.jpg"] },
+    twitter: { card: "summary_large_image", images: ["/og-image.jpg"] },
     robots: {
       index: true,
       follow: true,

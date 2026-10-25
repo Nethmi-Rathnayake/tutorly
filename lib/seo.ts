@@ -30,7 +30,7 @@ export function pageMetadata(path: string, locale: Locale, meta: Metadata): Meta
   const title = meta.title ?? undefined;
   const plainTitle = typeof title === "string" ? title : title && "absolute" in title ? title.absolute : undefined;
   const ogTitle = plainTitle ? (plainTitle.includes(siteConfig.name) ? plainTitle : `${plainTitle} | ${siteConfig.name}`) : siteConfig.name;
-  const image = { url: absoluteUrl("/opengraph-image", locale), width: 1200, height: 630, alt: siteConfig.name };
+  const image = { url: `${siteConfig.url}/og-image.jpg`, width: 1280, height: 675, alt: `${siteConfig.name} — Your Child’s Path to Excellence` };
   const description = typeof meta.description === "string" ? meta.description : undefined;
   return {
     ...meta,
