@@ -8,7 +8,7 @@ export const siteConfig = {
    * Canonical origin used for canonical URLs, hreflang, the sitemap and structured data.
    * Set NEXT_PUBLIC_SITE_URL in production; the fallback is a PLACEHOLDER until the domain is confirmed.
    */
-  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://tuteme.ae").replace(/\/+$/, ""),
+  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.tuteme.ae").replace(/\/+$/, ""),
   description:
     "A modern tutoring ecosystem connecting motivated students and discerning parents with qualified, verified educators across diverse international curriculums and academic tiers.",
   contact: {
