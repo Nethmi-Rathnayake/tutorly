@@ -10,16 +10,17 @@ import { Reveal } from "@/components/ui/reveal";
 import { answerText, conciergeModel, faqCta, faqHero, faqSections, plainText } from "@/lib/constants/faq";
 import { requestHref } from "@/lib/constants/site";
 import { getT } from "@/lib/i18n/server";
+import { pageMetadata } from "@/lib/seo";
 import type { Translator } from "@/lib/i18n/translate";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
-  return {
+  return pageMetadata("/faq", t.locale, {
     title: t("FAQ"),
     description: t(
       "Answers about requesting a tutor, online and in-person lessons, tutor registration and vetting, and the subjects and curricula we cover.",
     ),
-  };
+  });
 }
 
 

@@ -15,7 +15,7 @@ const root = fileURLToPath(new URL("..", import.meta.url));
 const jiti = createJiti(import.meta.url, { alias: { "@": root } });
 
 // Keys holding ids, paths or search-only text rather than display copy.
-const SKIP_KEYS = new Set(["id", "slug", "href", "image", "src", "icon", "key", "anchor", "tone", "variant", "keywords", "short", "initials", "initial", "extra"]);
+const SKIP_KEYS = new Set(["id", "slug", "href", "image", "src", "icon", "key", "anchor", "tone", "variant", "keywords", "short", "initials", "initial", "extra", "url", "telephone"]);
 const BRAND = "Tuteme";
 const isCopy = (s) =>
   /[A-Za-z]/.test(s) &&

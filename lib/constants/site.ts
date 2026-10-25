@@ -4,12 +4,22 @@
  */
 export const siteConfig = {
   name: "Tuteme",
+  /**
+   * Canonical origin used for canonical URLs, hreflang, the sitemap and structured data.
+   * Set NEXT_PUBLIC_SITE_URL in production; the fallback is a PLACEHOLDER until the domain is confirmed.
+   */
+  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://tuteme.ae").replace(/\/+$/, ""),
   description:
     "A modern tutoring ecosystem connecting motivated students and discerning parents with qualified, verified educators across diverse international curriculums and academic tiers.",
   contact: {
     centerName: "Academic Center",
     address: "Level 14, Al Saqr Business Tower, DIFC, Dubai, UAE",
     email: "Tutorlyuae@gmail.com",
+    /** WhatsApp number: digits only (wa.me format) and the display form. */
+    whatsapp: "971562319741",
+    whatsappDisplay: "+971 56 231 9741",
+    /** International format for structured data. */
+    telephone: "+971562319741",
   },
   sessionTimings: [
     { days: "Monday – Friday", hours: "8:00 AM – 10:00 PM GST" },

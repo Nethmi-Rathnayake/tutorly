@@ -5,15 +5,16 @@ import { academicAssurance, requestPageIntro } from "@/lib/constants/request-pag
 import { getTutorById } from "@/lib/services/tutors";
 import { subjectValues } from "@/lib/validations/common";
 import { getT } from "@/lib/i18n/server";
+import { pageMetadata } from "@/lib/seo";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
-  return {
+  return pageMetadata("/request-a-tutor", t.locale, {
     title: t("Request a Tutor"),
     description: t(
       "Submit your student's academic profile and our placement committee will match your family with a vetted tutor.",
     ),
-  };
+  });
 }
 
 export default async function RequestATutorPage(props: PageProps<"/[lang]/request-a-tutor">) {

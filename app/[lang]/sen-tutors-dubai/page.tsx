@@ -14,6 +14,7 @@ import {
 } from "@/components/sen-tutors/sections";
 import { senFaq, senMeta } from "@/lib/constants/sen-tutors";
 import { getT } from "@/lib/i18n/server";
+import { pageMetadata } from "@/lib/seo";
 import type { Translator } from "@/lib/i18n/translate";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -21,11 +22,11 @@ export async function generateMetadata(): Promise<Metadata> {
   // The root layout's title template appends "| Tuteme".
   const title = t(senMeta.title);
   const description = t(senMeta.description);
-  return {
+  return pageMetadata("/sen-tutors-dubai", t.locale, {
     title,
     description,
     openGraph: { title, description, type: "website" },
-  };
+  });
 }
 
 // FAQPage structured data (see node_modules/next/dist/docs/01-app/02-guides/json-ld.md).

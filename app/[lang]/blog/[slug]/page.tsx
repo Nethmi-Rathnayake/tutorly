@@ -13,6 +13,7 @@ import {
 import { blogPosts, getPostBySlug, type BlogPost } from "@/lib/constants/blog-posts";
 import { siteConfig } from "@/lib/constants/site";
 import { getT } from "@/lib/i18n/server";
+import { absoluteUrl, jsonLdString, pageMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
   return blogPosts.map((post) => ({ slug: post.slug }));
@@ -24,11 +25,19 @@ export async function generateMetadata({ params }: PageProps<"/[lang]/blog/[slug
   const post = getPostBySlug((await params).slug);
   if (!post) return {};
   const t = await getT();
-  return {
+  return pageMetadata(`/blog/${post.slug}`, t.locale, {
     title: t(post.title),
     description: t(post.excerpt),
-    openGraph: { type: "article", publishedTime: post.publishedAt, images: [post.image.src] },
-  };
+    authors: [{ name: t(post.author.name) }],
+    keywords: post.tags.map((tag) => t(tag)),
+    openGraph: {
+      type: "article",
+      publishedTime: post.publishedAt,
+      modifiedTime: post.updatedAt ?? post.publishedAt,
+      tags: post.tags.map((tag) => t(tag)),
+      images: [{ url: post.image.src, alt: t(post.image.alt) }],
+    },
+  });
 }
 
 // BlogPosting structured data (see node_modules/next/dist/docs/01-app/02-guides/json-ld.md).
@@ -37,12 +46,17 @@ const jsonLd = (post: BlogPost, t: Awaited<ReturnType<typeof getT>>) => ({
   "@type": "BlogPosting",
   headline: t(post.title),
   description: t(post.excerpt),
-  image: post.image.src,
+  image: absoluteUrl(post.image.src),
+  mainEntityOfPage: absoluteUrl(`/blog/${post.slug}`, t.locale),
   datePublished: post.publishedAt,
   dateModified: post.updatedAt ?? post.publishedAt,
   inLanguage: t.locale,
   author: { "@type": "Person", name: t(post.author.name) },
-  publisher: { "@type": "Organization", name: siteConfig.name },
+  publisher: {
+    "@type": "Organization",
+    name: siteConfig.name,
+    logo: { "@type": "ImageObject", url: `${siteConfig.url}/logo.png` },
+  },
   keywords: post.tags.map((tag) => t(tag)).join(", "),
 });
 
@@ -54,7 +68,7 @@ export default async function ArticlePage({ params }: PageProps<"/[lang]/blog/[s
     <div className="space-y-12 pb-16 pt-8 lg:pt-12">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd(post, t)).replace(/</g, "\\u003c") }}
+        dangerouslySetInnerHTML={{ __html: jsonLdString(jsonLd(post, t)) }}
       />
       <div className="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 lg:grid-cols-[minmax(0,1fr)_300px] lg:gap-12 lg:px-8">
         <article className="min-w-0">

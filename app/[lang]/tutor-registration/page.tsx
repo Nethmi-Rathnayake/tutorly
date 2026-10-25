@@ -3,15 +3,16 @@ import { ShieldCheck } from "lucide-react";
 import { TutorRegistrationWizard } from "@/components/forms/tutor-registration/tutor-registration-wizard";
 import { registrationIntro } from "@/lib/constants/tutor-registration";
 import { getT } from "@/lib/i18n/server";
+import { pageMetadata } from "@/lib/seo";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
-  return {
+  return pageMetadata("/tutor-registration", t.locale, {
     title: t("Tutor Registration"),
     description: t(
       "Register as a tutor: share your subjects, qualifications, availability and teaching approach with our academic placement team.",
     ),
-  };
+  });
 }
 
 export default async function TutorRegistrationPage() {

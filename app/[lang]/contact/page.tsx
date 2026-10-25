@@ -6,6 +6,7 @@ import {
   ExternalLink,
   Mail,
   MapPin,
+  MessageCircle,
   Accessibility,
 } from "lucide-react";
 import { ContactForm } from "@/components/contact/contact-form";
@@ -20,15 +21,16 @@ import {
 } from "@/lib/constants/contact-page";
 import { siteConfig } from "@/lib/constants/site";
 import { getT } from "@/lib/i18n/server";
+import { pageMetadata } from "@/lib/seo";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
-  return {
+  return pageMetadata("/contact", t.locale, {
     title: t("Contact Us"),
     description: t(
       "Questions about finding a tutor or joining as one? Message our academic advisory team, or reach us by email or phone.",
     ),
-  };
+  });
 }
 
 // The maps link always searches the English address.
@@ -77,6 +79,17 @@ export default async function ContactPage() {
               </span>
             </h1>
             <p className="mt-5 max-w-md text-base leading-relaxed text-muted">{contactHero.description}</p>
+            <a
+              href={`https://wa.me/${siteConfig.contact.whatsapp}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#25D366] px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#1ebe5b]"
+            >
+              <MessageCircle aria-hidden className="size-4" />
+              {t("Chat on WhatsApp")}
+              <span dir="ltr" className="font-normal opacity-90">{siteConfig.contact.whatsappDisplay}</span>
+              <span className="sr-only"> {t("(opens in a new tab)")}</span>
+            </a>
           </div>
 
           <div className="lg:col-start-2 lg:row-span-2 lg:row-start-1 [&>div]:h-full">

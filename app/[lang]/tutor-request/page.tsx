@@ -9,15 +9,16 @@ import {
 import { ButtonLink } from "@/components/ui/button-link";
 import { requestHref } from "@/lib/constants/site";
 import { getT } from "@/lib/i18n/server";
+import { pageMetadata } from "@/lib/seo";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
-  return {
+  return pageMetadata("/tutor-request", t.locale, {
     title: t("Concierge Tutor Matching"),
     description: t(
       "Tell us what your student needs and our academic advisors will hand-match a vetted tutor for their subject, curriculum and schedule.",
     ),
-  };
+  });
 }
 
 export default async function ConciergeMatchingPage() {

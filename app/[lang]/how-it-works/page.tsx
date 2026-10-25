@@ -8,15 +8,16 @@ import {
   HowItWorksHero,
 } from "@/components/how-it-works/sections";
 import { getT } from "@/lib/i18n/server";
+import { pageMetadata } from "@/lib/seo";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
-  return {
+  return pageMetadata("/how-it-works", t.locale, {
     title: t("How It Works"),
     description: t(
       "How our academic directors privately hand-match families with vetted tutors, with no public directory, no cold outreach and a chemistry trial before lessons begin.",
     ),
-  };
+  });
 }
 
 export default function HowItWorksPage() {

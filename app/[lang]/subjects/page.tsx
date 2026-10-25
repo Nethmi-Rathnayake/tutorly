@@ -6,15 +6,16 @@ import { Reveal } from "@/components/ui/reveal";
 import { requestSubjectHref } from "@/lib/constants/site";
 import { subjectsCta, subjectsHero } from "@/lib/constants/subjects-page";
 import { getT } from "@/lib/i18n/server";
+import { pageMetadata } from "@/lib/seo";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
-  return {
+  return pageMetadata("/subjects", t.locale, {
     title: t("Subjects"),
     description: t(
       "Browse the subjects our vetted tutors teach, from IB and A-Level sciences to university modules, and request a privately matched specialist.",
     ),
-  };
+  });
 }
 
 const ctaIcons = [CircleCheck, Clock3];

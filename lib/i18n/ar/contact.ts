@@ -13,6 +13,7 @@ export const contact: Dictionary = {
     "لديك سؤال عن إيجاد معلم أو الانضمام إلينا كمعلم؟ فريق خدمتنا الأكاديمية هنا لمساعدة أولياء الأمور والطلاب والمعلمين في كل مرحلة من رحلتهم التعليمية.",
 
   // Contact cards
+  "Chat on WhatsApp": "تواصل عبر واتساب",
   "Email Inquiries": "الاستفسارات عبر البريد الإلكتروني",
   "Response within 2 hours during business hours": "نرد خلال ساعتين في أوقات العمل",
   "Direct Advisory Line": "خط الاستشارات المباشر",

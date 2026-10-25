@@ -2,15 +2,16 @@ import type { Metadata } from "next";
 import { BlogBrowser } from "@/components/blog/blog-browser";
 import { AdviceCta, BlogHero, EditorialSlots, getBrowserProps, NewsletterBand, Trajectory } from "@/components/blog/sections";
 import { getT } from "@/lib/i18n/server";
+import { pageMetadata } from "@/lib/seo";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
-  return {
+  return pageMetadata("/blog", t.locale, {
     title: t("Blog"),
     description: t(
       "Practical guidance, curriculum analysis and regional benchmarks to help UAE parents make informed tutoring and education decisions across British, IB and American pathways.",
     ),
-  };
+  });
 }
 
 export default async function BlogPage() {
