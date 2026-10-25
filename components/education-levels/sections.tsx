@@ -381,7 +381,7 @@ export async function HighSchoolStage() {
       <StageHeader stage={s} headingId={`${s.id}-heading`} />
       <div className="mt-10 flex flex-col gap-3 rounded-3xl bg-white p-5 ring-1 ring-brand-200 sm:flex-row sm:items-center">
         <p className="shrink-0 text-[11px] font-semibold uppercase tracking-[0.14em] text-brand-600">
-          {t("Accredited Boards:")}
+          {t("Boards We Support:")}
         </p>
         <Tags tags={s.boards} />
       </div>

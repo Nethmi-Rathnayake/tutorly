@@ -119,7 +119,7 @@ export function PedagogyStep() {
       <LongText
         id="additionalInfo"
         label="Additional Information"
-        hint="Optional: anything else our placement team should know (e.g. languages, SEN experience)."
+        hint="Optional: anything else our team should know (e.g. languages, SEN experience)."
         rows={3}
         max={500}
         placeholder="e.g. Fluent in French; experienced with dyslexic learners…"

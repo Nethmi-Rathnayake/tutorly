@@ -9,9 +9,9 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const nextSteps = [
-  { Icon: ClipboardCheck, title: "Profile review", body: "Our placement team reviews your subjects, qualifications and teaching approach." },
-  { Icon: ShieldCheck, title: "Verification", body: "We verify your identity, qualifications and background before your profile is approved." },
-  { Icon: MessageSquare, title: "Introductions", body: "When a family's request fits your profile and availability, we'll contact you." },
+  { Icon: ClipboardCheck, title: "Profile review", body: "Our team reviews your subjects, qualifications and teaching approach." },
+  { Icon: ShieldCheck, title: "Verification", body: "You consent to us verifying your identity, qualifications and background as part of the review." },
+  { Icon: MessageSquare, title: "Introductions", body: "If a family's request fits your profile and availability, we may contact you." },
 ];
 
 export default async function TutorRegistrationSuccessPage(props: PageProps<"/[lang]/tutor-registration/success">) {
@@ -29,7 +29,7 @@ export default async function TutorRegistrationSuccessPage(props: PageProps<"/[l
         <h1 className="mt-6 text-3xl font-extrabold tracking-tight text-ink sm:text-4xl">{t("Registration received")}</h1>
         <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-muted sm:text-base">
           {t(
-            "Thank you for applying. Your profile has been submitted to our Academic Placement Board, and we'll contact you by email once it has been reviewed.",
+            "Thank you for applying. Your application has been submitted to our team, and we may contact you by email after it has been reviewed.",
           )}
         </p>
         {reference && (

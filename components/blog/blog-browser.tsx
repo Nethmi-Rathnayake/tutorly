@@ -108,10 +108,6 @@ export function BlogBrowser({ items, featured }: BlogBrowserProps) {
               <span aria-hidden className="size-1.5 rounded-full bg-brand-500" />
               {t(visible.length === 1 ? "{n} guide" : "{n} guides", { n: visible.length })}
             </span>
-            <span className="inline-flex items-center gap-1.5">
-              <span aria-hidden className="size-1.5 rounded-full bg-brand-500" />
-              {copy.updated}
-            </span>
           </p>
         </div>
 

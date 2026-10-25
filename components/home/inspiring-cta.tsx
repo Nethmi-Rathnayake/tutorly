@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Mail, MapPin } from "lucide-react";
+import { Mail } from "lucide-react";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Reveal } from "@/components/ui/reveal";
 import { homeImages } from "@/lib/constants/home";
@@ -40,7 +40,7 @@ export async function InspiringCta() {
                 <span className="text-brand-400">{t("Feels Inspiring.")}</span>
               </h2>
               <p className="mt-5 max-w-md text-base leading-relaxed text-white/75">
-                {t("Clean, elegant design combined with modern layouts, uncompromising teacher vetting, and a high-focus student-centered experience.")}
+                {t("Clean, elegant design combined with modern layouts and a high-focus, student-centered experience.")}
               </p>
               <ButtonLink href="/tutor-request" size="lg" arrow className="mt-8">
                 {t("Join {name} Now", { name: siteConfig.name })}
@@ -49,12 +49,8 @@ export async function InspiringCta() {
 
             <div className="grid gap-4">
               <div className="rounded-2xl bg-night/60 p-6 ring-1 ring-white/20 backdrop-blur-md transition-colors duration-300 hover:ring-gold/60">
-                <h3 className="text-base font-bold text-gold">{contact.centerName}</h3>
+                <h3 className="text-base font-bold text-gold">{contact.contactHeading}</h3>
                 <ul className="mt-3 space-y-2.5 text-sm text-white/80">
-                  <li className="flex items-start gap-3">
-                    <MapPin aria-hidden className="mt-0.5 size-4 shrink-0 text-gold" />
-                    {contact.address}
-                  </li>
                   <li className="flex items-center gap-3">
                     <Mail aria-hidden className="size-4 shrink-0 text-gold" />
                     <a href={`mailto:${contact.email}`} className="-my-1.5 inline-block truncate py-1.5 hover:text-gold">

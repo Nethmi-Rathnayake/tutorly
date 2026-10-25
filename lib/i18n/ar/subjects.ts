@@ -18,8 +18,8 @@ export const subjects: Dictionary = {
   Search: "بحث",
   "Filter by category": "تصفية حسب الفئة",
   "All Categories": "جميع الفئات",
-  "Showing {count} Accredited Subject Discipline": "عرض {count} مادة أكاديمية معتمدة",
-  "Showing {count} Accredited Subject Disciplines": "عرض {count} مادة أكاديمية معتمدة",
+  "Showing {count} Subject Discipline": "عرض {count} مادة دراسية",
+  "Showing {count} Subject Disciplines": "عرض {count} مواد دراسية",
   "No matching subjects": "لا توجد مواد مطابقة",
   "Our directors can still source a specialist for you. Tell us what you need and we'll handle the search.":
     "لا يزال بإمكان مديرينا إيجاد متخصص لك. أخبرنا بما تحتاجه وسنتولى البحث.",
@@ -148,4 +148,29 @@ export const subjects: Dictionary = {
   "48h Fast Track Match": "مطابقة سريعة خلال 48 ساعة",
   "Request a Bespoke Tutor Match": "اطلب مطابقة معلم مخصصة",
   "Talk to an Academic Advisor": "تحدّث مع مستشار أكاديمي",
+  // Copied from the claims review so client components can reach them
+  "Tutor":
+    "معلم",
+  "Modules":
+    "مقررات",
+  "Competitive":
+    "تنافسي",
+  "Tell us about your curriculum, entrance examination or university module and our Academic Directors will look for a suitable tutor.":
+    "أخبرنا بمنهجك أو امتحان القبول أو المقرر الجامعي، وسيبحث مديرونا الأكاديميون عن معلم مناسب.",
+  "One-to-One Matching":
+    "اختيار فردي",
+  "Director-Led Review":
+    "مراجعة بإشراف المدير",
+  "Explore our catalogue of master curricula, specialized sciences, higher mathematics, and languages. Each discipline is matched privately to your academic targets.":
+    "استكشف فهرسنا للمناهج الرئيسية والعلوم المتخصصة والرياضيات العليا واللغات. يتم اختيار كل تخصص بشكل خاص ليناسب أهدافك الأكاديمية.",
+  "Boards covered: IB, AQA, Edexcel, CIE, AP":
+    "الجهات المغطاة: IB وAQA وEdexcel وCIE وAP",
+  // Content consistency review
+  "Our team can still look for a specialist for you. Tell us what you need and we'll handle the search.":
+    "ما زال بإمكان فريقنا البحث عن متخصص لك. أخبرنا بما تحتاجه وسنتولى البحث.",
+  // Staff-role wording cleanup (client-rendered)
+  "Thesis Support":
+    "دعم الرسائل العلمية",
+  "Talk to Our Team":
+    "تحدث مع فريقنا",
 };

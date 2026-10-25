@@ -106,7 +106,7 @@ export function TutorRequestWizard({ requestedTutor, requestedSubject }: WizardP
               <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
                 <span className="inline-flex items-center gap-1.5 text-[11px] text-muted">
                   <Lock aria-hidden className="size-3.5 text-violet-brand" />
-                  {t("Strictly confidential & encrypted")}
+                  {t("Secure connection")}
                 </span>
                 <button
                   type="button"

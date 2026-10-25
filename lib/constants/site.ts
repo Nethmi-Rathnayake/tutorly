@@ -10,10 +10,9 @@ export const siteConfig = {
    */
   url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.tuteme.ae").replace(/\/+$/, ""),
   description:
-    "A modern tutoring ecosystem connecting motivated students and discerning parents with qualified, verified educators across diverse international curriculums and academic tiers.",
+    "A modern tutoring service connecting students and parents with tutors across international curricula and academic levels in the UAE.",
   contact: {
-    centerName: "Academic Center",
-    address: "Level 14, Al Saqr Business Tower, DIFC, Dubai, UAE",
+    contactHeading: "Get in Touch",
     email: "Tutorlyuae@gmail.com",
     /** WhatsApp number: digits only (wa.me format) and the display form. */
     whatsapp: "971562319741",
@@ -49,7 +48,7 @@ export const requestHref = "/request-a-tutor";
 export const requestSubjectHref = (subject: string) => `${requestHref}?subject=${encodeURIComponent(subject)}`;
 
 export const footerTagline =
-  "Private concierge academic matching. Delivering personalized Ivy-tier tutors and tailored study roadmaps without impersonal directory searching.";
+  "Private concierge academic matching. Delivering personalised tutor matches and tailored study roadmaps without impersonal directory searching.";
 
 export const footerNav: { title: string; links: NavItem[] }[] = [
   {
@@ -59,7 +58,6 @@ export const footerNav: { title: string; links: NavItem[] }[] = [
       { label: "Academic Subjects", href: "/subjects" },
       { label: "Education Levels", href: "/education-levels" },
       { label: "Special Child Tutors in the UAE", href: "/sen-tutors-dubai" },
-      { label: "Parent Reviews", href: "/reviews" },
       { label: "Parent Insights", href: "/blog" },
     ],
   },
@@ -69,21 +67,21 @@ export const footerNav: { title: string; links: NavItem[] }[] = [
       { label: "Request a Tutor", href: "/request-a-tutor" },
       { label: "Become an Educator", href: "/become-a-tutor" },
       { label: "Concierge FAQ", href: "/faq" },
-      { label: "Contact Academic Advisor", href: "/contact" },
+      { label: "Contact Our Team", href: "/contact" },
     ],
   },
   {
     title: "Privacy & Trust",
     links: [
       { label: "Private Concierge Care", href: "/tutor-request" },
-      { label: "Zero Public Listing Exposure", href: "/privacy" },
-      { label: "Dedicated Family Liaison", href: "/contact" },
+      { label: "Zero Public Listing Exposure", href: "/how-it-works" },
+      { label: "Get in Touch", href: "/contact" },
     ],
   },
 ];
 
-export const legalNav: NavItem[] = [
-  { label: "Privacy Policy", href: "/privacy" },
-  { label: "Terms of Service", href: "/terms" },
-  { label: "Academic Integrity", href: "/academic-integrity" },
-];
+/**
+ * Legal links (privacy policy, terms, academic integrity) are left out until the approved
+ * documents exist: those routes are not built yet, so linking to them would lead to 404s.
+ */
+export const legalNav: NavItem[] = [];

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { CircleCheck, Clock3 } from "lucide-react";
+import { CircleCheck, UserCheck } from "lucide-react";
 import { SubjectCatalog } from "@/components/subjects/subject-catalog";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Reveal } from "@/components/ui/reveal";
@@ -11,14 +11,14 @@ import { pageMetadata } from "@/lib/seo";
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
   return pageMetadata("/subjects", t.locale, {
-    title: t("Subjects"),
+    title: t("Private Tutoring Subjects in Dubai"),
     description: t(
-      "Browse the subjects our vetted tutors teach, from IB and A-Level sciences to university modules, and request a privately matched specialist.",
+      "Browse the subjects we cover across the UAE, from IB and A-Level sciences to university modules, and request a tutor.",
     ),
   });
 }
 
-const ctaIcons = [CircleCheck, Clock3];
+const ctaIcons = [CircleCheck, UserCheck];
 
 export default async function SubjectsPage() {
   const t = await getT();

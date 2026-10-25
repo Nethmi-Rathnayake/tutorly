@@ -9,9 +9,9 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const nextSteps = [
-  { Icon: ClipboardCheck, title: "Concierge review", body: "Our team reviews your requirement and checks tutor availability." },
-  { Icon: UserCheck, title: "Tutor shortlist", body: "We send you a shortlist of verified tutors who fit your criteria." },
-  { Icon: MessageSquare, title: "Introduction call", body: "Pick a tutor and book a short, free introduction before any lessons." },
+  { Icon: ClipboardCheck, title: "Request received", body: "We have received the details you submitted." },
+  { Icon: UserCheck, title: "Team Review", body: "Our team reviews your requirement." },
+  { Icon: MessageSquare, title: "We Contact You", body: "We contact you through your preferred channel to discuss the next steps." },
 ];
 
 export default async function TutorRequestSuccessPage(props: PageProps<"/[lang]/request-a-tutor/success">) {
@@ -29,7 +29,7 @@ export default async function TutorRequestSuccessPage(props: PageProps<"/[lang]/
         <h1 className="mt-6 text-3xl font-extrabold tracking-tight text-ink sm:text-4xl">{t("Requirement received")}</h1>
         <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-muted sm:text-base">
           {t(
-            "Thank you. Your tutoring requirement has been submitted and our concierge team will be in touch using your preferred contact channel.",
+            "Thank you. Your tutoring requirement has been submitted and our team will be in touch using your preferred contact channel.",
           )}
         </p>
         {reference && (

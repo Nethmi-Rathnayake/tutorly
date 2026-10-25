@@ -1,8 +1,7 @@
 /**
  * PLACEHOLDER CONTENT for the home page prototype.
- * SRS §11 / §27: statistics, ratings, tutor records and testimonials below are
- * sample values for UI purposes and must be replaced with approved,
- * stored production data before launch.
+ * SRS §11 / §27: unverified statistics, ratings, tutor counts and testimonials were removed
+ * from this page; add them back only with approved, stored production data.
  */
 
 // Placeholder photography (Unsplash) stored in public/images; swap for approved assets.
@@ -16,7 +15,7 @@ export const homeImages = {
  * PLACEHOLDER: the certification and syllabus-alignment claims must be confirmed by the business.
  */
 export const curriculumIntro =
-  "Our tutors hold verified certifications across primary global examination bodies, ensuring syllabus alignment down to mark-scheme rubrics.";
+  "Tell us your curriculum and we will look for a tutor who knows its syllabus and examination requirements.";
 
 export const curriculumDescriptions: Record<string, string> = {
   british:
@@ -32,17 +31,6 @@ export const curriculumDescriptions: Record<string, string> = {
     "Support for the Canadian provincial curricula, building strong foundations in core subjects and the skills required for school assessments and university pathways.",
   other:
     "Studying another syllabus? Tell us about it and we will match you with a tutor who has taught that curriculum and its examination requirements.",
-};
-
-export const heroStats = [
-  { value: "10k+", label: "Students Taught" },
-  { value: "96%", label: "Target Grade Achieved" },
-];
-
-export const heroSocialProof = {
-  initials: ["SK", "JM", "TL", "+2k"],
-  rating: "4.9/5",
-  caption: "Over 15,000 successful sessions completed",
 };
 
 export type LevelStage = {
@@ -91,7 +79,6 @@ export type SubjectCard = {
   id: string;
   slug: string;
   title: string;
-  tutorCount: string;
   description: string;
   tags: string[];
 };
@@ -101,7 +88,6 @@ export const subjectCards: SubjectCard[] = [
     id: "maths",
     slug: "mathematics-statistics",
     title: "Mathematics & Statistics",
-    tutorCount: "142 Tutors",
     description: "Calculus AB/BC, Pure Mathematics, Linear Algebra, Probability, and Advanced Statistics.",
     tags: ["Calculus", "Algebra"],
   },
@@ -109,7 +95,6 @@ export const subjectCards: SubjectCard[] = [
     id: "sciences",
     slug: "sciences",
     title: "Sciences",
-    tutorCount: "118 Tutors",
     description: "Physics HL/SL, Organic & Analytical Chemistry, Molecular Biology, and Environmental Science.",
     tags: ["Physics", "Biology"],
   },
@@ -117,7 +102,6 @@ export const subjectCards: SubjectCard[] = [
     id: "languages",
     slug: "languages-literature",
     title: "Languages & Literature",
-    tutorCount: "96 Tutors",
     description:
       "English Literature, Academic Composition, French DELF, Arabic as a Foreign Language, and Spanish.",
     tags: ["English", "French"],
@@ -126,7 +110,6 @@ export const subjectCards: SubjectCard[] = [
     id: "humanities",
     slug: "humanities-social-sciences",
     title: "Humanities & Social Sciences",
-    tutorCount: "74 Tutors",
     description: "Micro/Macro Economics, World History, Human Geography, Political Theory, and Psychology.",
     tags: ["Economics", "History"],
   },
@@ -134,7 +117,6 @@ export const subjectCards: SubjectCard[] = [
     id: "technology",
     slug: "technology-computer-science",
     title: "Technology & Computer Science",
-    tutorCount: "88 Tutors",
     description:
       "Python, AP Computer Science A, Full-stack Web Development, Data Science, and Machine Learning.",
     tags: ["Python", "Coding"],
@@ -143,16 +125,10 @@ export const subjectCards: SubjectCard[] = [
     id: "university",
     slug: "university-higher-education",
     title: "University & Higher Education",
-    tutorCount: "61 Tutors",
     description:
       "Undergraduate Engineering, Corporate Law, MBA Finance, Medical Physiology, and Research Methodology.",
     tags: ["Law", "Engineering"],
   },
-];
-
-export const nextGenerationStats = [
-  { value: "120+", label: "Expert Mentors", caption: "Distinguished subject specialists" },
-  { value: "35+", label: "Advanced Programs", caption: "Comprehensive exam prep" },
 ];
 
 export const howItWorksSteps = [
@@ -164,52 +140,17 @@ export const howItWorksSteps = [
   },
   {
     step: "02",
-    title: "Explore Suitable Tutors",
-    description:
-      "Review vetted tutor profiles, qualifications, verified student reviews, and introductory video pitches.",
+    title: "Our Team Reviews It",
+    description: "Our team reviews your request and looks for a suitable tutor.",
   },
   {
     step: "03",
-    title: "Choose Your Tutor",
-    description:
-      "Book an obligation-free trial session to evaluate rapport, teaching approach, and personalized study roadmaps.",
+    title: "We Get in Touch",
+    description: "We contact you through your preferred channel to discuss the next steps.",
   },
   {
     step: "04",
     title: "Start Learning",
-    description:
-      "Launch customized one-on-one sessions with progress milestones, post-class feedback, and continuous support.",
+    description: "Begin one-to-one sessions once the arrangements are agreed.",
   },
 ];
-
-export const testimonials = [
-  {
-    id: "t1",
-    quote:
-      "We were struggling with our daughter's IB Chemistry SL marks. Tuteme matched us with Dr. Elena, and within two terms she went from a 4 to a solid 7. Incredible dedication!",
-    name: "Nadia Mansour",
-    context: "Mother of Year 12 IB Student",
-    initials: "NM",
-    photo: "/images/reviews/nadia-mansour.jpg",
-  },
-  {
-    id: "t2",
-    quote:
-      "The platform's verification gives complete peace of mind. Both in-person and digital sessions are thoroughly documented with progress logs after every class.",
-    name: "Anthony Lewis",
-    context: "Father of IGCSE Student",
-    initials: "AL",
-    photo: "/images/reviews/anthony-lewis.jpg",
-  },
-  {
-    id: "t3",
-    quote:
-      "As an A-Level student tackling Further Maths, having a tutor who graduated with first-class honors from Cambridge helped me conquer formidable problems and build lasting reasoning.",
-    name: "Rohan Kapoor",
-    context: "Year 13 Student • A-Level",
-    initials: "RK",
-    photo: "/images/reviews/rohan-kapoor.jpg",
-  },
-];
-
-export const reviewsSummary = "Read All 450+ Verified Reviews";

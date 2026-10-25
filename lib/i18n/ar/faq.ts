@@ -156,4 +156,113 @@ export const faq: Dictionary = {
   "Launch Requirement Wizard": "ابدأ نموذج الطلب",
   "Apply as Master Educator": "تقدّم كمعلم خبير",
   "(opens WhatsApp)": "(يفتح واتساب)",
+  // Copied from the claims review so client components can reach them
+  "Zero":
+    "صفر",
+  "Senior Academic Directors review your syllabus requirements, then hand-select a suitable tutor—no blind algorithms.":
+    "يراجع كبار المديرين الأكاديميين متطلبات منهجك ثم يختارون يدويًا معلمًا مناسبًا، دون خوارزميات عمياء.",
+  "Tutor Hand-Selected":
+    "معلم مختار يدويًا",
+  "Your director introduces your matched tutor and arranges a short, free introduction before any lessons begin.":
+    "يعرّفك مديرك بالمعلم المناسب ويرتب جلسة تعارف قصيرة ومجانية قبل بدء أي دروس.",
+  "Confirm the Fit":
+    "تأكيد التوافق",
+  "Tutor profiles are never published for browsing.":
+    "لا تُنشر ملفات المعلمين للتصفح أبدًا.",
+  "Our placement team can review your student’s curriculum requirements and educator availability.":
+    "يمكن لفريقنا مراجعة متطلبات منهج طالبك وتوفر المعلمين.",
+  "Academic Concierge Knowledge Base":
+    "قاعدة معرفة المستشار الأكاديمي",
+  "How our concierge model serves families, from first request to introduction.":
+    "كيف يخدم نموذجنا العائلات، من الطلب الأول حتى التعارف.",
+  "Requesting an educator does not involve browsing pages of profiles. Instead, parents complete our short **Parent Requirement Form**. Our placement directors use these details to manually select a suitable educator from our private network.":
+    "لا يتضمن طلب معلم تصفح صفحات من الملفات. بدلًا من ذلك، يملأ أولياء الأمور **نموذج متطلبات ولي الأمر** القصير. ويستخدم مديرو التوفيق لدينا هذه التفاصيل لاختيار معلم مناسب يدويًا من شبكتنا الخاصة.",
+  "Once received, our Senior Academic Directors review your syllabus benchmarks and learning targets, and introduce an educator with expertise in that exact specification.":
+    "بعد الاستلام، يراجع كبار المديرين الأكاديميين لدينا معايير منهجك وأهدافك التعليمية، ويقدمون لك معلمًا خبيرًا في هذا التخصص تحديدًا.",
+  "Every connection runs through our placement desk. After reviewing your request, a director contacts you by your preferred channel (WhatsApp, phone or email) with a recommended educator and arranges a short, free introduction.":
+    "تمر كل صلة عبر مكتب التوفيق لدينا. بعد مراجعة طلبك، يتواصل معك أحد المديرين عبر قناتك المفضلة (واتساب أو الهاتف أو البريد الإلكتروني) مع معلم مقترح، ويرتب جلسة تعارف قصيرة ومجانية.",
+  "Tutors never cold-contact families.":
+    "لا يتواصل المعلمون مع العائلات بشكل مباشر ودون طلب.",
+  "The form asks for your name and role, your contact details and preferred contact method, the student’s grade or year, curriculum and emirate, and an optional message about the subject, learning goals and preferred schedule.":
+    "يطلب النموذج اسمك وصفتك وبيانات الاتصال وطريقة التواصل المفضلة، ومرحلة الطالب أو سنته ومنهجه والإمارة، ورسالة اختيارية عن المادة والأهداف التعليمية والجدول المفضل.",
+  "Yes. Mention in the message box of the request form that you would like **online** lessons, and our team will look for a tutor who teaches online.":
+    "نعم. اذكر في خانة الرسالة بنموذج الطلب أنك تريد دروسًا **عبر الإنترنت**، وسيبحث فريقنا عن معلم يدرّس عبر الإنترنت.",
+  "Yes. Mention in the message box of the request form that you would like **in-person** lessons, along with your area. Our directors will look for an educator who can reach you.":
+    "نعم. اذكر في خانة الرسالة بنموذج الطلب أنك تريد دروسًا **حضورية** مع ذكر منطقتك. وسيبحث مديرونا عن معلم يستطيع الوصول إليك.",
+  "Many families do. Mention the hybrid arrangement in the message box of the request form, and our team will look for an educator who can offer both.":
+    "تفعل ذلك عائلات كثيرة. اذكر الترتيب المختلط في خانة الرسالة بنموذج الطلب، وسيبحث فريقنا عن معلم يستطيع تقديم الشكلين.",
+  "Introduction":
+    "التعارف",
+  "Is there an introduction before lessons begin?":
+    "هل توجد جلسة تعارف قبل بدء الدروس؟",
+  "Yes. After we recommend a tutor, we arrange a short, free introduction before any lessons so that you and your child can see whether the tutor is the right fit.":
+    "نعم. بعد أن نرشح معلمًا، نرتب جلسة تعارف قصيرة ومجانية قبل أي دروس لتتأكد أنت وطفلك من أن المعلم مناسب.",
+  "Tutor":
+    "معلم",
+  "Tutor profiles are held privately by our placement team and are never published in a searchable directory.":
+    "يحتفظ فريق التوفيق لدينا بملفات المعلمين بشكل خاص ولا تُنشر أبدًا في دليل قابل للبحث.",
+  // Claims cleanup (client-rendered)
+  "Everything you need to know about requesting a tutor, tutor registration, and online or in-person lessons with Tuteme.":
+    "كل ما تحتاج إلى معرفته عن طلب معلم وتسجيل المعلمين والدروس عبر الإنترنت أو حضوريًا مع Tuteme.",
+  "Search questions or keywords (e.g. request form, exam boards, in-person)":
+    "ابحث في الأسئلة أو الكلمات المفتاحية (مثل نموذج الطلب، جهات الامتحانات، الدروس الحضورية)",
+  "Tutor Registration":
+    "تسجيل المعلمين",
+  "Share your child’s grade, curriculum, emirate and any notes through the request form.":
+    "شارك مرحلة طفلك ومنهجه والإمارة وأي ملاحظات عبر نموذج الطلب.",
+  "Request Received":
+    "تم استلام الطلب",
+  "Our Team":
+    "فريقنا",
+  "Team Review":
+    "مراجعة الفريق",
+  "Our team reviews your request and looks for a suitable tutor, with no public directory to browse.":
+    "يراجع فريقنا طلبك ويبحث عن معلم مناسب، دون دليل علني للتصفح.",
+  "Request Reviewed":
+    "تمت مراجعة الطلب",
+  "Next Steps":
+    "الخطوات التالية",
+  "We Contact You":
+    "نتواصل معك",
+  "Our team contacts you through your preferred channel (WhatsApp, phone or email) about the next steps.":
+    "يتواصل معك فريقنا عبر قناتك المفضلة (واتساب أو الهاتف أو البريد الإلكتروني) بشأن الخطوات التالية.",
+  "Preferred Channel":
+    "القناة المفضلة",
+  "Core Covenant: Zero Public Profiles • Zero Algorithmic Guesswork":
+    "عهدنا الأساسي: لا ملفات علنية • لا تخمين خوارزمي",
+  "How requesting a tutor works, from the request form to our team contacting you.":
+    "كيف يتم طلب معلم، من نموذج الطلب حتى تواصل فريقنا معك.",
+  "Requesting a tutor does not involve browsing pages of profiles. Instead, parents complete our short **Parent Requirement Form**. Our team uses these details to look for a suitable tutor.":
+    "لا يتضمن طلب معلم تصفح صفحات من الملفات. بدلًا من ذلك، يملأ أولياء الأمور **نموذج متطلبات ولي الأمر** القصير، ويستخدم فريقنا هذه التفاصيل للبحث عن معلم مناسب.",
+  "Once your request is received, our team reviews it and contacts you through your preferred channel.":
+    "بعد استلام طلبك، يراجعه فريقنا ويتواصل معك عبر قناتك المفضلة.",
+  "No. Tuteme deliberately has **no public tutor directory**. Tutor profiles are never listed for browsing; instead our team reviews your requirement and looks for a suitable tutor.":
+    "لا. لا يوجد في Tuteme عمدًا **دليل علني للمعلمين**. فلا تُعرض ملفات المعلمين للتصفح، بل يراجع فريقنا متطلباتك ويبحث عن معلم مناسب.",
+  "Every request is handled by our team. After reviewing your request, we contact you by your preferred channel (WhatsApp, phone or email) about the next steps.":
+    "يتولى فريقنا التعامل مع كل طلب. بعد مراجعة طلبك، نتواصل معك عبر قناتك المفضلة (واتساب أو الهاتف أو البريد الإلكتروني) بشأن الخطوات التالية.",
+  "Online lessons, or in-person lessons where a tutor is available.":
+    "دروس عبر الإنترنت، أو دروس حضورية حيث يتوفر معلم.",
+  "Yes. Mention in the message box of the request form that you would like **in-person** lessons, along with your area. Our team will look for a tutor who can reach you.":
+    "نعم. اذكر في خانة الرسالة بنموذج الطلب أنك تريد دروسًا **حضورية** مع ذكر منطقتك. وسيبحث فريقنا عن معلم يستطيع الوصول إليك.",
+  "Yes. Mention the hybrid arrangement in the message box of the request form, and our team will look for a tutor who can offer both.":
+    "نعم. اذكر الترتيب المختلط في خانة الرسالة بنموذج الطلب، وسيبحث فريقنا عن معلم يستطيع تقديم الشكلين.",
+  "How tutor registration works.":
+    "كيف يعمل تسجيل المعلمين.",
+  "Educators do not build self-promotional marketplace listings. Instead, qualified academics apply directly through our **tutor registration form**, covering personal details, subjects and qualifications, availability, and teaching approach. When you submit it, you consent to Tuteme verifying your identity, qualifications and background.":
+    "لا ينشئ المعلمون قوائم ترويجية على غرار الأسواق الإلكترونية. بدلًا من ذلك، يتقدم الأكاديميون المؤهلون مباشرة عبر **نموذج تسجيل المعلمين**، الذي يشمل البيانات الشخصية والمواد والمؤهلات وأوقات التوفر وأسلوب التدريس. وعند الإرسال، توافق على أن تتحقق Tuteme من هويتك ومؤهلاتك وخلفيتك.",
+  "No. Tuteme does not publish tutor profiles in a searchable directory. Families only learn about you if our team recommends you for a specific request.":
+    "لا. لا تنشر Tuteme ملفات المعلمين في دليل قابل للبحث. ولا تعرف العائلات عنك إلا إذا رشّحك فريقنا لطلب محدد.",
+  "No. Placements depend on families’ requirements matching your subjects, levels, location and availability. Keeping your availability up to date gives our team the best chance of matching you.":
+    "لا. يعتمد الإسناد على توافق متطلبات العائلات مع موادك ومستوياتك وموقعك وأوقات توفرك. وإبقاء أوقات توفرك محدّثة يمنح فريقنا أفضل فرصة للتوفيق بينك وبينهم.",
+  // Staff-role wording cleanup (client-rendered)
+  "Need More Help?":
+    "هل تحتاج إلى مساعدة إضافية؟",
+  "Our team can review your student’s curriculum requirements and educator availability.":
+    "يمكن لفريقنا مراجعة متطلبات منهج طالبك وتوفر المعلمين.",
+  "to our team":
+    "إلى فريقنا",
+  "Try a different keyword, or contact our team directly.":
+    "جرّب كلمة مفتاحية مختلفة، أو تواصل مع فريقنا مباشرة.",
+  "Contact our team":
+    "تواصل مع فريقنا",
 };

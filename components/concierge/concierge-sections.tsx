@@ -1,7 +1,6 @@
 import Image from "next/image";
 import {
   ArrowRight,
-  ArrowLeftRight,
   CalendarDays,
   ClipboardList,
   EyeOff,
@@ -11,8 +10,7 @@ import {
   ScanSearch,
   ShieldCheck,
   Sparkles,
-  Star,
-  Timer,
+  MessageCircle,
   UserRound,
   Target,
 } from "lucide-react";
@@ -21,7 +19,6 @@ import { Reveal } from "@/components/ui/reveal";
 import {
   assurances,
   conciergeHero,
-  conciergeTestimonial,
   intakeIntro as intake,
   placementSteps,
 } from "@/lib/constants/concierge";
@@ -90,15 +87,6 @@ export async function ConciergeHero() {
               <p className="text-[11px] text-muted">{h.curatedCard.body}</p>
             </div>
           </div>
-
-          <dl className="absolute bottom-0 end-3 flex divide-x divide-brand-100 rounded-2xl bg-white/95 px-2 py-3 shadow-[0_20px_40px_-20px_rgba(20,23,29,0.5)] ring-1 ring-brand-100 backdrop-blur sm:end-6">
-            {h.stats.map((s) => (
-              <div key={s.label} className="flex flex-col-reverse px-4">
-                <dt className="text-[10px] font-bold uppercase tracking-[0.12em] text-muted">{s.label}</dt>
-                <dd className="text-lg font-extrabold text-brand-700 sm:text-xl">{s.value}</dd>
-              </div>
-            ))}
-          </dl>
         </Reveal>
       </div>
     </section>
@@ -117,7 +105,7 @@ export async function PlacementSteps() {
           {t("How Concierge Placement Works")}
         </h2>
         <p className="mt-3 text-sm leading-relaxed text-muted sm:text-base">
-          {t("A tailored 4-step process designed to remove the guesswork of finding elite academic support.")}
+          {t("A tailored 4-step process designed to remove the guesswork of finding the right tutor.")}
         </p>
       </div>
 
@@ -161,7 +149,7 @@ export async function IntakeHeading() {
   );
 }
 
-const assuranceIcons = [EyeOff, GraduationCap, Timer, ArrowLeftRight];
+const assuranceIcons = [EyeOff, GraduationCap, MessageCircle];
 
 export async function Assurances() {
   const t = await getT();
@@ -173,7 +161,7 @@ export async function Assurances() {
         </h2>
         <p className="mt-2 text-sm text-muted">{t("Peace of mind built into every stage of your child's educational guidance.")}</p>
       </div>
-      <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {t.deep(assurances).map((a, i) => {
           const Icon = assuranceIcons[i];
           return (
@@ -191,33 +179,6 @@ export async function Assurances() {
           );
         })}
       </ul>
-    </section>
-  );
-}
-
-export async function ConciergeTestimonial() {
-  const tr = await getT();
-  const t = tr.deep(conciergeTestimonial);
-  return (
-    <section aria-label={tr("Parent testimonial")} className="mx-auto max-w-4xl px-4 sm:px-8 lg:px-10">
-      <Reveal>
-        <figure className="flex flex-col gap-5 rounded-[2rem] bg-linear-to-r from-brand-100/70 via-lavender to-white p-7 ring-1 ring-brand-100 sm:flex-row sm:items-center sm:p-9">
-          <span className="grid size-14 shrink-0 place-items-center rounded-full bg-linear-to-br from-brand-700 to-violet-brand text-lg font-bold text-white shadow-lg shadow-brand-600/30">
-            {t.initial}
-          </span>
-          <div>
-            <div className="flex gap-0.5 text-brand-500" role="img" aria-label={tr("Rated 5 out of 5")}>
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star key={i} aria-hidden className="size-3.5" />
-              ))}
-            </div>
-            <blockquote className="mt-3 text-sm italic leading-relaxed text-muted sm:text-base">“{t.quote}”</blockquote>
-            <figcaption className="mt-3 text-xs font-semibold text-ink">
-              — {tr("{name}, {context}", { name: t.name, context: t.context })}
-            </figcaption>
-          </div>
-        </figure>
-      </Reveal>
     </section>
   );
 }

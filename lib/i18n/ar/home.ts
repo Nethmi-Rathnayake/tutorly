@@ -222,9 +222,4 @@ export const home: Dictionary = {
   "Former engineering lead mentoring motivated high school students to earn 5s on AP CS A and build portfolios.":
     "قائد هندسي سابق يرشد طلاب الثانوية الطموحين لتحقيق الدرجة 5 في AP CS A وبناء ملفات أعمالهم.",
   "Online & In-Person (Dubai / Remote)": "عبر الإنترنت وحضوريًا (دبي / عن بُعد)",
-  // SEO metadata
-  "Private Tutors in Dubai & the UAE for IB, British & American Curricula":
-    "معلمون خصوصيون في دبي والإمارات للمناهج البريطانية والبكالوريا الدولية والأمريكية",
-  "Hand-matched, vetted private tutors in Dubai, Abu Dhabi and across the UAE, online or at home, for IGCSE, A-Level, IB, AP and American curriculum students. Request a tutor today.":
-    "معلمون خصوصيون موثّقون يتم اختيارهم يدويًا في دبي وأبوظبي وجميع أنحاء الإمارات، عبر الإنترنت أو في المنزل، لطلاب IGCSE وA-Level وIB وAP والمنهج الأمريكي. اطلب معلمًا اليوم.",
 };

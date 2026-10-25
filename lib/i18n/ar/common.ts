@@ -51,7 +51,6 @@ export const common: Dictionary = {
   "A modern tutoring ecosystem connecting motivated students and discerning parents with qualified, verified educators across diverse international curriculums and academic tiers.":
     "منظومة تعليمية حديثة تربط الطلاب الطموحين وأولياء الأمور الحريصين بمعلمين مؤهلين وموثّقين، عبر مختلف المناهج الدولية والمراحل الدراسية.",
   "Academic Center": "المركز الأكاديمي",
-  "Level 14, Al Saqr Business Tower, DIFC, Dubai, UAE": "الطابق 14، برج الصقر للأعمال، مركز دبي المالي العالمي، دبي، الإمارات العربية المتحدة",
   "Monday – Friday": "الاثنين – الجمعة",
   "8:00 AM – 10:00 PM GST": "8:00 ص – 10:00 م بتوقيت الخليج",
   Saturday: "السبت",

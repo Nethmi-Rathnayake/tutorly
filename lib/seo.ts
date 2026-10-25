@@ -22,6 +22,18 @@ export function pageAlternates(path: string, locale: Locale): NonNullable<Metada
   };
 }
 
+type OgImages = NonNullable<NonNullable<Metadata["openGraph"]>["images"]>;
+
+/** Twitter card image(s): the page's Open Graph image when it sets one, otherwise the site default. */
+function twitterImages(images: OgImages | undefined, fallback: string): string[] {
+  const first = Array.isArray(images) ? images[0] : images;
+  if (!first) return [fallback];
+  if (typeof first === "string") return [first];
+  if (first instanceof URL) return [first.toString()];
+  const url = first.url;
+  return [typeof url === "string" ? url : url.toString()];
+}
+
 /**
  * Wraps a page's title/description with canonical, hreflang, Open Graph and Twitter metadata.
  * Open Graph is replaced (not merged) per segment, so the full set is declared here.
@@ -50,7 +62,8 @@ export function pageMetadata(path: string, locale: Locale, meta: Metadata): Meta
       card: "summary_large_image",
       title: ogTitle,
       description,
-      images: [meta.openGraph?.images ? undefined : image.url].filter((u): u is string => !!u),
+      // Share the page's own Open Graph image (e.g. a blog post's cover) so both cards match.
+      images: twitterImages(meta.openGraph?.images, image.url),
     },
   };
 }

@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: PageProps<"/[lang]/blog/[slug
   if (!post) return {};
   const t = await getT();
   return pageMetadata(`/blog/${post.slug}`, t.locale, {
-    title: t(post.title),
+    title: t(post.metaTitle ?? post.title),
     description: t(post.excerpt),
     authors: [{ name: t(post.author.name) }],
     keywords: post.tags.map((tag) => t(tag)),
@@ -51,7 +51,7 @@ const jsonLd = (post: BlogPost, t: Awaited<ReturnType<typeof getT>>) => ({
   datePublished: post.publishedAt,
   dateModified: post.updatedAt ?? post.publishedAt,
   inLanguage: t.locale,
-  author: { "@type": "Person", name: t(post.author.name) },
+  author: { "@type": "Organization", name: t(post.author.name) },
   publisher: {
     "@type": "Organization",
     name: siteConfig.name,

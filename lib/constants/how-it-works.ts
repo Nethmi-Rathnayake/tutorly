@@ -1,7 +1,7 @@
 /**
  * Copy for the How It Works page (/how-it-works).
- * PLACEHOLDER marketing claims and figures from the design (acceptance rate, connection time,
- * guarantees, testimonial) must be confirmed by the business before launch (SRS §11, §27).
+ * Unverified figures (acceptance rate, connection time), guarantees, screening claims and the testimonial
+ * were removed; add them back only with approved content (SRS §11, §27).
  */
 
 export const howItWorksHero = {
@@ -9,19 +9,19 @@ export const howItWorksHero = {
   title: "How Our Tutoring",
   titleAccent: "Connection Works",
   description:
-    "A private, director-led placement process engineered to match high achieving students with vetted master educators. No public directories, no search algorithms just bespoke academic curation.",
+    "A private request process designed to help families find a suitable tutor. No public directories and no search algorithms.",
   badges: [
-    "Top 1.8% Acceptance Rate",
-    "Enhanced DBS & Degree Verified",
+    "Request-Based Matching",
     "Zero Public Profile Exposure",
-    "100% Chemistry Trial Guarantee",
+    "Contact by WhatsApp, Phone or Email",
+    "Online & In-Person Options",
   ],
 };
 
 export const conciergeNexus = {
   eyebrow: "Central Architectural Flow",
   title: "The Academic Concierge Nexus",
-  description: "Every connection is rigorously evaluated and hand-matched by senior placement directors.",
+  description: "Every request is reviewed by our team.",
   parent: {
     stream: "Source Stream 01",
     role: "Parent & Student",
@@ -32,40 +32,40 @@ export const conciergeNexus = {
       "Weekly Schedule & Timezone Window",
       "Cognitive & Communication Style",
     ],
-    note: "“Confidential specification dispatched securely to placement committee.”",
+    note: "“Requirement submitted to our team.”",
   },
   tutor: {
     stream: "Source Stream 02",
-    role: "Vetted Master Tutor",
+    role: "Tutor",
     title: "02. Educator Intake Dossier",
     points: [
-      "Verified Oxbridge / Ivy Degree Honors",
-      "Official Board Examiner Tenure",
-      "Enhanced DBS & Identity Clearance",
-      "Audited Pedagogical Methodologies",
+      "Academic Qualifications",
+      "Subjects & Curricula Taught",
+      "Availability & Lesson Formats",
+      "Teaching Approach",
     ],
-    note: "“Private credential dossier submitted securely to Placement Board.”",
+    note: "“Credential details submitted to our team.”",
   },
   desk: {
     badge: "Central Placement Nexus",
-    title: "Academic Directors & Placement Desk",
+    title: "Our Team",
     description:
-      "Senior Academic Directors audit syllabus requirements, verify educator academic transcripts, calibrate pedagogical compatibility, and coordinate schedule alignment.",
+      "Our team reviews the requirements families submit and the details tutors provide, and considers curriculum, level and schedule.",
     checks: [
-      { title: "1:1 Directorship Review", body: "Dean-level oversight" },
+      { title: "Request Review", body: "Reviewed individually" },
       { title: "Syllabus Alignment", body: "IB / Cambridge / AP" },
-      { title: "Diagnostic Needs", body: "Mock exam critique" },
+      { title: "Diagnostic Needs", body: "Goals & challenges" },
     ],
     footnote: "Closed-loop administration • Zero automated directory listings",
   },
   outcome: {
     badge: "Convergent Outcome",
-    title: "03. Curated Connection & Chemistry Session",
-    body: "A tailored 15-minute diagnostic chemistry call where mentor and learner confirm rapport before lessons commence. Backed by our 100% chemistry guarantee.",
+    title: "03. We Get in Touch",
+    body: "Our team contacts you through your preferred channel to discuss the next steps.",
   },
   privacy: {
     label: "Strict Privacy Protocol:",
-    body: "Parents never browse unvetted public lists, and educators are never exposed to unsolicited outreach.",
+    body: "Parents do not browse public tutor lists, and tutor profiles are not published for browsing.",
   },
 };
 
@@ -75,7 +75,7 @@ export const journeysIntro = {
   eyebrow: "Orchestrated Progression",
   title: "The Dual Matching Journeys",
   description:
-    "Review how our academic concierges orchestrate both family requirements and educator profiles in perfect unison.",
+    "Review how family requests and educator applications are handled.",
 };
 
 export const parentJourney = {
@@ -87,22 +87,22 @@ export const parentJourney = {
     {
       kicker: "Initial Consultation",
       title: "Submit Your Requirement",
-      body: "Specify exam boards (IB, Cambridge, AP, GCSE), weekly availability, and target university goals through our private briefing form.",
+      body: "Share your child’s grade, curriculum and emirate through our private request form.",
     },
     {
       kicker: "Academic Diagnosis",
       title: "Share Your Learning Needs",
-      body: "Upload recent mock exams, school reports, or diagnostic past papers for thorough director-level academic review and weakness mapping.",
+      body: "Tell us about the subject, learning goals and preferred schedule in the message box for our team to review.",
     },
     {
-      kicker: "Director Audit",
+      kicker: "Team Review",
       title: "Our Team Reviews Your Request",
-      body: "Senior Academic Directors dissect the syllabus needs and identify the single ideal-fit match within our active fellowship.",
+      body: "Our team reviews your requirements and looks for a suitable tutor.",
     },
     {
-      kicker: "Bespoke Introduction",
-      title: "Our Team Works to Connect You",
-      body: "Receive a private dossier introduction followed by a 15-minute chemistry trial to ensure flawless mentor rapport before commencing study.",
+      kicker: "Next Steps",
+      title: "Our Team Gets in Touch",
+      body: "We contact you through your preferred channel to discuss the next steps.",
     },
   ] satisfies JourneyStep[],
 };
@@ -114,24 +114,24 @@ export const tutorJourney = {
   cta: "Register as a Tutor",
   steps: [
     {
-      kicker: "Credential Verification",
+      kicker: "Credential Review",
       title: "Register as a Tutor",
-      body: "Provide academic credentials, university qualifications, degree transcripts, and proven past student success metrics for committee evaluation.",
+      body: "Provide your academic qualifications and teaching experience for review by our team.",
     },
     {
       kicker: "Curricular Matrix",
       title: "Share Your Teaching Details",
-      body: "Specify curricular specialisms (e.g. Further Maths, AP Chem), examiner affiliations, schedule windows, and pedagogy style.",
+      body: "Specify curricular specialisms (e.g. Further Maths, AP Chem), schedule windows, and teaching approach.",
     },
     {
-      kicker: "Scrutiny & Demonstration",
+      kicker: "Review",
       title: "Our Team Reviews Your Information",
-      body: "Stringent screening, enhanced background checks (DBS/FBI), live teaching demonstrations, and reference confirmations.",
+      body: "Our team reviews your qualifications and teaching details. When you submit, you consent to Tuteme verifying your identity, qualifications and background.",
     },
     {
-      kicker: "Targeted Placement",
+      kicker: "Possible Connections",
       title: "Suitable Requests Can Be Connected Through Our Team",
-      body: "When a relevant family profile surfaces, our Directors contact you privately with confirmed student dossiers and zero cold marketing.",
+      body: "If a family’s request fits your profile, our team may contact you privately about it.",
     },
   ] satisfies JourneyStep[],
 };
@@ -140,57 +140,30 @@ export const directoryContrast = {
   eyebrow: "Architectural Distinction",
   title: "Why We Reject the “Search Directory” Model",
   description:
-    "Open marketplace platforms force parents to sift through hundreds of unvetted bios. Tuteme operates like a private medical or legal advisory bureau.",
+    "Open marketplace platforms make parents sift through long lists of tutor bios. Tuteme works through a private request form instead.",
   points: [
     {
-      title: "Zero Cold Outreach",
-      body: "Tutors do not pitch families. Parents are not spammed by automated messages. Every conversation is pre-screened and pre-briefed by our directorship desk.",
+      title: "No Bidding or Public Listings",
+      body: "There are no public tutor listings or bidding. Families submit a request and our team gets in touch.",
       tag: "No bidding wars or spam inboxes",
     },
     {
-      title: "Exhaustive Credential Vetting",
-      body: "Beyond identity checks, our committee reviews certified transcripts, subject examination papers, and live teaching adaptability (1.8% acceptance rate).",
-      tag: "Full transcript & DBS verified",
+      title: "Tutor Registration",
+      body: "Tutors apply through a registration form covering qualifications, subjects, availability and teaching approach.",
+      tag: "Application-based",
     },
     {
-      title: "Guaranteed Anonymity & Data Protection",
-      body: "Prominent family names, high-profile students, and career educators preserve complete privacy with closed-channel documentation and non-disclosure safeguards.",
-      tag: "Confidential closed-network files",
-    },
-  ],
-};
-
-export const connectionProof = {
-  eyebrow: "Parent Verification",
-  quote:
-    "Searching online directories had become a second full-time job. With Tuteme, their Academic Director personally analyzed our son’s IB HL Math struggles and assigned an Oxford alumnus in 36 hours. The connection trial was instantaneous chemistry.",
-  name: "Helena Radford",
-  context: "Mother of IB Diploma Candidate • Westminster School",
-  initial: "H",
-  photo: "/images/reviews/helena-radford.jpg",
-  stats: [
-    {
-      value: "100%",
-      label: "Placement Chemistry Guarantee",
-      body: "Free alternative match if rapport does not align in 15 minutes.",
-    },
-    {
-      value: "24–48 hrs",
-      label: "Average Connection Time",
-      body: "Direct administrative review to curated trial scheduling.",
-    },
-    {
-      value: "0 hrs",
-      label: "Spent Sifting Profiles",
-      body: "Our directors execute all curation, checking, and logistics.",
+      title: "Private by Design",
+      body: "Tutor profiles and family requests are handled privately through our team and are never published for browsing.",
+      tag: "No public listings",
     },
   ],
 };
 
 export const howItWorksCta = {
   eyebrow: "Private Academic Concierge",
-  title: "Ready to Begin Your Curated Connection?",
+  title: "Ready to Submit Your Request?",
   description:
-    "Experience the confidence of an academic concierge. No automated algorithms, no unsolicited solicitations.",
-  note: "All inquiries handled with strict confidentiality by senior academic staff.",
+    "Tell us what you need. No automated algorithms and no public tutor directory.",
+  note: "Inquiries are handled privately by our team.",
 };

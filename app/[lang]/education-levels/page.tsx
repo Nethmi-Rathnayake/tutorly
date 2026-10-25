@@ -15,9 +15,9 @@ import { pageMetadata } from "@/lib/seo";
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
   return pageMetadata("/education-levels", t.locale, {
-    title: t("Education Levels & Curricula"),
+    title: t("Private Tutors by Education Level & Curriculum"),
     description: t(
-      "Private tutors for every stage, from early years phonics to IGCSE, A-Level, IB, AP and university modules, hand-matched to your child’s exact curriculum and exam board.",
+      "Private tutors for every stage, from early years phonics to IGCSE, A-Level, IB, AP and university modules, matched to your child’s curriculum and exam board.",
     ),
   });
 }

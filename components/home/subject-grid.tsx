@@ -46,9 +46,6 @@ export async function SubjectGrid() {
                   <span className="grid size-12 place-items-center rounded-2xl bg-night text-gold">
                     <Icon aria-hidden className="size-5" />
                   </span>
-                  <span className="rounded-full bg-night px-3 py-1 text-[11px] font-semibold text-gold">
-                    {subject.tutorCount}
-                  </span>
                 </div>
                 <h3 className="mt-6 text-xl font-bold text-ink">{subject.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted transition-colors group-hover:text-brand-900/80">
@@ -85,7 +82,7 @@ export async function SubjectGrid() {
 
       <div className="mt-10 flex justify-center">
         <ButtonLink href="/subjects" variant="soft" size="lg" arrow className="bg-night text-gold hover:bg-brand-800">
-          {t("Browse All 60+ Sub-Topics")}
+          {t("Browse all subjects")}
         </ButtonLink>
       </div>
     </section>

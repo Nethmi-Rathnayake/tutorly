@@ -9,10 +9,8 @@ import {
   faqHero,
   faqSections,
   plainText,
-  vettingStats,
   type Faq,
 } from "@/lib/constants/faq";
-import { requestSteps } from "@/lib/constants/tutor-request";
 import { faq as faqDictionary } from "@/lib/i18n/ar/faq";
 import { useT } from "@/lib/i18n/client";
 import type { Translator } from "@/lib/i18n/translate";
@@ -49,45 +47,6 @@ function Rich({ text }: { text: string }) {
         ),
       )}
     </>
-  );
-}
-
-function RequestBlueprint() {
-  const t = useT(faqDictionary);
-  return (
-    <div className="rounded-2xl bg-white p-4 ring-1 ring-brand-300">
-      <p className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-brand-600">
-        <span aria-hidden className="h-px w-6 shrink-0 bg-brand-500" />
-        {t("The {count}-Step Requirement Blueprint", { count: requestSteps.length })}
-      </p>
-      <ol className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-6">
-        {requestSteps.map((s, i) => (
-          <li key={s.id} className="rounded-xl bg-brand-50 px-3 py-3 text-center ring-1 ring-brand-200">
-            <span className="block text-[10px] font-semibold uppercase tracking-[0.12em] text-brand-600">
-              {t("Step {n}", { n: String(i + 1).padStart(2, "0") })}
-            </span>
-            <span className="mt-0.5 block text-xs font-medium text-ink">{t(s.title)}</span>
-          </li>
-        ))}
-      </ol>
-    </div>
-  );
-}
-
-function VettingStats() {
-  const t = useT(faqDictionary);
-  return (
-    <dl className="grid gap-3 sm:grid-cols-3">
-      {t.deep(vettingStats).map((s, i) => (
-        <div key={s.label} className="flex flex-col rounded-2xl bg-white p-4 ring-1 ring-brand-300">
-          <dt className="text-xs font-semibold text-ink">{s.label}</dt>
-          <dd className={cn("order-first text-2xl font-bold", i === 0 ? "text-brand-500" : "text-brand-600")}>
-            {s.value}
-          </dd>
-          <dd className="mt-1 text-[11px] leading-relaxed text-muted">{s.body}</dd>
-        </div>
-      ))}
-    </dl>
   );
 }
 
@@ -136,8 +95,6 @@ function FaqItem({ faq, open, onToggle }: { faq: Faq; open: boolean; onToggle: (
             <Rich text={answerText(p, faq, t)} />
           </p>
         ))}
-        {faq.extra === "requestBlueprint" && <RequestBlueprint />}
-        {faq.extra === "vettingStats" && <VettingStats />}
         {faq.extra === "subjectsLink" && (
           <Link href="/subjects" className="inline-flex items-center gap-1 text-xs font-semibold text-brand-700 hover:text-brand-900">
             {t("Browse all subjects")}
@@ -290,14 +247,14 @@ export function FaqBrowser({ children }: { children?: React.ReactNode }) {
             <CircleHelp aria-hidden className="mx-auto size-8 text-brand-500" />
             <h2 className="mt-4 text-lg font-bold text-ink">{t("No matching questions")}</h2>
             <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-muted">
-              {t("Try a different keyword, or ask our advisory team directly and we'll get back to you promptly.")}
+              {t("Try a different keyword, or contact our team directly.")}
             </p>
             <div className="mt-6 flex flex-wrap justify-center gap-3">
               <Link
                 href="/contact"
                 className="inline-flex h-11 items-center gap-2 rounded-full bg-night px-5 text-sm font-semibold text-gold hover:bg-brand-800"
               >
-                {t("Ask our advisors")}
+                {t("Contact our team")}
                 <ArrowRight aria-hidden className="rtl:-scale-x-100 size-4" />
               </Link>
               <button

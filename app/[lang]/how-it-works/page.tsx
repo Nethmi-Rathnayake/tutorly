@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import {
   ConciergeNexus,
-  ConnectionProof,
   DirectoryContrast,
   DualJourneys,
   HowItWorksCta,
@@ -13,9 +12,9 @@ import { pageMetadata } from "@/lib/seo";
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
   return pageMetadata("/how-it-works", t.locale, {
-    title: t("How It Works"),
+    title: t("How Private Tutor Matching Works in Dubai"),
     description: t(
-      "How our academic directors privately hand-match families with vetted tutors, with no public directory, no cold outreach and a chemistry trial before lessons begin.",
+      "How requesting a tutor works with Tuteme: a private request form, no public directory, and our team getting in touch about the next steps.",
     ),
   });
 }
@@ -27,7 +26,6 @@ export default function HowItWorksPage() {
       <ConciergeNexus />
       <DualJourneys />
       <DirectoryContrast />
-      <ConnectionProof />
       <HowItWorksCta />
     </div>
   );

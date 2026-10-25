@@ -13,9 +13,9 @@ export const senImages = {
 };
 
 export const senMeta = {
-  title: "Special Child Tutors in the UAE | SEN Tutoring for Special Students",
+  title: "Special Educational Needs (SEN) Tutors in Dubai",
   description:
-    "Looking for experienced special child tutors in the UAE? Tuteme helps families connect with suitable tutors experienced in supporting special children and students with Special Educational Needs (SEN).",
+    "Looking for tutors experienced in supporting students with Special Educational Needs (SEN) in Dubai and the UAE? Tuteme helps families find a suitable match.",
 };
 
 export const senHero = {
@@ -174,7 +174,7 @@ export const senFaq = {
       id: "request",
       question: "Can I request a special child tutor in the UAE?",
       answer:
-        "Yes. Parents can submit a tutoring request through Tuteme and provide information about the student's learning requirements, curriculum, preferred lesson format and other relevant details.",
+        "Yes. Parents can submit a tutoring request through Tuteme and use the message box to describe the student's learning requirements, curriculum, preferred lesson format and other relevant details.",
     },
     {
       id: "subjects",
@@ -186,24 +186,24 @@ export const senFaq = {
       id: "home",
       question: "Can special child tutoring be provided at home?",
       answer:
-        "Parents can indicate in-person tutoring and provide their preferred location when submitting a tutoring request, subject to suitable tutor availability.",
+        "Parents can mention in-person tutoring and their area in the message box when submitting a tutoring request, subject to suitable tutor availability.",
     },
     {
       id: "online",
       question: "Can I request online special child tutoring?",
-      answer: "Yes. Parents can indicate online tutoring as their preferred lesson mode when submitting a tutoring request.",
+      answer: "Yes. Parents can mention online tutoring as their preferred lesson mode in the message box when submitting a tutoring request.",
     },
     {
       id: "sen",
       question: "Does Tuteme provide Special Educational Needs (SEN) tutors?",
       answer:
-        "Parents can request tutors with relevant special child or SEN tutoring experience when submitting their tutoring requirements.",
+        "Parents can use the message box to ask for a tutor with relevant special child or SEN tutoring experience, subject to availability.",
     },
     {
       id: "how",
       question: "How do I find a special child tutor through Tuteme?",
       answer:
-        "Submit the Request a Tutor form and provide details about the student's age, education level, curriculum, subject and learning requirements. Tuteme can then review the request and help connect the family with a suitable tutor.",
+        "Submit the Request a Tutor form and use the message box to describe the student's age, subject and learning requirements. Our team can then review the request and get in touch.",
     },
   ],
   moreLead: "Have another question?",

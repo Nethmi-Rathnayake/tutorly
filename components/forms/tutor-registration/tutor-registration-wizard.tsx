@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, m } from "framer-motion";
 import { FormProvider } from "react-hook-form";
-import { ArrowLeft, Lock, Save } from "lucide-react";
+import { ArrowLeft, EyeOff, Save } from "lucide-react";
 import { submitTutorRegistration } from "@/app/[lang]/tutor-registration/actions";
 import { DraftNotice, ServerErrorAlert, StepSubmitButton, stepVariants } from "@/components/forms/wizard-parts";
 import { registrationSteps } from "@/lib/constants/tutor-registration";
@@ -16,6 +16,7 @@ import {
   type TutorRegistrationValues,
 } from "@/lib/validations/tutor-registration";
 import { AvailabilityStep } from "./availability-step";
+import { buildRegistrationFormData } from "./build-form-data";
 import { PedagogyStep } from "./pedagogy-step";
 import { PersonalStep } from "./personal-step";
 import { RegistrationReviewStep } from "./registration-review-step";
@@ -25,6 +26,14 @@ import { TeachingStep } from "./teaching-step";
 
 export function TutorRegistrationWizard() {
   const t = useT();
+  // The resized headshot lives in memory only (not in drafts); `photoUrl` is its preview.
+  const photoFile = useRef<File | undefined>(undefined);
+  const [photoUrl, setPhotoUrl] = useState<string>();
+  useEffect(() => () => void (photoUrl && URL.revokeObjectURL(photoUrl)), [photoUrl]);
+  const onPhotoChange = (file: File | undefined, url: string | undefined) => {
+    photoFile.current = file;
+    setPhotoUrl(url);
+  };
   const {
     form,
     step,
@@ -47,13 +56,30 @@ export function TutorRegistrationWizard() {
     draftKey: "tuteme:tutor-registration-draft-v1",
     // The headshot lives in memory only, so it isn't kept in drafts.
     transientFields: ["consent", "photo"],
-    submit: submitTutorRegistration,
+    submit: async (values) => {
+      const photo = photoFile.current;
+      if (!photo) {
+        return { ok: false, message: "Upload a professional headshot", fieldErrors: { photo: ["Upload a professional headshot"] } };
+      }
+      try {
+        return await submitTutorRegistration(buildRegistrationFormData(values, photo));
+      } catch {
+        // e.g. the request was rejected before reaching the action (size limit, network).
+        return { ok: false, message: "We couldn't submit your registration right now. Please try again in a moment." };
+      }
+    },
     successHref: (ref) => `/tutor-registration/success?ref=${encodeURIComponent(ref)}`,
   });
 
-  // Preview URL for the headshot, kept here so it survives moving between stages.
-  const [photoUrl, setPhotoUrl] = useState<string>();
-  useEffect(() => () => void (photoUrl && URL.revokeObjectURL(photoUrl)), [photoUrl]);
+  // "Start over" resets the form values; drop the in-memory photo and its preview with them.
+  const photoValue = form.watch("photo");
+  useEffect(() => {
+    if (!photoValue && photoFile.current) {
+      photoFile.current = undefined;
+      // Keeps the preview in step with the form after a reset.
+      setPhotoUrl(undefined);
+    }
+  }, [photoValue]);
 
   const meta = t.deep(registrationSteps[step]);
   const variants = stepVariants(reduceMotion);
@@ -102,13 +128,13 @@ export function TutorRegistrationWizard() {
                     <p className="mt-2 text-xs leading-relaxed text-muted">{meta.description}</p>
                   </div>
                   <span className="inline-flex w-fit shrink-0 items-center gap-1.5 rounded-full bg-brand-50 px-3 py-1.5 text-[11px] font-semibold text-brand-700 ring-1 ring-brand-100">
-                    <Lock aria-hidden className="size-3.5" />
-                    {t("Confidential Admin Record")}
+                    <EyeOff aria-hidden className="size-3.5" />
+                    {t("Not publicly listed")}
                   </span>
                 </div>
 
                 <div className="mt-6">
-                  {step === 0 && <PersonalStep photoUrl={photoUrl} onPhotoUrlChange={setPhotoUrl} />}
+                  {step === 0 && <PersonalStep photoUrl={photoUrl} onPhotoChange={onPhotoChange} />}
                   {step === 1 && <TeachingStep />}
                   {step === 2 && <AvailabilityStep />}
                   {step === 3 && <PedagogyStep />}

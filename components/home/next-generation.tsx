@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Reveal } from "@/components/ui/reveal";
-import { homeImages, nextGenerationStats } from "@/lib/constants/home";
+import { homeImages } from "@/lib/constants/home";
 import { getT } from "@/lib/i18n/server";
 
 export async function NextGeneration() {
@@ -43,22 +43,8 @@ export async function NextGeneration() {
             <span className="text-brand-500">{t("Next Generation.")}</span>
           </h2>
           <p className="mt-6 max-w-lg text-base leading-relaxed text-muted">
-            {t("Designed with smooth visual flow, modern pacing, and elite educational methodology that feels completely distinct from conventional coaching institutes.")}
+            {t("Designed with smooth visual flow and modern pacing, for a learning experience that feels distinct from conventional coaching institutes.")}
           </p>
-
-          <div className="mt-9 grid max-w-lg gap-4 sm:grid-cols-2">
-            {t.deep(nextGenerationStats).map((stat) => (
-              <div
-                key={stat.label}
-                className="rounded-2xl bg-white p-5 ring-1 ring-brand-200 transition-colors duration-300 hover:bg-[#e6c97c] hover:ring-brand-500"
-              >
-                <p className="text-4xl font-bold text-brand-500">{stat.value}</p>
-                <p className="mt-2 text-sm font-semibold text-ink">{stat.label}</p>
-                <p className="mt-0.5 text-xs text-muted">{stat.caption}</p>
-              </div>
-            ))}
-          </div>
-
           <ButtonLink
             href="/about"
             variant="soft"

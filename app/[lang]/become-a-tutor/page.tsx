@@ -14,9 +14,9 @@ import { pageMetadata } from "@/lib/seo";
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
   return pageMetadata("/become-a-tutor", t.locale, {
-    title: t("Become a Tutor"),
+    title: t("Become a Private Tutor in Dubai & the UAE"),
     description: t(
-      "Share your subjects, qualifications and availability with our academic placement team and teach motivated students online or in person.",
+      "Share your subjects, qualifications and availability with our team and teach motivated students online or in person across the UAE.",
     ),
   });
 }

@@ -8,9 +8,9 @@ import { pageMetadata } from "@/lib/seo";
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
   return pageMetadata("/tutor-registration", t.locale, {
-    title: t("Tutor Registration"),
+    title: t("Tutor Registration Form"),
     description: t(
-      "Register as a tutor: share your subjects, qualifications, availability and teaching approach with our academic placement team.",
+      "Register as a tutor: share your subjects, qualifications, availability and teaching approach with our team.",
     ),
   });
 }
@@ -35,14 +35,6 @@ export default async function TutorRegistrationPage() {
               {r.descriptionTail}
             </p>
           </div>
-          <dl className="flex w-fit shrink-0 divide-x divide-brand-100 rounded-2xl bg-white px-2 py-4 shadow-sm ring-1 ring-brand-100">
-            {r.stats.map((s, i) => (
-              <div key={s.label} className="flex flex-col-reverse px-5">
-                <dt className="text-[10px] font-bold uppercase tracking-[0.14em] text-muted">{s.label}</dt>
-                <dd className={`whitespace-nowrap text-2xl font-extrabold min-[400px]:text-3xl sm:text-4xl ${i === 0 ? "text-brand-700" : "text-violet-brand"}`}>{s.value}</dd>
-              </div>
-            ))}
-          </dl>
         </div>
       </header>
 

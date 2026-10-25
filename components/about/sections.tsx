@@ -1,9 +1,5 @@
 import Image from "next/image";
-import {
-  House,
-  Monitor,
-  Quote,
-} from "lucide-react";
+import { MapPin, Quote } from "lucide-react";
 import { ButtonLink } from "@/components/ui/button-link";
 import { AccentTitle } from "@/components/ui/accent-title";
 import { Reveal } from "@/components/ui/reveal";
@@ -340,9 +336,9 @@ export async function Vision() {
 
 /** Pins placed over the stylised map, in % of its box. */
 const mapPins = [
-  { label: "Sharjah", x: 66, y: 30, online: true },
-  { label: "Dubai", x: 57, y: 44, online: false },
-  { label: "Abu Dhabi", x: 33, y: 66, online: false },
+  { label: "Sharjah", x: 66, y: 30 },
+  { label: "Dubai", x: 57, y: 44 },
+  { label: "Abu Dhabi", x: 33, y: 66 },
 ];
 
 export async function Regions() {
@@ -385,13 +381,10 @@ export async function Regions() {
           <div className="rounded-3xl bg-white p-5 ring-1 ring-brand-200">
             <div className="flex items-center justify-between gap-3">
               <p className="text-sm font-bold text-ink">{r.map.title}</p>
-              <span className="rounded-full bg-night px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-gold">
-                {r.map.tag}
-              </span>
             </div>
             <div
               role="img"
-              aria-label={t("Map of the UAE showing in-home coverage in Dubai and Abu Dhabi and online coverage in Sharjah")}
+              aria-label={t("Map of the UAE showing Dubai, Abu Dhabi and Sharjah")}
               className="relative mt-4 aspect-square overflow-hidden rounded-2xl bg-white ring-1 ring-brand-200 sm:aspect-[4/3]"
             >
               <Image src="/images/uae-map.png" alt="" fill sizes="(min-width: 1024px) 40vw, 100vw" className="object-contain" />
@@ -401,28 +394,13 @@ export async function Regions() {
                   className="absolute flex -translate-x-1/2 -translate-y-1/2 flex-col items-center"
                   style={{ left: `${p.x}%`, top: `${p.y}%` }}
                 >
-                  <span
-                    className={cn(
-                      "grid size-6 place-items-center rounded-full shadow-md ring-4 ring-brand-200/70",
-                      p.online ? "bg-brand-500 text-brand-900" : "bg-night text-gold",
-                    )}
-                  >
-                    {p.online ? <Monitor aria-hidden className="size-3" /> : <House aria-hidden className="size-3" />}
+                  <span className="grid size-6 place-items-center rounded-full bg-night text-gold shadow-md ring-4 ring-brand-200/70">
+                    <MapPin aria-hidden className="size-3" />
                   </span>
                   <span className="mt-1 rounded-md bg-white px-1.5 py-0.5 text-[10px] font-semibold text-ink shadow-sm">{t(p.label)}</span>
                 </span>
               ))}
             </div>
-            <ul className="mt-4 flex flex-wrap items-center justify-between gap-3 text-xs text-muted">
-              <li className="flex items-center gap-2">
-                <span aria-hidden className="size-2.5 rounded-full bg-night" />
-                {r.map.legend[0]}
-              </li>
-              <li className="flex items-center gap-2">
-                <span aria-hidden className="size-2.5 rounded-full bg-brand-500" />
-                {r.map.legend[1]}
-              </li>
-            </ul>
           </div>
         </Reveal>
       </div>

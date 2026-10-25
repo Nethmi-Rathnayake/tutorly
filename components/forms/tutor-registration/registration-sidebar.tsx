@@ -1,14 +1,12 @@
 "use client";
 
-import { ListChecks, Star } from "lucide-react";
-import { safetyCommitments, tutorLifecycle } from "@/lib/constants/tutor-registration";
+import { ListChecks } from "lucide-react";
+import { tutorLifecycle } from "@/lib/constants/tutor-registration";
 import { useT } from "@/lib/i18n/client";
 import { cn } from "@/lib/utils/cn";
 
 export function RegistrationSidebar() {
   const t = useT();
-  const review = t.deep(safetyCommitments.testimonial);
-
   return (
     <aside aria-label={t("Registration support")} className="flex h-full flex-col gap-5">
       <section aria-labelledby="tutor-lifecycle" className="flex-1 rounded-3xl bg-white p-6 ring-1 ring-brand-100/80">
@@ -36,19 +34,6 @@ export function RegistrationSidebar() {
           ))}
         </ol>
       </section>
-
-      <figure className="rounded-3xl bg-linear-to-br from-brand-700 to-brand-600 p-6 text-white shadow-[0_24px_50px_-24px_rgba(20,23,29,0.8)]">
-        <div className="flex gap-0.5 text-amber-300" role="img" aria-label={t("Rated 5 out of 5")}>
-          {Array.from({ length: 5 }).map((_, i) => (
-            <Star key={i} aria-hidden className="size-3.5 fill-current" />
-          ))}
-        </div>
-        <blockquote className="mt-3 text-xs italic leading-relaxed text-white/90">“{review.quote}”</blockquote>
-        <figcaption className="mt-4 flex items-center justify-between gap-3 text-[11px]">
-          <span className="font-semibold">{review.name}</span>
-          <span className="text-white/75">{review.role}</span>
-        </figcaption>
-      </figure>
     </aside>
   );
 }

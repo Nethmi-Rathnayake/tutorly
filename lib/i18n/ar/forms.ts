@@ -359,7 +359,6 @@ export const forms: Dictionary = {
 
   // Tutor registration: steps & page
   "Personal Details": "البيانات الشخصية",
-  "Legal identity & photo": "الهوية القانونية والصورة",
   "Personal Information & Administrative Record": "المعلومات الشخصية والسجل الإداري",
   "This record is stored in our private educator directory for identity compliance.":
     "يُحفظ هذا السجل في دليل المعلمين الخاص بنا لأغراض التحقق من الهوية.",
@@ -432,23 +431,6 @@ export const forms: Dictionary = {
   "Professional Email": "البريد الإلكتروني المهني",
   "Direct Contact Phone": "رقم التواصل المباشر",
   "Used only by placement directors to arrange your interview.": "لا يستخدمه إلا مديرو الترشيح لترتيب مقابلتك.",
-  "Official Educator Headshot": "صورة شخصية رسمية للمعلم",
-  "Min. {min}×{min}px • Max 10MB": "الحد الأدنى {min}×{min} بكسل • الحد الأقصى 10 ميغابايت",
-  "Your headshot preview": "معاينة صورتك الشخصية",
-  "Your headshot": "صورتك الشخصية",
-  "Replace Photo": "استبدال الصورة",
-  "Browse Local File": "اختر ملفًا من جهازك",
-  "or drag & drop headshot here": "أو اسحب الصورة وأفلتها هنا",
-  "Upload a high-resolution, front-facing formal portrait. It's used for administrative verification and shared only with families you're matched with.":
-    "ارفع صورة رسمية عالية الدقة من الأمام. تُستخدم للتحقق الإداري ولا تُشارك إلا مع العائلات التي تتم مطابقتك معها.",
-  "Private storage": "تخزين خاص",
-  "Never publicly indexed": "لا تُفهرس للعامة أبدًا",
-  "Upload headshot": "رفع الصورة الشخصية",
-  "Upload a JPG, PNG or WebP image.": "ارفع صورة بصيغة JPG أو PNG أو WebP.",
-  "Photo must be 10MB or smaller.": "يجب ألا يتجاوز حجم الصورة 10 ميغابايت.",
-  "Photo must be at least {min}×{min}px (this one is {width}×{height}px).":
-    "يجب ألا تقل أبعاد الصورة عن {min}×{min} بكسل (أبعاد هذه الصورة {width}×{height} بكسل).",
-  "We couldn't read that image. Try a different file.": "تعذّرت قراءة هذه الصورة. جرّب ملفًا آخر.",
 
   // Tutor registration: teaching step
   "Subjects You Teach": "المواد التي تدرّسها",
@@ -610,10 +592,6 @@ export const forms: Dictionary = {
   "Please confirm you agree to be contacted about this request": "يرجى تأكيد موافقتك على التواصل معك بشأن هذا الطلب",
   "Target should be at or above the current grade": "يجب أن تكون الدرجة المستهدفة مساوية للدرجة الحالية أو أعلى منها",
   "Enter the area for in-person lessons": "أدخل منطقة الدروس الحضورية",
-  "Photo must be 10MB or smaller": "يجب ألا يتجاوز حجم الصورة 10 ميغابايت",
-  "Upload a JPG, PNG or WebP image": "ارفع صورة بصيغة JPG أو PNG أو WebP",
-  "Photo must be at least 400×400px": "يجب ألا تقل أبعاد الصورة عن 400×400 بكسل",
-  "Upload a professional headshot": "ارفع صورة شخصية مهنية",
   "Add at least one subject you teach": "أضف مادة واحدة على الأقل تدرّسها",
   "Choose up to 8 subjects": "اختر 8 مواد كحد أقصى",
   "Select at least one education level": "اختر مرحلة دراسية واحدة على الأقل",
@@ -651,4 +629,193 @@ export const forms: Dictionary = {
   "Anything else we should know, such as subjects, goals or schedule.":
     "أي شيء آخر يجب أن نعرفه، مثل المواد أو الأهداف أو المواعيد.",
   "Keep your message under 1000 characters": "يجب ألا تتجاوز رسالتك 1000 حرف",
+  // Copied from the claims review so client components can reach them
+  "Fill in your details and an academic advisor will get back to you.":
+    "املأ بياناتك وسيرد عليك مستشار أكاديمي.",
+  "Secure connection":
+    "اتصال آمن",
+  "We respect your privacy. Inquiries are handled by our administrative team.":
+    "نحترم خصوصيتك. يتولى فريقنا الإداري التعامل مع الاستفسارات.",
+  "Introduction":
+    "التعارف",
+  "Tutor":
+    "معلم",
+  "Concierge Intake Portal • Direct Admin Review":
+    "بوابة استقبال الطلبات • مراجعة إدارية مباشرة",
+  "Submit your student's academic profile. Our placement team reviews every request individually to match your family with a suitable tutor.":
+    "أرسل الملف الأكاديمي لطالبك. يراجع فريق التوفيق لدينا كل طلب على حدة ليوفّق عائلتك مع معلم مناسب.",
+  "Message on WhatsApp":
+    "راسلنا على واتساب",
+  "Briefing by phone":
+    "إحاطة عبر الهاتف",
+  // Claims cleanup (client-rendered)
+  "Not publicly listed":
+    "غير مدرج علنًا",
+  "Your details are submitted to our placement team for review.":
+    "تُرسل بياناتك إلى فريق التوفيق لدينا للمراجعة.",
+  // Content consistency review (client-rendered)
+  "Process":
+    "الآلية",
+  "Team review":
+    "مراجعة الفريق",
+  "Team Review":
+    "مراجعة الفريق",
+  "Next Steps":
+    "الخطوات التالية",
+  "Our team reviews your requirement.":
+    "يراجع فريقنا متطلباتك.",
+  "We Contact You":
+    "نتواصل معك",
+  "We contact you through your preferred channel.":
+    "نتواصل معك عبر قناتك المفضلة.",
+  "We discuss the next steps with you.":
+    "نناقش معك الخطوات التالية.",
+  "You consent to us verifying your identity, qualifications and background as part of the review.":
+    "توافق على أن نتحقق من هويتك ومؤهلاتك وخلفيتك كجزء من المراجعة.",
+  "If a family's request fits your profile and availability, we may contact you.":
+    "إذا كان طلب عائلة يناسب ملفك وأوقات توفرك، فقد نتواصل معك.",
+  "Our team acts as the point of contact between you and families.":
+    "يكون فريقنا حلقة الاتصال بينك وبين العائلات.",
+  "Our placement team reviews your background and subject expertise.":
+    "يراجع فريق التوفيق لدينا خلفيتك وخبرتك في المادة.",
+  "If a student request fits your subjects and availability, our team may contact you.":
+    "إذا كان طلب طالب يناسب موادك وأوقات توفرك، فقد يتواصل معك فريقنا.",
+  "Your information is submitted directly to our placement team. Tutor profiles are not published for browsing.":
+    "تُرسل معلوماتك مباشرة إلى فريق التوفيق لدينا. ولا تُنشر ملفات المعلمين للتصفح.",
+  "Submit":
+    "إرسال",
+  "Check your details before submitting them to our placement team.":
+    "راجع بياناتك قبل إرسالها إلى فريق التوفيق لدينا.",
+  "Submit Application":
+    "إرسال الطلب",
+  "to our placement team":
+    "إلى فريق التوفيق لدينا",
+  ". We do not maintain public teacher marketplace profiles.":
+    ". نحن لا نحتفظ بملفات علنية للمعلمين على غرار الأسواق الإلكترونية.",
+  "Team Coordinated":
+    "بتنسيق الفريق",
+  "Private Profiles":
+    "ملفات خاصة",
+  "Unlike mass tutoring websites, we respect the institutional prestige and privacy of our faculty. We do not display public tutor bios, rates, or personal phone numbers. Our team acts as the point of contact between you and families.":
+    "على عكس مواقع الدروس الجماعية، نحترم المكانة المؤسسية لمعلمينا وخصوصيتهم. ولا نعرض نبذًا علنية عن المعلمين أو أسعارهم أو أرقام هواتفهم الشخصية. ويكون فريقنا حلقة الاتصال بينك وبين العائلات.",
+  "Team Process":
+    "عمل الفريق",
+  "Family requests reviewed by our team":
+    "يراجع فريقنا طلبات العائلات",
+  "Contact only when a request fits your profile":
+    "لا نتواصل إلا عندما يناسب طلب ملفك",
+  "No public tutor profiles":
+    "لا ملفات علنية للمعلمين",
+  "Private contact":
+    "تواصل خاص",
+  "How Your Application Is Reviewed":
+    "كيف تتم مراجعة طلبك",
+  "Applications are reviewed by our placement team.":
+    "يراجع فريق التوفيق لدينا الطلبات.",
+  "You consent to Tuteme verifying your identity when you submit your application.":
+    "توافق على أن تتحقق Tuteme من هويتك عند تقديم طلبك.",
+  "Qualification Checks":
+    "فحوصات المؤهلات",
+  "Your qualifications and background may be verified as part of the review.":
+    "قد يتم التحقق من مؤهلاتك وخلفيتك كجزء من المراجعة.",
+  "Placement Team":
+    "فريق التوفيق",
+  "Submissions are reviewed by our placement team.":
+    "يراجع فريق التوفيق لدينا الطلبات المقدمة.",
+  "Used by our placement team to contact you about your application.":
+    "يستخدمه فريق التوفيق لدينا للتواصل معك بشأن طلبك.",
+  "Thank you. Our team will be in touch. Your reference is":
+    "شكرًا لك. سيتواصل معك فريقنا. رقمك المرجعي هو",
+  // Staff-role wording cleanup (client-rendered)
+  "Fill in your details and our team will get back to you.":
+    "املأ بياناتك وسيرد عليك فريقنا.",
+  "We respect your privacy. Inquiries are handled by our team.":
+    "نحترم خصوصيتك. يتولى فريقنا التعامل مع الاستفسارات.",
+  "Get in Touch":
+    "تواصل معنا",
+  "Have a question about finding a tutor or joining as a tutor? Our team is here to assist parents, students, and educators at every stage of their learning journey.":
+    "هل لديك سؤال حول العثور على معلم أو الانضمام كمعلم؟ فريقنا هنا لمساعدة أولياء الأمور والطلاب والمعلمين في كل مرحلة من رحلتهم التعليمية.",
+  "Are you an educator? Submit your qualifications and experience directly to our team.":
+    "هل أنت معلم؟ أرسل مؤهلاتك وخبرتك مباشرة إلى فريقنا.",
+  "Concierge Intake Portal • Request Review":
+    "بوابة استقبال الطلبات • مراجعة الطلب",
+  "Submit your student's academic profile. Our team reviews every request individually to match your family with a suitable tutor.":
+    "أرسل الملف الأكاديمي لطالبك. يراجع فريقنا كل طلب على حدة لمساعدة عائلتك في العثور على معلم مناسب.",
+  "Your information is submitted directly to our team. Tutor profiles are not published for browsing.":
+    "تُرسل معلوماتك مباشرة إلى فريقنا. ولا تُنشر ملفات المعلمين للتصفح.",
+  "Connect Through Our Team":
+    "تواصل عبر فريقنا",
+  "No time wasted on aggressive bidding wars, algorithmic self-promotion, or unsolicited cold inquiries. Our team reviews family requests and may contact you when one fits your profile.":
+    "لا وقت يضيع في مزايدات حادة أو ترويج ذاتي خوارزمي أو استفسارات عشوائية غير مرغوبة. يراجع فريقنا طلبات العائلات وقد يتواصل معك عندما يناسب أحدها ملفك.",
+  "Present your specialized academic pedigree, university honors, examination board mastery, and unique instructional philosophy directly to our team.":
+    "قدّم مسيرتك الأكاديمية المتخصصة وتكريماتك الجامعية وإتقانك لجهات الامتحانات وفلسفتك التعليمية الفريدة مباشرة إلى فريقنا.",
+  "Our team reviews your background and subject expertise.":
+    "يراجع فريقنا خلفيتك وخبرتك في المادة.",
+  "Tutor profiles are held privately by our team and are never published in a searchable directory.":
+    "يحتفظ فريقنا بملفات المعلمين بشكل خاص ولا تُنشر أبدًا في دليل قابل للبحث.",
+  "Register your teaching profile and let our team review it.":
+    "سجّل ملفك التدريسي ودع فريقنا يراجعه.",
+  "Submissions are reviewed by our team.":
+    "يراجع فريقنا الطلبات المقدمة.",
+  "to our team":
+    "إلى فريقنا",
+  "Personal Information":
+    "المعلومات الشخصية",
+  "Your details are submitted to our team for review.":
+    "تُرسل بياناتك إلى فريقنا للمراجعة.",
+  "Check your details before submitting them to our team.":
+    "راجع بياناتك قبل إرسالها إلى فريقنا.",
+  "Applications are reviewed by our team.":
+    "يراجع فريقنا الطلبات.",
+  "Sent to our team when you submit.":
+    "تصل إلى فريقنا عند الإرسال.",
+  "Our team reviews your subjects, qualifications and teaching approach.":
+    "يراجع فريقنا موادك ومؤهلاتك وأسلوب تدريسك.",
+  "Primary family contact for your request.":
+    "جهة الاتصال الرئيسية للعائلة بخصوص طلبها.",
+  "Used by our team to contact you about your application.":
+    "يستخدمه فريقنا للتواصل معك بشأن طلبك.",
+  "I confirm these details are accurate. I consent to Tuteme verifying my identity, qualifications and background, and to being contacted by the Tuteme team about my application.":
+    "أؤكد أن هذه البيانات صحيحة. وأوافق على أن تتحقق Tuteme من هويتي ومؤهلاتي وخلفيتي، وعلى أن يتواصل معي فريق Tuteme بشأن طلبي.",
+  // Photo upload removed from tutor registration
+  "Legal identity": "الهوية القانونية",
+  // Tutor headshot upload (resized in the browser, emailed to the team)
+  "Legal identity & photo":
+    "الهوية القانونية والصورة",
+  "We couldn't read that image. Try a different file.":
+    "تعذّرت قراءة هذه الصورة. جرّب ملفًا آخر.",
+  "Upload a JPG, PNG or WebP image.":
+    "ارفع صورة بصيغة JPG أو PNG أو WebP.",
+  "Photo is too large. Please choose a smaller image.":
+    "حجم الصورة كبير جدًا. يرجى اختيار صورة أصغر.",
+  "Photo must be at least {min}×{min}px (this one is {width}×{height}px).":
+    "يجب ألا تقل أبعاد الصورة عن {min}×{min} بكسل (أبعاد هذه الصورة {width}×{height} بكسل).",
+  "Official Educator Headshot":
+    "صورة شخصية رسمية للمعلم",
+  "Min. {min}×{min}px • JPG, PNG or WebP":
+    "الحد الأدنى {min}×{min} بكسل • JPG أو PNG أو WebP",
+  "Your headshot preview":
+    "معاينة صورتك الشخصية",
+  "Replace Photo":
+    "استبدال الصورة",
+  "Browse Local File":
+    "اختر ملفًا من جهازك",
+  "or drag & drop headshot here":
+    "أو اسحب الصورة وأفلتها هنا",
+  "Upload a front-facing formal portrait. Large photos are resized in your browser before they are sent.":
+    "ارفع صورة شخصية رسمية بوضع أمامي. تُصغَّر الصور الكبيرة تلقائيًا في متصفحك قبل إرسالها.",
+  "Sent only to our team":
+    "تُرسل إلى فريقنا فقط",
+  "Never published":
+    "لا تُنشر أبدًا",
+  "Upload headshot":
+    "رفع الصورة الشخصية",
+  "Your headshot":
+    "صورتك الشخصية",
+  "Upload a JPG, PNG or WebP image":
+    "ارفع صورة بصيغة JPG أو PNG أو WebP",
+  "Upload a professional headshot":
+    "ارفع صورة شخصية مهنية",
+  "Photo must be at least 400×400px":
+    "يجب ألا تقل أبعاد الصورة عن 400×400 بكسل",
 };

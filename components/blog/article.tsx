@@ -5,13 +5,11 @@ import {
   ChevronRight,
   CircleCheck,
   CircleX,
-  Clock,
   Globe,
   GraduationCap,
   Info,
   Landmark,
   ListOrdered,
-  Lock,
   Quote,
   ShieldCheck,
   Tag,
@@ -303,31 +301,6 @@ export async function ArticleSidebar({ post }: { post: BlogPost }) {
         <ButtonLink href={requestHref} size="sm" className="mt-5 w-full">
           {a.placement.primary}
         </ButtonLink>
-        <ul className="mt-4 flex flex-wrap justify-between gap-2 text-[10px] text-muted">
-          <li className="inline-flex items-center gap-1">
-            <Clock aria-hidden className="size-3" />
-            {a.placement.response}
-          </li>
-          <li className="inline-flex items-center gap-1">
-            <Lock aria-hidden className="size-3" />
-            {a.placement.confidential}
-          </li>
-        </ul>
-      </div>
-
-      <div className="rounded-3xl bg-lavender/70 p-5 ring-1 ring-brand-100/80">
-        <p className="flex items-center gap-2 text-sm font-bold text-ink">
-          <ShieldCheck aria-hidden className="size-4 text-brand-600" />
-          {a.compliance.title}
-        </p>
-        <p className="mt-2 text-xs leading-relaxed text-muted">{a.compliance.body}</p>
-        <ul className="mt-3 flex flex-wrap gap-1.5">
-          {a.compliance.chips.map((chip) => (
-            <li key={chip} className="rounded-full bg-white px-2.5 py-1 text-[10px] font-semibold text-brand-700 ring-1 ring-brand-100">
-              {chip}
-            </li>
-          ))}
-        </ul>
       </div>
     </aside>
   );

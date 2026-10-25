@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
 import { BlogBrowser } from "@/components/blog/blog-browser";
-import { AdviceCta, BlogHero, EditorialSlots, getBrowserProps, NewsletterBand, Trajectory } from "@/components/blog/sections";
+import { AdviceCta, BlogHero, getBrowserProps, NewsletterBand } from "@/components/blog/sections";
+import { isNewsletterConfigured } from "@/lib/services/newsletter";
 import { getT } from "@/lib/i18n/server";
 import { pageMetadata } from "@/lib/seo";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
   return pageMetadata("/blog", t.locale, {
-    title: t("Blog"),
+    title: t("Tutoring & Education Guides for UAE Parents"),
     description: t(
-      "Practical guidance, curriculum analysis and regional benchmarks to help UAE parents make informed tutoring and education decisions across British, IB and American pathways.",
+      "Practical guidance and curriculum analysis to help UAE parents make informed tutoring decisions across British, IB and American pathways.",
     ),
   });
 }
@@ -28,9 +29,7 @@ export default async function BlogPage() {
       </section>
 
       <div className="mt-6 space-y-12 lg:space-y-14">
-        <EditorialSlots />
-        <Trajectory />
-        <NewsletterBand />
+        {isNewsletterConfigured() && <NewsletterBand />}
         <AdviceCta />
       </div>
     </div>

@@ -1,9 +1,8 @@
 /**
  * Blog articles (/blog and /blog/[slug]). The constants file is the seam for a future CMS:
  * pages only read posts through `blogPosts`, `getPostBySlug` and `featuredPost`.
- * PLACEHOLDER: authors, publication dates and every figure or accreditation claim in these
- * articles (grade boost rate, match counts, the top 3% acceptance rate, KHDA/ADEK alignment,
- * response times) must be replaced with approved content before launch (SRS §11, §27).
+ * PLACEHOLDER: publication dates must be confirmed by the business. Unverified figures, named
+ * author profiles and compliance badges were removed (SRS §11, §27).
  */
 
 export type BlogCategoryId = "curriculum" | "exams" | "parents" | "uae";
@@ -34,6 +33,8 @@ export type BlogPost = {
   slug: string;
   category: BlogCategoryId;
   title: string;
+  /** Shorter <title> for search results; the on-page heading stays `title`. */
+  metaTitle?: string;
   excerpt: string;
   /** Short label on the card image and the article's first pill. */
   kicker: string;
@@ -59,8 +60,9 @@ export const blogPosts: BlogPost[] = [
     category: "uae",
     featured: true,
     title: "How to Find the Best Private Tutors in Dubai & Abu Dhabi: A Parent’s Complete Guide",
+    metaTitle: "Best Private Tutors in Dubai & Abu Dhabi: Parent Guide",
     excerpt:
-      "Looking for reliable private tutors in Dubai or Abu Dhabi? Discover how hand-picked, expert home tutors help UAE students excel in British, American and IB curricula.",
+      "Looking for reliable private tutors in Dubai or Abu Dhabi? Learn what to look for when choosing a private tutor for British, American and IB curricula.",
     kicker: "UAE Academic Guide",
     levels: "All Levels",
     series: "Parent Guide",
@@ -68,16 +70,11 @@ export const blogPosts: BlogPost[] = [
     publishedAt: "2026-09-08",
     updatedAt: "2026-09-29",
     author: {
-      name: "Academic Advisory Team",
-      role: "Reviewed by our Senior Curriculum Directors",
-      initials: "AA",
+      name: "Tuteme",
+      role: "Parent Insights",
+      initials: "T",
     },
     image: { src: "/images/concierge-hero.jpg", alt: "A tutor reviewing work on a laptop with a secondary student" },
-    badges: ["KHDA & ADEK Aligned"],
-    heroStats: [
-      { value: "98.4%", label: "Grade Boost Rate" },
-      { value: "1,850+", label: "Matches in UAE" },
-    ],
     tags: ["Dubai Tutors", "Abu Dhabi Mentors", "IB Diploma", "IGCSE", "KHDA Guidelines"],
     sections: [
       {
@@ -145,7 +142,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         id: "hand-picked-tutors",
-        title: "Why Hand-Picked Expert Tutors Matter",
+        title: "Why the Right Match Matters",
         blocks: [
           {
             type: "paragraph",
@@ -167,12 +164,12 @@ export const blogPosts: BlogPost[] = [
               ],
             },
             ours: {
-              title: "Hand-Picked Concierge Matching",
+              title: "A Private Request Process",
               items: [
-                "A selective top 3% acceptance rate, with qualifications verified for every tutor.",
-                "UAE police clearance and international safeguarding checks.",
-                "A dedicated academic coordinator for attendance, progress reports and replacements.",
-                "Curriculum specialists working from current official mark schemes and examiner reports.",
+                "A private request process, with no public directory to sift through.",
+                "A request form that captures your child’s curriculum, level and preferred schedule.",
+                "Online and in-person lesson options.",
+                "Your request is reviewed by our team before a tutor is suggested.",
               ],
             },
           },
@@ -191,7 +188,7 @@ export const blogPosts: BlogPost[] = [
         blocks: [
           {
             type: "paragraph",
-            text: "We take the stress out of finding an exceptional private mentor. Our concierge process matches students across Dubai, Abu Dhabi and Sharjah with educators who suit their learning style and schedule.",
+            text: "We aim to take the stress out of finding a private tutor. You tell us what you need and our team reviews your request and gets in touch.",
           },
           {
             type: "steps",
@@ -201,12 +198,12 @@ export const blogPosts: BlogPost[] = [
                 body: "Tell us your child’s year group, exam board (Cambridge, Edexcel, IBDP), the topics they find difficult, their target grades and your preferred lesson times.",
               },
               {
-                title: "Careful Hand-Selection",
-                body: "Our academic placement directors review your needs and propose a verified educator matched to your child’s personality and curriculum goals.",
+                title: "Our Team Reviews Your Request",
+                body: "Our team reviews your needs and looks for an educator who suits your child’s curriculum goals.",
               },
               {
-                title: "Chemistry Trial Session",
-                body: "Start with a no-obligation introductory session and confirm the tutor–student connection before committing to a regular timetable, with no lock-in contract.",
+                title: "Agree the Next Steps",
+                body: "We contact you through your preferred channel to discuss the next steps.",
               },
             ],
           },
@@ -218,6 +215,7 @@ export const blogPosts: BlogPost[] = [
     slug: "british-vs-ib-vs-american-curriculum",
     category: "curriculum",
     title: "British vs. IB vs. American: Choosing the Right Academic Path",
+    metaTitle: "British vs IB vs American Curriculum: Which to Choose?",
     excerpt:
       "A clear breakdown of grading, internal assessments (IA) and university admission expectations across the curricula offered by schools in Dubai and Abu Dhabi.",
     kicker: "Curriculum Comparison",
@@ -225,7 +223,7 @@ export const blogPosts: BlogPost[] = [
     series: "Term Guide",
     readMinutes: 5,
     publishedAt: "2026-09-22",
-    author: { name: "Dr. Rania Al-Sayed", role: "Head of Curriculum Advisory", initials: "RA" },
+    author: { name: "Tuteme", role: "Parent Insights", initials: "T" },
     image: { src: "/images/hero-library.jpg", alt: "Students laughing while studying together in a library" },
     tags: ["British Curriculum", "IB Diploma", "American Curriculum", "University Admissions"],
     sections: [
@@ -259,7 +257,7 @@ export const blogPosts: BlogPost[] = [
         blocks: [
           {
             type: "paragraph",
-            text: "UK universities make offers based on predicted A-Level or IB grades, US admissions weigh GPA, AP results and extracurricular depth, and many universities in the UAE accept all three. Before switching systems, consider your child’s likely destination and speak with an advisor about the transition, especially in the years before final examinations.",
+            text: "UK universities make offers based on predicted A-Level or IB grades, US admissions weigh GPA, AP results and extracurricular depth, and many universities in the UAE accept all three. Before switching systems, consider your child’s likely destination and speak with your child’s school about the transition, especially in the years before final examinations.",
           },
         ],
       },
@@ -269,6 +267,7 @@ export const blogPosts: BlogPost[] = [
     slug: "gcse-a-level-science-revision",
     category: "exams",
     title: "Mastering GCSE & A-Level Sciences: Revision Protocols That Work",
+    metaTitle: "GCSE & A-Level Science Revision Guide",
     excerpt:
       "How diagnostic past-paper analysis, command-word practice and structured one-to-one gap remediation help students turn science predictions into top grades.",
     kicker: "Exam Preparation",
@@ -276,7 +275,7 @@ export const blogPosts: BlogPost[] = [
     series: "STEM Focus",
     readMinutes: 4,
     publishedAt: "2026-09-15",
-    author: { name: "Marcus Chen, M.Sc.", role: "Senior Science Mentor", initials: "MC" },
+    author: { name: "Tuteme", role: "Parent Insights", initials: "T" },
     image: { src: "/images/inspiring.jpg", alt: "A tutor pointing at a laptop screen during a revision session" },
     tags: ["GCSE", "A-Level", "Sciences", "Revision"],
     sections: [
@@ -317,6 +316,7 @@ export const blogPosts: BlogPost[] = [
     slug: "early-literacy-phonics-ks1-ks2",
     category: "parents",
     title: "Nurturing Early Literacy & Phonics: Essential Milestones for KS1 & KS2",
+    metaTitle: "Early Literacy & Phonics Guide for KS1 & KS2",
     excerpt:
       "Building confidence in phonics, reading comprehension and mental arithmetic through calm, personalised one-to-one sessions.",
     kicker: "Early Years & Primary",
@@ -324,7 +324,7 @@ export const blogPosts: BlogPost[] = [
     series: "Parent Advice",
     readMinutes: 4,
     publishedAt: "2026-08-28",
-    author: { name: "Sarah Hughes, B.Ed.", role: "Primary Literacy Specialist", initials: "SH" },
+    author: { name: "Tuteme", role: "Parent Insights", initials: "T" },
     image: { src: "/images/become-tutor-hero.jpg", alt: "A smiling tutor preparing a lesson on a tablet" },
     tags: ["Phonics", "KS1", "KS2", "Reading"],
     sections: [

@@ -12,6 +12,8 @@ import { faq } from "./faq";
 import { forms } from "./forms";
 import { home } from "./home";
 import { howItWorks } from "./how-it-works";
+import { revisedCopy } from "./revised-copy";
+import { seo } from "./seo";
 import { subjects } from "./subjects";
 
 /**
@@ -32,5 +34,7 @@ export const arDictionary: Dictionary = {
   ...blogArticles,
   ...contact,
   ...senTutors,
+  ...seo,
+  ...revisedCopy,
   ...forms,
 };

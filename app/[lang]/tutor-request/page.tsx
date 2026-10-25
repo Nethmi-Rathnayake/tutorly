@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import {
   Assurances,
   ConciergeHero,
-  ConciergeTestimonial,
   IntakeHeading,
   PlacementSteps,
 } from "@/components/concierge/concierge-sections";
@@ -14,9 +13,9 @@ import { pageMetadata } from "@/lib/seo";
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
   return pageMetadata("/tutor-request", t.locale, {
-    title: t("Concierge Tutor Matching"),
+    title: t("Concierge Tutor Matching in Dubai & the UAE"),
     description: t(
-      "Tell us what your student needs and our academic advisors will hand-match a vetted tutor for their subject, curriculum and schedule.",
+      "Tell us what your student needs and our team will review your request and look for a tutor for their subject, curriculum and schedule across Dubai and the UAE.",
     ),
   });
 }
@@ -39,7 +38,6 @@ export default async function ConciergeMatchingPage() {
       </section>
 
       <Assurances />
-      <ConciergeTestimonial />
     </div>
   );
 }

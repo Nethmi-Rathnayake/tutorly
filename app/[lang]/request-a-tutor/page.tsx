@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import { ShieldCheck } from "lucide-react";
 import { TutorRequestWizard } from "@/components/forms/tutor-request/tutor-request-wizard";
-import { academicAssurance, requestPageIntro } from "@/lib/constants/request-page";
+import { requestPageIntro } from "@/lib/constants/request-page";
 import { getTutorById } from "@/lib/services/tutors";
 import { subjectValues } from "@/lib/validations/common";
 import { getT } from "@/lib/i18n/server";
@@ -10,9 +9,9 @@ import { pageMetadata } from "@/lib/seo";
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
   return pageMetadata("/request-a-tutor", t.locale, {
-    title: t("Request a Tutor"),
+    title: t("Request a Private Tutor in Dubai"),
     description: t(
-      "Submit your student's academic profile and our placement committee will match your family with a vetted tutor.",
+      "Tell us your child's subject, curriculum and schedule and our team will review your request and get in touch about a private tutor in the UAE.",
     ),
   });
 }
@@ -20,7 +19,6 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function RequestATutorPage(props: PageProps<"/[lang]/request-a-tutor">) {
   const t = await getT();
   const intro = t.deep(requestPageIntro);
-  const assurance = t.deep(academicAssurance);
   const { tutor: tutorParam, subject: subjectParam } = await props.searchParams;
   const first = (v: string | string[] | undefined) => (Array.isArray(v) ? v[0] : v);
   const requested = await getTutorById(first(tutorParam));
@@ -51,34 +49,6 @@ export default async function RequestATutorPage(props: PageProps<"/[lang]/reques
           />
         </div>
       </div>
-
-      <section aria-labelledby="assurance-heading" className="border-t border-brand-100/70 bg-lavender/40 py-14 print:hidden">
-        <div className="mx-auto max-w-[90rem] px-4 sm:px-8 lg:px-10">
-          <div className="flex flex-col gap-5 rounded-3xl bg-white p-6 ring-1 ring-brand-100/80 sm:p-8 md:flex-row md:items-center md:justify-between">
-            <div className="flex items-start gap-4">
-              <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-brand-100 text-violet-brand">
-                <ShieldCheck aria-hidden className="size-5" />
-              </span>
-              <div>
-                <h2 id="assurance-heading" className="text-lg font-bold text-ink">
-                  {assurance.title}
-                </h2>
-                <p className="mt-1 max-w-xl text-sm leading-relaxed text-muted">{assurance.body}</p>
-              </div>
-            </div>
-            <ul className="flex flex-wrap gap-2">
-              {assurance.badges.map((b) => (
-                <li
-                  key={b}
-                  className="rounded-full bg-brand-100/80 px-4 py-2 text-[11px] font-bold uppercase tracking-wider text-brand-800"
-                >
-                  {b}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }

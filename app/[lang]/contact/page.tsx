@@ -3,11 +3,8 @@ import { Link } from "@/components/ui/link";
 import {
   ArrowRight,
   Clock3,
-  ExternalLink,
   Mail,
-  MapPin,
   MessageCircle,
-  Accessibility,
 } from "lucide-react";
 import { ContactForm } from "@/components/contact/contact-form";
 import { AccentTitle } from "@/components/ui/accent-title";
@@ -15,7 +12,6 @@ import { Reveal } from "@/components/ui/reveal";
 import {
   contactCardNotes,
   contactHero as hero,
-  mapCard as map,
   pathways,
   pathwaysIntro as intro,
 } from "@/lib/constants/contact-page";
@@ -26,34 +22,26 @@ import { pageMetadata } from "@/lib/seo";
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
   return pageMetadata("/contact", t.locale, {
-    title: t("Contact Us"),
+    title: t("Contact Tuteme About Private Tutoring in the UAE"),
     description: t(
-      "Questions about finding a tutor or joining as one? Message our academic advisory team, or reach us by email or phone.",
+      "Questions about finding a tutor or joining as one? Message our team, or reach us by email, phone or WhatsApp.",
     ),
   });
 }
-
-// The maps link always searches the English address.
-const mapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(siteConfig.contact.address)}`;
-// Keyless embedded map of the same address.
-const embedHref = `https://www.google.com/maps?q=${encodeURIComponent(siteConfig.contact.address)}&output=embed`;
-
 
 export default async function ContactPage() {
   const t = await getT();
   const { contact, sessionTimings } = t.deep(siteConfig);
   const notes = t.deep(contactCardNotes);
   const contactHero = t.deep(hero);
-  const mapCard = t.deep(map);
   const pathwaysIntro = t.deep(intro);
   const weekdayHours = sessionTimings[0];
   const contactCards = [
     { label: t("Email Inquiries"), value: contact.email, href: `mailto:${contact.email}`, note: notes.email, icon: Mail },
-    { label: t("Headquarters"), value: contact.centerName, note: contact.address, icon: MapPin },
     {
-      label: t("Advisory Hours"),
+      label: t("Contact Hours"),
       value: weekdayHours.days,
-      note: `${weekdayHours.hours} • ${notes.hours}`,
+      note: weekdayHours.hours,
       icon: Clock3,
     },
   ];
@@ -117,39 +105,6 @@ export default async function ContactPage() {
                 </li>
               ))}
             </ul>
-
-            <div className="mt-3 flex flex-1 flex-col overflow-hidden rounded-2xl bg-white ring-1 ring-brand-200">
-              <div className="relative min-h-72 flex-1 bg-brand-50">
-                <iframe
-                  title={t("Map showing {name}", { name: contact.centerName })}
-                  src={embedHref}
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  allowFullScreen
-                  className="absolute inset-0 size-full border-0"
-                />
-                <span className="pointer-events-none absolute start-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1 text-[10px] font-medium text-ink shadow-sm">
-                  <span aria-hidden className="size-1.5 rounded-full bg-brand-500" />
-                  {contact.centerName} • {mapCard.label}
-                </span>
-              </div>
-              <div className="flex items-center justify-between gap-3 border-t border-brand-200 px-4 py-3 text-xs">
-                <span className="flex items-center gap-1.5 text-muted">
-                  <Accessibility aria-hidden className="size-3.5" />
-                  {mapCard.transit}
-                </span>
-                <a
-                  href={mapsHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 font-semibold text-brand-700 hover:text-brand-900"
-                >
-                  {t("Open in Maps")}
-                  <ExternalLink aria-hidden className="size-3" />
-                  <span className="sr-only"> {t("(opens in a new tab)")}</span>
-                </a>
-              </div>
-            </div>
           </div>
         </div>
       </section>

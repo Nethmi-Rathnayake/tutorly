@@ -28,8 +28,8 @@ export const relationshipOptions = [
 ] as const;
 
 export const contactChannelOptions = [
-  { value: "whatsapp", label: "WhatsApp Direct", hint: "Immediate mobile liaison" },
-  { value: "phone", label: "Phone Call", hint: "Scheduled 10-min briefing" },
+  { value: "whatsapp", label: "WhatsApp Direct", hint: "Message on WhatsApp" },
+  { value: "phone", label: "Phone Call", hint: "Briefing by phone" },
   { value: "email", label: "Email Briefing", hint: "Complete summary by email" },
 ] as const;
 
@@ -42,25 +42,6 @@ export const learningStyleOptions = [
 ] as const;
 
 export const GRADE_SCALE_MAX = 7;
-
-export const modeOptions = [
-  {
-    value: "online",
-    title: "Online 1-on-1 Interactive",
-    description:
-      "HD stylus whiteboard, automated session recordings, and direct access to global Ivy & Oxbridge mentors.",
-    features: ["Live Collaborative Board", "Instant Notes PDF Export"],
-    tag: "Recommended",
-  },
-  {
-    value: "in-person",
-    title: "In-Person Home Visits",
-    description:
-      "Face-to-face visits at residential home or library, subject to certified tutor proximity in your area.",
-    features: ["Full Identity & Background Screened", "Verified Coverage in Greater Metro Zones"],
-    tag: "Area dependent",
-  },
-] as const;
 
 export const lessonsPerWeekOptions = [
   { value: "1", label: "1× / wk", hint: "Standard cadence" },
@@ -107,23 +88,10 @@ export function examSessionOptions(now = new Date()) {
   ];
 }
 
-export const tutorPreferenceOptions = [
-  { value: "senior-examiner", label: "Senior / Chief Examiner Experience", hint: "Official IB / Cambridge / Edexcel marker" },
-  { value: "oxbridge-ivy", label: "Oxbridge / Ivy League Graduate", hint: "First-Class Honours in relevant subject" },
-  { value: "neurodiverse", label: "Neurodiverse / ADHD Pacing Skills", hint: "Executive function & structured recall" },
-  { value: "bilingual", label: "Bilingual Instruction", hint: "Explains concepts in a second language" },
-] as const;
-
 export const tutorGenderOptions = [
   { value: "any", label: "No preference" },
   { value: "female", label: "Female" },
   { value: "male", label: "Male" },
-] as const;
-
-export const urgencyOptions = [
-  { value: "48h", label: "Within 24–48 Hrs", hint: "Urgent Placement" },
-  { value: "weekend", label: "This Weekend", hint: "Saturday or Sunday slot" },
-  { value: "7days", label: "Within 7 Days", hint: "Standard Diagnostic" },
 ] as const;
 
 export const UPLOAD_MAX_BYTES = 25 * 1024 * 1024;
@@ -133,58 +101,6 @@ export const UPLOAD_ACCEPT = {
   "image/jpeg": ".jpg",
   "application/vnd.openxmlformats-officedocument.wordprocessingml.document": ".docx",
 } as const;
-
-export const requestSteps = [
-  {
-    id: "parent",
-    label: "Parent",
-    sublabel: "Details",
-    title: "Parent & Guardian Details",
-    description: "Primary family contact for intake consultation, schedule verification, and academic liaison updates.",
-    next: "Continue to Student Profile",
-  },
-  {
-    id: "student",
-    label: "Student",
-    sublabel: "Profile",
-    title: "Student Profile & Academic Standing",
-    description: "Your student's current level, curriculum, learning style and target grade.",
-    next: "Continue to Subject Requirement",
-  },
-  {
-    id: "subject",
-    label: "Subject",
-    sublabel: "Requirement",
-    title: "Subject & Curriculum Requirement",
-    description: "The subject your student needs help with, the exam board, and how they'd like to learn.",
-    next: "Continue to Schedule",
-  },
-  {
-    id: "schedule",
-    label: "Schedule",
-    sublabel: "Frequency",
-    title: "Schedule & Session Frequency",
-    description: "Weekly frequency, session length, and the days and times that work for your family.",
-    next: "Continue to Notes",
-  },
-  {
-    id: "notes",
-    label: "Notes",
-    sublabel: "Diagnostic",
-    title: "Diagnostic Notes & Preferences",
-    description: "Exam deadlines, learning challenges, supporting documents and tutor preferences.",
-    next: "Continue to Review",
-  },
-  {
-    id: "review",
-    label: "Review",
-    sublabel: "Placement",
-    title: "Review & Submit for Placement",
-    description:
-      "Please confirm your details. Once submitted, our placement committee reviews your requirement and contacts you directly.",
-    next: "Submit Requirement",
-  },
-] as const;
 
 /** The seven emirates of the UAE (values are stored as the English name). */
 export const emirateOptions = [
@@ -197,10 +113,10 @@ export const emirateOptions = [
   { value: "Fujairah", label: "Fujairah" },
 ] as const;
 
-/** The request form is a single step; the six-step `requestSteps` above only feeds the FAQ blueprint. */
+/** The request form is a single step. */
 export const requestFormStep = {
   title: "Parent & Guardian Details",
-  description: "Primary family contact for intake consultation, schedule verification, and academic liaison updates.",
+  description: "Primary family contact for your request.",
   next: "Submit Requirement",
 } as const;
 

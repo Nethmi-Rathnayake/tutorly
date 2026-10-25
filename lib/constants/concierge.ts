@@ -1,24 +1,20 @@
 /**
  * Copy for the Concierge Matching page (/tutor-request).
- * PLACEHOLDER marketing claims and figures from the design (24h SLA, 98.4% placement,
- * guarantees, testimonial) must be confirmed by the business before launch (SRS §11, §27).
+ * Unverified figures (response SLA, placement rate), guarantees and the testimonial were removed;
+ * add them back only with approved content (SRS §11, §27).
  */
 
 export const conciergeHero = {
   eyebrow: "Bespoke Academic Matching • Private Concierge Intake",
   title: "Tell Us What You’re Looking For",
   description:
-    "Share your learning requirements and our senior educational advisors will hand-match and introduce a fully vetted, world-class tutor tailored specifically to your child.",
+    "Share your learning requirements and our team will review them and look for a suitable tutor for your child.",
   cta: "Start Your Request",
-  assurance: "100% Confidential • Reviewed within 24h",
+  assurance: "Private matching • No public directory",
   image: "/images/concierge-hero.jpg",
   imageAlt: "A tutor working one-on-one with a student at a laptop",
-  reviewCard: { title: "Administrative Review", body: "Dedicated Academic Director assigned" },
-  curatedCard: { title: "100% Curated Match", body: "Zero public browsing or directory clutter" },
-  stats: [
-    { value: "24h", label: "Match SLA" },
-    { value: "98.4%", label: "Placement Success" },
-  ],
+  reviewCard: { title: "Request Review", body: "Every request is reviewed by our team" },
+  curatedCard: { title: "Curated Match", body: "Zero public browsing or directory clutter" },
 };
 
 export const placementSteps = [
@@ -37,14 +33,14 @@ export const placementSteps = [
   {
     step: "03",
     title: "Our Team Reviews",
-    body: "Our academic directorship analyzes your syllabus criteria and hand-selects rigorously vetted mentors.",
-    tag: "Director hand-match",
+    body: "Our team reviews your syllabus criteria and looks for a suitable tutor.",
+    tag: "Team review",
   },
   {
     step: "04",
     title: "We Help Connect You",
-    body: "We introduce your matched tutor with a private briefing and coordinate a complimentary chemistry trial.",
-    tag: "Private intro & trial",
+    body: "We contact you through your preferred channel to discuss the next steps.",
+    tag: "Next steps",
   },
 ];
 
@@ -52,7 +48,7 @@ export const intakeIntro = {
   eyebrow: "Personal Intake Portal",
   title: "Submit Your Tutoring Requirement",
   description:
-    "Complete our guided intake. Your submission goes directly to our academic directors to hand-match the ideal educator.",
+    "Complete our guided intake. Your submission goes directly to our team, who will review it and get in touch.",
 };
 
 export const assurances = [
@@ -61,23 +57,11 @@ export const assurances = [
     body: "All tutor profiles and family requests are handled with absolute private discretion.",
   },
   {
-    title: "Hand-Picked Educators",
-    body: "Mentors are chosen directly by senior school leaders and Oxbridge/Ivy specialists.",
+    title: "Matched to Your Request",
+    body: "Our team looks for a tutor that fits the requirements you share.",
   },
   {
-    title: "Free Chemistry Trial",
-    body: "A 15-minute preliminary trial call ensures student-tutor rapport before any booking.",
-  },
-  {
-    title: "Zero Lock-In Contract",
-    body: "Flexible month-to-month or session-by-session arrangements with tutor reassignment protection.",
+    title: "Your Preferred Channel",
+    body: "We contact you through WhatsApp, phone or email, whichever you choose.",
   },
 ];
-
-export const conciergeTestimonial = {
-  quote:
-    "Tuteme’s concierge matched our son for IB Higher Level Physics within 24 hours. Not having to browse hundreds of unvetted profiles was an absolute revelation. The chemistry was instantaneous.",
-  name: "Lady Caroline M.",
-  context: "Parent of Year 12 Student, London",
-  initial: "L",
-};

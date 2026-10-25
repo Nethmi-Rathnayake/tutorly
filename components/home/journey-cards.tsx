@@ -8,14 +8,14 @@ const journeys = [
   {
     eyebrow: "For Parents & Students",
     title: "I'm Looking for a Tutor",
-    body: "Find vetted, elite tutors custom-matched to your child's curriculum, exam board, learning objectives, and flexible timing.",
+    body: "Request a tutor for your child's curriculum, exam board, learning objectives, and flexible timing.",
     cta: { label: "I Need a Tutor", href: requestHref },
     primary: true,
   },
   {
     eyebrow: "For Academic Professionals",
     title: "I'm a Tutor",
-    body: "Elevate your teaching career. Set your rates, publish verified academic credentials, and connect directly with dedicated learners globally.",
+    body: "Elevate your teaching career. Share your qualifications and teaching details, and our team will contact you when a family's request fits your profile.",
     cta: { label: "Join as a Tutor", href: "/become-a-tutor" },
     primary: false,
   },

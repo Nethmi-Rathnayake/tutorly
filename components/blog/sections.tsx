@@ -1,19 +1,15 @@
 import Image from "next/image";
 import {
   ArrowRight,
-  BadgeCheck,
   CalendarDays,
-  CalendarClock,
   Clock,
   Headset,
-  MapPin,
-  TrendingUp,
 } from "lucide-react";
 import { NewsletterForm } from "@/components/blog/newsletter-form";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Link } from "@/components/ui/link";
 import { Reveal } from "@/components/ui/reveal";
-import { adviceCta, blogHero, editorialSlots, featuredCard, latestArticles, newsletter, trajectory } from "@/lib/constants/blog";
+import { adviceCta, blogHero, featuredCard, latestArticles, newsletter } from "@/lib/constants/blog";
 import { blogCategories, blogPosts, featuredPost, type BlogPost } from "@/lib/constants/blog-posts";
 import { requestHref } from "@/lib/constants/site";
 import { getT } from "@/lib/i18n/server";
@@ -128,16 +124,6 @@ function FeaturedCard({ t }: { t: ServerT }) {
             <span className={`${pill} bg-white/95 text-brand-700 shadow-sm`}>
               {f.label} <span aria-hidden>•</span> {t("{n} min read", { n: post.readMinutes })}
             </span>
-            <span className={`${pill} bg-brand-100/95 text-violet-brand shadow-sm`}>{f.focus}</span>
-          </div>
-          <div className="absolute bottom-3 end-3 flex items-center gap-2.5 rounded-2xl bg-white/95 px-3.5 py-2.5 shadow-lg ring-1 ring-brand-100 backdrop-blur">
-            <span className="grid size-8 place-items-center rounded-lg bg-brand-100 text-brand-700">
-              <BadgeCheck aria-hidden className="size-4" />
-            </span>
-            <span>
-              <span className="block text-xs font-bold text-ink">{f.verified.title}</span>
-              <span className="block text-[10px] font-semibold uppercase tracking-[0.12em] text-muted">{f.verified.note}</span>
-            </span>
           </div>
         </div>
 
@@ -160,7 +146,7 @@ function FeaturedCard({ t }: { t: ServerT }) {
               <AuthorAvatar initials={post.author.initials} size="md" />
               <span>
                 <span className="block text-xs font-bold text-ink">{p.author.name}</span>
-                <span className="block text-[11px] text-muted">{f.authorRole}</span>
+                <span className="block text-[11px] text-muted">{p.author.role}</span>
               </span>
             </span>
             {post.updatedAt && (
@@ -197,130 +183,6 @@ export async function getBrowserProps() {
     categories: blogCategories.map((c) => ({ id: c.id, label: t(c.label) })),
     featured: { slug: featuredPost.slug, card: <FeaturedCard t={t} /> },
   };
-}
-
-export async function EditorialSlots() {
-  const t = await getT();
-  const e = t.deep(editorialSlots);
-  return (
-    <Reveal className="mx-auto max-w-[90rem] px-4 sm:px-8 lg:px-10">
-      <div className="flex flex-col gap-4 rounded-2xl bg-white px-5 py-4 ring-1 ring-brand-100/80 sm:flex-row sm:items-center sm:justify-between">
-        <div className="flex items-start gap-3">
-          <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-brand-50 text-brand-700">
-            <CalendarClock aria-hidden className="size-5" />
-          </span>
-          <div>
-            <p className="text-sm font-bold text-ink">{e.title}</p>
-            <p className="mt-0.5 text-xs text-muted">{e.body}</p>
-          </div>
-        </div>
-        <span className={`${pill} shrink-0 self-start bg-brand-50 text-brand-700 sm:self-auto`}>{e.badge}</span>
-      </div>
-    </Reveal>
-  );
-}
-
-// Chart geometry (viewBox units). Scores run 0–100 from the bottom of the plot area.
-const W = 560;
-const H = 220;
-const PAD_X = 24;
-const BOTTOM = 200;
-const toX = (i: number, count: number) => PAD_X + (i * (W - PAD_X * 2)) / (count - 1);
-const toY = (v: number) => BOTTOM - v * 1.8;
-const linePath = (values: number[]) =>
-  values.map((v, i) => `${i ? "L" : "M"}${toX(i, values.length).toFixed(1)} ${toY(v).toFixed(1)}`).join(" ");
-
-export async function Trajectory() {
-  const t = await getT();
-  const tr = t.deep(trajectory);
-  const { points } = trajectory.chart;
-  const tutored = points.map((p) => p.tutored);
-  const baseline = points.map((p) => p.baseline);
-  const last = points.length - 1;
-  const endX = toX(last, points.length);
-  const endY = toY(tutored[last]);
-  return (
-    <section aria-labelledby="trajectory-heading" className="mx-auto max-w-[90rem] px-4 sm:px-8 lg:px-10">
-      <Reveal className="grid items-center gap-10 rounded-[2rem] bg-white p-6 ring-1 ring-brand-100/80 sm:p-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
-        <div>
-          <span className={`${pill} bg-brand-100/70 text-brand-700`}>
-            <TrendingUp aria-hidden className="size-3.5" />
-            {tr.eyebrow}
-          </span>
-          <h2 id="trajectory-heading" className="mt-4 text-2xl font-bold tracking-tight text-ink sm:text-3xl">
-            {tr.title}
-          </h2>
-          <p className="mt-3 text-sm leading-relaxed text-muted">{tr.body}</p>
-          <dl className="mt-7 grid grid-cols-2 gap-3">
-            {tr.stats.map((s) => (
-              <div key={s.label} className="flex flex-col rounded-2xl bg-lavender/70 p-4">
-                <dt className="order-2 mt-1 text-xs font-semibold text-ink">{s.label}</dt>
-                <dd className="order-1 text-3xl font-extrabold tracking-tight text-brand-700">{s.value}</dd>
-                <dd className="order-3 mt-0.5 text-[11px] text-muted">{s.note}</dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-
-        <figure className="rounded-3xl bg-lavender/50 p-5 ring-1 ring-brand-100/80">
-          <figcaption className="flex flex-wrap items-start justify-between gap-2">
-            <span>
-              <span className="block text-sm font-bold text-ink">{tr.chart.title}</span>
-              <span className="block text-[11px] text-muted">{tr.chart.subtitle}</span>
-            </span>
-            <span className={`${pill} bg-white text-brand-700`}>{tr.chart.badge}</span>
-          </figcaption>
-
-          {/* Time runs left to right in both languages. */}
-          <div dir="ltr" className="relative mt-5 aspect-[56/22]">
-            <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label={tr.chart.description} className="absolute inset-0 size-full overflow-visible">
-              <defs>
-                <linearGradient id="trajectory-fill" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="var(--color-brand-500)" stopOpacity="0.28" />
-                  <stop offset="100%" stopColor="var(--color-brand-500)" stopOpacity="0" />
-                </linearGradient>
-              </defs>
-              {[0, 25, 50, 75, 100].map((v) => (
-                <line key={v} x1={PAD_X} x2={W - PAD_X} y1={toY(v)} y2={toY(v)} stroke="var(--color-brand-200)" strokeDasharray="3 5" />
-              ))}
-              <path
-                d={`${linePath(tutored)} L${endX} ${BOTTOM} L${PAD_X} ${BOTTOM} Z`}
-                fill="url(#trajectory-fill)"
-              />
-              <path d={linePath(baseline)} fill="none" stroke="var(--color-muted)" strokeOpacity="0.5" strokeWidth="2" strokeDasharray="6 6" />
-              <path d={linePath(tutored)} fill="none" stroke="var(--color-brand-600)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-              {tutored.map((v, i) => (
-                <circle key={i} cx={toX(i, points.length)} cy={toY(v)} r={i === last ? 7 : 5} fill="white" stroke="var(--color-brand-600)" strokeWidth="3" />
-              ))}
-            </svg>
-            <span
-              className="absolute -translate-x-full -translate-y-[160%] whitespace-nowrap rounded-lg bg-night px-2.5 py-1 text-[11px] font-bold text-white shadow-md"
-              style={{ left: `${(endX / W) * 100}%`, top: `${(endY / H) * 100}%` }}
-            >
-              {tr.chart.endLabel}
-            </span>
-          </div>
-          <ol dir="ltr" className="mt-3 grid grid-cols-4 gap-2 text-[10px] leading-snug text-muted">
-            {tr.chart.points.map((p, i) => (
-              <li key={i} dir="auto" className={i === last ? "text-right" : i === 0 ? "text-left" : "text-center"}>
-                {p.label}
-              </li>
-            ))}
-          </ol>
-          <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-1.5 text-[11px] text-muted">
-            <li className="inline-flex items-center gap-2">
-              <span aria-hidden className="h-0.5 w-5 rounded-full bg-brand-600" />
-              {tr.chart.series.tutored}
-            </li>
-            <li className="inline-flex items-center gap-2">
-              <span aria-hidden className="w-5 border-t-2 border-dashed border-muted/50" />
-              {tr.chart.series.baseline}
-            </li>
-          </ul>
-        </figure>
-      </Reveal>
-    </section>
-  );
 }
 
 export async function NewsletterBand() {
@@ -366,16 +228,6 @@ export async function AdviceCta() {
             {c.secondary}
           </ButtonLink>
         </div>
-        <ul className="mt-7 flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs text-muted">
-          <li className="inline-flex items-center gap-1.5">
-            <MapPin aria-hidden className="size-3.5 text-brand-600" />
-            {c.locations}
-          </li>
-          <li className="inline-flex items-center gap-1.5">
-            <BadgeCheck aria-hidden className="size-3.5 text-brand-600" />
-            {c.consultation}
-          </li>
-        </ul>
       </Reveal>
     </section>
   );

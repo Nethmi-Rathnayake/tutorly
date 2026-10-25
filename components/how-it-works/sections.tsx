@@ -1,4 +1,3 @@
-import Image from "next/image";
 import {
   ArrowRight,
   BadgeCheck,
@@ -7,14 +6,12 @@ import {
   Lock,
   ShieldCheck,
   Sparkles,
-  Star,
   UserPlus,
 } from "lucide-react";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Reveal } from "@/components/ui/reveal";
 import {
   conciergeNexus,
-  connectionProof,
   directoryContrast,
   howItWorksCta,
   howItWorksHero,
@@ -272,61 +269,6 @@ export async function DirectoryContrast() {
           </li>
         ))}
       </ul>
-    </section>
-  );
-}
-
-export async function ConnectionProof() {
-  const t = await getT();
-  const p = t.deep(connectionProof);
-  return (
-    <section
-      aria-label={t("Parent testimonial and placement figures")}
-      className={cn("mx-auto max-w-[90rem] px-4 sm:px-8 lg:px-10", FONT)}
-    >
-      <Reveal className="grid gap-6 lg:grid-cols-[1.4fr_1fr] lg:items-stretch">
-        <figure className="flex flex-col rounded-3xl bg-brand-50 p-8 ring-1 ring-brand-200 sm:p-10">
-          <div className="flex items-center gap-3">
-            <div className="flex gap-0.5 text-brand-500" role="img" aria-label={t("Rated 5 out of 5")}>
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star key={i} aria-hidden className="size-4 fill-current" />
-              ))}
-            </div>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-600">{p.eyebrow}</p>
-          </div>
-          <blockquote className="mt-6 flex-1 font-serif text-xl leading-relaxed text-ink sm:text-2xl">“{p.quote}”</blockquote>
-          <figcaption className="mt-8 flex items-center gap-3 border-t border-brand-200 pt-5">
-            <span className="relative size-14 shrink-0 overflow-hidden rounded-full bg-night ring-2 ring-brand-400">
-              {p.photo ? (
-                <Image src={p.photo} alt="" fill sizes="56px" className="object-cover" />
-              ) : (
-                <span className="grid size-full place-items-center text-base font-bold text-gold">{p.initial}</span>
-              )}
-            </span>
-            <span>
-              <span className="block text-sm font-semibold text-ink">{p.name}</span>
-              <span className="block text-xs text-muted">{p.context}</span>
-            </span>
-          </figcaption>
-        </figure>
-
-        <dl className="grid gap-4">
-          {p.stats.map((s) => (
-            <div
-              key={s.label}
-              className="group flex flex-col rounded-3xl bg-white px-7 py-5 ring-1 ring-brand-200 transition-colors duration-300 hover:bg-[#e6c97c] hover:ring-brand-500"
-            >
-              <dd className="order-first text-3xl font-bold tracking-tight text-brand-500 transition-colors group-hover:text-brand-900">
-                {s.value}
-              </dd>
-              <dt className="mt-1 text-sm font-semibold text-ink">{s.label}</dt>
-              <dd className="mt-1 text-xs leading-relaxed text-muted transition-colors group-hover:text-brand-900/80">
-                {s.body}
-              </dd>
-            </div>
-          ))}
-        </dl>
-      </Reveal>
     </section>
   );
 }

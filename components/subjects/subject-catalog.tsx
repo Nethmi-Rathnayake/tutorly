@@ -2,7 +2,7 @@
 
 import { useDeferredValue, useId, useMemo, useState } from "react";
 import { Link } from "@/components/ui/link";
-import { ArrowRight, BookMarked, CircleHelp, Search, UsersRound, X } from "lucide-react";
+import { ArrowRight, BookMarked, CircleHelp, Search, X } from "lucide-react";
 import { ButtonLink } from "@/components/ui/button-link";
 import { requestSubjectHref } from "@/lib/constants/site";
 import { categoryDisplay, subjectDetails, subjectsHero } from "@/lib/constants/subjects-page";
@@ -123,7 +123,7 @@ export function SubjectCatalog() {
         <div className="mt-8 flex flex-col items-center justify-between gap-2 border-t border-brand-200 pt-5 text-xs text-muted sm:flex-row">
           <p aria-live="polite" className="flex items-center gap-2">
             <span aria-hidden className="size-1.5 rounded-full bg-brand-500" />
-            {t(visible.length === 1 ? "Showing {count} Accredited Subject Discipline" : "Showing {count} Accredited Subject Disciplines", {
+            {t(visible.length === 1 ? "Showing {count} Subject Discipline" : "Showing {count} Subject Disciplines", {
               count: visible.length,
             })}
           </p>
@@ -142,7 +142,7 @@ export function SubjectCatalog() {
             </span>
             <h2 className="mt-4 text-lg font-bold text-ink">{t("No matching subjects")}</h2>
             <p className="mt-2 text-sm leading-relaxed text-muted">
-              {t("Our directors can still source a specialist for you. Tell us what you need and we'll handle the search.")}
+              {t("Our team can still look for a specialist for you. Tell us what you need and we'll handle the search.")}
             </p>
             <div className="mt-6 flex flex-wrap justify-center gap-3">
               <ButtonLink href={requestSubjectHref("Other (Please specify)")} arrow>
@@ -221,11 +221,7 @@ function SubjectCard({ entry, categoryTitle }: { entry: Entry; categoryTitle: st
           </p>
         )}
       </div>
-      <div className="flex items-center justify-between gap-3 border-t border-brand-200 px-7 py-4 transition-colors group-hover:border-brand-900/20">
-        <span className="flex items-center gap-1.5 text-xs font-medium text-muted transition-colors group-hover:text-brand-900/80">
-          <UsersRound aria-hidden className="size-4 text-brand-500 transition-colors group-hover:text-brand-900" />
-          {d?.mentors}
-        </span>
+      <div className="flex items-center justify-end gap-3 border-t border-brand-200 px-7 py-4 transition-colors group-hover:border-brand-900/20">
         <Link
           href={requestSubjectHref(entry.name)}
           className="-my-2 inline-flex min-h-11 items-center gap-1.5 py-2 text-sm font-semibold text-brand-700 transition-colors hover:text-brand-900 group-hover:text-brand-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"

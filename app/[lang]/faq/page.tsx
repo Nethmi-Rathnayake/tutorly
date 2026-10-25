@@ -16,9 +16,9 @@ import type { Translator } from "@/lib/i18n/translate";
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
   return pageMetadata("/faq", t.locale, {
-    title: t("FAQ"),
+    title: t("Private Tutor FAQs for UAE Families"),
     description: t(
-      "Answers about requesting a tutor, online and in-person lessons, tutor registration and vetting, and the subjects and curricula we cover.",
+      "Answers about requesting a tutor, online and in-person lessons, tutor registration, and the subjects and curricula we cover.",
     ),
   });
 }

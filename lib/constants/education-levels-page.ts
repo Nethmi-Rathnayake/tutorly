@@ -1,8 +1,7 @@
 /**
  * Copy for the Education Levels page (/education-levels).
  * Stage ids match `educationLevels` in lib/constants/taxonomy.ts and double as section anchors.
- * PLACEHOLDER marketing figures from the design (vetting and privacy percentages) must be
- * confirmed by the business before launch (SRS §11, §27).
+ * Unverified figures and credential claims were removed; add them back only with approved content (SRS §11, §27).
  */
 
 export const levelsImages = {
@@ -15,16 +14,16 @@ export const levelsHero = {
   eyebrow: "Academic Pathways • Comprehensive Curricula Support",
   title: { highlight: "Education Levels", tail: "& Curricula Supported by" },
   description:
-    "From foundational early phonics and numeracy through specialised IGCSEs, IB Diplomas, AP courses and university degree modules, we connect families with hand-picked master educators matched specifically to your child’s syllabus and developmental stage.",
+    "From foundational early phonics and numeracy through specialised IGCSEs, IB Diplomas, AP courses and university degree modules, we help families find educators matched to your child’s syllabus and developmental stage.",
   imageCard: {
-    kicker: "Director-Led Matching Only",
+    kicker: "Request-Based Matching",
     title: "Individualised 1-on-1 Curricular Trajectories",
-    body: "Every placement is built on a diagnostic review by our Academic Directors so each learner’s syllabus and goals are addressed from the first session.",
+    body: "Every request is reviewed by our team so that each learner’s syllabus and goals can be considered.",
     cta: "Start Your Request",
   },
   stats: [
-    { value: "100%", label: "Director-Vetted Mentors" },
-    { value: "0%", label: "Public Profile Indexing" },
+    { value: "Private", label: "Request-Based Matching" },
+    { value: "Zero", label: "Public Tutor Directory" },
   ],
   note: "Every parent enquiry is reviewed in private, then matched to a mentor whose expertise fits your child’s curriculum and learning style.",
   frameworks: {
@@ -34,7 +33,7 @@ export const levelsHero = {
   highlights: [
     { title: "Multi-Curriculum Authority", body: "British, IB, American, CBSE, UAE MOE and international syllabi." },
     { title: "Strict Exam-Stage Curation", body: "Mentors matched to the exact board, paper and examination series." },
-    { title: "Board-Specific Specialists", body: "Educators with proven results in your child’s specific exam board." },
+    { title: "Board-Specific Specialists", body: "Educators familiar with your child’s specific exam board." },
   ],
 };
 
@@ -67,7 +66,7 @@ export const earlyYears: Stage & {
   description:
     "Building joyful foundational inquiry, early phonics, vocabulary and basic mathematical understanding in a nurturing 1-on-1 environment.",
   ages: "Ages 3 – 5 Years",
-  frameworks: "EYFS & Montessori Frameworks",
+  frameworks: "EYFS Framework",
   cards: [
     {
       kicker: "KG1 / FS1",
@@ -177,7 +176,7 @@ export const middle: Stage & { cards: LevelCard[]; banner: { title: string; body
   ],
   banner: {
     title: "Preventing Middle School Learning Slumps",
-    body: "Our directors identify specific conceptual gaps in Year 7–9 before formal assessment cycles begin.",
+    body: "Tutors can help identify specific conceptual gaps in Year 7–9 before formal assessment cycles begin.",
     cta: "Request a Middle School Tutor",
   },
 };
@@ -191,7 +190,7 @@ export const highSchool: Stage & {
   eyebrow: "Grades 9 – 12 • High-Stakes Examinations",
   title: "High School & Upper Secondary",
   description:
-    "Targeted, rigorous exam board preparation designed to maximise top grades (A*/A, 7s in IB Higher Level, 5s in AP) and secure placement in premier university admissions.",
+    "Targeted exam board preparation focused on your child’s target grades, with support through university applications.",
   ages: "Ages 14 – 18 Years",
   frameworks: "IGCSE • A-Level • IB DP • AP • CBSE",
   boards: ["Cambridge CIE", "Pearson Edexcel", "Oxford AQA", "IB International Baccalaureate", "College Board AP", "CBSE / CISCE India"],
@@ -210,7 +209,7 @@ export const highSchool: Stage & {
       title: "Board Exam Drill & Past Paper Mastery",
       body: "Intensive, timed past-paper simulations under examination constraints, examiner report deconstructions, grade boundary evaluation and targeted intervention on commonly difficult Paper 4 / Paper 6 components.",
       tags: ["Paper 2, 4 & 6 Drills", "Grade 9 / A* Targeting", "Mock Exam Correction"],
-      footer: "Result Target: 9–8 / A*–A across Cambridge, Edexcel, AQA",
+      footer: "Focus: Exam technique and past-paper practice",
     },
     {
       kicker: "Grade 11 / Year 12",
@@ -224,9 +223,9 @@ export const highSchool: Stage & {
       kicker: "Grade 12 / Year 13",
       meta: "University Gateway",
       title: "A-Level, IB DP Year 2 & Predictive Optimisation",
-      body: "Final result optimisation, maximising predicted grades for Oxbridge, Ivy League and Russell Group applications, comprehensive revision of examined content and securing top university offers.",
+      body: "Final result optimisation, maximising predicted grades for Oxbridge, Ivy League and Russell Group applications, and comprehensive revision of examined content.",
       tags: ["UCAS Prediction Target", "A* & 7/7 Grade Prep", "UKCAT / SAT / ACT Prep"],
-      footer: "Destinations: Oxford, Cambridge, Imperial, Ivy League, LSE",
+      footer: "Focus: Final result preparation and university applications",
     },
   ],
   banner: {
@@ -240,9 +239,9 @@ export const higherEducation: Stage & { cards: (LevelCard & { points: string[]; 
   eyebrow: "Stage 05 • Advanced Mentorship",
   title: "University & Higher Education",
   description:
-    "Bespoke academic mentorship delivered by doctoral researchers, subject authorities and specialised industry professionals for undergraduate and postgraduate modules.",
+    "Bespoke academic mentorship for undergraduate and postgraduate modules.",
   ages: "Undergrad & Postgrad",
-  frameworks: "PhD & Industry Specialists",
+  frameworks: "Undergraduate & Postgraduate Modules",
   cards: [
     {
       kicker: "Pre-University",
@@ -268,7 +267,7 @@ export const higherEducation: Stage & { cards: (LevelCard & { points: string[]; 
       title: "Postgraduate & Master’s",
       body: "Advanced methodology structuring, quantitative statistical analysis (SPSS, R, Python), literature reviews and rigorous dissertation mentorship for Master’s and senior academic research projects.",
       points: ["Quantitative & Qualitative Methodologies", "Thesis Architecture & Review Logic", "Academic Journal Manuscript Editing"],
-      footer: "Doctorate-Level Advisory",
+      footer: "Postgraduate Academic Support",
     },
   ],
   cta: "Request a University Academic Mentor",
@@ -278,7 +277,7 @@ export const matchingProcess = {
   eyebrow: "Concierge Matching Process",
   title: "How We Match Your Child’s Exact Education Level",
   description:
-    "We do not leave critical curriculum milestones to chance or public reviews. Every mentor is hand-selected by our Senior Academic Advisory.",
+    "We do not leave critical curriculum milestones to chance or public reviews. Our team reviews every request individually.",
   steps: [
     {
       title: "Specify Grade & Exam Board",
@@ -286,14 +285,14 @@ export const matchingProcess = {
       link: "Submit Your Needs",
     },
     {
-      title: "Director Review & Diagnostic",
-      body: "Our Academic Directors evaluate your student’s current attainment levels, diagnostic results, learning temperament and specific curriculum pacing.",
-      link: "Director-Led Curation",
+      title: "Team Review",
+      body: "Our team reviews your student’s level, curriculum and learning needs from the details you share.",
+      link: "Request Review",
     },
     {
-      title: "Dedicated 1-on-1 Introduction",
-      body: "We present a single, thoroughly vetted, curriculum-aligned educator with exam-board expertise. Arrange an introductory session to confirm chemistry and learning fit.",
-      link: "Guaranteed Chemistry Match",
+      title: "We Get in Touch",
+      body: "We contact you through your preferred channel to discuss the next steps.",
+      link: "Next Steps",
     },
   ],
 };
@@ -301,8 +300,8 @@ export const matchingProcess = {
 export const uniqueCurriculum = {
   eyebrow: "Bespoke International Pathways",
   title: "Enrolled in a Unique Curriculum or International Track?",
-  body: "Our director network extends across specialised educational frameworks across the UAE: French baccalauréat (Lycée Français), German Abitur, SABIS curricular exams, Swiss Maturité and bilingual Arabic/English Ministry of Education programmes.",
-  tracks: ["French Baccalauréat", "SABIS & German Abitur", "Swiss Maturité & AMSA", "Bilingual Arabic / English MOE"],
+  body: "Studying another international syllabus? Tell us about it and we will look for a tutor who knows that curriculum and its examination requirements.",
+  tracks: ["Other International Syllabi"],
   primaryCta: "Launch Parent Requirement Wizard",
-  secondaryCta: "Speak with an Academic Director",
+  secondaryCta: "Contact Our Team",
 };

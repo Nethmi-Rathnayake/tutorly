@@ -3,18 +3,18 @@ import type { Translator } from "@/lib/i18n/translate";
 
 /**
  * Copy for the FAQ page (/faq).
- * PLACEHOLDER figures and policies from the design (1.8% acceptance, 24–48h matching,
- * chemistry guarantee, vetting steps) must be confirmed by the business before launch (SRS §11, §27).
+ * Unverified figures (acceptance rate, matching times), guarantees and screening claims were removed;
+ * add them back only with approved content (SRS §11, §27).
  * Answers support **bold** spans; keep them plain text otherwise (they are also used for search and JSON-LD).
  */
 
 export const faqHero = {
-  eyebrow: "Academic Concierge Knowledge Base • Verified Answers",
+  eyebrow: "Academic Concierge Knowledge Base",
   titleLead: "Frequently Asked",
   titleAccent: "Questions",
   description:
-    "Everything you need to know about Tuteme’s private administrative matching model, educator intake standards, and online or in-person lesson delivery.",
-  searchPlaceholder: "Search questions or keywords (e.g. matching timeline, exam boards, in-person)",
+    "Everything you need to know about requesting a tutor, tutor registration, and online or in-person lessons with Tuteme.",
+  searchPlaceholder: "Search questions or keywords (e.g. request form, exam boards, in-person)",
 };
 
 export const faqTopics = [
@@ -23,7 +23,7 @@ export const faqTopics = [
   { id: "requests", label: "How Requests Work" },
   { id: "delivery", label: "Online & Physical Tutoring" },
   { id: "curricula", label: "Subjects & Curricula" },
-  { id: "vetting", label: "Registration & Vetting" },
+  { id: "vetting", label: "Tutor Registration" },
 ] as const;
 
 export type FaqTopic = (typeof faqTopics)[number]["id"];
@@ -36,28 +36,28 @@ export const conciergeModel = {
     {
       tag: "Student Profile",
       title: "Parent Submits Requirement",
-      body: "Confidential input: target examination board, current vs. goal grade, learning style, schedule availability, and delivery mode.",
-      outcome: "Diagnostic Dossier Created",
+      body: "Share your child’s grade, curriculum, emirate and any notes through the request form.",
+      outcome: "Request Received",
     },
     {
-      tag: "Director Desk",
-      title: "Placement Board Review",
-      body: "Senior Academic Directors audit syllabus requirements and previous examiner records, then hand-select an active fellow—no blind algorithms.",
-      outcome: "1.8% Selective Master Faculty",
+      tag: "Our Team",
+      title: "Team Review",
+      body: "Our team reviews your request and looks for a suitable tutor, with no public directory to browse.",
+      outcome: "Request Reviewed",
     },
     {
-      tag: "Chemistry Session",
-      title: "Curated Introduction",
-      body: "Receive a formal academic introduction followed by a complimentary 15-minute diagnostic chemistry meeting backed by our placement guarantee.",
-      outcome: "Risk-Free Alignment",
+      tag: "Next Steps",
+      title: "We Contact You",
+      body: "Our team contacts you through your preferred channel (WhatsApp, phone or email) about the next steps.",
+      outcome: "Preferred Channel",
     },
   ],
-  covenant: "Core Covenant: Zero Public Profiles • Zero Cold Outreach • Zero Algorithmic Guesswork",
-  covenantNote: "Credentials and family details remain strictly confidential.",
+  covenant: "Core Covenant: Zero Public Profiles • Zero Algorithmic Guesswork",
+  covenantNote: "Tutor profiles are never published for browsing.",
 };
 
 /** Rich blocks rendered after an answer's paragraphs. */
-export type FaqExtra = "requestBlueprint" | "vettingStats" | "subjectsLink";
+export type FaqExtra = "subjectsLink";
 
 export type Faq = {
   id: string;
@@ -85,18 +85,17 @@ export const faqSections: FaqSection[] = [
   {
     id: "parents",
     title: "For Parents, Students & Request Flow",
-    description: "How our concierge model serves families with zero friction and guaranteed pedagogical fit.",
+    description: "How requesting a tutor works, from the request form to our team contacting you.",
     faqs: [
       {
         id: "how-to-request",
         tag: "Step 01",
         question: "How do I request a tutor through Tuteme?",
         answer: [
-          "Requesting an educator does not involve browsing pages of profiles. Instead, parents complete our confidential **6-Step Parent Requirement Form**. Our placement directors use these exact details to manually select a qualified educator from our vetted fellowship.",
+          "Requesting a tutor does not involve browsing pages of profiles. Instead, parents complete our short **Parent Requirement Form**. Our team uses these details to look for a suitable tutor.",
         ],
-        extra: "requestBlueprint",
         after: [
-          "Once received, our Senior Academic Directors review your syllabus benchmarks and learning targets within **24 to 48 hours**, and introduce an educator with expertise in that exact specification.",
+          "Once your request is received, our team reviews it and contacts you through your preferred channel.",
         ],
         topics: ["parents", "requests"],
       },
@@ -105,7 +104,7 @@ export const faqSections: FaqSection[] = [
         tag: "Model",
         question: "Do I choose a tutor directly from a public directory?",
         answer: [
-          "No. Tuteme deliberately has **no public tutor directory**. Tutor profiles are never listed for browsing; instead our directors compare your requirement against the educators in our private fellowship and recommend the best fit.",
+          "No. Tuteme deliberately has **no public tutor directory**. Tutor profiles are never listed for browsing; instead our team reviews your requirement and looks for a suitable tutor.",
           "If you already know a tutor you would like to work with, you can mention them in your request and our team will check their availability.",
         ],
         topics: ["parents", "requests"],
@@ -115,8 +114,7 @@ export const faqSections: FaqSection[] = [
         tag: "Process",
         question: "How does the platform connect parents and tutors?",
         answer: [
-          "Every connection runs through our placement desk. After reviewing your request, a director contacts you by your preferred channel (WhatsApp, phone or email) with a recommended educator and arranges a short introductory chemistry session.",
-          "Tutors never cold-contact families, and your contact details are only shared once you agree to proceed.",
+          "Every request is handled by our team. After reviewing your request, we contact you by your preferred channel (WhatsApp, phone or email) about the next steps.",
         ],
         topics: ["parents", "requests"],
       },
@@ -125,7 +123,7 @@ export const faqSections: FaqSection[] = [
         tag: "Checklist",
         question: "What information do I need to provide in my request?",
         answer: [
-          "The form asks for your contact details, the student’s school and year group, the subject and curriculum, your preferred schedule and lesson format, and any learning goals or challenges. You can optionally attach a recent school report or mock exam.",
+          "The form asks for your name and role, your contact details and preferred contact method, the student’s grade or year, curriculum and emirate, and an optional message about the subject, learning goals and preferred schedule.",
           "You can save a draft at any point and come back to finish it later on the same device.",
         ],
         topics: ["parents", "requests"],
@@ -135,14 +133,14 @@ export const faqSections: FaqSection[] = [
   {
     id: "delivery",
     title: "Online & Physical Lesson Delivery",
-    description: "Seamless teaching whether studying from home or through private residence visits.",
+    description: "Online lessons, or in-person lessons where a tutor is available.",
     faqs: [
       {
         id: "online",
         tag: "Digital Studio",
         question: "Can I request online tutoring? How does it work?",
         answer: [
-          "Yes. Choose **Online** in the Subject step of the request form. Online lessons take place live over video with an interactive whiteboard, so your student can learn with a specialist regardless of location or time zone.",
+          "Yes. Mention in the message box of the request form that you would like **online** lessons, and our team will look for a tutor who teaches online.",
         ],
         topics: ["delivery", "parents"],
       },
@@ -151,7 +149,7 @@ export const faqSections: FaqSection[] = [
         tag: "In-Person",
         question: "Can I request physical (in-person) tutoring?",
         answer: [
-          "Yes. Choose **In-person** in the request form and tell us your area. Our directors will only recommend educators who can reliably reach you, at your home or an agreed study location.",
+          "Yes. Mention in the message box of the request form that you would like **in-person** lessons, along with your area. Our team will look for a tutor who can reach you.",
         ],
         topics: ["delivery", "parents"],
       },
@@ -160,7 +158,7 @@ export const faqSections: FaqSection[] = [
         tag: "Hybrid",
         question: "Can we combine online and in-person sessions (hybrid)?",
         answer: [
-          "Many families do. Select the format you would like for most lessons, then mention the hybrid arrangement in the notes step of the request form, and our team will look for an educator who can offer both.",
+          "Yes. Mention the hybrid arrangement in the message box of the request form, and our team will look for a tutor who can offer both.",
         ],
         topics: ["delivery", "parents"],
       },
@@ -168,17 +166,16 @@ export const faqSections: FaqSection[] = [
   },
   {
     id: "tutors",
-    title: "For Tutors & Educator Fellowship",
-    description: "Confidential registration, faculty review standards, and placement administration.",
+    title: "For Tutors & Educators",
+    description: "How tutor registration works.",
     faqs: [
       {
         id: "tutor-registration",
         tag: "Fellowship",
         question: "How does tutor registration work?",
         answer: [
-          "Educators do not build self-promotional marketplace listings. Instead, qualified academics apply directly through our **confidential tutor registration form**, covering personal details, subjects and qualifications, availability, and teaching approach.",
+          "Educators do not build self-promotional marketplace listings. Instead, qualified academics apply directly through our **tutor registration form**, covering personal details, subjects and qualifications, availability, and teaching approach. When you submit it, you consent to Tuteme verifying your identity, qualifications and background.",
         ],
-        extra: "vettingStats",
         topics: ["tutors", "vetting"],
       },
       {
@@ -186,7 +183,7 @@ export const faqSections: FaqSection[] = [
         tag: "Confidentiality",
         question: "Will my tutor profile be publicly visible on the internet?",
         answer: [
-          "No. Tutor profiles are held privately by our placement team and are never published in a searchable directory. Families only learn about you when a director recommends you for a specific request.",
+          "No. Tuteme does not publish tutor profiles in a searchable directory. Families only learn about you if our team recommends you for a specific request.",
         ],
         topics: ["tutors", "vetting"],
       },
@@ -195,7 +192,7 @@ export const faqSections: FaqSection[] = [
         tag: "Compliance",
         question: "Are there guaranteed students or minimum lesson allocations?",
         answer: [
-          "No. Placements depend on families’ requirements matching your subjects, levels, location and availability. Keeping your availability up to date gives our directors the best chance of matching you.",
+          "No. Placements depend on families’ requirements matching your subjects, levels, location and availability. Keeping your availability up to date gives our team the best chance of matching you.",
         ],
         topics: ["tutors"],
       },
@@ -203,7 +200,7 @@ export const faqSections: FaqSection[] = [
   },
   {
     id: "curricula",
-    title: "Curricula, Exam Boards & Guarantees",
+    title: "Curricula & Exam Boards",
     description: "Syllabus coverage across primary, secondary, and higher education.",
     faqs: [
       {
@@ -223,47 +220,18 @@ export const faqSections: FaqSection[] = [
         extra: "subjectsLink",
         topics: ["curricula", "parents"],
       },
-      {
-        id: "chemistry-guarantee",
-        tag: "Assurance",
-        question: "What is the 100% Placement Chemistry Guarantee?",
-        answer: [
-          "Every introduction starts with a complimentary 15-minute chemistry session. If the student and educator are not the right fit, we will propose an alternative educator at no extra cost.",
-        ],
-        topics: ["curricula", "parents", "requests"],
-      },
     ],
   },
 ];
 
-export const vettingStats = [
-  {
-    value: "1.8%",
-    label: "Acceptance Rate",
-    body: "Only candidates with documented first-class honours or examiner credentials are admitted.",
-  },
-  {
-    value: "Live Demo",
-    label: "Pedagogical Audit",
-    body: "Candidates deliver a live 30-minute unseen syllabus explanation to our Academic Council.",
-  },
-  {
-    value: "Tier-1",
-    label: "Identity Clearance",
-    body: "Full transcript audits with issuing universities and national criminal records vetting.",
-  },
-];
-
 export const faqCta = {
-  eyebrow: "Direct Administrative Liaison",
+  eyebrow: "Need More Help?",
   title: "Need tailored academic advice?",
   description:
-    "Our placement desk is on call to review student diagnostics, curriculum requirements, or bespoke educator availability.",
-  whatsapp: "WhatsApp Direct Liaison",
-  call: "Director Call (15m response)",
+    "Our team can review your student’s curriculum requirements and educator availability.",
   contact: "Visit Contact Desk",
   primary: "Launch Requirement Wizard",
-  secondary: "Apply as Master Educator",
+  secondary: "Apply as an educator",
 };
 
 /** Strip **bold** markers for search and structured data. */

@@ -12,34 +12,33 @@ export const aboutImages = {
 export const aboutHero = {
   eyebrow: "About",
   subtitle: {
-    lead: "13 Years of Excellence in",
+    lead: "A Personal Approach to",
     highlight: "Empowering Student Success",
     tail: "Across the UAE",
   },
-  body: "We understand that a child’s educational journey is one of the most important investments in their future. Operating across the dynamic educational landscape of Dubai, Abu Dhabi and the wider UAE, our core mission is simple yet transformative: to connect families with hand-picked, elite private tutors who inspire academic excellence.",
+  body: "We understand that a child’s educational journey is one of the most important investments in their future. Operating across the dynamic educational landscape of Dubai, Abu Dhabi and the wider UAE, our core mission is simple yet transformative: to help families find a suitable private tutor.",
   stats: [
-    { label: "Legacy", value: "13 Years", note: "UAE Education" },
+    { label: "Process", value: "Request-Based", note: "Tell Us Your Needs" },
     { label: "Focus", value: "Private", note: "1-on-1 Mentorship" },
     { label: "Coverage", value: "UAE-Wide", note: "All Emirates" },
     { label: "Method", value: "Bespoke", note: "Personalised" },
   ],
-  badge: { value: "13 Years", label: "Experience" },
-  protocol: { title: "Curated Matching Protocol", body: "Every request is reviewed by a senior education advisor." },
+  protocol: { title: "Request Review", body: "Every request is reviewed by our team." },
 };
 
 export const whoWeAre = {
   eyebrow: "Who We Are",
   title: "Bridging Families With Exceptional Educators",
-  body: "Founded on 13 years of proven experience and hands-on expertise in the education sector, we bridge the gap between busy parents and top-tier educators. We know that finding the right teacher—one who truly understands your child’s learning pace, personality and specific academic curriculum—can be a challenging and time-consuming task. That is where we step in to make education seamless, personalised and stress-free.",
+  body: "Built on hands-on expertise in the education sector, we bridge the gap between busy parents and top-tier educators. We know that finding the right teacher—one who truly understands your child’s learning pace, personality and specific academic curriculum—can be a challenging and time-consuming task. That is where we step in to make education seamless, personalised and stress-free.",
   imageCard: {
     kicker: "Educational Intuition",
     title: "Experience That Understands Education",
     body: "Every placement draws on our pedagogical understanding of each learner’s academic benchmarks.",
   },
   legacy: {
-    value: "13",
-    title: "Years in UAE Education",
-    body: "Established pedagogical understanding across Dubai and Abu Dhabi.",
+    value: "1:1",
+    title: "Private, One-to-One Tutoring",
+    body: "Personal matching for families across Dubai and Abu Dhabi.",
     cta: "Consult Our Team",
   },
 };
@@ -48,48 +47,44 @@ export const differentiators = {
   eyebrow: "Our Advantage",
   title: "What Makes Us Different?",
   description:
-    "We operate as your family’s personal educational concierge—offering a verified, director-managed matching process built for academic breakthroughs.",
+    "We operate as your family’s personal educational concierge—with a matching process built around your child’s needs.",
   items: [
     {
-      title: "Hand-Picked Expert Tutors",
-      body: "We don’t just list teachers: we carefully vet, interview and hand-pick every educator to ensure they match your child’s exact academic and personal needs.",
-      footer: { label: "Rigorous Multi-Tier Interview", tag: "Verified" },
+      title: "Matched to Your Child",
+      body: "We don’t publish a public list of teachers. Instead, our team reviews your request and looks for a tutor who matches your child’s academic and personal needs.",
+      footer: { label: "Request Review", note: "Every request is reviewed by our team." },
     },
     {
       title: "Multi-Curriculum Mastery",
-      body: "Whether your child is following the British (IGCSE/A-Levels), American, IB, CBSE or UAE Ministry curriculum, our network includes specialised experts for every major educational framework.",
+      body: "Whether your child is following the British (IGCSE/A-Levels), American, IB, CBSE or UAE Ministry curriculum, we look for a tutor who knows that framework.",
       tags: ["British IGCSE / A-Level", "IB Diploma & MYP", "American AP", "CBSE", "UAE Ministry MOE"],
     },
     {
       title: "Personalised One-on-One Attention",
-      body: "We believe that customised learning unlocks true potential. Our tutors focus heavily on an individual’s strengths and weaknesses, building unshakeable confidence and top-tier grades.",
+      body: "We believe that customised learning unlocks true potential. Our tutors focus heavily on an individual’s strengths and weaknesses, building confidence along the way.",
       footer: { label: "Targeted Gap Remediation", note: "Bespoke lesson pacing tailored to your student’s learning style." },
     },
     {
       title: "Trust, Safety, and Convenience",
-      body: "We save parents valuable time by managing the entire vetting and matching process, ensuring absolute safety, reliability and exceptional results right at your doorstep.",
+      body: "We save parents time by handling the search for a suitable tutor, with online and in-person lesson options.",
       footer: { label: "In-Home & Secure Digital Sessions", tag: "Hybrid" },
     },
   ],
 };
 
 export const excellenceBand = {
-  eyebrow: "A UAE Education Heritage",
-  value: "13",
-  title: ["Years of", "Excellence"],
-  body: "Thirteen years of hands-on expertise shaping educational journeys across the United Arab Emirates.",
+  eyebrow: "Our Approach",
+  value: "1:1",
+  title: ["Personal", "Mentorship"],
+  body: "Hands-on expertise shaping educational journeys across the United Arab Emirates.",
   points: [
     {
       title: "Deep Curriculum Insight",
-      body: "Over a decade navigating UAE syllabus boards, from Edexcel and Cambridge to AP and the IB programmes.",
+      body: "Deep familiarity with UAE syllabus boards, from Edexcel and Cambridge to AP and the IB programmes.",
     },
     {
-      title: "Trusted by Thousands of Families",
-      body: "Long-standing family relationships with siblings successfully guided through key examinations and on to premier universities.",
-    },
-    {
-      title: "Uncompromising Quality Standard",
-      body: "Every tutor is actively assessed for subject mastery, communication capability and genuine pedagogical empathy.",
+      title: "Request-Led Matching",
+      body: "Tutors are suggested based on the curriculum, level and goals you share.",
     },
   ],
 };
@@ -98,12 +93,12 @@ export const methodology = {
   eyebrow: "Our Methodology",
   title: "Education That Starts With Understanding",
   description:
-    "We reject the impersonal search-directory model. We operate as an academic partnership, assessing five core pillars before suggesting a mentor.",
+    "We reject the impersonal search-directory model. We operate as an academic partnership, considering five core pillars when looking for a tutor.",
   pillars: [
     { title: "Child’s Needs", body: "Identifying specific academic struggles, exam anxieties or enrichment goals." },
     { title: "Learning Style", body: "Visual, analytical, practice-led or conversational pace alignment." },
     { title: "Academic Curriculum", body: "Exact board-specific syllabus: Cambridge, Edexcel, IB, AP or UAE MOE." },
-    { title: "Tutor Expertise", body: "Pairing with an educator proven in that specific exam board and age band." },
+    { title: "Tutor Expertise", body: "Looking for an educator who knows that specific exam board and age band." },
     { title: "Personalised Support", body: "Ongoing lesson adjustments, continuous progress feedback and sustainable mastery." },
   ],
 };
@@ -115,25 +110,23 @@ export const vision = {
     highlight: "highest academic potential",
     tail: "through dedicated mentorship and world-class private tutoring.",
   },
-  caption: "Academic Advisory • UAE",
+  caption: "Tuteme • UAE",
 };
 
 export const regions = {
   eyebrow: "Regional Footprint",
   title: "Supporting Families Across the UAE",
-  body: "Operating across the dynamic educational landscape of Dubai, Abu Dhabi and the wider UAE, our core mission is simple yet transformative: to connect families with hand-picked, elite private tutors who inspire academic excellence.",
+  body: "Operating across the dynamic educational landscape of Dubai, Abu Dhabi and the wider UAE, our core mission is simple yet transformative: to help families find a suitable private tutor.",
   areas: [
-    { name: "Dubai", body: "Downtown, Palm Jumeirah, Emirates Hills, Arabian Ranches, Jumeirah, Dubai Hills" },
-    { name: "Abu Dhabi", body: "Saadiyat Island, Al Reem, Yas Island, Al Raha, Khalifa City" },
+    { name: "Dubai", body: "Online and in-person lessons." },
+    { name: "Abu Dhabi", body: "Online and in-person lessons." },
     {
       name: "Sharjah & Northern Emirates",
-      body: "Selected in-person regions and comprehensive live interactive online instruction.",
+      body: "Online lessons, and in-person lessons where a tutor is available nearby.",
     },
   ],
   map: {
-    title: "UAE Tutoring Hub",
-    tag: "Active Network",
-    legend: ["In-Home Sessions", "Live Online Nationwide"],
+    title: "Across the UAE",
   },
 };
 
@@ -141,12 +134,12 @@ export const learningJourney = {
   eyebrow: "How We Connect Families",
   title: "Your Child’s Learning Journey Starts Here",
   description:
-    "To maintain pedagogical rigour, our academic leads evaluate every request individually. We never show public tutor directories or unfiltered profiles.",
+    "Our team reviews every request individually. We never show public tutor directories or unfiltered profiles.",
   steps: [
     { title: "Tell Us What You Need", body: "Submit your parental enquiry outlining requirements, student grade level and curriculum focus." },
     { title: "Share Learning Requirements", body: "Detail specific subject topics, upcoming exam deadlines, learning personality and scheduling availability." },
-    { title: "Our Team Reviews & Matches", body: "Senior academic advisors cross-reference pedagogical requirements to hand-select the ideal private tutor." },
-    { title: "Connect With the Right Tutor", body: "Begin curated sessions with clear goals, ongoing progress check-ins and bespoke academic tracking." },
+    { title: "Our Team Reviews Your Request", body: "Our team reviews your requirements and looks for a suitable private tutor." },
+    { title: "Agree the Next Steps", body: "We get in touch to agree the next steps so that one-to-one sessions can begin." },
   ],
 };
 
@@ -154,5 +147,5 @@ export const aboutCta = {
   eyebrow: "Empower Your Student Today",
   title: "Help Your Child Unlock Their True Potential",
   body: "Let us help your child unlock their true potential today. Experience personalised mentorship designed around their unique aspirations and educational goals.",
-  badges: ["13 Years Education Mentorship", "Director-Vetted Mentors"],
+  badges: ["Personalised Education Mentorship", "Private, Request-Based Matching"],
 };

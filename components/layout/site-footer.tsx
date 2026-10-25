@@ -1,4 +1,4 @@
-import { Mail, MapPin } from "lucide-react";
+import { Mail } from "lucide-react";
 import { Link } from "@/components/ui/link";
 import { footerNav, footerTagline, legalNav, siteConfig } from "@/lib/constants/site";
 import { getT } from "@/lib/i18n/server";
@@ -16,10 +16,6 @@ export async function SiteFooter() {
             <Logo tone="light" />
             <p className="mt-5 text-sm leading-relaxed text-white/65">{t(footerTagline)}</p>
             <ul className="mt-6 space-y-1 text-sm text-white/75">
-              <li className="flex min-h-8 items-center gap-3">
-                <MapPin aria-hidden className="size-4 shrink-0 text-gold" />
-                {contact.address}
-              </li>
               <li className="flex min-h-8 items-center gap-3">
                 <Mail aria-hidden className="size-4 shrink-0 text-gold" />
                 <a href={`mailto:${contact.email}`} className="inline-block py-1.5 transition-colors hover:text-gold">
@@ -52,17 +48,19 @@ export async function SiteFooter() {
           <p>
             {t("© {year} {name} Academic Concierge. All rights reserved.", { year: new Date().getFullYear(), name: siteConfig.name })}
           </p>
-          <nav aria-label={t("Legal")}>
-            <ul className="flex flex-wrap gap-x-6 gap-y-2">
-              {legalNav.map((link) => (
-                <li key={t(link.label)}>
-                  <Link href={link.href} className="inline-block py-2 transition-colors hover:text-gold">
-                    {t(link.label)}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          {legalNav.length > 0 && (
+            <nav aria-label={t("Legal")}>
+              <ul className="flex flex-wrap gap-x-6 gap-y-2">
+                {legalNav.map((link) => (
+                  <li key={t(link.label)}>
+                    <Link href={link.href} className="inline-block py-2 transition-colors hover:text-gold">
+                      {t(link.label)}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          )}
         </div>
       </div>
     </footer>

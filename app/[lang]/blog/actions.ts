@@ -2,11 +2,16 @@
 
 import { z } from "zod";
 import type { SubmitResult } from "@/lib/hooks/use-multi-step-form";
-import { createNewsletterSubscription } from "@/lib/services/newsletter";
+import { createNewsletterSubscription, isNewsletterConfigured } from "@/lib/services/newsletter";
 import { newsletterSchema } from "@/lib/validations/newsletter";
 
 /** Server-side validation is authoritative; client validation is only for UX (SRS §22). */
 export async function subscribeToInsights(input: unknown): Promise<SubmitResult> {
+  // Never report a subscription while nothing can store one.
+  if (!isNewsletterConfigured()) {
+    return { ok: false, message: "We couldn't subscribe you right now. Please try again in a moment." };
+  }
+
   const parsed = newsletterSchema.safeParse(input);
   if (!parsed.success) {
     return {

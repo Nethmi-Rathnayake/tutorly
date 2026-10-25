@@ -16,9 +16,9 @@ import { pageMetadata } from "@/lib/seo";
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
   return pageMetadata("/about", t.locale, {
-    title: t("About Us"),
+    title: t("About Us: Private Tutor Matching in the UAE"),
     description: t(
-      "13 years of connecting UAE families with hand-picked, vetted private tutors across Dubai, Abu Dhabi and the wider Emirates, through a personal, director-led matching process.",
+      "How Tuteme helps UAE families find a suitable private tutor across Dubai, Abu Dhabi and the wider Emirates through a personal request process.",
     ),
   });
 }

@@ -12,7 +12,6 @@ import {
   Handshake,
   Lock,
   PenLine,
-  Quote,
   ScanSearch,
   ShieldCheck,
   SlidersHorizontal,
@@ -100,15 +99,6 @@ export async function BecomeTutorHero() {
               <p className="text-[11px] text-brand-600">{h.floatingCard.body}</p>
             </div>
           </div>
-          <dl className="absolute inset-x-4 bottom-4 grid grid-cols-2 divide-x divide-brand-100 rounded-2xl bg-white/95 p-4 shadow-lg ring-1 ring-white backdrop-blur">
-            {h.stats.map((s, i) => (
-              <div key={s.label} className={`flex flex-col ${i ? "ps-4" : "pe-4"}`}>
-                <dt className="order-2 text-[10px] font-bold uppercase tracking-[0.12em] text-ink/70">{s.label}</dt>
-                <dd className="order-1 text-2xl font-extrabold text-brand-700 sm:text-3xl">{s.value}</dd>
-                <dd className="order-3 mt-0.5 text-[11px] text-muted">{s.caption}</dd>
-              </div>
-            ))}
-          </dl>
         </Reveal>
       </div>
     </section>
@@ -133,10 +123,6 @@ export async function PrivateRoster() {
               <p className="mt-1 max-w-2xl text-sm leading-relaxed text-muted">{privateRoster.body}</p>
             </div>
           </div>
-          <span className="inline-flex w-fit shrink-0 items-center gap-1.5 rounded-full bg-brand-50 px-4 py-2 text-xs font-semibold text-brand-700 ring-1 ring-brand-100">
-            <Lock aria-hidden className="size-3.5" />
-            {privateRoster.badge}
-          </span>
         </div>
       </div>
     </section>
@@ -233,10 +219,6 @@ export async function EngagementStages() {
               {t("A transparent four-phase journey from initial credentials review to your first private student connection.")}
             </p>
           </div>
-          <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-white px-4 py-2 text-xs font-medium text-ink ring-1 ring-brand-100">
-            <Clock aria-hidden className="size-3.5 text-brand-600" />
-            {t("Confidential 48h Review Cycle")}
-          </span>
         </div>
 
         <ol className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -280,10 +262,9 @@ const safetyIcons = [ShieldCheck, GraduationCap, PenLine, EyeOff];
 export async function SafetyCommitments() {
   const tr = await getT();
   const s = tr.deep(safetyCommitments);
-  const t = s.testimonial;
   return (
     <section aria-labelledby="safety-heading" className="mx-auto max-w-[90rem] px-4 sm:px-8 lg:px-10">
-      <div className="grid gap-10 rounded-[2rem] bg-white p-7 ring-1 ring-brand-100/80 sm:p-10 lg:grid-cols-2 lg:gap-12">
+      <div className="grid gap-10 rounded-[2rem] bg-white p-7 ring-1 ring-brand-100/80 sm:p-10">
         <Reveal>
           <p className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.14em] text-brand-600">
             <Sparkles aria-hidden className="size-3.5" />
@@ -307,30 +288,6 @@ export async function SafetyCommitments() {
               );
             })}
           </ul>
-        </Reveal>
-
-        <Reveal delay={0.1}>
-          <figure className="flex h-full flex-col rounded-3xl bg-lavender/80 p-7 ring-1 ring-brand-100">
-            <div className="flex items-center gap-4">
-              <div className="relative size-14 shrink-0 overflow-hidden rounded-2xl bg-brand-50">
-                <Image src={t.image} alt={tr("Portrait of {name}", { name: t.name })} fill sizes="56px" className="object-cover" />
-              </div>
-              <div>
-                <p className="text-base font-bold text-ink">{t.name}</p>
-                <p className="text-xs font-medium text-brand-600">{t.role}</p>
-                <p className="text-[11px] text-muted">{t.credentials}</p>
-              </div>
-            </div>
-            <Quote aria-hidden className="mt-6 size-6 text-brand-300" />
-            <blockquote className="mt-2 flex-1 text-sm italic leading-relaxed text-muted">“{t.quote}”</blockquote>
-            <ul className="mt-6 flex flex-wrap gap-2">
-              {t.tags.map((tag) => (
-                <li key={tag} className="rounded-full bg-white px-3 py-1 text-[11px] font-medium text-ink/80 ring-1 ring-brand-100">
-                  {tag}
-                </li>
-              ))}
-            </ul>
-          </figure>
         </Reveal>
       </div>
     </section>

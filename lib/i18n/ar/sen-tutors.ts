@@ -3,9 +3,6 @@ import type { Dictionary } from "../translate";
 /** Arabic for the Special Child Tutors in the UAE page (/sen-tutors-dubai). */
 export const senTutors: Dictionary = {
   "Special Child Tutors in the UAE": "معلمو الاحتياجات التعليمية الخاصة في الإمارات",
-  "Special Child Tutors in the UAE | SEN Tutoring for Special Students": "معلمو الاحتياجات التعليمية الخاصة في الإمارات | دروس خصوصية لذوي الاحتياجات التعليمية الخاصة",
-  "Looking for experienced special child tutors in the UAE? Tuteme helps families connect with suitable tutors experienced in supporting special children and students with Special Educational Needs (SEN).":
-    "هل تبحث عن معلمين ذوي خبرة في دعم الأطفال ذوي الاحتياجات التعليمية الخاصة في الإمارات؟ تساعد Tuteme العائلات على التواصل مع معلمين مناسبين لديهم خبرة في دعم الأطفال ذوي الاحتياجات التعليمية الخاصة وذوي الاحتياجات التعليمية الخاصة.",
 
   // Hero
   "Special Child Support": "دعم ذوي الاحتياجات التعليمية الخاصة",

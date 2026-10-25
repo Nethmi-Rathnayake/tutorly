@@ -47,11 +47,6 @@ export async function LevelStages() {
                       : "bg-white text-ink ring-brand-200 hover:bg-[#e6c97c] hover:shadow-[0_24px_50px_-24px_rgba(143,106,29,0.6)] hover:ring-brand-500",
                   )}
                 >
-                  {stage.featured && (
-                    <span className="absolute -top-3 rounded-full bg-linear-to-b from-[#ecd28c] to-[#c9a24e] px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-brand-900">
-                      {t("Most Requested")}
-                    </span>
-                  )}
                   <span
                     className={cn(
                       "relative z-10 grid size-12 place-items-center rounded-full text-sm font-bold ring-4 ring-background",

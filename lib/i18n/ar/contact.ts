@@ -19,13 +19,10 @@ export const contact: Dictionary = {
   "Direct Advisory Line": "خط الاستشارات المباشر",
   "Student & parent priority desk": "مكتب أولوية للطلاب وأولياء الأمور",
   Headquarters: "المقر الرئيسي",
-  "Executive consultation & academic offices": "مكاتب الاستشارات التنفيذية والأكاديمية",
   "Advisory Hours": "ساعات الاستشارة",
   "Extended weekend coverage for exam periods": "تغطية ممتدة في عطلات نهاية الأسبوع خلال فترات الامتحانات",
 
   // Map & liaison
-  "Campus & Advisory Center": "المقر ومركز الاستشارات",
-  "Accessible via central transit links": "يسهل الوصول إليه عبر وسائل النقل الرئيسية",
   "Open in Maps": "افتح في الخرائط",
   "(opens in a new tab)": "(يفتح في علامة تبويب جديدة)",
   "Senior Academic Liaison": "منسق أكاديمي أول",

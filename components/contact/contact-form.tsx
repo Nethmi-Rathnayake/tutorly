@@ -88,7 +88,7 @@ export function ContactForm() {
           </span>
           <h3 className="mt-4 text-lg font-bold text-ink">{t("Message sent")}</h3>
           <p className="mx-auto mt-2 max-w-sm text-sm leading-relaxed text-muted">
-            {t("Thank you. An academic advisor will reply to you shortly. Your reference is")}{" "}
+            {t("Thank you. Our team will be in touch. Your reference is")}{" "}
             <strong className="font-semibold text-ink">{reference}</strong>.
           </p>
           <button

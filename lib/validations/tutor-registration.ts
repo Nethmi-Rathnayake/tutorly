@@ -26,17 +26,20 @@ import {
  * (per-step validation) and the server action (authoritative validation).
  */
 
-const photoSchema = z
-  .object(
-    {
-      name: z.string().max(200),
-      size: z.number().max(PHOTO_MAX_BYTES, { error: "Photo must be 10MB or smaller" }),
-      type: z.enum(PHOTO_TYPES, { error: "Upload a JPG, PNG or WebP image" }),
-      width: z.number().min(PHOTO_MIN_PX, { error: `Photo must be at least ${PHOTO_MIN_PX}×${PHOTO_MIN_PX}px` }),
-      height: z.number().min(PHOTO_MIN_PX, { error: `Photo must be at least ${PHOTO_MIN_PX}×${PHOTO_MIN_PX}px` }),
-    },
-    { error: "Upload a professional headshot" },
-  );
+/**
+ * Metadata of the (already resized) headshot, used for in-browser validation only. The file itself
+ * travels separately and is validated again from its bytes on the server (lib/validations/headshot.ts).
+ */
+const photoSchema = z.object(
+  {
+    name: z.string().max(200),
+    size: z.number().max(PHOTO_MAX_BYTES, { error: "Photo is too large. Please choose a smaller image." }),
+    type: z.enum(PHOTO_TYPES, { error: "Upload a JPG, PNG or WebP image" }),
+    width: z.number().min(PHOTO_MIN_PX, { error: `Photo must be at least ${PHOTO_MIN_PX}×${PHOTO_MIN_PX}px` }),
+    height: z.number().min(PHOTO_MIN_PX, { error: `Photo must be at least ${PHOTO_MIN_PX}×${PHOTO_MIN_PX}px` }),
+  },
+  { error: "Upload a professional headshot" },
+);
 
 export const personalStepSchema = z.object({
   fullName: text("Full legal name", 2, 100),
@@ -96,17 +99,30 @@ function refineAvailability(data: { mode: string; locations: string }, ctx: Ctx)
   }
 }
 
-export const tutorRegistrationSchema = personalStepSchema
+const registrationFields = personalStepSchema
   .extend(teachingStepSchema.shape)
   .extend(availabilityStepSchema.shape)
   .extend(pedagogyStepSchema.shape)
-  .extend(registrationReviewSchema.shape)
-  .superRefine((data, ctx) => {
-    refineTeaching(data, ctx);
-    refineAvailability(data, ctx);
-  });
+  .extend(registrationReviewSchema.shape);
 
+export const tutorRegistrationSchema = registrationFields.superRefine((data, ctx) => {
+  refineTeaching(data, ctx);
+  refineAvailability(data, ctx);
+});
+
+/** Client form values, including the headshot metadata used for in-browser validation. */
 export type TutorRegistrationValues = z.infer<typeof tutorRegistrationSchema>;
+
+/**
+ * Server-side schema: everything except the photo, which arrives as a file and is validated from its
+ * bytes (client-supplied photo metadata is never trusted).
+ */
+export const tutorRegistrationServerSchema = registrationFields.omit({ photo: true }).superRefine((data, ctx) => {
+  refineTeaching(data, ctx);
+  refineAvailability(data, ctx);
+});
+
+export type TutorRegistrationData = z.infer<typeof tutorRegistrationServerSchema>;
 
 export const registrationStepSchemas = [
   personalStepSchema,

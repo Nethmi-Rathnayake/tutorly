@@ -34,11 +34,15 @@ const escapeHtml = (s: string) =>
  * "App password" for that account. Without a password the submission is logged in
  * development and rejected in production, so it is never silently lost.
  */
+export type MailAttachment = { filename: string; content: Buffer; contentType: string };
+
 export async function notifyTeam(opts: {
   subject: string;
   reference: string;
   data: object;
   replyTo?: string;
+  /** Delivered with the email; never logged. A failed send throws, so callers can't report success. */
+  attachments?: MailAttachment[];
 }) {
   const to = siteConfig.contact.email;
   const rows = Object.entries(opts.data as Record<string, Value>).map(
@@ -55,21 +59,25 @@ export async function notifyTeam(opts: {
 
   const pass = process.env.GMAIL_APP_PASSWORD;
   if (!pass) {
-    if (process.env.NODE_ENV === "production") throw new Error("GMAIL_APP_PASSWORD is not set");
+    // An attachment can only be delivered by email, so never pretend it was (even in development).
+    if (process.env.NODE_ENV === "production" || opts.attachments?.length) throw new Error("GMAIL_APP_PASSWORD is not set");
     console.warn(`[notify] GMAIL_APP_PASSWORD not set; email not sent.\n${opts.subject}\n${text}`);
     return;
   }
 
   const user = process.env.GMAIL_USER ?? to;
   const transporter = nodemailer.createTransport({ service: "gmail", auth: { user, pass } });
-  await transporter.sendMail({
+  const info = await transporter.sendMail({
     from: `"Tuteme Website" <${user}>`,
     to,
     replyTo: opts.replyTo,
     subject: `${opts.subject} (${opts.reference})`,
     text,
     html,
+    attachments: opts.attachments?.map((a) => ({ ...a, contentDisposition: "attachment" as const })),
   });
+  // The SMTP server must have accepted the team inbox; a rejected recipient is a failed delivery.
+  if (!info?.accepted?.length || info.rejected?.length) throw new Error("Team notification was not accepted for delivery");
 }
 
 /**

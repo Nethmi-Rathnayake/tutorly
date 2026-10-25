@@ -68,12 +68,13 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 // Organization + WebSite structured data (node_modules/next/dist/docs/01-app/02-guides/json-ld.md).
-// Only verifiable facts from siteConfig; no ratings, review counts or credentials.
+// Only verifiable facts from siteConfig; no ratings, review counts, credentials or street address
+// (the business address has not been confirmed, so it is not published).
 const siteJsonLd = (locale: string) => ({
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": ["EducationalOrganization", "LocalBusiness"],
+      "@type": "EducationalOrganization",
       "@id": `${siteConfig.url}/#organization`,
       name: siteConfig.name,
       url: siteConfig.url,
@@ -82,12 +83,6 @@ const siteJsonLd = (locale: string) => ({
       description: siteConfig.description,
       email: siteConfig.contact.email,
       telephone: siteConfig.contact.telephone,
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: "Level 14, Al Saqr Business Tower, DIFC",
-        addressLocality: "Dubai",
-        addressCountry: "AE",
-      },
       areaServed: [
         { "@type": "City", name: "Dubai" },
         { "@type": "City", name: "Abu Dhabi" },

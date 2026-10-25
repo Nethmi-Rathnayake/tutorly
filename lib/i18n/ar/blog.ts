@@ -135,6 +135,5 @@ export const blog: Dictionary = {
   "Speak directly with an Academic Director in Dubai or Abu Dhabi. We assess target grades and syllabus hurdles, then curate the right one-to-one mentor match.":
     "تحدّث مباشرة مع مدير أكاديمي في دبي أو أبوظبي. نقيّم الدرجات المستهدفة وتحديات المنهج، ثم نختار المرشد الفردي المناسب لطفلك.",
   "Speak with an Academic Director": "تحدّث مع مدير أكاديمي",
-  "Downtown Dubai • DIFC • Abu Dhabi Al Maryah Island": "وسط مدينة دبي • مركز دبي المالي العالمي • جزيرة الماريه في أبوظبي",
   "No-Obligation 30-Minute Consultation": "استشارة مدتها 30 دقيقة دون أي التزام",
 };
